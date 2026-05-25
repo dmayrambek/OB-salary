@@ -12,12 +12,11 @@
   --border-light: rgba(255,255,255,0.14);
   --green: #34d399;
   --green-soft: rgba(52,211,153,0.13);
-  --green-glow: rgba(52,211,153,0.22);
   --green-border: rgba(52,211,153,0.35);
   --green-text: #6ee7b7;
   --orange: #f97316;
-  --orange-bg: rgba(249,115,22,0.1);
-  --orange-border: rgba(249,115,22,0.3);
+  --orange-soft: rgba(249,115,22,0.13);
+  --orange-border: rgba(249,115,22,0.35);
   --orange-text: #fb923c;
   --font-display: 'Unbounded', sans-serif;
   --font-body: 'Inter', sans-serif;
@@ -76,7 +75,7 @@ body { background: var(--dark); color: #e0e0e0; font-family: var(--font-body); f
 .filter-btn.green { border-color: var(--green-border); color: var(--green-text); }
 .filter-btn.green:hover, .filter-btn.green.active { background: var(--green-soft); border-color: var(--green); color: #a7f3d0; }
 .filter-btn.orange { border-color: var(--orange-border); color: var(--orange-text); }
-.filter-btn.orange:hover, .filter-btn.orange.active { background: var(--orange-bg); }
+.filter-btn.orange:hover, .filter-btn.orange.active { background: var(--orange-soft); border-color: var(--orange); color: #fed7aa; }
 
 .summary-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 32px; }
 @media (max-width: 640px) { .summary-cards { grid-template-columns: repeat(2, 1fr); } }
@@ -102,7 +101,9 @@ body { background: var(--dark); color: #e0e0e0; font-family: var(--font-body); f
 .td-param { color: #ddd; font-weight: 500; font-size: 12px; }
 .td-ob { background: rgba(232,0,90,0.04); color: #ddd; font-weight: 500; border-left: 0.5px solid rgba(232,0,90,0.15); }
 
-/* ===== ПРЕИМУЩЕСТВА: cell-best выступает вперёд ===== */
+/* ===== РЕЖИМ: ВСЕ ПАРАМЕТРЫ — всё видно, без подсветки ===== */
+
+/* ===== РЕЖИМ: ПРЕИМУЩЕСТВА — зелёный, выступает вперёд ===== */
 .mode-advantage td.cell-best {
   background: var(--green-soft) !important;
   color: #a7f3d0 !important;
@@ -113,47 +114,40 @@ body { background: var(--dark); color: #e0e0e0; font-family: var(--font-body); f
     0 0 0 1px rgba(52,211,153,0.4),
     0 4px 20px -4px rgba(52,211,153,0.25),
     inset 0 1px 0 rgba(52,211,153,0.15);
-  text-shadow: 0 0 20px rgba(52,211,153,0.3);
+  text-shadow: 0 0 20px rgba(52,211,153,0.2);
 }
-
-/* все остальные ячейки уходят назад */
 .mode-advantage td:not(.cell-best):not(.td-param):not(.td-divider) {
-  opacity: 0.22;
-  color: #666;
+  opacity: 0.2;
+  color: #555;
 }
-.mode-advantage td.td-param {
-  opacity: 0.5;
-}
+.mode-advantage td.td-param { opacity: 0.45; }
 
-/* ===== ЗОНЫ РОСТА: cell-weak подсвечивается оранжевым ===== */
+/* ===== РЕЖИМ: ЗОНЫ РОСТА — оранжевый для О!Банка, зелёный для лидеров ===== */
 .mode-growth td.cell-weak {
-  background: rgba(249,115,22,0.12) !important;
-  color: var(--orange-text) !important;
+  background: var(--orange-soft) !important;
+  color: #fed7aa !important;
   font-weight: 600;
   position: relative;
   z-index: 4;
   box-shadow:
-    0 0 0 1px rgba(249,115,22,0.4),
+    0 0 0 1px rgba(249,115,22,0.45),
     0 4px 20px -4px rgba(249,115,22,0.2),
     inset 3px 0 0 var(--orange);
+  text-shadow: 0 0 20px rgba(249,115,22,0.2);
 }
 .mode-growth tr[data-type="growth"] td.cell-best {
-  background: rgba(52,211,153,0.08) !important;
-  color: #86efac !important;
+  background: rgba(52,211,153,0.1) !important;
+  color: #6ee7b7 !important;
   font-weight: 500;
-  opacity: 1;
+  box-shadow: 0 0 0 1px rgba(52,211,153,0.25);
 }
 .mode-growth td:not(.cell-weak):not(.cell-best):not(.td-param):not(.td-divider) {
   opacity: 0.2;
   color: #555;
 }
-.mode-growth td.td-param { opacity: 0.5; }
+.mode-growth td.td-param { opacity: 0.45; }
 
-/* скрыть нерелевантные строки */
-.mode-advantage tr[data-type="growth"] { display: none; }
-.mode-growth tr[data-type="advantage"] { display: none; }
-
-/* divider */
+/* ===== РАЗДЕЛИТЕЛЬ ===== */
 .row-divider .td-divider { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); text-align: center; padding: 8px; background: rgba(255,255,255,0.02); border-top: 0.5px solid var(--border); }
 
 .data-note { margin-top: 16px; font-size: 11px; color: var(--gray); padding-left: 4px; letter-spacing: 0.02em; }
