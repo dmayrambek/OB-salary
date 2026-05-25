@@ -24,8 +24,8 @@ let activeFilter = 'all';
 
 function filterTable(type) {
   activeFilter = type;
-  const rows = document.querySelectorAll('#compare-table tbody tr');
-  const dividers = document.querySelectorAll('.row-divider');
+
+  const table = document.getElementById('compare-table');
   const btnAll = document.getElementById('btn-all');
   const btnAdv = document.getElementById('btn-advantage');
   const btnGrowth = document.getElementById('btn-growth');
@@ -35,18 +35,10 @@ function filterTable(type) {
   if (type === 'advantage') btnAdv.classList.add('active');
   if (type === 'growth') btnGrowth.classList.add('active');
 
-  rows.forEach(row => {
-    const rowType = row.dataset.type;
-    if (!rowType) return;
-    row.classList.remove('highlighted', 'row-dimmed', 'hidden-row');
-    if (type === 'advantage' && rowType === 'advantage') row.classList.add('highlighted');
-    if (type === 'growth' && rowType === 'growth') row.classList.add('highlighted');
-  });
+  table.classList.remove('mode-advantage', 'mode-growth');
 
-  dividers.forEach(div => {
-    div.classList.remove('hidden-row', 'row-dimmed');
-    if (type !== 'all') div.classList.add('row-dimmed');
-  });
+  if (type === 'advantage') table.classList.add('mode-advantage');
+  if (type === 'growth') table.classList.add('mode-growth');
 }
 
 filterTable('all');
