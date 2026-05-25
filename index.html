@@ -10,7 +10,6 @@
 </head>
 <body>
 
-  <!-- NAV -->
   <nav class="nav" id="nav">
     <div class="nav-inner">
       <a href="#" class="nav-logo">O!Bank</a>
@@ -27,7 +26,6 @@
     </div>
   </nav>
 
-  <!-- HERO -->
   <section class="hero">
     <div class="hero-bg-grid"></div>
     <div class="hero-inner">
@@ -45,37 +43,32 @@
     </div>
   </section>
 
-  <!-- SECTION 1: MARKETING RESEARCH -->
   <section class="section" id="marketing">
     <div class="container">
-
       <div class="section-label">
         <span class="section-num">01</span>
         <span class="section-name" data-ru="Marketing Research" data-en="Marketing Research">Marketing Research</span>
       </div>
-
       <div class="section-head">
         <h2 class="section-title" data-ru="Анализ рынка банковских услуг КР" data-en="Kyrgyzstan Banking Market Analysis">Анализ рынка банковских услуг КР</h2>
         <p class="section-desc" data-ru="Сравнительный анализ ведущих банков Кыргызстана по ключевым параметрам зарплатного проекта. Данные актуальны на апрель 2026 г." data-en="Comparative analysis of leading Kyrgyzstan banks by key payroll project parameters. Data current as of April 2026.">Сравнительный анализ ведущих банков Кыргызстана по ключевым параметрам зарплатного проекта. Данные актуальны на апрель 2026 г.</p>
       </div>
 
-      <!-- Filter buttons -->
       <div class="filter-row">
         <button class="filter-btn" id="btn-all" onclick="filterTable('all')" data-ru="Все параметры" data-en="All parameters">Все параметры</button>
         <button class="filter-btn green" id="btn-advantage" onclick="filterTable('advantage')" data-ru="✦ Преимущества О!Банка" data-en="✦ O!Bank Advantages">✦ Преимущества О!Банка</button>
         <button class="filter-btn orange" id="btn-growth" onclick="filterTable('growth')" data-ru="↑ Зоны роста" data-en="↑ Growth Areas">↑ Зоны роста</button>
       </div>
 
-      <!-- Summary cards -->
-      <div class="summary-cards" id="summary-cards">
+      <div class="summary-cards">
         <div class="sum-card">
           <div class="sum-card-icon">✦</div>
-          <div class="sum-card-num" id="adv-count">8</div>
+          <div class="sum-card-num">8</div>
           <div class="sum-card-label" data-ru="преимуществ" data-en="advantages">преимуществ</div>
         </div>
         <div class="sum-card orange">
           <div class="sum-card-icon">↑</div>
-          <div class="sum-card-num" id="growth-count">8</div>
+          <div class="sum-card-num">8</div>
           <div class="sum-card-label" data-ru="зон роста" data-en="growth areas">зон роста</div>
         </div>
         <div class="sum-card blue">
@@ -90,7 +83,6 @@
         </div>
       </div>
 
-      <!-- Table -->
       <div class="table-wrap">
         <table class="compare-table" id="compare-table">
           <thead>
@@ -104,219 +96,132 @@
             </tr>
           </thead>
           <tbody>
-
-            <!-- ADVANTAGE rows -->
             <tr class="row-advantage" data-type="advantage">
               <td class="td-param" data-ru="💳 Годовое обслуживание" data-en="💳 Annual Fee">💳 Годовое обслуживание</td>
-              <td data-ru="200 сом/год" data-en="200 KGS/year">200 сом/год</td>
-              <td data-ru="Бесплатно (осн.)" data-en="Free (main)">Бесплатно (осн.)</td>
-              <td data-ru="500 сом/год" data-en="500 KGS/year">500 сом/год</td>
-              <td data-ru="500 сом/год" data-en="500 KGS/year">500 сом/год</td>
+              <td>200 сом/год</td><td>Бесплатно (осн.)</td><td>500 сом/год</td><td>500 сом/год</td>
               <td class="td-ob advantage" data-ru="Бесплатно навсегда ∞" data-en="Free forever ∞">Бесплатно навсегда ∞</td>
             </tr>
-
             <tr class="row-advantage" data-type="advantage">
               <td class="td-param" data-ru="🏧 Снятие в своих банкоматах" data-en="🏧 ATM Withdrawal (own)">🏧 Снятие в своих банкоматах</td>
-              <td data-ru="До 300 000 сом/сут" data-en="Up to 300K KGS/day">До 300 000 сом/сут</td>
-              <td data-ru="Бесплатно" data-en="Free">Бесплатно</td>
-              <td data-ru="До 100 000 сом" data-en="Up to 100K KGS">До 100 000 сом</td>
-              <td data-ru="До 300 000 сом/сут" data-en="Up to 300K KGS/day">До 300 000 сом/сут</td>
+              <td>До 300 000 сом/сут</td><td>Бесплатно</td><td>До 100 000 сом</td><td>До 300 000 сом/сут</td>
               <td class="td-ob advantage" data-ru="Бесплатно без лимита ∞" data-en="Free, no limit ∞">Бесплатно без лимита ∞</td>
             </tr>
-
             <tr class="row-advantage" data-type="advantage">
               <td class="td-param" data-ru="🏧 Снятие в других банкоматах КР" data-en="🏧 ATM Withdrawal (other banks)">🏧 Снятие в других банкоматах КР</td>
-              <td data-ru="0,6% / до 100 т — бесплатно" data-en="0.6% / up to 100K — free">0,6% / до 100 т — бесплатно</td>
-              <td data-ru="1% (мин. 250 сом)" data-en="1% (min. 250 KGS)">1% (мин. 250 сом)</td>
-              <td data-ru="40 сом за операцию" data-en="40 KGS per op">40 сом за операцию</td>
-              <td data-ru="До 100 т или 10 оп — бесплатно" data-en="Up to 100K or 10 ops — free">До 100 т или 10 оп — бесплатно</td>
+              <td>0,6% / до 100 т — бесплатно</td><td>1% (мин. 250 сом)</td><td>40 сом за операцию</td><td>До 100 т или 10 оп — бесплатно</td>
               <td class="td-ob advantage" data-ru="Бесплатно везде ∞" data-en="Free everywhere ∞">Бесплатно везде ∞</td>
             </tr>
-
             <tr class="row-advantage" data-type="advantage">
               <td class="td-param" data-ru="📩 SMS-оповещение (мес.)" data-en="📩 SMS Notification (monthly)">📩 SMS-оповещение (мес.)</td>
-              <td data-ru="40–70 сом" data-en="40–70 KGS">40–70 сом</td>
-              <td data-ru="70 сом / 1$" data-en="70 KGS / $1">70 сом / 1$</td>
-              <td data-ru="Не указано" data-en="Not specified">Не указано</td>
-              <td data-ru="60 сом" data-en="60 KGS">60 сом</td>
+              <td>40–70 сом</td><td>70 сом / 1$</td><td>Не указано</td><td>60 сом</td>
               <td class="td-ob advantage" data-ru="40 сом ✦" data-en="40 KGS ✦">40 сом ✦</td>
             </tr>
-
             <tr class="row-advantage" data-type="advantage">
               <td class="td-param" data-ru="🌐 Валютная корреспондентская сеть" data-en="🌐 Correspondent network">🌐 Валютная корреспондентская сеть</td>
-              <td data-ru="8 валют" data-en="8 currencies">8 валют</td>
-              <td data-ru="10 валют" data-en="10 currencies">10 валют</td>
-              <td data-ru="7 валют" data-en="7 currencies">7 валют</td>
-              <td data-ru="6 валют" data-en="6 currencies">6 валют</td>
+              <td>8 валют</td><td>10 валют</td><td>7 валют</td><td>6 валют</td>
               <td class="td-ob advantage" data-ru="13 валют ✦" data-en="13 currencies ✦">13 валют ✦</td>
             </tr>
-
             <tr class="row-advantage" data-type="advantage">
               <td class="td-param" data-ru="🇬🇪 GEL-корреспондент (Грузия)" data-en="🇬🇪 GEL correspondent (Georgia)">🇬🇪 GEL-корреспондент (Грузия)</td>
-              <td data-ru="—" data-en="—">—</td>
-              <td data-ru="—" data-en="—">—</td>
-              <td data-ru="—" data-en="—">—</td>
-              <td data-ru="—" data-en="—">—</td>
+              <td>—</td><td>—</td><td>—</td><td>—</td>
               <td class="td-ob advantage" data-ru="Единственный в КР ✦" data-en="Only bank in KR ✦">Единственный в КР ✦</td>
             </tr>
-
             <tr class="row-advantage" data-type="advantage">
               <td class="td-param" data-ru="🇺🇿 Переводы Humo / Uzcard" data-en="🇺🇿 Humo / Uzcard transfers">🇺🇿 Переводы Humo / Uzcard</td>
-              <td data-ru="—" data-en="—">—</td>
-              <td data-ru="0% ✓" data-en="0% ✓">0% ✓</td>
-              <td data-ru="—" data-en="—">—</td>
-              <td data-ru="—" data-en="—">—</td>
+              <td>—</td><td>0% ✓</td><td>—</td><td>—</td>
               <td class="td-ob advantage" data-ru="0% ✦" data-en="0% ✦">0% ✦</td>
             </tr>
-
             <tr class="row-advantage" data-type="advantage">
               <td class="td-param" data-ru="🛒 Рассрочка на O!Market" data-en="🛒 O!Market Instalment">🛒 Рассрочка на O!Market</td>
-              <td data-ru="—" data-en="—">—</td>
-              <td data-ru="—" data-en="—">—</td>
-              <td data-ru="—" data-en="—">—</td>
-              <td data-ru="—" data-en="—">—</td>
+              <td>—</td><td>—</td><td>—</td><td>—</td>
               <td class="td-ob advantage" data-ru="3–12 мес., 0%, до 300 000 с ✦" data-en="3–12 mo., 0%, up to 300K KGS ✦">3–12 мес., 0%, до 300 000 с ✦</td>
             </tr>
 
-            <!-- DIVIDER -->
             <tr class="row-divider">
               <td colspan="6" class="td-divider" data-ru="— Нейтральные параметры —" data-en="— Neutral parameters —">— Нейтральные параметры —</td>
             </tr>
-
             <tr data-type="neutral">
-              <td class="td-param" data-ru="💳 Выпуск основной карты (ЗП)" data-en="💳 Main Card Issuance">💳 Выпуск основной карты (ЗП)</td>
-              <td data-ru="Бесплатно" data-en="Free">Бесплатно</td>
-              <td data-ru="Бесплатно" data-en="Free">Бесплатно</td>
-              <td data-ru="Бесплатно" data-en="Free">Бесплатно</td>
-              <td data-ru="Бесплатно" data-en="Free">Бесплатно</td>
-              <td class="td-ob" data-ru="Бесплатно" data-en="Free">Бесплатно</td>
+              <td class="td-param">💳 Выпуск основной карты (ЗП)</td>
+              <td>Бесплатно</td><td>Бесплатно</td><td>Бесплатно</td><td>Бесплатно</td>
+              <td class="td-ob">Бесплатно</td>
+            </tr>
+            <tr data-type="neutral">
+              <td class="td-param">🔄 Переводы внутри банка</td>
+              <td>0%</td><td>0%</td><td>0%</td><td>0%</td>
+              <td class="td-ob">0%</td>
+            </tr>
+            <tr data-type="neutral">
+              <td class="td-param">📱 Мобильное приложение</td>
+              <td>BakAi</td><td>DemirBank</td><td>MBANK</td><td>Оптима24</td>
+              <td class="td-ob">Мой О!</td>
             </tr>
 
-            <tr data-type="neutral">
-              <td class="td-param" data-ru="🔄 Переводы внутри банка" data-en="🔄 Internal Transfers">🔄 Переводы внутри банка</td>
-              <td data-ru="0%" data-en="0%">0%</td>
-              <td data-ru="0%" data-en="0%">0%</td>
-              <td data-ru="0%" data-en="0%">0%</td>
-              <td data-ru="0%" data-en="0%">0%</td>
-              <td class="td-ob" data-ru="0%" data-en="0%">0%</td>
-            </tr>
-
-            <tr data-type="neutral">
-              <td class="td-param" data-ru="📱 Мобильное приложение" data-en="📱 Mobile App">📱 Мобильное приложение</td>
-              <td data-ru="BakAi" data-en="BakAi">BakAi</td>
-              <td data-ru="DemirBank" data-en="DemirBank">DemirBank</td>
-              <td data-ru="MBANK" data-en="MBANK">MBANK</td>
-              <td data-ru="Оптима24" data-en="Optima24">Оптима24</td>
-              <td class="td-ob" data-ru="Мой О!" data-en="Moi O!">Мой О!</td>
-            </tr>
-
-            <!-- DIVIDER -->
             <tr class="row-divider">
               <td colspan="6" class="td-divider" data-ru="— Зоны роста —" data-en="— Growth areas —">— Зоны роста —</td>
             </tr>
-
-            <!-- GROWTH rows -->
             <tr class="row-growth" data-type="growth">
-              <td class="td-param" data-ru="🎁 Кэшбэк / Программа лояльности" data-en="🎁 Cashback / Loyalty">🎁 Кэшбэк / Программа лояльности</td>
-              <td data-ru="До 5%" data-en="Up to 5%">До 5%</td>
-              <td data-ru="До 50%" data-en="Up to 50%">До 50%</td>
-              <td data-ru="До 20% + начисл. на остаток" data-en="Up to 20% + balance accrual">До 20% + начисл. на остаток</td>
-              <td data-ru="Скидки у партнёров до 15%" data-en="Partner discounts up to 15%">Скидки у партнёров до 15%</td>
+              <td class="td-param">🎁 Кэшбэк / Программа лояльности</td>
+              <td>До 5%</td><td>До 50%</td><td>До 20% + начисл. на остаток</td><td>Скидки у партнёров до 15%</td>
               <td class="td-ob growth" data-ru="от 1% ↑" data-en="from 1% ↑">от 1% ↑</td>
             </tr>
-
             <tr class="row-growth" data-type="growth">
-              <td class="td-param" data-ru="💳 Линейка карт" data-en="💳 Card range">💳 Линейка карт</td>
-              <td data-ru="Gold / Platinum / Infinite / Metal" data-en="Gold / Platinum / Infinite / Metal">Gold / Platinum / Infinite / Metal</td>
-              <td data-ru="Classic / Gold / Platinum" data-en="Classic / Gold / Platinum">Classic / Gold / Platinum</td>
-              <td data-ru="Gold / Premium / Infinite" data-en="Gold / Premium / Infinite">Gold / Premium / Infinite</td>
-              <td data-ru="Gold / Platinum / Infinite Diamond" data-en="Gold / Platinum / Infinite Diamond">Gold / Platinum / Infinite Diamond</td>
+              <td class="td-param">💳 Линейка карт</td>
+              <td>Gold / Platinum / Infinite / Metal</td><td>Classic / Gold / Platinum</td><td>Gold / Premium / Infinite</td><td>Gold / Platinum / Infinite Diamond</td>
               <td class="td-ob growth" data-ru="Cashback Gold / Platinum ↑" data-en="Cashback Gold / Platinum ↑">Cashback Gold / Platinum ↑</td>
             </tr>
-
             <tr class="row-growth" data-type="growth">
-              <td class="td-param" data-ru="👶 Карта ребёнку" data-en="👶 Children's Card">👶 Карта ребёнку</td>
-              <td data-ru="—" data-en="—">—</td>
-              <td data-ru="—" data-en="—">—</td>
-              <td data-ru="Mjunior (1-й год бесплатно)" data-en="Mjunior (Year 1 free)">Mjunior (1-й год бесплатно)</td>
-              <td data-ru="Optima Gold для ребёнка" data-en="Optima Gold for child">Optima Gold для ребёнка</td>
+              <td class="td-param">👶 Карта ребёнку</td>
+              <td>—</td><td>—</td><td>Mjunior (1-й год бесплатно)</td><td>Optima Gold для ребёнка</td>
               <td class="td-ob growth" data-ru="Нет ↑" data-en="None ↑">Нет ↑</td>
             </tr>
-
             <tr class="row-growth" data-type="growth">
-              <td class="td-param" data-ru="💰 Ставка кредита (ЗП-участники)" data-en="💰 Loan Rate (payroll clients)">💰 Ставка кредита (ЗП-участники)</td>
-              <td data-ru="от 17% (ипотека)" data-en="from 17% (mortgage)">от 17% (ипотека)</td>
-              <td data-ru="от 15,99% (ипотека) ✓" data-en="from 15.99% (mortgage) ✓">от 15,99% (ипотека) ✓</td>
-              <td data-ru="Индивидуально" data-en="Individual">Индивидуально</td>
-              <td data-ru="Индивидуально" data-en="Individual">Индивидуально</td>
+              <td class="td-param">💰 Ставка кредита (ЗП-участники)</td>
+              <td>от 17% (ипотека)</td><td>от 15,99% (ипотека) ✓</td><td>Индивидуально</td><td>Индивидуально</td>
               <td class="td-ob growth" data-ru="от 19% (потреб.) ↑" data-en="from 19% (consumer) ↑">от 19% (потреб.) ↑</td>
             </tr>
-
             <tr class="row-growth" data-type="growth">
-              <td class="td-param" data-ru="💰 Депозиты KGS (макс. ставка)" data-en="💰 KGS Deposits (max rate)">💰 Депозиты KGS (макс. ставка)</td>
-              <td data-ru="до 14% ✓" data-en="up to 14% ✓">до 14% ✓</td>
-              <td data-ru="до 13,5%" data-en="up to 13.5%">до 13,5%</td>
-              <td data-ru="до 13%" data-en="up to 13%">до 13%</td>
-              <td data-ru="до 13%" data-en="up to 13%">до 13%</td>
+              <td class="td-param">💰 Депозиты KGS (макс. ставка)</td>
+              <td>до 14% ✓</td><td>до 13,5%</td><td>до 13%</td><td>до 13%</td>
               <td class="td-ob growth" data-ru="до 12,5% ↑" data-en="up to 12.5% ↑">до 12,5% ↑</td>
             </tr>
-
             <tr class="row-growth" data-type="growth">
-              <td class="td-param" data-ru="⌚ Garmin Pay" data-en="⌚ Garmin Pay">⌚ Garmin Pay</td>
-              <td data-ru="✓" data-en="✓">✓</td>
-              <td data-ru="✓" data-en="✓">✓</td>
-              <td data-ru="—" data-en="—">—</td>
-              <td data-ru="—" data-en="—">—</td>
+              <td class="td-param">⌚ Garmin Pay</td>
+              <td>✓</td><td>✓</td><td>—</td><td>—</td>
               <td class="td-ob growth" data-ru="Нет ↑" data-en="None ↑">Нет ↑</td>
             </tr>
-
             <tr class="row-growth" data-type="growth">
-              <td class="td-param" data-ru="🔁 Visa2Visa переводы" data-en="🔁 Visa2Visa transfers">🔁 Visa2Visa переводы</td>
-              <td data-ru="0% внутри КР ✓" data-en="0% within KR ✓">0% внутри КР ✓</td>
-              <td data-ru="—" data-en="—">—</td>
-              <td data-ru="0,5% (мин. 50 сом)" data-en="0.5% (min. 50 KGS)">0,5% (мин. 50 сом)</td>
-              <td data-ru="0% в сомах ✓" data-en="0% in KGS ✓">0% в сомах ✓</td>
+              <td class="td-param">🔁 Visa2Visa переводы</td>
+              <td>0% внутри КР ✓</td><td>—</td><td>0,5% (мин. 50 сом)</td><td>0% в сомах ✓</td>
               <td class="td-ob growth" data-ru="1% мин. 130 сом ↑" data-en="1% min. 130 KGS ↑">1% мин. 130 сом ↑</td>
             </tr>
-
             <tr class="row-growth" data-type="growth">
-              <td class="td-param" data-ru="🏷 Узнаваемость бренда" data-en="🏷 Brand recognition">🏷 Узнаваемость бренда</td>
-              <td data-ru="Высокая" data-en="High">Высокая</td>
-              <td data-ru="Высокая" data-en="High">Высокая</td>
-              <td data-ru="Высокая" data-en="High">Высокая</td>
-              <td data-ru="Высокая" data-en="High">Высокая</td>
+              <td class="td-param">🏷 Узнаваемость бренда</td>
+              <td>Высокая</td><td>Высокая</td><td>Высокая</td><td>Высокая</td>
               <td class="td-ob growth" data-ru="Ребренд сент. 2024 ↑" data-en="Rebranded Sept. 2024 ↑">Ребренд сент. 2024 ↑</td>
             </tr>
-
           </tbody>
         </table>
       </div>
-
-      <!-- Data note -->
       <p class="data-note" data-ru="⚠ Данные актуальны на апрель 2026 г. Источник: официальные тарифные документы банков." data-en="⚠ Data current as of April 2026. Source: official bank tariff documents.">⚠ Данные актуальны на апрель 2026 г. Источник: официальные тарифные документы банков.</p>
-
     </div>
   </section>
 
-  <!-- PLACEHOLDER SECTIONS -->
   <section class="section section-placeholder" id="schemes">
     <div class="container">
-      <div class="section-label"><span class="section-num">02</span><span class="section-name" data-ru="Схемы процесса" data-en="Process Schemes">Схемы процесса</span></div>
-      <div class="placeholder-msg" data-ru="Раздел в разработке" data-en="Section in development">Раздел в разработке</div>
+      <div class="section-label"><span class="section-num">02</span><span class="section-name">Схемы процесса</span></div>
+      <div class="placeholder-msg">Раздел в разработке</div>
     </div>
   </section>
-
   <section class="section section-placeholder" id="reports">
     <div class="container">
-      <div class="section-label"><span class="section-num">03</span><span class="section-name" data-ru="Отчёты и данные" data-en="Reports & Data">Отчёты и данные</span></div>
-      <div class="placeholder-msg" data-ru="Раздел в разработке" data-en="Section in development">Раздел в разработке</div>
+      <div class="section-label"><span class="section-num">03</span><span class="section-name">Отчёты и данные</span></div>
+      <div class="placeholder-msg">Раздел в разработке</div>
     </div>
   </section>
-
   <section class="section section-placeholder" id="sales">
     <div class="container">
-      <div class="section-label"><span class="section-num">04</span><span class="section-name" data-ru="Продажи и пакеты" data-en="Sales & Packages">Продажи и пакеты</span></div>
-      <div class="placeholder-msg" data-ru="Раздел в разработке" data-en="Section in development">Раздел в разработке</div>
+      <div class="section-label"><span class="section-num">04</span><span class="section-name">Продажи и пакеты</span></div>
+      <div class="placeholder-msg">Раздел в разработке</div>
     </div>
   </section>
 
