@@ -1,4 +1,5 @@
 let currentLang = 'ru';
+
 function setLang(lang) {
   currentLang = lang;
   document.querySelectorAll('[data-' + lang + ']').forEach(el => {
@@ -14,11 +15,17 @@ function setLang(lang) {
   });
   document.documentElement.lang = lang;
 }
+
 document.querySelectorAll('.lang-btn').forEach(btn => {
   btn.addEventListener('click', () => setLang(btn.dataset.lang));
 });
 
+function toggleTheme() {
+  document.body.classList.toggle('light-mode');
+}
+
 let activeFilter = 'all';
+
 function filterTable(type) {
   activeFilter = type;
   const table = document.getElementById('compare-table');
@@ -33,20 +40,12 @@ function filterTable(type) {
   if (type === 'advantage') table.classList.add('mode-advantage');
   if (type === 'growth') table.classList.add('mode-growth');
 }
+
 filterTable('all');
 
 const nav = document.getElementById('nav');
-const navLinks = document.querySelectorAll('.nav-link');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 20);
-  const sections = document.querySelectorAll('section[id]');
-  let current = '';
-  sections.forEach(section => {
-    if (window.scrollY >= section.offsetTop - 80) current = section.getAttribute('id');
-  });
-  navLinks.forEach(link => {
-    link.classList.toggle('active', link.dataset.section === current);
-  });
 });
 
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
