@@ -71,5 +71,3 @@ function toggleSwift(row) {
   expanded.style.display = isOpen ? 'none' : 'table-row';
   row.classList.toggle('open', !isOpen);
 }
-  });
-});
