@@ -87,6 +87,8 @@ body.light-mode .row-swift:hover td { background: rgba(0,0,0,0.02) !important; }
 
 body.light-mode .mode-advantage td.cell-best:not(.x) { text-shadow: none; }
 body.light-mode .mode-growth td:not(.cell-best):not(.td-param):not(.td-divider) { text-shadow: none; }
+body.light-mode .mode-advantage td.cell-best:not(.x) { text-shadow: none; color: #0a6640 !important; }
+body.light-mode .mode-growth td:not(.cell-best):not(.td-param):not(.td-divider) { text-shadow: none; color: #7c3010 !important; }
 
 /* Dark/light icon toggle */
 .theme-icon-light { display: none; }
