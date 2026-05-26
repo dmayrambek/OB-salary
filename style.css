@@ -170,3 +170,20 @@ body { background: var(--dark); color: #e0e0e0; font-family: var(--font-body); f
 ::-webkit-scrollbar-track { background: var(--dark2); }
 ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #444; }
+.row-swift { cursor: pointer; transition: background var(--trans); }
+.row-swift:hover td { background: rgba(255,255,255,0.03) !important; }
+.row-swift.open .swift-arrow { transform: rotate(180deg); }
+.swift-arrow { display: inline-block; margin-left: 6px; font-size: 12px; color: var(--pink); transition: transform 0.25s ease; }
+.swift-body { padding: 0 !important; background: rgba(232,0,90,0.02); }
+.swift-codes-row { display: grid; grid-template-columns: 22% 1fr 1fr 1fr 1fr 1fr; padding: 10px 16px; border-bottom: 0.5px solid var(--border); font-size: 11px; color: var(--gray); gap: 16px; }
+.swift-codes-row b { color: #ddd; font-family: monospace; font-size: 11px; }
+.swift-table { width: 100%; border-collapse: collapse; }
+.swift-table th { padding: 10px 16px; font-size: 10px; font-weight: 500; color: var(--gray); text-align: left; letter-spacing: 0.06em; text-transform: uppercase; background: rgba(255,255,255,0.015); border-bottom: 0.5px solid var(--border); }
+.swift-table th.th-ob { color: var(--pink); }
+.swift-table td { padding: 10px 16px; font-size: 11px; color: #999; border-bottom: 0.5px solid rgba(255,255,255,0.04); vertical-align: top; line-height: 1.6; }
+.swift-table td.td-ob { background: rgba(232,0,90,0.03); border-left: 0.5px solid rgba(232,0,90,0.1); color: #ccc; }
+.swift-table small { color: #555; font-family: monospace; font-size: 10px; display: block; }
+.swift-table tr:last-child td { border-bottom: none; }
+.td-currency { font-weight: 500; color: #ddd; white-space: nowrap; width: 80px; }
+.swift-none { color: #333 !important; }
+.swift-unique { color: var(--green-text) !important; font-weight: 500; }
