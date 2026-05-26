@@ -132,10 +132,7 @@ body { background: var(--dark); color: #e0e0e0; font-family: var(--font-body); f
 }
 
 /* ============================================
-   РЕЖИМ ЗОНЫ РОСТА
-   Шаг 1: затемнить ВСЁ
-   Шаг 2: оранжевый для О!Банка (cell-weak)
-   Шаг 3: зелёный для конкурентов (cell-best в growth-строках)
+   РЕЖИМ ЗОНЫ РОСТА — всё то же самое но оранжевым
    ============================================ */
 .mode-growth td:not(.td-param):not(.td-divider) {
   opacity: 0.18 !important;
@@ -147,8 +144,8 @@ body { background: var(--dark); color: #e0e0e0; font-family: var(--font-body); f
   opacity: 0.4 !important;
   color: #666 !important;
 }
-/* О!Банк — зоны роста — оранжевый */
-.mode-growth td.cell-weak {
+/* Конкуренты лучше О!Банка — оранжевым вперёд */
+.mode-growth tr[data-type="growth"] td.cell-best {
   opacity: 1 !important;
   background: var(--orange-soft) !important;
   color: #fed7aa !important;
@@ -157,17 +154,21 @@ body { background: var(--dark); color: #e0e0e0; font-family: var(--font-body); f
   z-index: 4;
   box-shadow:
     0 0 0 1px rgba(249,115,22,0.45),
-    0 4px 20px -4px rgba(249,115,22,0.2),
-    inset 3px 0 0 var(--orange) !important;
+    0 4px 20px -4px rgba(249,115,22,0.25),
+    inset 0 1px 0 rgba(249,115,22,0.15) !important;
   text-shadow: 0 0 18px rgba(249,115,22,0.2);
 }
-/* Конкуренты лучше — зелёный, только в growth-строках */
-.mode-growth tr[data-type="growth"] td.cell-best {
+/* О!Банк слабые места — тоже оранжевым */
+.mode-growth td.cell-weak {
   opacity: 1 !important;
-  background: rgba(52,211,153,0.1) !important;
-  color: #6ee7b7 !important;
-  font-weight: 500 !important;
-  box-shadow: 0 0 0 1px rgba(52,211,153,0.3) !important;
+  background: rgba(249,115,22,0.08) !important;
+  color: #fbbf77 !important;
+  font-weight: 600 !important;
+  position: relative;
+  z-index: 4;
+  box-shadow:
+    0 0 0 1px rgba(249,115,22,0.3),
+    inset 3px 0 0 var(--orange) !important;
 }
 
 /* Разделитель */
