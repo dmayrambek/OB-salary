@@ -103,8 +103,6 @@ body { background: var(--dark); color: #e0e0e0; font-family: var(--font-body); f
 
 /* ============================================
    РЕЖИМ ПРЕИМУЩЕСТВА
-   Шаг 1: затемнить ВСЁ
-   Шаг 2: подсветить только cell-best зелёным
    ============================================ */
 .mode-advantage td:not(.td-param):not(.td-divider) {
   opacity: 0.18 !important;
@@ -116,8 +114,8 @@ body { background: var(--dark); color: #e0e0e0; font-family: var(--font-body); f
   opacity: 0.4 !important;
   color: #666 !important;
 }
-/* Подсвечиваем лучших — выступают вперёд */
-.mode-advantage td.cell-best {
+/* :not(.x) уравнивает специфичность — этот блок идёт после, значит побеждает */
+.mode-advantage td.cell-best:not(.x) {
   opacity: 1 !important;
   background: var(--green-soft) !important;
   color: #a7f3d0 !important;
@@ -132,7 +130,8 @@ body { background: var(--dark); color: #e0e0e0; font-family: var(--font-body); f
 }
 
 /* ============================================
-   РЕЖИМ ЗОНЫ РОСТА — всё то же самое но оранжевым
+   РЕЖИМ ЗОНЫ РОСТА — симметричная обратная логика
+   cell-best затемняется, все остальные оранжевым
    ============================================ */
 .mode-growth td:not(.td-param):not(.td-divider) {
   opacity: 0.18 !important;
@@ -144,8 +143,8 @@ body { background: var(--dark); color: #e0e0e0; font-family: var(--font-body); f
   opacity: 0.4 !important;
   color: #666 !important;
 }
-/* Конкуренты лучше О!Банка — оранжевым вперёд */
-.mode-growth tr[data-type="growth"] td.cell-best {
+/* три :not() — выше специфичность чем у dim-правила, побеждает */
+.mode-growth td:not(.cell-best):not(.td-param):not(.td-divider) {
   opacity: 1 !important;
   background: var(--orange-soft) !important;
   color: #fed7aa !important;
@@ -153,27 +152,19 @@ body { background: var(--dark); color: #e0e0e0; font-family: var(--font-body); f
   position: relative;
   z-index: 4;
   box-shadow:
-    0 0 0 1px rgba(249,115,22,0.45),
+    0 0 0 1px rgba(249,115,22,0.4),
     0 4px 20px -4px rgba(249,115,22,0.25),
-    inset 0 1px 0 rgba(249,115,22,0.15) !important;
-  text-shadow: 0 0 18px rgba(249,115,22,0.2);
+    inset 0 1px 0 rgba(249,115,22,0.1) !important;
+  text-shadow: 0 0 18px rgba(249,115,22,0.15);
 }
-/* О!Банк слабые места — тоже оранжевым */
-.mode-growth td.cell-weak {
+
+/* Разделитель всегда виден */
+.row-divider .td-divider {
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--gray); text-align: center; padding: 8px;
+  background: rgba(255,255,255,0.02); border-top: 0.5px solid var(--border);
   opacity: 1 !important;
-  background: rgba(249,115,22,0.08) !important;
-  color: #fbbf77 !important;
-  font-weight: 600 !important;
-  position: relative;
-  z-index: 4;
-  box-shadow:
-    0 0 0 1px rgba(249,115,22,0.3),
-    inset 3px 0 0 var(--orange) !important;
 }
-
-/* Разделитель */
-.row-divider .td-divider { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); text-align: center; padding: 8px; background: rgba(255,255,255,0.02); border-top: 0.5px solid var(--border); opacity: 1 !important; }
-
 .data-note { margin-top: 16px; font-size: 11px; color: var(--gray); padding-left: 4px; letter-spacing: 0.02em; }
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: var(--dark2); }
