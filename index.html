@@ -57,7 +57,7 @@
       <div class="filter-row">
         <button class="filter-btn active" id="btn-all" onclick="filterTable('all')" data-ru="Все параметры" data-en="All parameters">Все параметры</button>
         <button class="filter-btn green" id="btn-advantage" onclick="filterTable('advantage')" data-ru="✦ Преимущества" data-en="✦ Advantages">✦ Преимущества</button>
-        <button class="filter-btn orange" id="btn-growth" onclick="filterTable('growth')" data-ru="↑ Зоны роста О!Банка" data-en="↑ O!Bank Growth Areas">↑ Зоны роста О!Банка</button>
+        <button class="filter-btn orange" id="btn-growth" onclick="filterTable('growth')" data-ru="↑ Зоны роста" data-en="↑ Growth Areas">↑ Зоны роста</button>
       </div>
 
       <div class="summary-cards">
@@ -97,7 +97,6 @@
           </thead>
           <tbody>
 
-            <!-- ADVANTAGE rows: cell-best = лучший в строке -->
             <tr data-type="advantage">
               <td class="td-param">💳 Годовое обслуживание</td>
               <td>200 сом/год</td>
@@ -170,6 +169,159 @@
               <td class="td-ob cell-best" data-ru="3–12 мес., 0%, до 300 000 с ✦" data-en="3–12 mo., 0%, up to 300K ✦">3–12 мес., 0%, до 300 000 с ✦</td>
             </tr>
 
+            <!-- SWIFT: строка-триггер -->
+            <tr class="row-swift" data-type="neutral" onclick="toggleSwift(this)">
+              <td class="td-param">
+                🌐 SWIFT переводы
+                <span class="swift-arrow">▾</span>
+              </td>
+              <td>5 валют</td>
+              <td>11 валют</td>
+              <td>8 валют</td>
+              <td>7 валют</td>
+              <td class="td-ob">13 валют</td>
+            </tr>
+
+            <!-- SWIFT: разворачиваемая таблица -->
+            <tr class="swift-expanded" style="display:none;">
+              <td colspan="6" class="swift-body">
+                <div class="swift-codes-row">
+                  <span>SWIFT-код:</span>
+                  <span><b>BAKAKG22</b></span>
+                  <span><b>DKIBKG22</b></span>
+                  <span><b>KYRSKG22</b></span>
+                  <span><b>ENEJKG22</b></span>
+                  <span><b>MAKAKG22</b></span>
+                </div>
+                <table class="swift-table">
+                  <thead>
+                    <tr>
+                      <th>Валюта</th>
+                      <th>Бакай</th>
+                      <th>ДемирБанк</th>
+                      <th>МБанк</th>
+                      <th>Оптима</th>
+                      <th class="th-ob">О!Банк</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="td-currency">🇺🇸 USD</td>
+                      <td>Raiffeisen Vienna<br><small>RZBAATWW</small><br>Aktif Yatirim<br><small>CAYTTRIS</small></td>
+                      <td>Halyk Kazakhstan<br><small>HSBKKZKX</small><br>Uzpromstroybank<br><small>UJSIUZ22</small></td>
+                      <td>Raiffeisen Vienna<br><small>RZBAATWW</small><br>Aktif Yatirim<br><small>CAYTTRIS</small></td>
+                      <td>LBBW Stuttgart<br><small>SOLADEST</small><br>Aktif Yatirim<br><small>CAYTTRISXXX</small></td>
+                      <td class="td-ob">BNY Mellon NY<br><small>IRVTUS3N</small><br>Halyk Kazakhstan<br><small>HSBKKZKX</small></td>
+                    </tr>
+                    <tr>
+                      <td class="td-currency">🇪🇺 EUR</td>
+                      <td>LBBW Stuttgart<br><small>SOLADEST</small><br>Aktif Yatirim<br><small>CAYTTRIS</small></td>
+                      <td>DZ Bank Frankfurt<br><small>GENODEFF</small><br>LBBW Stuttgart<br><small>SOLADEST</small><br>ODDO BHF<br><small>BHFBDEFF</small></td>
+                      <td>DZ Bank Frankfurt<br><small>GENODEFF</small></td>
+                      <td>DZ Bank Frankfurt<br><small>GENODEFFXXX</small><br>LBBW Stuttgart<br><small>SOLADEST</small></td>
+                      <td class="td-ob">LBBW Stuttgart<br><small>SOLADEST</small><br>Halyk Kazakhstan<br><small>HSBKKZKX</small></td>
+                    </tr>
+                    <tr>
+                      <td class="td-currency">🇨🇳 CNY</td>
+                      <td>Shanghai Pudong<br><small>SPDBCNSH</small><br>Zhejiang Chouzhou<br><small>CZCBCN2X</small></td>
+                      <td>Bank of Comm.<br><small>COMMCNSHSHI</small><br>Shanghai Pudong<br><small>SPDBCNSH</small></td>
+                      <td>Agric. Bank China<br><small>ABOCCNBJ301</small><br>Xinjiang Bank<br><small>XINCCNBU</small></td>
+                      <td>China Constr. Bank<br><small>PCBCCNBJGPS</small><br>Bank of China KZ<br><small>BKCHKZKA</small></td>
+                      <td class="td-ob">ICBC Almaty<br><small>ICBKKZKX</small><br>Halyk Kazakhstan<br><small>HSBKKZKX</small></td>
+                    </tr>
+                    <tr>
+                      <td class="td-currency">🇰🇿 KZT</td>
+                      <td>Freedom Bank KZ<br><small>KSNVKZKA</small><br>Bereke Bank<br><small>BRKEKZKA</small></td>
+                      <td>Eurasian Bank<br><small>EURIKZKA</small><br>Halyk Kazakhstan<br><small>HSBKKZKX</small></td>
+                      <td>Bereke Bank KZ<br><small>BRKEKZKA</small></td>
+                      <td>Alatau City Bank<br><small>TSESKZKA</small></td>
+                      <td class="td-ob">Halyk Kazakhstan<br><small>HSBKKZKX</small></td>
+                    </tr>
+                    <tr>
+                      <td class="td-currency">🇷🇺 RUB</td>
+                      <td class="swift-none">—</td>
+                      <td>Bank IBA-Moscow</td>
+                      <td>Pervouralsk Bank<br><small>PVRBRU4V</small></td>
+                      <td>Asia-Pacific Bank<br><small>ASANRU8X</small><br>MP Bank<br><small>SKSBRUMM</small></td>
+                      <td class="td-ob">MBA-Moskva<br>MosKommertsBank</td>
+                    </tr>
+                    <tr>
+                      <td class="td-currency">🇦🇪 AED</td>
+                      <td>Mashreqbank Dubai<br><small>BOMLAEAD</small><br>First Abu Dhabi<br><small>NBADAEAA</small></td>
+                      <td>Mashreqbank Dubai<br><small>BOMLAEAD</small></td>
+                      <td>Mashreqbank Dubai<br><small>BOMLAEAD</small><br>Abu Dhabi Islamic<br><small>ABDIAEAD</small></td>
+                      <td>Abu Dhabi Islamic<br><small>ABDIAEAD</small></td>
+                      <td class="td-ob swift-none">—</td>
+                    </tr>
+                    <tr>
+                      <td class="td-currency">🇹🇷 TRY</td>
+                      <td class="swift-none">—</td>
+                      <td>Halk Bankasi<br><small>TRHBTR2A</small><br>Is Bankasi<br><small>ISBKTRIS</small><br>Akbank<br><small>AKBKTRIS</small></td>
+                      <td>Aktif Yatirim<br><small>CAYTTRIS</small></td>
+                      <td>Aktif Yatirim<br><small>CAYTTRISXXX</small></td>
+                      <td class="td-ob swift-none">—</td>
+                    </tr>
+                    <tr>
+                      <td class="td-currency">🇬🇧 GBP</td>
+                      <td class="swift-none">—</td>
+                      <td>LBBW Stuttgart<br><small>SOLADEST</small></td>
+                      <td class="swift-none">—</td>
+                      <td class="swift-none">—</td>
+                      <td class="td-ob">Citibank London<br><small>CITIGB2L</small><br>Halyk Kazakhstan<br><small>HSBKKZKX</small></td>
+                    </tr>
+                    <tr>
+                      <td class="td-currency">🇨🇭 CHF</td>
+                      <td class="swift-none">—</td>
+                      <td>LBBW Stuttgart<br><small>SOLADEST</small></td>
+                      <td class="swift-none">—</td>
+                      <td class="swift-none">—</td>
+                      <td class="td-ob">Credit Suisse AG<br><small>CRESCHZZ80A</small><br>Halyk Kazakhstan<br><small>HSBKKZKX</small></td>
+                    </tr>
+                    <tr>
+                      <td class="td-currency">🇯🇵 JPY</td>
+                      <td class="swift-none">—</td>
+                      <td>Aktif Yatirim<br><small>CAYTTRIS</small></td>
+                      <td class="swift-none">—</td>
+                      <td class="swift-none">—</td>
+                      <td class="td-ob">Mizuho Corporate<br><small>MHCBJPJT</small><br>Halyk Kazakhstan<br><small>HSBKKZKX</small></td>
+                    </tr>
+                    <tr>
+                      <td class="td-currency">🇦🇺 AUD</td>
+                      <td class="swift-none">—</td>
+                      <td class="swift-none">—</td>
+                      <td class="swift-none">—</td>
+                      <td class="swift-none">—</td>
+                      <td class="td-ob">BNY Mellon NY<br><small>IRVTUS3N</small><br>Halyk Kazakhstan<br><small>HSBKKZKX</small></td>
+                    </tr>
+                    <tr>
+                      <td class="td-currency">🇺🇿 UZS</td>
+                      <td class="swift-none">—</td>
+                      <td>Kapitalbank<br><small>KACHUZ22</small></td>
+                      <td class="swift-none">—</td>
+                      <td class="swift-none">—</td>
+                      <td class="td-ob">Tenge Bank<br><small>HSBKUZ22</small></td>
+                    </tr>
+                    <tr>
+                      <td class="td-currency">🇬🇪 GEL</td>
+                      <td class="swift-none">—</td>
+                      <td class="swift-none">—</td>
+                      <td class="swift-none">—</td>
+                      <td class="swift-none">—</td>
+                      <td class="td-ob swift-unique">Halyk Bank Georgia<br><small>HABGGE22XXX</small><br>✦ Единственный в КР</td>
+                    </tr>
+                    <tr>
+                      <td class="td-currency">🇮🇩 IDR</td>
+                      <td class="swift-none">—</td>
+                      <td class="swift-none">—</td>
+                      <td>Bank CIMB Niaga<br><small>BNIAIDJA</small></td>
+                      <td class="swift-none">—</td>
+                      <td class="td-ob swift-none">—</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </td>
+            </tr>
+
             <tr class="row-divider">
               <td colspan="6" class="td-divider">— Нейтральные параметры —</td>
             </tr>
@@ -205,7 +357,6 @@
               <td colspan="6" class="td-divider">— Зоны роста О!Банка —</td>
             </tr>
 
-            <!-- GROWTH rows: cell-best = кто делает лучше О!Банка -->
             <tr data-type="growth">
               <td class="td-param">🎁 Кэшбэк / Программа лояльности</td>
               <td>До 5%</td>
