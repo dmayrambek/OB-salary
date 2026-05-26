@@ -1,5 +1,4 @@
 let currentLang = 'ru';
-
 function setLang(lang) {
   currentLang = lang;
   document.querySelectorAll('[data-' + lang + ']').forEach(el => {
@@ -15,37 +14,29 @@ function setLang(lang) {
   });
   document.documentElement.lang = lang;
 }
-
 document.querySelectorAll('.lang-btn').forEach(btn => {
   btn.addEventListener('click', () => setLang(btn.dataset.lang));
 });
 
 let activeFilter = 'all';
-
 function filterTable(type) {
   activeFilter = type;
-
   const table = document.getElementById('compare-table');
   const btnAll = document.getElementById('btn-all');
   const btnAdv = document.getElementById('btn-advantage');
   const btnGrowth = document.getElementById('btn-growth');
-
   [btnAll, btnAdv, btnGrowth].forEach(b => b.classList.remove('active'));
   if (type === 'all') btnAll.classList.add('active');
   if (type === 'advantage') btnAdv.classList.add('active');
   if (type === 'growth') btnGrowth.classList.add('active');
-
   table.classList.remove('mode-advantage', 'mode-growth');
-
   if (type === 'advantage') table.classList.add('mode-advantage');
   if (type === 'growth') table.classList.add('mode-growth');
 }
-
 filterTable('all');
 
 const nav = document.getElementById('nav');
 const navLinks = document.querySelectorAll('.nav-link');
-
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 20);
   const sections = document.querySelectorAll('section[id]');
@@ -65,6 +56,9 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       e.preventDefault();
       window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 64, behavior: 'smooth' });
     }
+  });
+});
+
 function toggleSwift(row) {
   const expanded = row.nextElementSibling;
   const isOpen = expanded.style.display !== 'none';
