@@ -65,5 +65,11 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       e.preventDefault();
       window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 64, behavior: 'smooth' });
     }
+function toggleSwift(row) {
+  const expanded = row.nextElementSibling;
+  const isOpen = expanded.style.display !== 'none';
+  expanded.style.display = isOpen ? 'none' : 'table-row';
+  row.classList.toggle('open', !isOpen);
+}
   });
 });
