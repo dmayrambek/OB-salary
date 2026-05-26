@@ -96,59 +96,82 @@ body { background: var(--dark); color: #e0e0e0; font-family: var(--font-body); f
 .compare-table th { padding: 14px 16px; font-size: 11px; font-weight: 500; color: var(--gray); text-align: left; letter-spacing: 0.04em; text-transform: uppercase; background: rgba(255,255,255,0.02); white-space: nowrap; }
 .compare-table th.th-param { width: 22%; }
 .compare-table th.th-ob { color: var(--pink); background: rgba(232,0,90,0.05); }
-.compare-table td { padding: 13px 16px; font-size: 13px; color: #bbb; border-bottom: 0.5px solid var(--border); vertical-align: middle; transition: background var(--trans), color var(--trans), opacity var(--trans), box-shadow var(--trans); }
+.compare-table td { padding: 13px 16px; font-size: 13px; color: #bbb; border-bottom: 0.5px solid var(--border); vertical-align: middle; transition: background 0.3s ease, color 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease; }
 .compare-table tr:last-child td { border-bottom: none; }
 .td-param { color: #ddd; font-weight: 500; font-size: 12px; }
 .td-ob { background: rgba(232,0,90,0.04); color: #ddd; font-weight: 500; border-left: 0.5px solid rgba(232,0,90,0.15); }
 
-/* ===== РЕЖИМ: ВСЕ ПАРАМЕТРЫ — всё видно, без подсветки ===== */
-
-/* ===== РЕЖИМ: ПРЕИМУЩЕСТВА — зелёный, выступает вперёд ===== */
+/* ============================================
+   РЕЖИМ ПРЕИМУЩЕСТВА
+   Шаг 1: затемнить ВСЁ
+   Шаг 2: подсветить только cell-best зелёным
+   ============================================ */
+.mode-advantage td:not(.td-param):not(.td-divider) {
+  opacity: 0.18 !important;
+  color: #444 !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+.mode-advantage td.td-param {
+  opacity: 0.4 !important;
+  color: #666 !important;
+}
+/* Подсвечиваем лучших — выступают вперёд */
 .mode-advantage td.cell-best {
+  opacity: 1 !important;
   background: var(--green-soft) !important;
   color: #a7f3d0 !important;
-  font-weight: 600;
+  font-weight: 600 !important;
   position: relative;
   z-index: 4;
   box-shadow:
     0 0 0 1px rgba(52,211,153,0.4),
     0 4px 20px -4px rgba(52,211,153,0.25),
-    inset 0 1px 0 rgba(52,211,153,0.15);
-  text-shadow: 0 0 20px rgba(52,211,153,0.2);
+    inset 0 1px 0 rgba(52,211,153,0.1) !important;
+  text-shadow: 0 0 18px rgba(52,211,153,0.2);
 }
-.mode-advantage td:not(.cell-best):not(.td-param):not(.td-divider) {
-  opacity: 0.2;
-  color: #555;
-}
-.mode-advantage td.td-param { opacity: 0.45; }
 
-/* ===== РЕЖИМ: ЗОНЫ РОСТА — оранжевый для О!Банка, зелёный для лидеров ===== */
+/* ============================================
+   РЕЖИМ ЗОНЫ РОСТА
+   Шаг 1: затемнить ВСЁ
+   Шаг 2: оранжевый для О!Банка (cell-weak)
+   Шаг 3: зелёный для конкурентов (cell-best в growth-строках)
+   ============================================ */
+.mode-growth td:not(.td-param):not(.td-divider) {
+  opacity: 0.18 !important;
+  color: #444 !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+.mode-growth td.td-param {
+  opacity: 0.4 !important;
+  color: #666 !important;
+}
+/* О!Банк — зоны роста — оранжевый */
 .mode-growth td.cell-weak {
+  opacity: 1 !important;
   background: var(--orange-soft) !important;
   color: #fed7aa !important;
-  font-weight: 600;
+  font-weight: 600 !important;
   position: relative;
   z-index: 4;
   box-shadow:
     0 0 0 1px rgba(249,115,22,0.45),
     0 4px 20px -4px rgba(249,115,22,0.2),
-    inset 3px 0 0 var(--orange);
-  text-shadow: 0 0 20px rgba(249,115,22,0.2);
+    inset 3px 0 0 var(--orange) !important;
+  text-shadow: 0 0 18px rgba(249,115,22,0.2);
 }
+/* Конкуренты лучше — зелёный, только в growth-строках */
 .mode-growth tr[data-type="growth"] td.cell-best {
+  opacity: 1 !important;
   background: rgba(52,211,153,0.1) !important;
   color: #6ee7b7 !important;
-  font-weight: 500;
-  box-shadow: 0 0 0 1px rgba(52,211,153,0.25);
+  font-weight: 500 !important;
+  box-shadow: 0 0 0 1px rgba(52,211,153,0.3) !important;
 }
-.mode-growth td:not(.cell-weak):not(.cell-best):not(.td-param):not(.td-divider) {
-  opacity: 0.2;
-  color: #555;
-}
-.mode-growth td.td-param { opacity: 0.45; }
 
-/* ===== РАЗДЕЛИТЕЛЬ ===== */
-.row-divider .td-divider { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); text-align: center; padding: 8px; background: rgba(255,255,255,0.02); border-top: 0.5px solid var(--border); }
+/* Разделитель */
+.row-divider .td-divider { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray); text-align: center; padding: 8px; background: rgba(255,255,255,0.02); border-top: 0.5px solid var(--border); opacity: 1 !important; }
 
 .data-note { margin-top: 16px; font-size: 11px; color: var(--gray); padding-left: 4px; letter-spacing: 0.02em; }
 ::-webkit-scrollbar { width: 6px; height: 6px; }
