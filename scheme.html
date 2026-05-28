@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O!Bank - Процесс ЗПП в филиале</title>
+    <title>O!Bank — Текущий процесс ЗПП</title>
     <link rel="stylesheet" href="scheme.css">
 </head>
 <body>
@@ -22,210 +22,436 @@
         </div>
     </header>
 
-    <div class="scheme-container">
-        
-        <div class="graph-area">
-            
-            <div id="current-section">
-                <div class="scheme-section-title current" id="title-as-is">🔴 Текущий процесс (As Is)</div>
-                
-                <div class="flowchart-wrapper" id="current-flowchart">
-                    <div class="process-header-title" id="process-main-title">Процесс ЗПП в филиале</div>
+    <div class="page-container">
 
-                    <div class="process-grid">
-                        
-                        <div class="node-card grid-pos-1 active" data-node="O1" id="n1">
-                            <span class="node-badge-dept">РБ, СОЮФЛ</span>
-                            <div class="node-title">Привлечение</div>
-                            <div class="glow-point p-right"></div>
-                        </div>
-                        <div class="css-line line-h L1-2"></div> <div class="node-card grid-pos-2" data-node="O2" id="n2">
-                            <span class="node-badge-dept">РБ</span>
-                            <div class="node-title">Подписание договора</div>
-                            <div class="glow-point p-right"></div>
-                        </div>
-                        <div class="css-line line-h L2-4"></div> <div class="node-card grid-pos-3" data-node="O3" id="n3">
-                            <span class="node-badge-dept">РБ</span>
-                            <div class="node-title">Прием списка сотрудников и их документов</div>
-                            <div class="glow-point p-right"></div>
-                        </div>
-                        <div class="css-line line-h L3-4"></div> <div class="node-card grid-pos-4 node-warning" data-node="O4" id="n4">
-                            <span class="node-badge-dept font-small">РБ, Отдел сопровождения карточных продуктов ГБ</span>
-                            <div class="node-title">Создание служебной записки на заведение ЗПП</div>
-                            <div class="glow-point p-right"></div>
-                        </div>
-                        <div class="css-line line-h L4-5"></div> <div class="node-card grid-pos-5" data-node="O5" id="n5">
-                            <span class="node-badge-dept">СОЮФЛ</span>
-                            <div class="node-title">Открытие карточных счетов</div>
-                            <div class="glow-point p-right"></div>
-                        </div>
-                        <div class="css-line line-h L5-6"></div> <div class="node-card grid-pos-6" data-node="O6" id="n6">
-                            <span class="node-badge-dept font-small">Отдел сопровождения карточных продуктов ГБ</span>
-                            <div class="node-title">Изготовление именных карт и отправка в филиал</div>
-                            <div class="glow-point p-down"></div> </div>
-                        <div class="css-line line-v L6-7"></div> <div class="node-card grid-pos-7" data-node="O7" id="n7">
-                            <span class="node-badge-dept">РБ</span>
-                            <div class="node-title">Передача карт организации</div>
-                        </div>
+        <!-- ========== SECTION TITLE ========== -->
+        <div class="scheme-section-title current" id="title-as-is">🔴 Текущий процесс (As Is)</div>
 
-                    </div>
+        <!-- ========== FLOWCHART ========== -->
+        <div class="flowchart-wrapper">
+            <div class="process-header-title" id="process-main-title">Процесс ЗПП в филиале</div>
+
+            <div class="process-grid">
+
+                <!-- Node 1 -->
+                <div class="node-card grid-pos-1 active" data-node="node1" onclick="onNodeClick(this)">
+                    <span class="node-badge-dept" id="nd-1-dept">РБ, СОЮФЛ</span>
+                    <div class="node-title" id="nd-1-title">Привлечение</div>
+                    <div class="glow-point p-right"></div>
                 </div>
+
+                <!-- Arrow 1→2 -->
+                <div class="css-line line-h L1-2"></div>
+
+                <!-- Node 2 -->
+                <div class="node-card grid-pos-2" data-node="node2" onclick="onNodeClick(this)">
+                    <span class="node-badge-dept" id="nd-2-dept">РБ</span>
+                    <div class="node-title" id="nd-2-title">Подписание договора</div>
+                    <div class="glow-point p-right"></div>
+                </div>
+
+                <!-- Arrow 2→4 -->
+                <div class="css-line line-h L2-4"></div>
+
+                <!-- Node 3 (row 2) -->
+                <div class="node-card grid-pos-3" data-node="node3" onclick="onNodeClick(this)">
+                    <span class="node-badge-dept" id="nd-3-dept">РБ</span>
+                    <div class="node-title" id="nd-3-title">Прием списка сотрудников и их документов</div>
+                    <div class="glow-point p-right"></div>
+                </div>
+
+                <!-- Arrow 3→4 -->
+                <div class="css-line line-h L3-4"></div>
+
+                <!-- Node 4 — warning, spans 2 rows -->
+                <div class="node-card grid-pos-4 node-warning" data-node="node4" onclick="onNodeClick(this)">
+                    <span class="node-badge-dept font-small" id="nd-4-dept">РБ, Отдел сопровождения карточных продуктов ГБ</span>
+                    <div class="node-title" id="nd-4-title">Создание служебной записки на заведение ЗПП</div>
+                    <div class="glow-point p-right"></div>
+                </div>
+
+                <!-- Arrow 4→5 (warning/orange) -->
+                <div class="css-line line-h L4-5"></div>
+
+                <!-- Node 5 -->
+                <div class="node-card grid-pos-5" data-node="node5" onclick="onNodeClick(this)">
+                    <span class="node-badge-dept" id="nd-5-dept">СОЮФЛ</span>
+                    <div class="node-title" id="nd-5-title">Открытие карточных счетов</div>
+                    <div class="glow-point p-right"></div>
+                </div>
+
+                <!-- Arrow 5→6 -->
+                <div class="css-line line-h L5-6"></div>
+
+                <!-- Node 6 -->
+                <div class="node-card grid-pos-6" data-node="node6" onclick="onNodeClick(this)">
+                    <span class="node-badge-dept font-small" id="nd-6-dept">Отдел сопровождения карточных продуктов ГБ</span>
+                    <div class="node-title" id="nd-6-title">Изготовление именных карт и отправка в филиал</div>
+                    <div class="glow-point p-down"></div>
+                </div>
+
+                <!-- Arrow 6→7 (vertical) -->
+                <div class="css-line line-v L6-7"></div>
+
+                <!-- Node 7 -->
+                <div class="node-card grid-pos-7" data-node="node7" onclick="onNodeClick(this)">
+                    <span class="node-badge-dept" id="nd-7-dept">РБ</span>
+                    <div class="node-title" id="nd-7-title">Передача карт организации</div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ========== ANALYSIS SEPARATOR ========== -->
+        <div class="analysis-separator">
+            <span class="arrow-down-anim">⬇️</span>
+            <span id="txt-analysis-label">Анализ текущего процесса</span>
+        </div>
+
+        <!-- ========== ANALYSIS BOX ========== -->
+        <div class="analysis-box" id="analysis-box">
+
+            <!-- Placeholder — until a node is clicked -->
+            <div class="analysis-placeholder" id="analysis-placeholder">
+                <span id="txt-click-hint">← Нажмите на любой блок, чтобы увидеть детальный анализ</span>
             </div>
 
-            <div class="scheme-separator">
-                <span id="txt-separator">⚡ Трансформация силами группы операционной автоматизации (OAU)</span>
-                <span class="arrow-down-anim">⬇️</span>
-            </div>
-
-            <div id="future-section">
-                <div class="scheme-section-title future" id="title-to-be">🟢 Целевой процесс (To Be)</div>
-                <div class="flowchart-wrapper placeholder-wrapper">
-                    <div class="future-placeholder" id="txt-placeholder">
-                        🤖 Автоматизированная экосистема (Личный кабинет + Электронная валидация) готова к развертыванию...
-                    </div>
+            <!-- Content — shown after click -->
+            <div class="analysis-content" id="analysis-content" style="display:none;">
+                <div class="analysis-header">
+                    <div class="analysis-dept" id="a-dept"></div>
+                    <div class="analysis-title-text" id="a-title"></div>
                 </div>
+                <div class="analysis-pain" id="a-pain"></div>
+                <div class="analysis-metrics" id="a-metrics"></div>
             </div>
 
         </div>
 
-        <div class="details-panel">
-            <div class="panel-glass-content">
-                <div class="meta-zone">
-                    <div class="meta-dept" id="node-dept">РОЗНИЧНЫЙ БИЗНЕС / СОЮФЛ</div>
-                    <div class="meta-title" id="node-title">Привлечение</div>
-                </div>
-
-                <div class="pain-box">
-                    <h4 id="panel-pain-title">🚨 Описание проблем</h4>
-                    <ul class="pain-list" id="node-pain-list">
-                        </ul>
-                </div>
-
-                <div class="metrics-list">
-                    <div class="metric-item">
-                        <div class="metric-label" id="lbl-owner">Ответственная роль</div>
-                        <div class="metric-value" id="node-owner">Менеджер РБ, Операционист СОЮФЛ</div>
-                    </div>
-                </div>
-            </div>
+        <!-- ========== CTA BUTTON ========== -->
+        <div class="cta-container">
+            <a href="to-be.html" class="cta-btn" id="cta-link">
+                <span id="txt-cta">Переход к целевому процессу (To Be)</span>
+                <span>→</span>
+            </a>
         </div>
 
     </div>
 
     <script>
-        let currentLang = 'ru';
-
-        const uiLang = {
+    // =====================================================================
+    // DATA
+    // =====================================================================
+    const nodeData = {
+        node1: {
             ru: {
-                toMain: "← На главную",
-                asIs: "🔴 Текущий процесс (As Is)",
-                toBe: "🟢 Целевой процесс (To Be)",
-                mainTitle: "Процесс ЗПП в филиале",
-                separator: "⚡ Трансформация силами группы операционной автоматизации (OAU)",
-                placeholder: "🤖 Автоматизированная экосистема (Личный кабинет + Электронная валидация) готова к развертыванию...",
-                painTitle: "🚨 Описание проблем",
-                lblOwner: "Ответственная роль",
-                nodes: {
-                    O1: { dept: "РБ, СОЮФЛ", title: "Привлечение", owner: "Менеджер РБ, Операционист СОЮФЛ" },
-                    O2: { dept: "РБ", title: "Подписание договора", owner: "Менеджер РБ" },
-                    O3: { dept: "РБ", title: "Прием списка сотрудников и их документов", owner: "Менеджер РБ" },
-                    O4: { dept: "РБ, Отдел сопровождения карточных продуктов ГБ", title: "Создание служебной записки на заведение ЗПП", owner: "Менеджер РБ / Руководство ГБ" },
-                    O5: { dept: "СОЮФЛ", title: "Открытие карточных счетов", owner: "Специалист СОЮФЛ" },
-                    O6: { dept: "Отдел сопровождения карточных продуктов ГБ", title: "Изготовление именных карт и отправка в филиал", owner: "Специалист ГБ / Курьерская служба" },
-                    O7: { dept: "РБ", title: "Передача карт организации", owner: "Менеджер РБ" }
-                },
-                pains: ["Нет централизованного отдела", "Низкий уровень автоматизации"]
+                dept: "Отдел розничного бизнеса (РБ)",
+                title: "О1. Привлечение клиента",
+                pain: "Низкий уровень автоматизации первичного контакта. Презентация возможностей ЗПП происходит вручную специалистами выездных групп, без применения сквозных цифровых воронок и CRM-контроля.",
+                warning: false,
+                metrics: [
+                    { label: "Ответственное лицо", value: "Менеджер РБ / Операционист СОЮФЛ" },
+                    { label: "Срок выполнения", value: "1–3 рабочих дня" },
+                    { label: "Основной риск", value: "Человеческий фактор при первичной оценке потенциала компании" }
+                ]
             },
             en: {
-                toMain: "← Back to main",
-                asIs: "🔴 Current Process (As Is)",
-                toBe: "🟢 Target Process (To Be)",
-                mainTitle: "WPP Process in the Branch",
-                separator: "⚡ Transformation by Operational Automation Unit (OAU)",
-                placeholder: "🤖 Automated ecosystem (Client Area + Digital Validation) is ready for deployment...",
-                painTitle: "🚨 Description of Problems",
-                lblOwner: "Responsible Role",
-                nodes: {
-                    O1: { dept: "RB, SOYFL", title: "Attraction", owner: "RB Manager, SOYFL Operator" },
-                    O2: { dept: "RB", title: "Signing of Contract", owner: "RB Manager" },
-                    O3: { dept: "RB", title: "Receiving Employee Lists & Documents", owner: "RB Manager" },
-                    O4: { dept: "RB, Card Products Support Dept HQ", title: "Creation of Internal Memo for WPP Activation", owner: "RB Manager / HQ Management" },
-                    O5: { dept: "SOYFL", title: "Opening Card Accounts", owner: "SOYFL Specialist" },
-                    O6: { dept: "Card Products Support Dept HQ", title: "Manufacturing and Shipping of Named Cards", owner: "HQ Specialist / Courier Service" },
-                    O7: { dept: "RB", title: "Handover of Cards to Organization", owner: "RB Manager" }
-                },
-                pains: ["No centralized department", "Low level of automation"]
+                dept: "Retail Business Department (RB)",
+                title: "O1. Client Acquisition",
+                pain: "Low automation for initial contact. Payroll project presentations are delivered manually by field teams, with no end-to-end digital funnels or CRM tracking in place.",
+                warning: false,
+                metrics: [
+                    { label: "Responsible party", value: "RB Manager / Branch Officer" },
+                    { label: "Processing time", value: "1–3 business days" },
+                    { label: "Key risk", value: "Human error in initial company potential assessment" }
+                ]
             }
-        };
-
-        function updatePanel(nodeId) {
-            const langData = uiLang[currentLang];
-            const data = langData.nodes[nodeId];
-            const activeCard = document.querySelector(`[data-node="${nodeId}"]`);
-
-            if (data) {
-                document.getElementById('node-dept').innerText = data.dept.toUpperCase();
-                document.getElementById('node-title').innerText = data.title;
-                document.getElementById('node-owner').innerText = data.owner;
-
-                const listContainer = document.getElementById('node-pain-list');
-                listContainer.innerHTML = '';
-                langData.pains.forEach(painText => {
-                    const li = document.createElement('li');
-                    li.innerText = painText;
-                    listContainer.appendChild(li);
-                });
-
-                const deptLabel = document.getElementById('node-dept');
-                if (activeCard && activeCard.classList.contains('node-warning')) {
-                    deptLabel.style.color = '#f97316';
-                } else {
-                    deptLabel.style.color = '#ff0055';
-                }
+        },
+        node2: {
+            ru: {
+                dept: "Отдел розничного бизнеса (РБ)",
+                title: "О2. Подписание договора ЗПП",
+                pain: "Классический бумажный документооборот. Требует физического присутствия руководства компании и сбора «живых» подписей и печатей на бумажных бланках тарифов.",
+                warning: false,
+                metrics: [
+                    { label: "Формат обмена", value: "Физические оригиналы документов" },
+                    { label: "Трудозатраты", value: "Выезд курьера или личный визит директора в офис" },
+                    { label: "Автоматизация", value: "0% — полностью ручной процесс" }
+                ]
+            },
+            en: {
+                dept: "Retail Business Department (RB)",
+                title: "O2. Contract Signing",
+                pain: "Traditional paper-based workflow. Requires physical presence of company executives and collection of 'wet' signatures and stamps on paper tariff forms.",
+                warning: false,
+                metrics: [
+                    { label: "Exchange format", value: "Physical original documents" },
+                    { label: "Labor effort", value: "Courier dispatch or CEO's personal visit to the branch" },
+                    { label: "Automation", value: "0% — fully manual process" }
+                ]
+            }
+        },
+        node3: {
+            ru: {
+                dept: "Отдел розничного бизнеса (РБ)",
+                title: "О3. Прием списка сотрудников",
+                pain: "Бухгалтерия присылает анкеты и паспорта сотрудников в разнородных форматах (сканы, Excel-файлы, бумажные копии). Полное отсутствие автоматической верификации данных на входе.",
+                warning: false,
+                metrics: [
+                    { label: "Канал передачи", value: "Email / флеш-носители" },
+                    { label: "Проблема", value: "Высокий риск опечаток в ФИО и номерах паспортов" },
+                    { label: "Влияние", value: "Каждая ошибка удваивает время проверки" }
+                ]
+            },
+            en: {
+                dept: "Retail Business Department (RB)",
+                title: "O3. Receiving Employee Lists",
+                pain: "The company's accounting sends forms and passport copies in fragmented formats (scans, Excel, paper). Total absence of automated data validation at the entry point.",
+                warning: false,
+                metrics: [
+                    { label: "Transmission channel", value: "Email / USB flash drives" },
+                    { label: "Issue", value: "High risk of typos in names and passport numbers" },
+                    { label: "Impact", value: "Each error doubles the verification time" }
+                ]
+            }
+        },
+        node4: {
+            ru: {
+                dept: "РБ + Отдел сопровождения карточных продуктов (ГБ)",
+                title: "О4. Служебная записка на заведение ЗПП",
+                pain: "⚠️ КРИТИЧЕСКАЯ ТОЧКА БЮРОКРАТИИ. Вместо прямой передачи данных в карточный отдел формируется бумажная или электронная внутренняя СЗ для согласования параметров проекта. Процесс не стартует без визы руководства.",
+                warning: true,
+                metrics: [
+                    { label: "Маршрут согласования", value: "РБ → Нач. управления → Карточный отдел ГБ" },
+                    { label: "Потеря времени", value: "5–24 часа ожидания подписи" },
+                    { label: "Блокирующий фактор", value: "Заведение карт не начнётся без подписанной СЗ" }
+                ]
+            },
+            en: {
+                dept: "RB + Card Products Support Department (HO)",
+                title: "O4. Internal Memo for Project Setup",
+                pain: "⚠️ CRITICAL BUREAUCRACY NODE. Instead of a direct data transfer to the card center, a paper or digital internal memo is created to approve project parameters. Process is blocked until management signs off.",
+                warning: true,
+                metrics: [
+                    { label: "Approval route", value: "RB → Head of Dept → HO Card Center" },
+                    { label: "Time loss", value: "5–24 hours waiting for signature" },
+                    { label: "Blocking factor", value: "Card setup cannot begin without signed memo" }
+                ]
+            }
+        },
+        node5: {
+            ru: {
+                dept: "Сектор обслуживания ФЛ и ЮЛ (СОЮФЛ)",
+                title: "О5. Открытие карточных счетов",
+                pain: "⚠️ ОПЕРАЦИОННЫЙ СТУПОР. Операционист вручную вбивает данные каждого сотрудника в АБС. При списках от 100+ человек процесс полностью парализует операционное окно на несколько часов.",
+                warning: true,
+                metrics: [
+                    { label: "Режим работы", value: "Ручной массовый ввод данных в АБС" },
+                    { label: "Трудоёмкость", value: "До 15–20 минут на одного сотрудника" },
+                    { label: "Внутренний конфликт", value: "Отвлекает ресурсы от текущего потока клиентов" }
+                ]
+            },
+            en: {
+                dept: "Branch Retail Operations (SOYUFL)",
+                title: "O5. Card Account Opening",
+                pain: "⚠️ OPERATIONAL STANDSTILL. The front-office operator manually enters every employee's data into the core banking system. With 100+ employees, this paralyzes the entire branch counter for hours.",
+                warning: true,
+                metrics: [
+                    { label: "Operation mode", value: "Manual bulk data entry into CBS" },
+                    { label: "Processing effort", value: "Up to 15–20 minutes per individual employee" },
+                    { label: "Internal conflict", value: "Diverts resources away from walk-in customer service" }
+                ]
+            }
+        },
+        node6: {
+            ru: {
+                dept: "Отдел сопровождения карточных продуктов (ГБ)",
+                title: "О6. Изготовление именных карт",
+                pain: "Производство привязано к мощностям Головного банка. При массовых заявках от нескольких филиалов одновременно возникает технологическая очередь и задержки на 2–3 рабочих дня.",
+                warning: false,
+                metrics: [
+                    { label: "Локация", value: "Головной Банк" },
+                    { label: "Тип продукта", value: "Строго пластиковые именные карты" },
+                    { label: "Зависимость", value: "Ограничено суточной пропускной способностью эмбоссера" }
+                ]
+            },
+            en: {
+                dept: "Card Product Support Department (HO)",
+                title: "O6. Personalized Card Production",
+                pain: "Production is tightly tied to Head Office hardware capacity. When multiple branches submit bulk requests simultaneously, a processing queue forms, causing 2–3 business day delays.",
+                warning: false,
+                metrics: [
+                    { label: "Location", value: "Head Office (HO)" },
+                    { label: "Product type", value: "Strictly physical personalized plastic cards" },
+                    { label: "Dependency", value: "Limited by daily embossing machine throughput" }
+                ]
+            }
+        },
+        node7: {
+            ru: {
+                dept: "Отдел розничного бизнеса (РБ)",
+                title: "О7. Передача карт организации",
+                pain: "⚠️ ЛОГИСТИЧЕСКИЙ РАЗРЫВ. Готовый пластик упаковывается в инкассаторские сумки или курьер и отправляется по регионам КР. Менеджер лично выдаёт карты сотрудникам под роспись на предприятии.",
+                warning: true,
+                metrics: [
+                    { label: "Способ доставки", value: "Физическая инкассация / курьерская логистика" },
+                    { label: "Потеря времени", value: "2–4 рабочих дня (зависит от удалённости региона)" },
+                    { label: "Итог всего цикла", value: "От привлечения до активации карты: 5–9 дней" }
+                ]
+            },
+            en: {
+                dept: "Retail Business Department (RB)",
+                title: "O7. Delivering Cards to Organization",
+                pain: "⚠️ LOGISTICAL GAP. Finished cards are sealed in transit bags or courier packages and shipped across KR regions. The manager then personally distributes cards at the company's premises against signed receipts.",
+                warning: true,
+                metrics: [
+                    { label: "Delivery method", value: "Physical cash transit services / courier logistics" },
+                    { label: "Time loss", value: "2–4 business days (depending on regional remoteness)" },
+                    { label: "Full cycle result", value: "From acquisition to card activation: 5–9 days" }
+                ]
             }
         }
+    };
 
-        function changeLang(lang) {
-            currentLang = lang;
-            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(`btn-${lang}`).classList.add('active');
-
-            const data = uiLang[lang];
-            document.getElementById('txt-to-main').innerText = data.toMain;
-            document.getElementById('title-as-is').innerText = data.asIs;
-            document.getElementById('title-to-be').innerText = data.toBe;
-            document.getElementById('process-main-title').innerText = data.mainTitle;
-            document.getElementById('txt-separator').innerText = data.separator;
-            document.getElementById('txt-placeholder').innerText = data.placeholder;
-            document.getElementById('panel-pain-title').innerText = data.painTitle;
-            document.getElementById('lbl-owner').innerText = data.lblOwner;
-
-            Object.keys(data.nodes).forEach(key => {
-                const card = document.querySelector(`[data-node="${key}"]`);
-                if (card) {
-                    card.querySelector('.node-badge-dept').innerText = data.nodes[key].dept;
-                    card.querySelector('.node-title').innerText = data.nodes[key].title;
-                }
-            });
-
-            const activeCard = document.querySelector('.node-card.active');
-            if (activeCard) {
-                updatePanel(activeCard.getAttribute('data-node'));
+    // =====================================================================
+    // UI TEXT
+    // =====================================================================
+    const uiText = {
+        ru: {
+            toMain: "← На главную",
+            asIs: "🔴 Текущий процесс (As Is)",
+            mainTitle: "Процесс ЗПП в филиале",
+            analysisLabel: "Анализ текущего процесса",
+            clickHint: "← Нажмите на любой блок, чтобы увидеть детальный анализ",
+            cta: "Переход к целевому процессу (To Be)",
+            nodes: {
+                node1: { dept: "РБ, СОЮФЛ",   title: "Привлечение" },
+                node2: { dept: "РБ",           title: "Подписание договора" },
+                node3: { dept: "РБ",           title: "Прием списка сотрудников и их документов" },
+                node4: { dept: "РБ, Отдел сопровождения карточных продуктов ГБ", title: "Создание служебной записки на заведение ЗПП" },
+                node5: { dept: "СОЮФЛ",        title: "Открытие карточных счетов" },
+                node6: { dept: "Отдел сопровождения карточных продуктов ГБ", title: "Изготовление именных карт и отправка в филиал" },
+                node7: { dept: "РБ",           title: "Передача карт организации" }
+            }
+        },
+        en: {
+            toMain: "← Back to main",
+            asIs: "🔴 Current Process (As Is)",
+            mainTitle: "WPP Process in the Branch",
+            analysisLabel: "Analysis of the Current Process",
+            clickHint: "← Click any block to see a detailed analysis",
+            cta: "Proceed to Target Process (To Be)",
+            nodes: {
+                node1: { dept: "RB, SOYFL",    title: "Acquisition" },
+                node2: { dept: "RB",            title: "Contract Signing" },
+                node3: { dept: "RB",            title: "Receiving Employee Lists & Documents" },
+                node4: { dept: "RB, Card Products Support Dept HQ", title: "Creating Internal Memo for WPP Setup" },
+                node5: { dept: "SOYFL",         title: "Opening Card Accounts" },
+                node6: { dept: "Card Products Support Dept HQ", title: "Card Production & Shipment to Branch" },
+                node7: { dept: "RB",            title: "Delivering Cards to Organization" }
             }
         }
+    };
 
-        const cards = document.querySelectorAll('.node-card');
-        cards.forEach(card => {
-            card.addEventListener('click', () => {
-                cards.forEach(c => c.classList.remove('active'));
-                card.classList.add('active');
-                updatePanel(card.getAttribute('data-node'));
-            });
+    // =====================================================================
+    // STATE
+    // =====================================================================
+    let currentLang = 'ru';
+    let activeNode = 'node1';
+
+    // =====================================================================
+    // LANGUAGE SWITCH
+    // =====================================================================
+    function changeLang(lang) {
+        currentLang = lang;
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById('btn-' + lang).classList.add('active');
+
+        const t = uiText[lang];
+        document.getElementById('txt-to-main').textContent       = t.toMain;
+        document.getElementById('title-as-is').textContent       = t.asIs;
+        document.getElementById('process-main-title').textContent = t.mainTitle;
+        document.getElementById('txt-analysis-label').textContent = t.analysisLabel;
+        document.getElementById('txt-click-hint').textContent    = t.clickHint;
+        document.getElementById('txt-cta').textContent           = t.cta;
+
+        // Update node cards
+        Object.keys(t.nodes).forEach(key => {
+            const idx = key.replace('node', '');
+            const deptEl  = document.getElementById('nd-' + idx + '-dept');
+            const titleEl = document.getElementById('nd-' + idx + '-title');
+            if (deptEl)  deptEl.textContent  = t.nodes[key].dept;
+            if (titleEl) titleEl.textContent = t.nodes[key].title;
         });
 
-        window.addEventListener('load', () => {
-            changeLang('ru');
-        });
+        // Re-render analysis panel
+        renderAnalysis(activeNode);
+    }
+
+    // =====================================================================
+    // NODE CLICK
+    // =====================================================================
+    function onNodeClick(el) {
+        document.querySelectorAll('.node-card').forEach(c => c.classList.remove('active'));
+        el.classList.add('active');
+        activeNode = el.getAttribute('data-node');
+        renderAnalysis(activeNode);
+    }
+
+    // =====================================================================
+    // RENDER ANALYSIS
+    // =====================================================================
+    function renderAnalysis(nodeKey) {
+        const data = nodeData[nodeKey][currentLang];
+        const box  = document.getElementById('analysis-box');
+
+        // Placeholder → hide
+        document.getElementById('analysis-placeholder').style.display = 'none';
+
+        // Content → show
+        const content = document.getElementById('analysis-content');
+        content.style.display = 'flex';
+
+        // Header
+        const deptEl = document.getElementById('a-dept');
+        deptEl.textContent  = data.dept.toUpperCase();
+        deptEl.className    = 'analysis-dept' + (data.warning ? ' orange' : '');
+
+        document.getElementById('a-title').textContent = data.title;
+
+        // Pain
+        const painEl = document.getElementById('a-pain');
+        painEl.textContent = data.pain;
+        painEl.className   = 'analysis-pain';
+
+        // Metrics
+        const metricsEl = document.getElementById('a-metrics');
+        metricsEl.innerHTML = data.metrics.map(m => `
+            <div class="metric-item">
+                <div class="metric-label">${m.label}</div>
+                <div class="metric-value">${m.value}</div>
+            </div>
+        `).join('');
+
+        // Box border accent
+        box.className = 'analysis-box ' + (data.warning ? 'active-orange' : 'active-red');
+
+        // Re-trigger animation
+        content.style.animation = 'none';
+        content.offsetHeight; // reflow
+        content.style.animation = '';
+    }
+
+    // =====================================================================
+    // INIT
+    // =====================================================================
+    window.addEventListener('load', () => {
+        changeLang('ru');
+        // Auto-show first node
+        const firstCard = document.querySelector('[data-node="node1"]');
+        if (firstCard) renderAnalysis('node1');
+    });
     </script>
+
 </body>
 </html>
