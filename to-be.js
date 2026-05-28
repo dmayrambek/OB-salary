@@ -21,7 +21,9 @@ window.onload = () => {
         color: '#10b981',
         size: 2,
         path: 'grid',
-        endPlug: 'arrow3'
+        endPlug: 'arrow3',
+        startPlug: 'behind',
+        dash: false
     };
 
     // 🔥 ВАЖНО: сначала получаем элементы
