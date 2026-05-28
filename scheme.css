@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Unbounded:wght@600;700&display=swap');
 
 /* ==========================================================================
-   🌌 БАЗА И ФИРМЕННАЯ ТЕМНАЯ ПАЛИТРА O!BANK (Из image_ae5366.png)
+   🌌 БАЗА И ТЕМНАЯ ПАЛИТРА O!BANK
    ========================================================================== */
 body {
     background-color: #0b0813;
@@ -72,7 +72,6 @@ body {
     font-weight: 600;
     cursor: pointer;
     border-radius: 6px;
-    transition: all 0.2s;
 }
 
 .lang-btn.active {
@@ -84,7 +83,6 @@ body {
     color: #94a3b8;
     text-decoration: none;
     font-size: 0.85rem;
-    transition: color 0.2s;
 }
 
 .back-btn:hover {
@@ -129,8 +127,7 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.04);
     border-radius: 20px;
     padding: 40px;
-    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), 
-                inset 0 1px 1px rgba(255, 255, 255, 0.05);
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
 }
 
 .process-header-title {
@@ -141,13 +138,14 @@ body {
     margin-bottom: 40px;
 }
 
-/* Сетка блоков 1-в-1 по ТЗ */
+/* Новая 9-колоночная сетка: 5 колонок для блоков и 4 колонки промежутков под стрелки */
 .process-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: 1fr 40px 1fr 40px 1fr 40px 1fr 40px 1fr;
     grid-template-rows: repeat(2, 110px);
-    gap: 40px 35px;
+    row-gap: 50px;
     position: relative;
+    align-items: center;
     z-index: 5;
 }
 
@@ -163,18 +161,21 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    height: 100%;
     cursor: pointer;
     box-sizing: border-box;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s ease;
+    z-index: 10;
 }
 
+/* Идеальное позиционирование по колонкам */
 .grid-pos-1 { grid-column: 1; grid-row: 1; }
-.grid-pos-2 { grid-column: 2; grid-row: 1; }
-.grid-pos-3 { grid-column: 2; grid-row: 2; } 
-.grid-pos-4 { grid-column: 3; grid-row: 1 / span 2; height: 100%; } 
-.grid-pos-5 { grid-column: 4; grid-row: 1; }
-.grid-pos-6 { grid-column: 5; grid-row: 1; }
-.grid-pos-7 { grid-column: 5; grid-row: 2; }
+.grid-pos-2 { grid-column: 3; grid-row: 1; }
+.grid-pos-3 { grid-column: 3; grid-row: 2; } /* Четко под Блоком 2 */
+.grid-pos-4 { grid-column: 5; grid-row: 1 / span 2; height: 100%; } /* Высокая карточка СЗ */
+.grid-pos-5 { grid-column: 7; grid-row: 1; }
+.grid-pos-6 { grid-column: 9; grid-row: 1; }
+.grid-pos-7 { grid-column: 9; grid-row: 2; } /* Передача карт внизу */
 
 .node-card:hover {
     background: rgba(255, 255, 255, 0.05);
@@ -217,7 +218,7 @@ body {
     color: #e2e8f0;
 }
 
-/* Свечения на гранях */
+/* Точки свечения на стыках */
 .glow-point {
     position: absolute;
     width: 4px;
@@ -225,18 +226,76 @@ body {
     background: #ff0055;
     border-radius: 50%;
     box-shadow: 0 0 8px #ff0055;
+    z-index: 15;
 }
 .node-warning .glow-point { background: #f97316; box-shadow: 0 0 8px #f97316;}
 .p-right { right: -2px; top: 50%; transform: translateY(-50%); }
+.p-down { bottom: -2px; left: 50%; transform: translateX(-50%); }
 
-.graph-lines {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
+/* ==========================================================================
+   ⛓️ СВЕРХНАДЕЖНЫЕ CSS СТРЕЛКИ (НИКОГДА НЕ СЪЕЗЖАЮТ)
+   ========================================================================== */
+.css-line {
+    position: relative;
     pointer-events: none;
     z-index: 1;
 }
+
+/* Общие стили для горизонтальных линий */
+.line-h {
+    height: 2px;
+    background: #ff0055;
+    box-shadow: 0 0 8px rgba(255, 0, 85, 0.5);
+    width: 100%;
+}
+/* Наконечник стрелки для горизонтальных линий */
+.line-h::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -4px;
+    width: 0;
+    height: 0;
+    border-left: 7px solid #ff0055;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+}
+
+/* Общие стили для вертикальных линий */
+.line-v {
+    width: 2px;
+    background: #ff0055;
+    box-shadow: 0 0 8px rgba(255, 0, 85, 0.5);
+    height: 50px; /* Фиксированное расстояние между этажами */
+    justify-self: center;
+}
+/* Наконечник стрелки для вертикальных линий */
+.line-v::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -4px;
+    width: 0;
+    height: 0;
+    border-top: 7px solid #ff0055;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+}
+
+/* Точечная привязка к сетке */
+.L1-2 { grid-column: 2; grid-row: 1; }
+.L2-4 { grid-column: 4; grid-row: 1; }
+.L3-4 { grid-column: 4; grid-row: 2; }
+
+/* Линия к Блоку 5 и от него оранжевые, так как входят/выходят из варнинг-зоны */
+.L4-5 { 
+    grid-column: 6; grid-row: 1; 
+    background: #f97316; box-shadow: 0 0 8px rgba(249, 115, 22, 0.5);
+}
+.L4-5::after { border-left-color: #f97316; }
+
+.L5-6 { grid-column: 8; grid-row: 1; }
+.L6-7 { grid-column: 9; grid-row: 1; margin-top: 55px; height: 55px; } /* Спуск от 6 к 7 */
 
 /* ==========================================================================
    🔮 БОКОВАЯ ПАНЕЛЬ
@@ -275,7 +334,6 @@ body {
     font-weight: 700;
     letter-spacing: 1px;
     margin-bottom: 8px;
-    transition: color 0.3s;
 }
 
 .meta-title {
@@ -301,7 +359,6 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* Списковое представление для проблем по ТЗ */
 .pain-list {
     margin: 0;
     padding-left: 18px;
