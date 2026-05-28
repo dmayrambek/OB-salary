@@ -12,9 +12,9 @@
 
 <nav class="nav" id="nav">
   <div class="nav-inner">
-    <a href="#" class="nav-logo">O!Bank</a>
+    <a href="index.html" class="nav-logo">O!Bank</a>
     <div class="nav-controls">
-      <button class="theme-btn" onclick="toggleTheme()">
+      <button class="theme-btn" onclick="toggleTheme()" title="Toggle theme">
         <span class="theme-icon-dark">☀</span>
         <span class="theme-icon-light">☾</span>
       </button>
@@ -45,8 +45,7 @@
   </div>
 
   <div class="holo-canvas">
-
-    <!-- 🔥 ЛИНИИ -->
+    <!-- СВЯЗУЮЩИЕ ЛИНИИ (SVG) -->
     <svg class="holo-svg" viewBox="0 0 820 360" preserveAspectRatio="xMidYMid meet">
       <defs>
         <marker id="harr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
@@ -55,26 +54,26 @@
       </defs>
 
       <path d="M 165,189 C 210,160 255,85 290,69"
-            stroke="rgba(255,255,255,0.14)"
+            stroke="rgba(232,0,90,0.2)"
             stroke-width="0.8"
             fill="none"
             marker-end="url(#harr)"/>
 
       <path d="M 445,69 C 498,69 548,168 570,218"
-            stroke="rgba(255,255,255,0.14)"
+            stroke="rgba(232,0,90,0.2)"
             stroke-width="0.8"
             fill="none"
             marker-end="url(#harr)"/>
 
       <path d="M 648,263 C 648,308 450,318 395,330"
-            stroke="rgba(255,255,255,0.14)"
+            stroke="rgba(232,0,90,0.2)"
             stroke-width="0.8"
             fill="none"
             marker-end="url(#harr)"/>
     </svg>
 
-    <!-- 01 -->
-    <div class="hc" onclick="location.href='marketing.html'" style="left:10px;top:145px;">
+    <!-- 01. Маркетинг -->
+    <div class="hc" onclick="location.href='marketing.html'" style="left:10px;top:125px;">
       <div class="hc-scan"></div>
       <div class="hc-c hc-ctl"></div><div class="hc-c hc-ctr"></div>
       <div class="hc-c hc-cbl"></div><div class="hc-c hc-cbr"></div>
@@ -84,8 +83,8 @@
       <div class="hc-dot"></div>
     </div>
 
-    <!-- 02 -->
-    <div class="hc" style="left:290px;top:25px;">
+    <!-- 02. Текущая схема -->
+    <div class="hc" onclick="location.href='schemes.html'" style="left:290px;top:15px;">
       <div class="hc-scan"></div>
       <div class="hc-c hc-ctl"></div><div class="hc-c hc-ctr"></div>
       <div class="hc-c hc-cbl"></div><div class="hc-c hc-cbr"></div>
@@ -95,10 +94,10 @@
       <div class="hc-dot" style="animation-delay:0.6s"></div>
     </div>
 
-    <!-- 03 -->
-    <div class="hc" style="left:570px;top:175px;">
+    <!-- 03. Текущие данные -->
+    <div class="hc" onclick="location.href='reports.html'" style="left:570px;top:155px;">
       <div class="hc-scan"></div>
-      <div class="hc-c hc-ctl"></div><div class="hc-c hc-ctr"></div>
+      <div class="hc-c hc-ctl"></div><div class="hc-c fuse-ctr"></div>
       <div class="hc-c hc-cbl"></div><div class="hc-c hc-cbr"></div>
       <div class="hc-num">03</div>
       <div class="hc-title" data-ru="Текущие данные" data-en="Current Data">Текущие данные</div>
@@ -106,8 +105,8 @@
       <div class="hc-dot" style="animation-delay:1.2s"></div>
     </div>
 
-    <!-- 04 -->
-    <div class="hc" style="left:240px;top:285px;">
+    <!-- 04. Продажи и пакеты -->
+    <div class="hc" onclick="location.href='sales.html'" style="left:240px;top:270px;">
       <div class="hc-scan"></div>
       <div class="hc-c hc-ctl"></div><div class="hc-c hc-ctr"></div>
       <div class="hc-c hc-cbl"></div><div class="hc-c hc-cbr"></div>
