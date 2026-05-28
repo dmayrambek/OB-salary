@@ -7,46 +7,53 @@
 </head>
 <body>
 
+<div class="lang-switcher">
+    <button onclick="switchLang('ru')" class="lang-btn">RU</button>
+    <button onclick="switchLang('en')" class="lang-btn">EN</button>
+</div>
+
 <div class="scheme-container">
-    <div class="col blue">
-        <h3>Прямые продажи<br><small>Direct Sales</small></h3>
-        <div class="node">O1 Привлечение клиента</div>
-        <div class="node">O2 Подписание договора ЗПП</div>
-        <div class="node" style="margin-top: 40px;">Раздача карт</div>
-    </div>
-    <div class="col blue">
-        <h3>РБ<br><small>Retail Business</small></h3>
-        <div class="node">O1 Привлечение клиента</div>
-        <div class="node">O2 Подписание договора ЗПП</div>
-        <div class="node" style="margin-top: 40px;">Раздача карт</div>
-    </div>
-    <div class="col green">
-        <h3>СОД<br><small>Operations Department</small></h3>
-        <div class="node">O3 Согласование условий ЗПП</div>
-        <div class="node">O4 Подготовка договора ЗПП</div>
-        <div class="node">O5 Прием списка сотрудников</div>
-        <div class="node">O6 Создание служебной записки</div>
-        <div class="node">O7 Открытие счетов</div>
-        <div class="node">O8 Передача Instant карт</div>
-    </div>
-    <div class="col yellow">
-        <h3>Головной банк<br><small>Head Office</small></h3>
-        <div class="node">O9 Изготовление Instant карт</div>
-        <div class="node">O10 Отправка карт в СОД</div>
+    <div class="flowchart">
+        <div class="col blue">
+            <h3 data-ru="Прямые продажи" data-en="Direct Sales">Прямые продажи</h3>
+            <div class="node" data-ru="O1 Привлечение клиента" data-en="O1 Customer Acquisition">O1 Привлечение клиента</div>
+            <div class="node" data-ru="O2 Подписание договора" data-en="O2 Contract Signing">O2 Подписание договора</div>
+            <div class="node mt-40" data-ru="Раздача карт" data-en="Card Distribution">Раздача карт</div>
+        </div>
+        <div class="col blue">
+            <h3 data-ru="РБ" data-en="Retail Business">РБ</h3>
+            <div class="node" data-ru="O1 Привлечение клиента" data-en="O1 Customer Acquisition">O1 Привлечение клиента</div>
+            <div class="node" data-ru="O2 Подписание договора" data-en="O2 Contract Signing">O2 Подписание договора</div>
+            <div class="node mt-40" data-ru="Раздача карт" data-en="Card Distribution">Раздача карт</div>
+        </div>
+        <div class="col green">
+            <h3 data-ru="СОД" data-en="Operations Dept">СОД</h3>
+            <div class="node" data-ru="O3 Согласование условий" data-en="O3 Terms Approval">O3 Согласование условий</div>
+            <div class="node" data-ru="O4 Подготовка договора" data-en="O4 Contract Prep">O4 Подготовка договора</div>
+            <div class="node" data-ru="O5 Прием списка сотрудников" data-en="O5 Staff List Processing">O5 Прием списка сотрудников</div>
+            <div class="node" data-ru="O6 Служебная записка" data-en="O6 Memo Creation">O6 Служебная записка</div>
+            <div class="node" data-ru="O7 Открытие счетов" data-en="O7 Account Opening">O7 Открытие счетов</div>
+            <div class="node" data-ru="O8 Передача Instant карт" data-en="O8 Card Handover">O8 Передача Instant карт</div>
+        </div>
+        <div class="col yellow">
+            <h3 data-ru="Головной банк" data-en="Head Office">Головной банк</h3>
+            <div class="node" data-ru="O9 Изготовление Instant карт" data-en="O9 Card Manufacturing">O9 Изготовление Instant карт</div>
+            <div class="node" data-ru="O10 Отправка карт в СОД" data-en="O10 Shipping to Ops">O10 Отправка карт в СОД</div>
+        </div>
     </div>
 </div>
 
 <div class="benefits-section">
-    <h2>Что получаем? / Benefits</h2>
-    <div class="benefits-list">
-        <div class="item">Единый канал для взаимодействия<br><span>Unified communication channel</span></div>
-        <div class="item">Автоматизированный процесс<br><span>Automated process</span></div>
+    <h2 data-ru="Что получаем?" data-en="Benefits">Что получаем?</h2>
+    <div class="list">
+        <div class="item" data-ru="Единый канал для взаимодействия" data-en="Unified communication channel">Единый канал для взаимодействия</div>
+        <div class="item" data-ru="Автоматизированный процесс" data-en="Automated process">Автоматизированный процесс</div>
     </div>
 </div>
 
 <div class="nav-footer">
-    <a href="scheme.html">← Текущий процесс (As Is)</a>
-    <a href="index.html">← На главную / Home</a>
+    <a href="scheme.html" data-ru="← Текущий процесс (As Is)" data-en="← Current Process (As Is)">← Текущий процесс (As Is)</a>
+    <a href="index.html" data-ru="← На главную" data-en="← Home">← На главную</a>
 </div>
 
 <script src="to-be.js"></script>
