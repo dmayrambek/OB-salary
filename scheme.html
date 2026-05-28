@@ -118,12 +118,7 @@
 
             <!-- Content — shown after click -->
             <div class="analysis-content" id="analysis-content" style="display:none;">
-                <div class="analysis-header">
-                    <div class="analysis-dept" id="a-dept"></div>
-                    <div class="analysis-title-text" id="a-title"></div>
-                </div>
-                <div class="analysis-pain" id="a-pain"></div>
-                <div class="analysis-metrics" id="a-metrics"></div>
+                <ul class="pain-list" id="a-pain-list"></ul>
             </div>
 
         </div>
@@ -144,172 +139,88 @@
     // =====================================================================
     const nodeData = {
         node1: {
-            ru: {
-                dept: "Отдел розничного бизнеса (РБ)",
-                title: "О1. Привлечение клиента",
-                pain: "Низкий уровень автоматизации первичного контакта. Презентация возможностей ЗПП происходит вручную специалистами выездных групп, без применения сквозных цифровых воронок и CRM-контроля.",
-                warning: false,
-                metrics: [
-                    { label: "Ответственное лицо", value: "Менеджер РБ / Операционист СОЮФЛ" },
-                    { label: "Срок выполнения", value: "1–3 рабочих дня" },
-                    { label: "Основной риск", value: "Человеческий фактор при первичной оценке потенциала компании" }
-                ]
-            },
-            en: {
-                dept: "Retail Business Department (RB)",
-                title: "O1. Client Acquisition",
-                pain: "Low automation for initial contact. Payroll project presentations are delivered manually by field teams, with no end-to-end digital funnels or CRM tracking in place.",
-                warning: false,
-                metrics: [
-                    { label: "Responsible party", value: "RB Manager / Branch Officer" },
-                    { label: "Processing time", value: "1–3 business days" },
-                    { label: "Key risk", value: "Human error in initial company potential assessment" }
-                ]
-            }
+            ru: { warning: false, painPoints: [
+                "Низкий уровень автоматизации первичного контакта",
+                "Отсутствие единого канала для взаимодействия с клиентом",
+                "Презентация ЗПП происходит вручную без CRM-контроля"
+            ]},
+            en: { warning: false, painPoints: [
+                "Low level of automation for initial client contact",
+                "No unified channel for client interaction",
+                "WPP presentations are delivered manually without CRM tracking"
+            ]}
         },
         node2: {
-            ru: {
-                dept: "Отдел розничного бизнеса (РБ)",
-                title: "О2. Подписание договора ЗПП",
-                pain: "Классический бумажный документооборот. Требует физического присутствия руководства компании и сбора «живых» подписей и печатей на бумажных бланках тарифов.",
-                warning: false,
-                metrics: [
-                    { label: "Формат обмена", value: "Физические оригиналы документов" },
-                    { label: "Трудозатраты", value: "Выезд курьера или личный визит директора в офис" },
-                    { label: "Автоматизация", value: "0% — полностью ручной процесс" }
-                ]
-            },
-            en: {
-                dept: "Retail Business Department (RB)",
-                title: "O2. Contract Signing",
-                pain: "Traditional paper-based workflow. Requires physical presence of company executives and collection of 'wet' signatures and stamps on paper tariff forms.",
-                warning: false,
-                metrics: [
-                    { label: "Exchange format", value: "Physical original documents" },
-                    { label: "Labor effort", value: "Courier dispatch or CEO's personal visit to the branch" },
-                    { label: "Automation", value: "0% — fully manual process" }
-                ]
-            }
+            ru: { warning: false, painPoints: [
+                "Полностью бумажный документооборот — 0% автоматизации",
+                "Требует физического присутствия руководства компании",
+                "Сбор живых подписей и печатей на бумажных бланках"
+            ]},
+            en: { warning: false, painPoints: [
+                "Fully paper-based workflow — 0% automation",
+                "Requires physical presence of company management",
+                "Collection of wet signatures and stamps on paper forms"
+            ]}
         },
         node3: {
-            ru: {
-                dept: "Отдел розничного бизнеса (РБ)",
-                title: "О3. Прием списка сотрудников",
-                pain: "Бухгалтерия присылает анкеты и паспорта сотрудников в разнородных форматах (сканы, Excel-файлы, бумажные копии). Полное отсутствие автоматической верификации данных на входе.",
-                warning: false,
-                metrics: [
-                    { label: "Канал передачи", value: "Email / флеш-носители" },
-                    { label: "Проблема", value: "Высокий риск опечаток в ФИО и номерах паспортов" },
-                    { label: "Влияние", value: "Каждая ошибка удваивает время проверки" }
-                ]
-            },
-            en: {
-                dept: "Retail Business Department (RB)",
-                title: "O3. Receiving Employee Lists",
-                pain: "The company's accounting sends forms and passport copies in fragmented formats (scans, Excel, paper). Total absence of automated data validation at the entry point.",
-                warning: false,
-                metrics: [
-                    { label: "Transmission channel", value: "Email / USB flash drives" },
-                    { label: "Issue", value: "High risk of typos in names and passport numbers" },
-                    { label: "Impact", value: "Each error doubles the verification time" }
-                ]
-            }
+            ru: { warning: false, painPoints: [
+                "Документы поступают в разнородных форматах: сканы, Excel, бумага",
+                "Отсутствие автоматической верификации данных на входе",
+                "Высокий риск опечаток в ФИО и номерах паспортов"
+            ]},
+            en: { warning: false, painPoints: [
+                "Documents arrive in fragmented formats: scans, Excel, paper",
+                "No automated data validation at the entry point",
+                "High risk of typos in employee names and passport numbers"
+            ]}
         },
         node4: {
-            ru: {
-                dept: "РБ + Отдел сопровождения карточных продуктов (ГБ)",
-                title: "О4. Служебная записка на заведение ЗПП",
-                pain: "⚠️ КРИТИЧЕСКАЯ ТОЧКА БЮРОКРАТИИ. Вместо прямой передачи данных в карточный отдел формируется бумажная или электронная внутренняя СЗ для согласования параметров проекта. Процесс не стартует без визы руководства.",
-                warning: true,
-                metrics: [
-                    { label: "Маршрут согласования", value: "РБ → Нач. управления → Карточный отдел ГБ" },
-                    { label: "Потеря времени", value: "5–24 часа ожидания подписи" },
-                    { label: "Блокирующий фактор", value: "Заведение карт не начнётся без подписанной СЗ" }
-                ]
-            },
-            en: {
-                dept: "RB + Card Products Support Department (HO)",
-                title: "O4. Internal Memo for Project Setup",
-                pain: "⚠️ CRITICAL BUREAUCRACY NODE. Instead of a direct data transfer to the card center, a paper or digital internal memo is created to approve project parameters. Process is blocked until management signs off.",
-                warning: true,
-                metrics: [
-                    { label: "Approval route", value: "RB → Head of Dept → HO Card Center" },
-                    { label: "Time loss", value: "5–24 hours waiting for signature" },
-                    { label: "Blocking factor", value: "Card setup cannot begin without signed memo" }
-                ]
-            }
+            ru: { warning: true, painPoints: [
+                "Критическая точка бюрократии — процесс блокируется до подписи СЗ",
+                "Ожидание согласования занимает от 5 до 24 часов",
+                "Отсутствие прямой передачи данных в карточный отдел"
+            ]},
+            en: { warning: true, painPoints: [
+                "Critical bureaucracy node — process blocked until memo is signed",
+                "Approval waiting time: 5 to 24 hours",
+                "No direct data transfer to the card processing department"
+            ]}
         },
         node5: {
-            ru: {
-                dept: "Сектор обслуживания ФЛ и ЮЛ (СОЮФЛ)",
-                title: "О5. Открытие карточных счетов",
-                pain: "⚠️ ОПЕРАЦИОННЫЙ СТУПОР. Операционист вручную вбивает данные каждого сотрудника в АБС. При списках от 100+ человек процесс полностью парализует операционное окно на несколько часов.",
-                warning: true,
-                metrics: [
-                    { label: "Режим работы", value: "Ручной массовый ввод данных в АБС" },
-                    { label: "Трудоёмкость", value: "До 15–20 минут на одного сотрудника" },
-                    { label: "Внутренний конфликт", value: "Отвлекает ресурсы от текущего потока клиентов" }
-                ]
-            },
-            en: {
-                dept: "Branch Retail Operations (SOYUFL)",
-                title: "O5. Card Account Opening",
-                pain: "⚠️ OPERATIONAL STANDSTILL. The front-office operator manually enters every employee's data into the core banking system. With 100+ employees, this paralyzes the entire branch counter for hours.",
-                warning: true,
-                metrics: [
-                    { label: "Operation mode", value: "Manual bulk data entry into CBS" },
-                    { label: "Processing effort", value: "Up to 15–20 minutes per individual employee" },
-                    { label: "Internal conflict", value: "Diverts resources away from walk-in customer service" }
-                ]
-            }
+            ru: { warning: true, painPoints: [
+                "Ручной массовый ввод данных в АБС — до 20 минут на сотрудника",
+                "При 100+ сотрудниках операционное окно парализовано на часы",
+                "Отвлекает ресурсы от обслуживания текущего потока клиентов"
+            ]},
+            en: { warning: true, painPoints: [
+                "Manual bulk data entry into CBS — up to 20 minutes per employee",
+                "With 100+ employees, the branch counter is paralyzed for hours",
+                "Diverts resources away from walk-in customer service"
+            ]}
         },
         node6: {
-            ru: {
-                dept: "Отдел сопровождения карточных продуктов (ГБ)",
-                title: "О6. Изготовление именных карт",
-                pain: "Производство привязано к мощностям Головного банка. При массовых заявках от нескольких филиалов одновременно возникает технологическая очередь и задержки на 2–3 рабочих дня.",
-                warning: false,
-                metrics: [
-                    { label: "Локация", value: "Головной Банк" },
-                    { label: "Тип продукта", value: "Строго пластиковые именные карты" },
-                    { label: "Зависимость", value: "Ограничено суточной пропускной способностью эмбоссера" }
-                ]
-            },
-            en: {
-                dept: "Card Product Support Department (HO)",
-                title: "O6. Personalized Card Production",
-                pain: "Production is tightly tied to Head Office hardware capacity. When multiple branches submit bulk requests simultaneously, a processing queue forms, causing 2–3 business day delays.",
-                warning: false,
-                metrics: [
-                    { label: "Location", value: "Head Office (HO)" },
-                    { label: "Product type", value: "Strictly physical personalized plastic cards" },
-                    { label: "Dependency", value: "Limited by daily embossing machine throughput" }
-                ]
-            }
+            ru: { warning: false, painPoints: [
+                "Производство привязано к мощностям Головного банка",
+                "Технологическая очередь при массовых заявках от нескольких филиалов",
+                "Только физические именные карты — нет виртуального выпуска"
+            ]},
+            en: { warning: false, painPoints: [
+                "Production tied to Head Office hardware capacity",
+                "Processing queue forms when multiple branches submit bulk requests",
+                "Only physical personalized cards — no virtual card issuance"
+            ]}
         },
         node7: {
-            ru: {
-                dept: "Отдел розничного бизнеса (РБ)",
-                title: "О7. Передача карт организации",
-                pain: "⚠️ ЛОГИСТИЧЕСКИЙ РАЗРЫВ. Готовый пластик упаковывается в инкассаторские сумки или курьер и отправляется по регионам КР. Менеджер лично выдаёт карты сотрудникам под роспись на предприятии.",
-                warning: true,
-                metrics: [
-                    { label: "Способ доставки", value: "Физическая инкассация / курьерская логистика" },
-                    { label: "Потеря времени", value: "2–4 рабочих дня (зависит от удалённости региона)" },
-                    { label: "Итог всего цикла", value: "От привлечения до активации карты: 5–9 дней" }
-                ]
-            },
-            en: {
-                dept: "Retail Business Department (RB)",
-                title: "O7. Delivering Cards to Organization",
-                pain: "⚠️ LOGISTICAL GAP. Finished cards are sealed in transit bags or courier packages and shipped across KR regions. The manager then personally distributes cards at the company's premises against signed receipts.",
-                warning: true,
-                metrics: [
-                    { label: "Delivery method", value: "Physical cash transit services / courier logistics" },
-                    { label: "Time loss", value: "2–4 business days (depending on regional remoteness)" },
-                    { label: "Full cycle result", value: "From acquisition to card activation: 5–9 days" }
-                ]
-            }
+            ru: { warning: true, painPoints: [
+                "Физическая доставка пластика занимает 2–4 рабочих дня",
+                "Логистические риски: задержки рейсов, погодные условия, утеря",
+                "Общий цикл от привлечения до активации карты: 5–9 дней"
+            ]},
+            en: { warning: true, painPoints: [
+                "Physical card delivery takes 2–4 business days",
+                "Logistics risks: flight delays, weather conditions, loss in transit",
+                "Total cycle from acquisition to card activation: 5–9 days"
+            ]}
         }
     };
 
@@ -410,35 +321,18 @@
 
         // Content → show
         const content = document.getElementById('analysis-content');
-        content.style.display = 'flex';
+        content.style.display = 'block';
 
-        // Header
-        const deptEl = document.getElementById('a-dept');
-        deptEl.textContent  = data.dept.toUpperCase();
-        deptEl.className    = 'analysis-dept' + (data.warning ? ' orange' : '');
-
-        document.getElementById('a-title').textContent = data.title;
-
-        // Pain
-        const painEl = document.getElementById('a-pain');
-        painEl.textContent = data.pain;
-        painEl.className   = 'analysis-pain';
-
-        // Metrics
-        const metricsEl = document.getElementById('a-metrics');
-        metricsEl.innerHTML = data.metrics.map(m => `
-            <div class="metric-item">
-                <div class="metric-label">${m.label}</div>
-                <div class="metric-value">${m.value}</div>
-            </div>
-        `).join('');
+        // Render bullet list
+        const listEl = document.getElementById('a-pain-list');
+        listEl.innerHTML = data.painPoints.map(p => `<li>${p}</li>`).join('');
 
         // Box border accent
         box.className = 'analysis-box ' + (data.warning ? 'active-orange' : 'active-red');
 
         // Re-trigger animation
         content.style.animation = 'none';
-        content.offsetHeight; // reflow
+        content.offsetHeight;
         content.style.animation = '';
     }
 
