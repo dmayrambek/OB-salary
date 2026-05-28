@@ -1,6 +1,10 @@
 function switchLang(lang) {
     document.querySelectorAll('[data-ru]').forEach(el => {
-        el.innerText = el.getAttribute('data-' + lang);
+        if (el.id === 'benefits-list') {
+            el.innerHTML = el.getAttribute('data-' + lang);
+        } else {
+            el.innerText = el.getAttribute('data-' + lang);
+        }
     });
     localStorage.setItem('userLang', lang);
 }
