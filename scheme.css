@@ -645,6 +645,36 @@ body {
     margin: 6px 0;
 }
 
+/* Pain bullet list in analysis box */
+.pain-list {
+    margin: 0;
+    padding: 0 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+}
+
+.pain-list li {
+    font-size: 0.88rem;
+    color: #c8c8c8;
+    line-height: 1.5;
+    position: relative;
+    padding-left: 18px;
+}
+
+.pain-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 5px;
+    height: 5px;
+    background: #E8005A;
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(232, 0, 90, 0.5);
+}
+
 /* ==========================================================================
    📱 СКРОЛЛБАР
    ========================================================================== */
