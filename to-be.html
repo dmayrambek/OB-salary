@@ -1,81 +1,64 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TO-BE схема</title>
-<link rel="stylesheet" href="to-be.css">
+    <meta charset="UTF-8">
+    <title>Target Process (To Be)</title>
+    <link rel="stylesheet" href="to-be.css">
 </head>
 <body>
 
-<!-- Переключатель -->
-<div class="lang-switch">
-    <button onclick="setLang('ru')">RU</button>
-    <button onclick="setLang('en')">EN</button>
+<div class="lang-switcher">
+    <button onclick="switchLang('ru')" class="lang-btn">RU</button>
+    <button onclick="switchLang('en')" class="lang-btn">EN</button>
 </div>
 
-<div class="wrapper">
-
-    <div class="column">
-        <div class="title" data-key="directSales"></div>
-        <div class="box" data-key="client"></div>
-        <div class="box" data-key="contract"></div>
+<div class="scheme-container">
+    <div class="flowchart">
+        <div class="col blue">
+            <h3 data-ru="Прямые продажи" data-en="Direct Sales">Прямые продажи</h3>
+            <div class="node" data-ru="Привлечение клиента" data-en="Customer Acquisition">Привлечение клиента</div>
+            <div class="node" data-ru="Подписание договора ЗПП" data-en="Contract Signing">Подписание договора ЗПП</div>
+            <div class="node mt-40" data-ru="Раздача карт" data-en="Card Distribution">Раздача карт</div>
+        </div>
+        <div class="col blue">
+            <h3 data-ru="Розничный бизнес" data-en="Retail Business">Розничный бизнес</h3>
+            <div class="node" data-ru="Привлечение клиента" data-en="Customer Acquisition">Привлечение клиента</div>
+            <div class="node" data-ru="Подписание договора ЗПП" data-en="Contract Signing">Подписание договора ЗПП</div>
+            <div class="node mt-40" data-ru="Раздача карт" data-en="Card Distribution">Раздача карт</div>
+        </div>
+        <div class="col green">
+            <h3 data-ru="Служба операционной деятельности" data-en="Operations Dept">Служба операционной деятельности</h3>
+            <div class="node" data-ru="Согласование условий ЗПП с руководством" data-en="Terms Approval">Согласование условий ЗПП с руководством</div>
+            <div class="node" data-ru="Подготовка договора ЗПП" data-en="Contract Preparation">Подготовка договора ЗПП</div>
+            <div class="node" data-ru="Прием списка сотрудников" data-en="Staff List Processing">Прием списка сотрудников</div>
+            <div class="node" data-ru="Создание служебной записки на ЗПП в BPM" data-en="Memo Creation in BPM">Создание служебной записки на ЗПП в BPM</div>
+            <div class="node" data-ru="Открытие карточных счетов" data-en="Account Opening">Открытие карточных счетов</div>
+            <div class="node" data-ru="Передача Instant карт сотрудникам" data-en="Card Handover">Передача Instant карт сотрудникам</div>
+        </div>
+        <div class="col yellow">
+            <h3 data-ru="Головной банк" data-en="Head Office">Головной банк</h3>
+            <div class="node" data-ru="Изготовление Instant карт" data-en="Card Manufacturing">Изготовление Instant карт</div>
+            <div class="node" data-ru="Отправка карт в СОД" data-en="Shipping to Operations">Отправка карт в СОД</div>
+        </div>
     </div>
-
-    <div class="column">
-        <div class="title" data-key="retail"></div>
-        <div class="box" data-key="client"></div>
-        <div class="box" data-key="contract"></div>
-    </div>
-
-    <div class="column big">
-        <div class="title" data-key="operations"></div>
-        <div class="box" data-key="o1"></div>
-        <div class="box" data-key="o2"></div>
-        <div class="box" data-key="o3"></div>
-        <div class="box" data-key="o4"></div>
-        <div class="box" data-key="o5"></div>
-        <div class="box" data-key="o6"></div>
-    </div>
-
-    <div class="column">
-        <div class="title" data-key="headBank"></div>
-        <div class="box" data-key="h1"></div>
-        <div class="box" data-key="h2"></div>
-    </div>
-
 </div>
 
-<!-- SVG стрелки -->
-<svg class="arrows">
-
-    <defs>
-        <marker id="arrowhead" markerWidth="10" markerHeight="7"
-        refX="10" refY="3.5" orient="auto">
-            <polygon points="0 0, 10 3.5, 0 7" fill="#2e8b57"/>
-        </marker>
-    </defs>
-
-    <line x1="180" y1="140" x2="260" y2="140" class="arrow"/>
-    <line x1="420" y1="140" x2="520" y2="140" class="arrow"/>
-    <line x1="700" y1="180" x2="700" y2="260" class="arrow"/>
-    <line x1="880" y1="220" x2="980" y2="220" class="arrow"/>
-
-</svg>
-
-<!-- Нижний блок -->
-<div class="bottom">
-
-    <div class="down-arrow">↓</div>
-
-    <div class="future-box">
-        <h3 data-key="futureTitle"></h3>
-        <ul>
-            <li data-key="f1"></li>
-            <li data-key="f2"></li>
+<div class="benefits-section">
+    <h2 data-ru="Что получаем?" data-en="Benefits">Что получаем?</h2>
+    <div class="vertical-line"></div>
+    <div class="single-benefit-block">
+        <ul id="benefits-list" 
+            data-ru="<li>Единый канал для взаимодействия</li><li>Автоматизированный процесс</li>" 
+            data-en="<li>Unified communication channel</li><li>Automated process</li>">
+            <li>Единый канал для взаимодействия</li>
+            <li>Автоматизированный процесс</li>
         </ul>
     </div>
+</div>
 
+<div class="nav-footer">
+    <a href="scheme.html" data-ru="← Текущий процесс (As Is)" data-en="← Current Process (As Is)">← Текущий процесс (As Is)</a>
+    <a href="index.html" data-ru="← На главную" data-en="← Home">← На главную</a>
 </div>
 
 <script src="to-be.js"></script>
