@@ -15,22 +15,20 @@
     </header>
 
     <div class="scheme-container">
-        <!-- СХЕМА -->
         <div class="graph-area">
             <div class="flowchart-wrapper">
                 <div class="process-grid">
-                    <!-- Блоки -->
-                    <div class="node-card active" data-node="O1" id="n1" onclick="showProblems('O1')">
+                    <div class="node-card active" data-node="O1" onclick="showProblems('O1')">
                         <span class="node-badge">РБ, СОЮФЛ</span>
                         <div class="node-title">Привлечение</div>
                     </div>
                     <div class="arrow-h"></div>
-                    <div class="node-card" data-node="O2" id="n2" onclick="showProblems('O2')">
+                    <div class="node-card" data-node="O2" onclick="showProblems('O2')">
                         <span class="node-badge">РБ</span>
                         <div class="node-title">Подписание договора</div>
                     </div>
                     <div class="arrow-h"></div>
-                    <div class="node-card node-warning" data-node="O4" id="n4" onclick="showProblems('O4')">
+                    <div class="node-card node-warning" data-node="O4" onclick="showProblems('O4')">
                         <span class="node-badge">РБ, ГБ</span>
                         <div class="node-title">Служебная записка</div>
                     </div>
@@ -38,7 +36,6 @@
             </div>
         </div>
 
-        <!-- БОКОВАЯ ПАНЕЛЬ С ПРОБЛЕМАМИ -->
         <div class="details-panel">
             <div class="panel-glass-content">
                 <h4 id="panel-pain-title">🚨 Описание проблем</h4>
@@ -48,19 +45,36 @@
     </div>
 
     <script>
-        const data = {
-            ru: { pains: ["Нет централизованного отдела", "Низкий уровень автоматизации"] },
-            en: { pains: ["No centralized department", "Low level of automation"] }
+        const content = {
+            ru: {
+                title: "🚨 Описание проблем",
+                pains: ["Нет централизованного отдела", "Низкий уровень автоматизации"]
+            },
+            en: {
+                title: "🚨 Description of Problems",
+                pains: ["No centralized department", "Low level of automation"]
+            }
         };
 
         function showProblems(nodeId) {
+            // Подсветка активного блока
             document.querySelectorAll('.node-card').forEach(x => x.classList.remove('active'));
-            document.getElementById(`n${nodeId.slice(1)}`).classList.add('active');
+            event.currentTarget.classList.add('active');
             
+            // Заполнение панели
+            const lang = document.querySelector('.lang-btn.active').id === 'btn-ru' ? 'ru' : 'en';
             const list = document.getElementById('node-pain-list');
-            list.innerHTML = data.ru.pains.map(p => `<li>${p}</li>`).join('');
+            list.innerHTML = content[lang].pains.map(p => `<li>${p}</li>`).join('');
         }
-        
+
+        function changeLang(lang) {
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.id === `btn-${lang}`));
+            document.getElementById('panel-pain-title').innerText = content[lang].title;
+            // Перерисовываем список для текущего активного блока
+            const active = document.querySelector('.node-card.active');
+            if (active) showProblems(active.dataset.node);
+        }
+
         window.onload = () => showProblems('O1');
     </script>
 </body>
