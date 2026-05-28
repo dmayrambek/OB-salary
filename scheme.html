@@ -2,230 +2,66 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O!Bank - Процесс ЗПП в филиале</title>
+    <title>O!Bank - Процесс ЗПП</title>
     <link rel="stylesheet" href="scheme.css">
 </head>
 <body>
-
     <header class="header">
-        <div class="logo-zone">
-            <span class="logo-dot"></span>
-            <span class="logo-text">O!BANK</span>
-        </div>
+        <div class="logo-zone"><span>O!BANK</span></div>
         <div class="nav-right">
-            <div class="lang-switcher">
-                <button class="lang-btn active" id="btn-ru" onclick="changeLang('ru')">RU</button>
-                <button class="lang-btn" id="btn-en" onclick="changeLang('en')">EN</button>
-            </div>
-            <a href="index.html" class="back-btn" id="txt-to-main">← На главную</a>
+            <button class="lang-btn active" id="btn-ru" onclick="changeLang('ru')">RU</button>
+            <button class="lang-btn" id="btn-en" onclick="changeLang('en')">EN</button>
         </div>
     </header>
 
     <div class="scheme-container">
-        
+        <!-- СХЕМА -->
         <div class="graph-area">
-            
-            <div id="current-section">
-                <div class="scheme-section-title current" id="title-as-is">🔴 Текущий процесс (As Is)</div>
-                
-                <div class="flowchart-wrapper" id="current-flowchart">
-                    <div class="process-header-title" id="process-main-title">Процесс ЗПП в филиале</div>
-
-                    <div class="process-grid">
-                        
-                        <div class="node-card grid-pos-1 active" data-node="O1" id="n1">
-                            <span class="node-badge-dept">РБ, СОЮФЛ</span>
-                            <div class="node-title">Привлечение</div>
-                            <div class="glow-point p-right"></div>
-                        </div>
-                        <div class="css-line line-h L1-2"></div> <div class="node-card grid-pos-2" data-node="O2" id="n2">
-                            <span class="node-badge-dept">РБ</span>
-                            <div class="node-title">Подписание договора</div>
-                            <div class="glow-point p-right"></div>
-                        </div>
-                        <div class="css-line line-h L2-4"></div> <div class="node-card grid-pos-3" data-node="O3" id="n3">
-                            <span class="node-badge-dept">РБ</span>
-                            <div class="node-title">Прием списка сотрудников и их документов</div>
-                            <div class="glow-point p-right"></div>
-                        </div>
-                        <div class="css-line line-h L3-4"></div> <div class="node-card grid-pos-4 node-warning" data-node="O4" id="n4">
-                            <span class="node-badge-dept font-small">РБ, Отдел сопровождения карточных продуктов ГБ</span>
-                            <div class="node-title">Создание служебной записки на заведение ЗПП</div>
-                            <div class="glow-point p-right"></div>
-                        </div>
-                        <div class="css-line line-h L4-5"></div> <div class="node-card grid-pos-5" data-node="O5" id="n5">
-                            <span class="node-badge-dept">СОЮФЛ</span>
-                            <div class="node-title">Открытие карточных счетов</div>
-                            <div class="glow-point p-right"></div>
-                        </div>
-                        <div class="css-line line-h L5-6"></div> <div class="node-card grid-pos-6" data-node="O6" id="n6">
-                            <span class="node-badge-dept font-small">Отдел сопровождения карточных продуктов ГБ</span>
-                            <div class="node-title">Изготовление именных карт и отправка в филиал</div>
-                            <div class="glow-point p-down"></div> </div>
-                        <div class="css-line line-v L6-7"></div> <div class="node-card grid-pos-7" data-node="O7" id="n7">
-                            <span class="node-badge-dept">РБ</span>
-                            <div class="node-title">Передача карт организации</div>
-                        </div>
-
+            <div class="flowchart-wrapper">
+                <div class="process-grid">
+                    <!-- Блоки -->
+                    <div class="node-card active" data-node="O1" id="n1" onclick="showProblems('O1')">
+                        <span class="node-badge">РБ, СОЮФЛ</span>
+                        <div class="node-title">Привлечение</div>
+                    </div>
+                    <div class="arrow-h"></div>
+                    <div class="node-card" data-node="O2" id="n2" onclick="showProblems('O2')">
+                        <span class="node-badge">РБ</span>
+                        <div class="node-title">Подписание договора</div>
+                    </div>
+                    <div class="arrow-h"></div>
+                    <div class="node-card node-warning" data-node="O4" id="n4" onclick="showProblems('O4')">
+                        <span class="node-badge">РБ, ГБ</span>
+                        <div class="node-title">Служебная записка</div>
                     </div>
                 </div>
             </div>
-
-            <div class="scheme-separator">
-                <span id="txt-separator">⚡ Трансформация силами группы операционной автоматизации (OAU)</span>
-                <span class="arrow-down-anim">⬇️</span>
-            </div>
-
-            <div id="future-section">
-                <div class="scheme-section-title future" id="title-to-be">🟢 Целевой процесс (To Be)</div>
-                <div class="flowchart-wrapper placeholder-wrapper">
-                    <div class="future-placeholder" id="txt-placeholder">
-                        🤖 Автоматизированная экосистема (Личный кабинет + Электронная валидация) готова к развертыванию...
-                    </div>
-                </div>
-            </div>
-
         </div>
 
+        <!-- БОКОВАЯ ПАНЕЛЬ С ПРОБЛЕМАМИ -->
         <div class="details-panel">
             <div class="panel-glass-content">
-                <div class="meta-zone">
-                    <div class="meta-dept" id="node-dept">РОЗНИЧНЫЙ БИЗНЕС / СОЮФЛ</div>
-                    <div class="meta-title" id="node-title">Привлечение</div>
-                </div>
-
-                <div class="pain-box">
-                    <h4 id="panel-pain-title">🚨 Описание проблем</h4>
-                    <ul class="pain-list" id="node-pain-list">
-                        </ul>
-                </div>
-
-                <div class="metrics-list">
-                    <div class="metric-item">
-                        <div class="metric-label" id="lbl-owner">Ответственная роль</div>
-                        <div class="metric-value" id="node-owner">Менеджер РБ, Операционист СОЮФЛ</div>
-                    </div>
-                </div>
+                <h4 id="panel-pain-title">🚨 Описание проблем</h4>
+                <ul class="pain-list" id="node-pain-list"></ul>
             </div>
         </div>
-
     </div>
 
     <script>
-        let currentLang = 'ru';
-
-        const uiLang = {
-            ru: {
-                toMain: "← На главную",
-                asIs: "🔴 Текущий процесс (As Is)",
-                toBe: "🟢 Целевой процесс (To Be)",
-                mainTitle: "Процесс ЗПП в филиале",
-                separator: "⚡ Трансформация силами группы операционной автоматизации (OAU)",
-                placeholder: "🤖 Автоматизированная экосистема (Личный кабинет + Электронная валидация) готова к развертыванию...",
-                painTitle: "🚨 Описание проблем",
-                lblOwner: "Ответственная роль",
-                nodes: {
-                    O1: { dept: "РБ, СОЮФЛ", title: "Привлечение", owner: "Менеджер РБ, Операционист СОЮФЛ" },
-                    O2: { dept: "РБ", title: "Подписание договора", owner: "Менеджер РБ" },
-                    O3: { dept: "РБ", title: "Прием списка сотрудников и их документов", owner: "Менеджер РБ" },
-                    O4: { dept: "РБ, Отдел сопровождения карточных продуктов ГБ", title: "Создание служебной записки на заведение ЗПП", owner: "Менеджер РБ / Руководство ГБ" },
-                    O5: { dept: "СОЮФЛ", title: "Открытие карточных счетов", owner: "Специалист СОЮФЛ" },
-                    O6: { dept: "Отдел сопровождения карточных продуктов ГБ", title: "Изготовление именных карт и отправка в филиал", owner: "Специалист ГБ / Курьерская служба" },
-                    O7: { dept: "РБ", title: "Передача карт организации", owner: "Менеджер РБ" }
-                },
-                pains: ["Нет централизованного отдела", "Низкий уровень автоматизации"]
-            },
-            en: {
-                toMain: "← Back to main",
-                asIs: "🔴 Current Process (As Is)",
-                toBe: "🟢 Target Process (To Be)",
-                mainTitle: "WPP Process in the Branch",
-                separator: "⚡ Transformation by Operational Automation Unit (OAU)",
-                placeholder: "🤖 Automated ecosystem (Client Area + Digital Validation) is ready for deployment...",
-                painTitle: "🚨 Description of Problems",
-                lblOwner: "Responsible Role",
-                nodes: {
-                    O1: { dept: "RB, SOYFL", title: "Attraction", owner: "RB Manager, SOYFL Operator" },
-                    O2: { dept: "RB", title: "Signing of Contract", owner: "RB Manager" },
-                    O3: { dept: "RB", title: "Receiving Employee Lists & Documents", owner: "RB Manager" },
-                    O4: { dept: "RB, Card Products Support Dept HQ", title: "Creation of Internal Memo for WPP Activation", owner: "RB Manager / HQ Management" },
-                    O5: { dept: "SOYFL", title: "Opening Card Accounts", owner: "SOYFL Specialist" },
-                    O6: { dept: "Card Products Support Dept HQ", title: "Manufacturing and Shipping of Named Cards", owner: "HQ Specialist / Courier Service" },
-                    O7: { dept: "RB", title: "Handover of Cards to Organization", owner: "RB Manager" }
-                },
-                pains: ["No centralized department", "Low level of automation"]
-            }
+        const data = {
+            ru: { pains: ["Нет централизованного отдела", "Низкий уровень автоматизации"] },
+            en: { pains: ["No centralized department", "Low level of automation"] }
         };
 
-        function updatePanel(nodeId) {
-            const langData = uiLang[currentLang];
-            const data = langData.nodes[nodeId];
-            const activeCard = document.querySelector(`[data-node="${nodeId}"]`);
-
-            if (data) {
-                document.getElementById('node-dept').innerText = data.dept.toUpperCase();
-                document.getElementById('node-title').innerText = data.title;
-                document.getElementById('node-owner').innerText = data.owner;
-
-                const listContainer = document.getElementById('node-pain-list');
-                listContainer.innerHTML = '';
-                langData.pains.forEach(painText => {
-                    const li = document.createElement('li');
-                    li.innerText = painText;
-                    listContainer.appendChild(li);
-                });
-
-                const deptLabel = document.getElementById('node-dept');
-                if (activeCard && activeCard.classList.contains('node-warning')) {
-                    deptLabel.style.color = '#f97316';
-                } else {
-                    deptLabel.style.color = '#ff0055';
-                }
-            }
+        function showProblems(nodeId) {
+            document.querySelectorAll('.node-card').forEach(x => x.classList.remove('active'));
+            document.getElementById(`n${nodeId.slice(1)}`).classList.add('active');
+            
+            const list = document.getElementById('node-pain-list');
+            list.innerHTML = data.ru.pains.map(p => `<li>${p}</li>`).join('');
         }
-
-        function changeLang(lang) {
-            currentLang = lang;
-            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(`btn-${lang}`).classList.add('active');
-
-            const data = uiLang[lang];
-            document.getElementById('txt-to-main').innerText = data.toMain;
-            document.getElementById('title-as-is').innerText = data.asIs;
-            document.getElementById('title-to-be').innerText = data.toBe;
-            document.getElementById('process-main-title').innerText = data.mainTitle;
-            document.getElementById('txt-separator').innerText = data.separator;
-            document.getElementById('txt-placeholder').innerText = data.placeholder;
-            document.getElementById('panel-pain-title').innerText = data.painTitle;
-            document.getElementById('lbl-owner').innerText = data.lblOwner;
-
-            Object.keys(data.nodes).forEach(key => {
-                const card = document.querySelector(`[data-node="${key}"]`);
-                if (card) {
-                    card.querySelector('.node-badge-dept').innerText = data.nodes[key].dept;
-                    card.querySelector('.node-title').innerText = data.nodes[key].title;
-                }
-            });
-
-            const activeCard = document.querySelector('.node-card.active');
-            if (activeCard) {
-                updatePanel(activeCard.getAttribute('data-node'));
-            }
-        }
-
-        const cards = document.querySelectorAll('.node-card');
-        cards.forEach(card => {
-            card.addEventListener('click', () => {
-                cards.forEach(c => c.classList.remove('active'));
-                card.classList.add('active');
-                updatePanel(card.getAttribute('data-node'));
-            });
-        });
-
-        window.addEventListener('load', () => {
-            changeLang('ru');
-        });
+        
+        window.onload = () => showProblems('O1');
     </script>
 </body>
 </html>
