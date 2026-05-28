@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>O!Bank - To Be Scheme</title>
+    <title>O!Bank - Процесс ЗПП</title>
     <link rel="stylesheet" href="scheme.css">
 </head>
 <body>
@@ -11,32 +11,56 @@
     <div class="graph-area">
         <div class="scheme-section-title future">🟢 Целевой процесс (To Be)</div>
         <div class="process-grid">
-            <div class="node-card">О1-О2 Привлечение</div>
+            <div class="node-card active" data-node="TO1">О1-О2 Привлечение</div>
             <div class="css-arrow"></div>
-            <div class="node-card">О3-О8 Согласование</div>
+            <div class="node-card" data-node="TO2">О3-О8 Согласование</div>
             <div class="css-arrow"></div>
-            <div class="node-card">О9-О10 Изготовление</div>
+            <div class="node-card" data-node="TO3">О9-О10 Изготовление</div>
         </div>
     </div>
 
     <div class="details-panel">
-        <div class="panel-block">
-            <h4>🚨 Описание проблем</h4>
-            <ul class="pain-list">
-                <li>Нет централизованного отдела</li>
-                <li>Низкий уровень автоматизации</li>
-            </ul>
+        <div class="panel-block" id="top-block">
+            <h4 id="node-title">О1-О2 Привлечение</h4>
+            <div class="pain-box">
+                <h4 style="color:#f472b6">🚨 Описание проблем</h4>
+                <ul class="pain-list" id="node-pain-list">
+                    <li>Нет централизованного отдела</li>
+                    <li>Низкий уровень автоматизации</li>
+                </ul>
+            </div>
         </div>
+        
         <div class="panel-block">
             <h4 style="color: #10b981;">🚀 Что мы исключаем</h4>
             <ul class="pain-list">
                 <li>Исключены дублирующие проверки</li>
                 <li>Сокращен Time-to-Market</li>
                 <li>Автоматический BPM-трекинг</li>
+                <li>Минимизация человеческого фактора</li>
             </ul>
         </div>
     </div>
 </div>
 
+<script>
+    const content = {
+        "TO1": ["Клиентский путь длинный", "Нет автоматизации"],
+        "TO2": ["Ручные согласования", "Сложный BPM"],
+        "TO3": ["Долгая логистика карт"]
+    };
+
+    document.querySelectorAll('.node-card').forEach(card => {
+        card.addEventListener('click', () => {
+            document.querySelectorAll('.node-card').forEach(c => c.classList.remove('active'));
+            card.classList.add('active');
+            
+            const id = card.getAttribute('data-node');
+            document.getElementById('node-title').innerText = card.innerText;
+            const pains = content[id] || ["Нет данных"];
+            document.getElementById('node-pain-list').innerHTML = pains.map(p => `<li>${p}</li>`).join('');
+        });
+    });
+</script>
 </body>
 </html>
