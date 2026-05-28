@@ -1,0 +1,268 @@
+/* ==========================================================================
+   📐 СЕТКА И РАЗМЕТКА СТРАНИЦЫ СХЕМЫ
+   ========================================================================== */
+
+.scheme-container {
+    display: grid;
+    grid-template-columns: 1fr 400px; /* Левая часть — граф, правая — фиксированные 400px под инфо */
+    gap: 30px;
+    padding: 100px 40px 40px 40px; /* Отступ сверху под шапку */
+    min-height: calc(100vh - 64px);
+    background: #0f0c1b;
+    box-sizing: border-box;
+}
+
+.graph-area {
+    display: flex;
+    flex-direction: column;
+}
+
+.page-title {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.page-subtitle {
+    font-size: 1rem;
+    color: #8c82b3;
+    margin-bottom: 40px;
+}
+
+/* ==========================================================================
+   🕹️ ИНТЕРАКТИВНЫЙ КОНТЕНЕР ГРАФА (ДОРОЖКИ)
+   ========================================================================== */
+
+.flowchart-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 25px; /* Дистанция между функциональными дорожками */
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 30px;
+    min-height: 550px;
+}
+
+/* Стилизация дорожек (Swimlanes) */
+.swimlanelane {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Расстояние между карточками внутри одной дорожки */
+    background: rgba(255, 255, 255, 0.01);
+    border-left: 4px solid #8c82b3;
+    border-radius: 4px;
+    padding: 20px 20px 20px 220px; /* Большой отступ слева, чтобы освободить место под бейдж */
+    min-height: 100px;
+}
+
+/* Изменяем цвет левой границы в зависимости от департамента */
+.lane-rb { border-left-color: #e0004d; }       /* Розничный бизнес — малиновый */
+.lane-soyufl { border-left-color: #00b0ff; }   /* СОЮФЛ — голубой */
+.lane-gb { border-left-color: #00e676; }       /* Головной банк — зеленый */
+
+/* Название департамента слева от дорожки */
+.lane-badge {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 180px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    opacity: 0.8;
+}
+
+/* ==========================================================================
+   🎴 СТИЛИЗАЦИЯ КАРТОЧЕК-УЗЛОВ (NODE CARDS)
+   ========================================================================== */
+
+.node-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 140px;
+    height: 100px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+.node-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Состояние активной (выбранной кликом) карточки */
+.node-card.active {
+    background: rgba(224, 0, 77, 0.15);
+    border-color: #e0004d;
+    box-shadow: 0 0 15px rgba(224, 0, 77, 0.4);
+}
+
+/* Карточки с критическими проблемами (узкие места) */
+.node-card.node-warning {
+    border-color: rgba(255, 152, 0, 0.4);
+}
+.node-card.node-warning.active {
+    background: rgba(255, 152, 0, 0.15);
+    border-color: #ff9800;
+    box-shadow: 0 0 15px rgba(255, 152, 0, 0.4);
+}
+
+/* Внутренние элементы карточки */
+.node-num {
+    position: absolute;
+    top: 6px;
+    left: 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.node-icon {
+    font-size: 1.4rem;
+    margin-bottom: 4px;
+}
+
+.node-title {
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #e2e8f0;
+}
+
+/* ==========================================================================
+   📐 SVG СОЕДИНИТЕЛЬНЫЕ ЛИНИИ (СТРЕЛКИ)
+   ========================================================================== */
+
+.graph-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Пропускает клики сквозь себя на карточки */
+    z-index: 1;
+}
+
+.graph-lines path {
+    stroke: rgba(255, 255, 255, 0.15);
+    stroke-width: 2;
+    fill: none;
+    transition: all 0.3s;
+}
+
+/* ==========================================================================
+   🔮 БОКОВАЯ СТЕКЛЯННАЯ ПАНЕЛЬ ПОДРОБНОСТЕЙ
+   ========================================================================== */
+
+.details-panel {
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 140px);
+}
+
+.panel-glass-content {
+    height: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 30px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    overflow-y: auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Стили мета-зоны (Шапка панели) */
+.meta-zone {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 16px;
+}
+
+.meta-dept {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    color: #e0004d;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+.meta-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.3;
+}
+
+/* Блок описания болей */
+.pain-box {
+    background: rgba(255, 152, 0, 0.06);
+    border: 1px solid rgba(255, 152, 0, 0.15);
+    border-radius: 14px;
+    padding: 16px;
+}
+
+.pain-box h4 {
+    font-size: 0.9rem;
+    color: #ff9800;
+    margin: 0 0 8px 0;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.pain-box p {
+    font-size: 0.9rem;
+    color: #cbd5e1;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Сводные метрики */
+.metrics-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.metric-item {
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 12px 16px;
+}
+
+.metric-label {
+    font-size: 0.75rem;
+    color: #64748b;
+    margin-bottom: 4px;
+}
+
+.metric-value {
+    font-size: 0.9rem;
+    color: #f1f5f9;
+    font-
