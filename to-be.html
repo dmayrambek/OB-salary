@@ -2,200 +2,53 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O!Bank — Целевой процесс ЗПП (To Be)</title>
+    <title>Target Process (To Be)</title>
     <link rel="stylesheet" href="to-be.css">
 </head>
 <body>
 
-    <!-- ===== HEADER ===== -->
-    <header class="header">
-        <div class="logo-zone">
-            <span class="logo-dot"></span>
-            <span class="logo-text">O!BANK</span>
-        </div>
-        <div class="nav-right">
-            <div class="lang-switcher">
-                <button class="lang-btn active" id="btn-ru" onclick="changeLang('ru')">RU</button>
-                <button class="lang-btn"        id="btn-en" onclick="changeLang('en')">EN</button>
-            </div>
-            <a href="index.html" class="back-btn" id="txt-to-main">&#8592; На главную</a>
-        </div>
-    </header>
-
-    <div class="page-container">
-
-        <div class="section-title" id="page-title">&#128994; Целевой процесс (To Be)</div>
-
-        <!-- SWIM LANE DIAGRAM -->
-        <div class="swimlane-wrapper" id="swimlane-wrapper">
-
-            <svg class="arrows-overlay" id="arrows-svg" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <marker id="arr-green" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                        <path d="M0,0 L0,6 L8,3 z" fill="#10b981" opacity="0.85"/>
-                    </marker>
-                    <marker id="arr-blue" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                        <path d="M0,0 L0,6 L8,3 z" fill="#7dd3fc" opacity="0.8"/>
-                    </marker>
-                    <marker id="arr-gold" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
-                        <path d="M0,0 L0,6 L8,3 z" fill="#fbbf24" opacity="0.8"/>
-                    </marker>
-                </defs>
-            </svg>
-
-            <div class="swimlane-grid" id="swimlane-grid">
-
-                <!-- LANE 1: COMPANY -->
-                <div class="lane lane-company">
-                    <div class="lane-header" id="lh-company">Компания<br>Личный кабинет</div>
-                    <div class="lane-body">
-
-                        <div class="tb-node active" id="node-t1" onclick="showDetail('t1')">
-                            <span class="tb-node-dept" id="nd-t1-dept">ЛК / CRM</span>
-                            <div class="tb-node-title" id="nd-t1-title">Т1. Онлайн-заявка на ЗПП</div>
-                        </div>
-                        <div class="v-connector"></div>
-                        <div class="tb-node" id="node-t2" onclick="showDetail('t2')">
-                            <span class="tb-node-dept" id="nd-t2-dept">ЛК / ЭЦП</span>
-                            <div class="tb-node-title" id="nd-t2-title">Т2. Электронное подписание договора</div>
-                        </div>
-                        <div class="v-connector"></div>
-                        <div class="tb-node" id="node-t3" onclick="showDetail('t3')">
-                            <span class="tb-node-dept" id="nd-t3-dept">ЛК / API СГДР</span>
-                            <div class="tb-node-title" id="nd-t3-title">Т3. Загрузка списка сотрудников</div>
-                        </div>
-                        <div style="flex:1;min-height:30px"></div>
-                        <div class="tb-node tb-node-end" id="node-tend" onclick="showDetail('tend')">
-                            <span class="tb-node-dept" id="nd-tend-dept">Mobile / Push</span>
-                            <div class="tb-node-title" id="nd-tend-title">Карта активирована в приложении</div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- LANE 2: RB -->
-                <div class="lane lane-rb">
-                    <div class="lane-header" id="lh-rb">Розничный<br>бизнес (РБ)</div>
-                    <div class="lane-body">
-
-                        <div class="tb-node" id="node-trb" onclick="showDetail('trb')">
-                            <span class="tb-node-dept" id="nd-trb-dept">ЛК / CRM</span>
-                            <div class="tb-node-title" id="nd-trb-title">Подтверждение заявки (1 клик)</div>
-                        </div>
-                        <div style="flex:1;min-height:30px"></div>
-                        <div class="tb-node" id="node-trb2" onclick="showDetail('trb2')">
-                            <span class="tb-node-dept" id="nd-trb2-dept">ЛК</span>
-                            <div class="tb-node-title" id="nd-trb2-title">Мониторинг статуса в ЛК</div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- LANE 3: SOD -->
-                <div class="lane lane-sod">
-                    <div class="lane-header" id="lh-sod">Служба операционной деятельности</div>
-                    <div class="lane-body">
-
-                        <div class="tb-node" id="node-t4" onclick="showDetail('t4')">
-                            <span class="tb-node-dept" id="nd-t4-dept">BPM / Авто-воркфлоу</span>
-                            <div class="tb-node-title" id="nd-t4-title">Т4. Авто-согласование условий ЗПП</div>
-                            <span class="badge-auto" id="ba-t4">AUTO</span>
-                        </div>
-                        <div class="v-connector"></div>
-                        <div class="tb-node" id="node-t5" onclick="showDetail('t5')">
-                            <span class="tb-node-dept" id="nd-t5-dept">API СГДР / Валидация</span>
-                            <div class="tb-node-title" id="nd-t5-title">Т5. Авто-валидация данных сотрудников</div>
-                            <span class="badge-auto" id="ba-t5">AUTO</span>
-                        </div>
-                        <div class="v-connector"></div>
-                        <div class="tb-node" id="node-t6" onclick="showDetail('t6')">
-                            <span class="tb-node-dept" id="nd-t6-dept">АБС API / Пакетная обработка</span>
-                            <div class="tb-node-title" id="nd-t6-title">Т6. Пакетное открытие карточных счетов</div>
-                            <span class="badge-auto" id="ba-t6">AUTO</span>
-                        </div>
-                        <div class="v-connector"></div>
-                        <div class="tb-node" id="node-t7" onclick="showDetail('t7')">
-                            <span class="tb-node-dept" id="nd-t7-dept">Процессинг / Instant</span>
-                            <div class="tb-node-title" id="nd-t7-title">Т7. Мгновенный выпуск виртуальных карт</div>
-                            <span class="badge-auto" id="ba-t7">AUTO</span>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- LANE 4: HO -->
-                <div class="lane lane-ho">
-                    <div class="lane-header" id="lh-ho">Головной банк</div>
-                    <div class="lane-body">
-
-                        <div class="tb-node tb-node-optional" id="node-t8" onclick="showDetail('t8')">
-                            <span class="tb-node-dept" id="nd-t8-dept">Эмбоссирование</span>
-                            <div class="tb-node-title" id="nd-t8-title">Т8. Изготовление именных карт<br><span style="opacity:0.55;font-size:0.68rem">(по запросу клиента)</span></div>
-                        </div>
-                        <div class="v-connector" style="background:linear-gradient(to bottom,rgba(251,191,36,0.4),rgba(251,191,36,0.15));"></div>
-                        <div class="tb-node tb-node-optional" id="node-t9" onclick="showDetail('t9')">
-                            <span class="tb-node-dept" id="nd-t9-dept">Логистика</span>
-                            <div class="tb-node-title" id="nd-t9-title">Т9. Отправка именных карт в СОД</div>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div><!-- /swimlane-grid -->
-
-            <!-- BANK SERVICES BAR -->
-            <div class="bank-services-bar">
-                <div class="bank-services-title">
-                    <span class="label"    id="bs-label">Сопровождение ЗПП</span>
-                    <span class="sublabel" id="bs-sublabel">Банк</span>
-                </div>
-                <div class="bank-services-divider"></div>
-                <div class="bank-services-list">
-                    <span class="bank-service-item" id="bs-1">Поддержка клиента 24/7</span>
-                    <span class="bank-service-item" id="bs-2">Автоматическое обслуживание счетов сотрудников и компаний</span>
-                    <span class="bank-service-item" id="bs-3">SWIFT переводы</span>
-                </div>
-            </div>
-
-        </div><!-- /swimlane-wrapper -->
-
-        <!-- BENEFITS SECTION -->
-        <div class="benefits-separator">
-            <span class="arrow-bounce">&#11015;&#65039;</span>
-            <span id="benefits-title">Что получаем при работе с такой схемой?</span>
-        </div>
-
-        <div class="benefits-grid">
-            <div class="benefit-card">
-                <div class="benefit-value" id="bv1">1 день</div>
-                <div class="benefit-was"   id="bw1">было: 5–9 дней</div>
-                <div class="benefit-label" id="bl1">Полный цикл<br>от заявки до активации</div>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-value" id="bv2">0</div>
-                <div class="benefit-was"   id="bw2">было: 4 ручных шага</div>
-                <div class="benefit-label" id="bl2">Бумажных документов<br>и служебных записок</div>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-value" id="bv3">85%</div>
-                <div class="benefit-was"   id="bw3">было: 0%</div>
-                <div class="benefit-label" id="bl3">Операций выполняются<br>автоматически</div>
-            </div>
-            <div class="benefit-card">
-                <div class="benefit-value" id="bv4">&#8734;</div>
-                <div class="benefit-was"   id="bw4">было: очередь к операционисту</div>
-                <div class="benefit-label" id="bl4">Масштабируемость<br>пакетной обработки</div>
-            </div>
-        </div>
-
-        <div class="back-row">
-            <a href="scheme.html" class="cta-btn-back" id="btn-back-as-is">&#8592; Текущий процесс (As Is)</a>
-            <a href="index.html"  class="cta-btn-back" id="btn-back-main">&#8592; На главную</a>
-        </div>
-
+<div class="scheme-container">
+    <div class="col blue">
+        <h3>Прямые продажи<br><small>Direct Sales</small></h3>
+        <div class="node">O1 Привлечение клиента</div>
+        <div class="node">O2 Подписание договора ЗПП</div>
+        <div class="node" style="margin-top: 40px;">Раздача карт</div>
     </div>
+    <div class="col blue">
+        <h3>РБ<br><small>Retail Business</small></h3>
+        <div class="node">O1 Привлечение клиента</div>
+        <div class="node">O2 Подписание договора ЗПП</div>
+        <div class="node" style="margin-top: 40px;">Раздача карт</div>
+    </div>
+    <div class="col green">
+        <h3>СОД<br><small>Operations Department</small></h3>
+        <div class="node">O3 Согласование условий ЗПП</div>
+        <div class="node">O4 Подготовка договора ЗПП</div>
+        <div class="node">O5 Прием списка сотрудников</div>
+        <div class="node">O6 Создание служебной записки</div>
+        <div class="node">O7 Открытие счетов</div>
+        <div class="node">O8 Передача Instant карт</div>
+    </div>
+    <div class="col yellow">
+        <h3>Головной банк<br><small>Head Office</small></h3>
+        <div class="node">O9 Изготовление Instant карт</div>
+        <div class="node">O10 Отправка карт в СОД</div>
+    </div>
+</div>
 
-    <script src="to-be.js"></script>
+<div class="benefits-section">
+    <h2>Что получаем? / Benefits</h2>
+    <div class="benefits-list">
+        <div class="item">Единый канал для взаимодействия<br><span>Unified communication channel</span></div>
+        <div class="item">Автоматизированный процесс<br><span>Automated process</span></div>
+    </div>
+</div>
+
+<div class="nav-footer">
+    <a href="scheme.html">← Текущий процесс (As Is)</a>
+    <a href="index.html">← На главную / Home</a>
+</div>
+
+<script src="to-be.js"></script>
 </body>
 </html>
