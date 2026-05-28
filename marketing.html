@@ -1,0 +1,222 @@
+```html
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marketing Research</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">← O!Bank</a>
+    <div class="nav-controls">
+      <button class="theme-btn" onclick="toggleTheme()">
+        <span class="theme-icon-dark">☀</span>
+        <span class="theme-icon-light">☾</span>
+      </button>
+      <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="ru">RU</button>
+        <button class="lang-btn" data-lang="en">EN</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<section class="section" id="marketing">
+  <div class="container">
+
+    <div class="section-label">
+      <span class="section-num">01</span>
+      <span class="section-name"
+        data-ru="Marketing Research"
+        data-en="Marketing Research">Marketing Research</span>
+    </div>
+
+    <div class="section-head">
+      <h2 class="section-title"
+        data-ru="Анализ рынка банковских услуг КР"
+        data-en="Kyrgyzstan Banking Market Analysis">
+        Анализ рынка банковских услуг КР
+      </h2>
+
+      <p class="section-desc"
+        data-ru="Сравнительный анализ ведущих банков по ключевым параметрам ЗПП."
+        data-en="Comparative analysis of leading banks by key payroll parameters.">
+        Сравнительный анализ ведущих банков по ключевым параметрам ЗПП.
+      </p>
+    </div>
+
+    <div class="filter-row">
+      <button class="filter-btn active" id="btn-all"
+        onclick="filterTable('all')"
+        data-ru="Все параметры"
+        data-en="All Parameters">Все параметры</button>
+
+      <button class="filter-btn green" id="btn-advantage"
+        onclick="filterTable('advantage')"
+        data-ru="✦ Преимущества"
+        data-en="✦ Advantages">✦ Преимущества</button>
+
+      <button class="filter-btn orange" id="btn-growth"
+        onclick="filterTable('growth')"
+        data-ru="↑ Зоны роста"
+        data-en="↑ Growth Areas">↑ Зоны роста</button>
+    </div>
+
+    <div class="summary-cards">
+      <div class="sum-card">
+        <div class="sum-card-icon">✦</div>
+        <div class="sum-card-num">8</div>
+        <div class="sum-card-label"
+          data-ru="лидерств О!Банка"
+          data-en="O!Bank leads">лидерств О!Банка</div>
+      </div>
+
+      <div class="sum-card orange">
+        <div class="sum-card-icon">↑</div>
+        <div class="sum-card-num">8</div>
+        <div class="sum-card-label"
+          data-ru="зон роста"
+          data-en="growth areas">зон роста</div>
+      </div>
+
+      <div class="sum-card blue">
+        <div class="sum-card-icon">⊙</div>
+        <div class="sum-card-num">5</div>
+        <div class="sum-card-label"
+          data-ru="банков в сравнении"
+          data-en="banks compared">банков в сравнении</div>
+      </div>
+
+      <div class="sum-card gray">
+        <div class="sum-card-icon">≡</div>
+        <div class="sum-card-num">16</div>
+        <div class="sum-card-label"
+          data-ru="параметров"
+          data-en="parameters">параметров</div>
+      </div>
+    </div>
+
+    <div class="table-wrap">
+      <table class="compare-table" id="compare-table">
+        <thead>
+          <tr>
+            <th data-ru="Параметр" data-en="Parameter">Параметр</th>
+            <th data-ru="Бакай Банк" data-en="Bakai Bank">Бакай Банк</th>
+            <th data-ru="ДемирБанк" data-en="DemirBank">ДемирБанк</th>
+            <th data-ru="МБанк" data-en="MBank">МБанк</th>
+            <th data-ru="Оптима Банк" data-en="Optima Bank">Оптима Банк</th>
+            <th data-ru="О!Банк" data-en="O!Bank">О!Банк</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+<tr data-type="advantage">
+<td data-ru="💳 Годовое обслуживание" data-en="💳 Annual Card Fee">💳 Годовое обслуживание</td>
+<td>200 сом/год</td>
+<td data-ru="Бесплатно" data-en="Free">Бесплатно</td>
+<td>500 сом/год</td>
+<td>500 сом/год</td>
+<td class="td-ob">Бесплатно ∞</td>
+</tr>
+
+<tr data-type="advantage">
+<td data-ru="🏧 Снятие в своих банкоматах" data-en="🏧 Own ATM Withdrawal">🏧 Снятие в своих банкоматах</td>
+<td>300 000</td>
+<td data-ru="Бесплатно" data-en="Free">Бесплатно</td>
+<td>100 000</td>
+<td>300 000</td>
+<td class="td-ob">Без лимита ∞</td>
+</tr>
+
+<tr data-type="advantage">
+<td data-ru="📩 SMS-оповещение" data-en="📩 SMS Notifications">📩 SMS-оповещение</td>
+<td>40–70</td>
+<td>70</td>
+<td>-</td>
+<td>60</td>
+<td class="td-ob">40</td>
+</tr>
+
+<tr data-type="advantage">
+<td data-ru="🌐 Валютная сеть" data-en="🌐 Correspondent Network">🌐 Валютная сеть</td>
+<td>8</td>
+<td>10</td>
+<td>7</td>
+<td>6</td>
+<td class="td-ob">13 ✦</td>
+</tr>
+
+<tr class="row-divider">
+<td colspan="6"
+data-ru="— Нейтральные параметры —"
+data-en="— Neutral Parameters —">
+— Нейтральные параметры —
+</td>
+</tr>
+
+<tr>
+<td data-ru="💳 Выпуск карты" data-en="💳 Card Issuance">💳 Выпуск карты</td>
+<td data-ru="Бесплатно" data-en="Free">Бесплатно</td>
+<td data-ru="Бесплатно" data-en="Free">Бесплатно</td>
+<td data-ru="Бесплатно" data-en="Free">Бесплатно</td>
+<td data-ru="Бесплатно" data-en="Free">Бесплатно</td>
+<td data-ru="Бесплатно" data-en="Free">Бесплатно</td>
+</tr>
+
+<tr class="row-divider">
+<td colspan="6"
+data-ru="— Зоны роста —"
+data-en="— Growth Areas —">
+— Зоны роста —
+</td>
+</tr>
+
+<tr>
+<td data-ru="🎁 Кэшбэк" data-en="🎁 Cashback">🎁 Кэшбэк</td>
+<td>5%</td>
+<td>50%</td>
+<td>20%</td>
+<td>15%</td>
+<td class="td-ob">1% ↑</td>
+</tr>
+
+<tr>
+<td data-ru="💰 Кредиты" data-en="💰 Loans">💰 Кредиты</td>
+<td>17%</td>
+<td>15.99%</td>
+<td>-</td>
+<td>-</td>
+<td class="td-ob">19% ↑</td>
+</tr>
+
+<tr>
+<td data-ru="💰 Депозиты" data-en="💰 Deposits">💰 Депозиты</td>
+<td>14%</td>
+<td>13.5%</td>
+<td>13%</td>
+<td>13%</td>
+<td class="td-ob">12.5% ↑</td>
+</tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <p class="data-note"
+      data-ru="⚠ Данные актуальны на апрель 2026 г."
+      data-en="⚠ Data актуально на April 2026">
+      ⚠ Данные актуальны на апрель 2026 г.
+    </p>
+
+  </div>
+</section>
+
+<script src="main.js"></script>
+</body>
+</html>
+```
