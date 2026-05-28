@@ -250,18 +250,14 @@ body.light-mode .hero { background: #0A0A0A !important; }
 body.light-mode .hero-title { color: #fff !important; }
 body.light-mode .hero-tag { background: transparent !important; }
 body.light-mode .hc { background: rgba(232,0,90,0.08); }
-/* Делаем стрелочки четкими и светящимися */
+/* Делаем пунктир четким, но благородным */
 .holo-svg path {
-    stroke-width: 2.5px; /* Немного потолще */
-    filter: drop-shadow(0 0 4px rgba(232, 0, 90, 0.8)) 
-            drop-shadow(0 0 8px rgba(232, 0, 90, 0.4));
+    stroke-width: 2px;
+    /* Используем цвет с легкой прозрачностью (0.6), он выглядит дороже */
+    stroke: rgba(232, 0, 90, 0.6);
+    stroke-dasharray: 6 4;
     stroke-linecap: round;
-    stroke-linejoin: round;
-}
-/* Делаем пунктирные линии заметными и четкими */
-.holo-svg path {
-    stroke-width: 2px;           /* Стало толще */
-    stroke: rgba(232, 0, 90, 1);  /* Убрали прозрачность, цвет стал плотным */
-    stroke-dasharray: 6 4;       /* Твой пунктир */
     animation: flowAnim 18s linear infinite;
+    /* Убираем лишние фильтры и тени, чтобы было строго */
+    filter: none;
 }
