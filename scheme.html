@@ -8,7 +8,6 @@
 </head>
 <body>
 
-    <!-- НАВИГАЦИЯ (ШАПКА) -->
     <header class="header">
         <div class="logo-zone">
             <span class="logo-dot"></span>
@@ -23,77 +22,48 @@
         </div>
     </header>
 
-    <!-- ОСНОВНОЙ КОНТЕЙНЕР INTERACTIVE GLASS-PANEL -->
     <div class="scheme-container">
         
-        <!-- ЛЕВАЯ ЗОНА: СХЕМЫ ПРОЦЕССОВ -->
         <div class="graph-area">
             
             <div id="current-section">
                 <div class="scheme-section-title current" id="title-as-is">🔴 Текущий процесс (As Is)</div>
                 
                 <div class="flowchart-wrapper" id="current-flowchart">
-                    
-                    <!-- Динамические неоновые стрелки (image_ae5be5.png) -->
-                    <svg class="graph-lines" id="current-svg-lines">
-                        <defs>
-                            <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                                <path d="M 0 1 L 10 5 L 0 9 z" fill="#ff0055" />
-                            </marker>
-                            <marker id="arrow-orange" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                                <path d="M 0 1 L 10 5 L 0 9 z" fill="#f97316" />
-                            </marker>
-                        </defs>
-                    </svg>
-
                     <div class="process-header-title" id="process-main-title">Процесс ЗПП в филиале</div>
 
                     <div class="process-grid">
                         
-                        <!-- Блок 1 -->
                         <div class="node-card grid-pos-1 active" data-node="O1" id="n1">
                             <span class="node-badge-dept">РБ, СОЮФЛ</span>
                             <div class="node-title">Привлечение</div>
                             <div class="glow-point p-right"></div>
                         </div>
-
-                        <!-- Блок 2 -->
-                        <div class="node-card grid-pos-2" data-node="O2" id="n2">
+                        <div class="css-line line-h L1-2"></div> <div class="node-card grid-pos-2" data-node="O2" id="n2">
                             <span class="node-badge-dept">РБ</span>
                             <div class="node-title">Подписание договора</div>
                             <div class="glow-point p-right"></div>
                         </div>
-
-                        <!-- Блок 3 -->
-                        <div class="node-card grid-pos-3" data-node="O3" id="n3">
+                        <div class="css-line line-h L2-4"></div> <div class="node-card grid-pos-3" data-node="O3" id="n3">
                             <span class="node-badge-dept">РБ</span>
                             <div class="node-title">Прием списка сотрудников и их документов</div>
                             <div class="glow-point p-right"></div>
                         </div>
-
-                        <!-- Блок 4 -->
-                        <div class="node-card grid-pos-4 node-warning" data-node="O4" id="n4">
+                        <div class="css-line line-h L3-4"></div> <div class="node-card grid-pos-4 node-warning" data-node="O4" id="n4">
                             <span class="node-badge-dept font-small">РБ, Отдел сопровождения карточных продуктов ГБ</span>
                             <div class="node-title">Создание служебной записки на заведение ЗПП</div>
                             <div class="glow-point p-right"></div>
                         </div>
-
-                        <!-- Блок 5 -->
-                        <div class="node-card grid-pos-5" data-node="O5" id="n5">
+                        <div class="css-line line-h L4-5"></div> <div class="node-card grid-pos-5" data-node="O5" id="n5">
                             <span class="node-badge-dept">СОЮФЛ</span>
                             <div class="node-title">Открытие карточных счетов</div>
                             <div class="glow-point p-right"></div>
                         </div>
-
-                        <!-- Блок 6 -->
-                        <div class="node-card grid-pos-6" data-node="O6" id="n6">
+                        <div class="css-line line-h L5-6"></div> <div class="node-card grid-pos-6" data-node="O6" id="n6">
                             <span class="node-badge-dept font-small">Отдел сопровождения карточных продуктов ГБ</span>
                             <div class="node-title">Изготовление именных карт и отправка в филиал</div>
-                            <div class="glow-point p-right"></div>
-                        </div>
-
-                        <!-- Блок 7 -->
-                        <div class="node-card grid-pos-7" data-node="O7" id="n7">
+                            <div class="glow-point p-down"></div> </div>
+                        <div class="css-line line-v L6-7"></div> <div class="node-card grid-pos-7" data-node="O7" id="n7">
                             <span class="node-badge-dept">РБ</span>
                             <div class="node-title">Передача карт организации</div>
                         </div>
@@ -118,7 +88,6 @@
 
         </div>
 
-        <!-- ПРАВАЯ ЗОНА: БОКОВАЯ ПАНЕЛЬ С ОПИСАНИЕМ ПРОБЛЕМ -->
         <div class="details-panel">
             <div class="panel-glass-content">
                 <div class="meta-zone">
@@ -129,8 +98,7 @@
                 <div class="pain-box">
                     <h4 id="panel-pain-title">🚨 Описание проблем</h4>
                     <ul class="pain-list" id="node-pain-list">
-                        <!-- Наполняется из JS -->
-                    </ul>
+                        </ul>
                 </div>
 
                 <div class="metrics-list">
@@ -144,11 +112,9 @@
 
     </div>
 
-    <!-- СКРИПТ УПРАВЛЕНИЯ, СТРЕЛОК И ЛОКАЛИЗАЦИИ -->
     <script>
         let currentLang = 'ru';
 
-        // Языковая матрица интерфейса
         const uiLang = {
             ru: {
                 toMain: "← На главную",
@@ -192,70 +158,6 @@
             }
         };
 
-        // Отрисовка стрелок между блоками
-        function drawArrows() {
-            const svg = document.getElementById('current-svg-lines');
-            // Удаляем старые линии, если они были
-            const paths = svg.querySelectorAll('path:not(#arrow):not(#arrow-orange)');
-            paths.forEach(p => p.remove());
-
-            // Пары элементов для связывания (откуда -> куда)
-            const connections = [
-                { from: 'n1', to: 'n2' },
-                { from: 'n2', to: 'n4' },
-                { from: 'n3', to: 'n4' },
-                { from: 'n4', to: 'n5' },
-                { from: 'n5', to: 'n6' },
-                { from: 'n6', to: 'n7' }
-            ];
-
-            const wrapperRect = document.getElementById('current-flowchart').getBoundingClientRect();
-
-            connections.forEach(conn => {
-                const fEl = document.getElementById(conn.from);
-                const tEl = document.getElementById(conn.to);
-                if (!fEl || !tEl) return;
-
-                const fRect = fEl.getBoundingClientRect();
-                const tRect = tEl.getBoundingClientRect();
-
-                // Точки относительно контейнера-подложки
-                let x1, y1, x2, y2;
-
-                if (fRect.right < tRect.left) {
-                    // Стрелка вправо
-                    x1 = fRect.right - wrapperRect.left;
-                    y1 = (fRect.top + fRect.bottom) / 2 - wrapperRect.top;
-                    x2 = tRect.left - wrapperRect.left;
-                    y2 = (tRect.top + tRect.bottom) / 2 - wrapperRect.top;
-                } else {
-                    // Стрелка идет сверху вниз или по сложной траектории
-                    x1 = (fRect.left + fRect.right) / 2 - wrapperRect.left;
-                    y1 = fRect.bottom - wrapperRect.top;
-                    x2 = tRect.left - wrapperRect.left;
-                    y2 = (tRect.top + tRect.bottom) / 2 - wrapperRect.top;
-                }
-
-                const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-                
-                // Если стрелка идет на искосок (как от Блока 2 или 3 к 4), делаем красивый излом
-                if (Math.abs(y1 - y2) > 10 && conn.to === 'n4') {
-                    path.setAttribute('d', `M ${x1},${y1} L ${x2 - 15},${y1} L ${x2 - 15},${y2} L ${x2},${y2}`);
-                } else {
-                    path.setAttribute('d', `M ${x1},${y1} L ${x2},${y2}`);
-                }
-
-                const isOrange = fEl.classList.contains('node-warning') || tEl.classList.contains('node-warning');
-                path.setAttribute('stroke', isOrange ? '#f97316' : '#ff0055');
-                path.setAttribute('stroke-width', '2');
-                path.setAttribute('fill', 'none');
-                path.setAttribute('marker-end', isOrange ? 'url(#arrow-orange)' : 'url(#arrow)');
-                
-                svg.appendChild(path);
-            });
-        }
-
-        // Обновление контента боковой панели
         function updatePanel(nodeId) {
             const langData = uiLang[currentLang];
             const data = langData.nodes[nodeId];
@@ -266,7 +168,6 @@
                 document.getElementById('node-title').innerText = data.title;
                 document.getElementById('node-owner').innerText = data.owner;
 
-                // Заполнение списка проблем из единого ТЗ
                 const listContainer = document.getElementById('node-pain-list');
                 listContainer.innerHTML = '';
                 langData.pains.forEach(painText => {
@@ -284,16 +185,12 @@
             }
         }
 
-        // Функция смены языка
         function changeLang(lang) {
             currentLang = lang;
-            
             document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
             document.getElementById(`btn-${lang}`).classList.add('active');
 
             const data = uiLang[lang];
-            
-            // Обновляем статические тексты
             document.getElementById('txt-to-main').innerText = data.toMain;
             document.getElementById('title-as-is').innerText = data.asIs;
             document.getElementById('title-to-be').innerText = data.toBe;
@@ -303,7 +200,6 @@
             document.getElementById('panel-pain-title').innerText = data.painTitle;
             document.getElementById('lbl-owner').innerText = data.lblOwner;
 
-            // Обновляем тексты в самих карточках графа
             Object.keys(data.nodes).forEach(key => {
                 const card = document.querySelector(`[data-node="${key}"]`);
                 if (card) {
@@ -312,17 +208,12 @@
                 }
             });
 
-            // Обновляем текущую активную панель
             const activeCard = document.querySelector('.node-card.active');
             if (activeCard) {
                 updatePanel(activeCard.getAttribute('data-node'));
             }
-
-            // Перестраиваем стрелки, так как размеры блоков могли микроскопически измениться
-            setTimeout(drawArrows, 50);
         }
 
-        // Навешивание событий клика на карты
         const cards = document.querySelectorAll('.node-card');
         cards.forEach(card => {
             card.addEventListener('click', () => {
@@ -332,10 +223,8 @@
             });
         });
 
-        // Инициализация при загрузке
         window.addEventListener('load', () => {
             changeLang('ru');
-            window.addEventListener('resize', drawArrows);
         });
     </script>
 </body>
