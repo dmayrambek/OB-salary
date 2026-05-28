@@ -1,569 +1,79 @@
 @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&family=Inter:wght@300;400;500;600&display=swap');
 
-/* ==========================================================================
-   🌌 БАЗА И ТЁМНАЯ ПАЛИТРА O!BANK
-   ========================================================================== */
-body {
-    background-color: #0A0A0A;
-    font-family: 'Inter', sans-serif;
-    color: #e0e0e0;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
+body { background-color: #0A0A0A; font-family: 'Inter', sans-serif; color: #e0e0e0; margin: 0; padding: 0; }
 
-.header {
-    height: 56px;
-    background: rgba(10, 10, 10, 0.88);
-    backdrop-filter: blur(16px);
-    border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 40px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-}
-
-.logo-zone {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.logo-dot {
-    width: 8px;
-    height: 8px;
-    background-color: #E8005A;
-    border-radius: 50%;
-    box-shadow: 0 0 10px #E8005A;
-}
-
-.logo-text {
-    font-family: 'Unbounded', sans-serif;
-    font-weight: 700;
-    font-size: 1.1rem;
-    letter-spacing: 0.5px;
-    color: #E8005A;
-}
-
-.nav-right {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.lang-switcher {
-    display: flex;
-    background: rgba(255, 255, 255, 0.04);
-    border-radius: 6px;
-    padding: 2px;
-    border: 0.5px solid rgba(255, 255, 255, 0.14);
-    overflow: hidden;
-}
-
-.lang-btn {
-    background: transparent;
-    border: none;
-    color: #888;
-    padding: 5px 10px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    font-family: 'Inter', sans-serif;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: all 0.2s ease;
-    letter-spacing: 0.05em;
-}
-
-.lang-btn:hover { color: #fff; }
-
-.lang-btn.active {
-    background: #E8005A;
-    color: #ffffff;
-}
-
-.back-btn {
-    color: #888;
-    text-decoration: none;
-    font-size: 0.85rem;
-    transition: color 0.2s ease;
-}
-
-.back-btn:hover { color: #E8005A; }
-
-/* ==========================================================================
-   📐 СЕТКА СТРАНИЦЫ
-   ========================================================================== */
-.scheme-container {
-    display: grid;
-    grid-template-columns: 1fr 400px;
-    gap: 30px;
-    padding: 88px 30px 40px 30px;
-    min-height: 100vh;
-    box-sizing: border-box;
-}
-
-.graph-area {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-.scheme-section-title {
-    font-family: 'Unbounded', sans-serif;
-    font-size: 1rem;
-    margin-bottom: 20px;
-    font-weight: 600;
-}
-.scheme-section-title.current { color: #f97316; }
-.scheme-section-title.future  { color: #10b981; }
-
-/* ==========================================================================
-   🔮 СТЕКЛЯННЫЙ КОРПУС СХЕМЫ
-   ========================================================================== */
+/* Контейнер */
 .flowchart-wrapper {
     position: relative;
     background: rgba(255, 255, 255, 0.01);
     backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
     border: 0.5px solid rgba(255, 255, 255, 0.06);
     border-radius: 20px;
-    padding: 40px;
-    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+    padding: 60px;
+    margin: 40px auto;
+    max-width: 1300px;
 }
 
-.process-header-title {
-    font-family: 'Unbounded', sans-serif;
-    text-align: center;
-    font-size: 1.2rem;
-    color: #ffffff;
-    margin-bottom: 40px;
-}
-
+/* Сетка (возвращена к оригинальной структуре) */
 .process-grid {
     display: grid;
-    grid-template-columns: 1fr 40px 1fr 40px 1fr 40px 1fr 40px 1fr;
-    grid-template-rows: repeat(2, 110px);
+    grid-template-columns: 220px 40px 220px 40px 220px 40px 220px 40px 220px;
+    grid-template-rows: repeat(2, 140px);
     row-gap: 50px;
-    position: relative;
+    justify-content: center;
     align-items: center;
-    z-index: 5;
 }
 
-/* ==========================================================================
-   🎴 КАРТОЧКИ УЗЛОВ
-   ========================================================================== */
+/* Карточки (увеличены размеры) */
 .node-card {
     position: relative;
     background: rgba(255, 255, 255, 0.02);
     border: 0.5px solid rgba(255, 255, 255, 0.08);
     border-radius: 12px;
-    padding: 14px;
+    padding: 20px;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    height: 100%;
+    justify-content: center;
+    transition: 0.3s;
     cursor: pointer;
-    box-sizing: border-box;
-    transition: all 0.3s ease;
-    z-index: 10;
 }
 
+.node-card:hover { border-color: #E8005A; transform: translateY(-2px); }
+
+.node-title { font-size: 0.9rem; font-weight: 500; color: #fff; line-height: 1.4; }
+.node-badge-dept { font-size: 0.7rem; color: #E8005A; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; display: block; }
+
+/* Позиции */
 .grid-pos-1 { grid-column: 1; grid-row: 1; }
 .grid-pos-2 { grid-column: 3; grid-row: 1; }
 .grid-pos-3 { grid-column: 3; grid-row: 2; }
-.grid-pos-4 { grid-column: 5; grid-row: 1 / span 2; height: 100%; }
+.grid-pos-4 { grid-column: 5; grid-row: 1 / span 2; }
 .grid-pos-5 { grid-column: 7; grid-row: 1; }
 .grid-pos-6 { grid-column: 9; grid-row: 1; }
 .grid-pos-7 { grid-column: 9; grid-row: 2; }
 
-.node-card:hover {
-    background: rgba(255, 255, 255, 0.04);
-    border-color: rgba(232, 0, 90, 0.35);
-    transform: translateY(-2px);
-}
+/* Стрелки и Линии */
+.css-line { background: #E8005A; position: relative; }
+.line-h { height: 2px; width: 100%; }
+.line-v { width: 2px; height: 50px; justify-self: center; }
 
-.node-card.active {
-    background: rgba(232, 0, 90, 0.06);
-    border-color: #E8005A;
-    box-shadow: 0 0 25px rgba(232, 0, 90, 0.25);
-}
-
-.node-card.node-warning {
-    border-color: rgba(249, 115, 22, 0.35);
-}
-.node-card.node-warning.active {
-    background: rgba(249, 115, 22, 0.07);
-    border-color: #f97316;
-    box-shadow: 0 0 25px rgba(249, 115, 22, 0.25);
-}
-
-.node-badge-dept {
-    font-size: 0.65rem;
-    font-weight: 700;
-    color: #E8005A;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 8px;
-    display: block;
-    line-height: 1.2;
-}
-.node-warning .node-badge-dept { color: #f97316; }
-.font-small { font-size: 0.6rem; }
-
-.node-title {
-    font-size: 0.78rem;
-    font-weight: 500;
-    line-height: 1.35;
-    color: #e0e0e0;
-}
-
-.glow-point {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: #E8005A;
-    border-radius: 50%;
-    box-shadow: 0 0 8px #E8005A;
-    z-index: 15;
-}
-.node-warning .glow-point { background: #f97316; box-shadow: 0 0 8px #f97316; }
-.p-right { right: -2px; top: 50%; transform: translateY(-50%); }
-.p-down  { bottom: -2px; left: 50%; transform: translateX(-50%); }
-
-/* ==========================================================================
-   ⛓️ CSS СТРЕЛКИ
-   ========================================================================== */
-.css-line {
-    position: relative;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.line-h {
-    height: 2px;
-    background: #E8005A;
-    box-shadow: 0 0 8px rgba(232, 0, 90, 0.4);
-    width: 100%;
-}
-.line-h::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: -4px;
-    width: 0;
-    height: 0;
-    border-left: 7px solid #E8005A;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-}
-
-.line-v {
-    width: 2px;
-    background: #E8005A;
-    box-shadow: 0 0 8px rgba(232, 0, 90, 0.4);
-    height: 50px;
-    justify-self: center;
-}
-.line-v::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: -4px;
-    width: 0;
-    height: 0;
-    border-top: 7px solid #E8005A;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-}
-
+/* Расположение линий (соответствует сетке) */
 .L1-2 { grid-column: 2; grid-row: 1; }
 .L2-4 { grid-column: 4; grid-row: 1; }
 .L3-4 { grid-column: 4; grid-row: 2; }
-
-.L4-5 {
-    grid-column: 6; grid-row: 1;
-    background: #f97316;
-    box-shadow: 0 0 8px rgba(249, 115, 22, 0.4);
-}
-.L4-5::after { border-left-color: #f97316; }
-
+.L4-5 { grid-column: 6; grid-row: 1; background: #f97316; }
 .L5-6 { grid-column: 8; grid-row: 1; }
+.L6-7 { grid-column: 9; grid-row: 1 / 3; align-self: center; }
 
-/* ✅ ИСПРАВЛЕННАЯ СТРЕЛКА — от узла 6 вниз к узлу 7 */
-.L6-7 {
-    grid-column: 9;
-    grid-row: 1 / 3;
-    height: 50px;
-    align-self: center;
-    justify-self: center;
-}
-
-/* ==========================================================================
-   🔮 БОКОВАЯ ПАНЕЛЬ
-   ========================================================================== */
-.details-panel {
-    position: sticky;
-    top: 86px;
-    height: calc(100vh - 120px);
-}
-
-.panel-glass-content {
-    height: 100%;
-    background: rgba(255, 255, 255, 0.01);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(30px);
-    border: 0.5px solid rgba(255, 255, 255, 0.06);
-    border-radius: 20px;
-    padding: 28px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
-    overflow-y: auto;
-}
-
-.meta-zone {
-    border-bottom: 0.5px solid rgba(255, 255, 255, 0.06);
-    padding-bottom: 16px;
-}
-
-.meta-dept {
-    font-family: 'Unbounded', sans-serif;
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    color: #E8005A;
-    font-weight: 700;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
-}
-
-.meta-title {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #ffffff;
-    line-height: 1.3;
-}
-
-.pain-box {
-    background: rgba(249, 115, 22, 0.02);
-    border: 0.5px solid rgba(249, 115, 22, 0.12);
-    border-radius: 12px;
-    padding: 16px;
-}
-
-.pain-box h4 {
-    font-size: 0.8rem;
-    color: #f97316;
-    margin: 0 0 12px 0;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.pain-list {
-    margin: 0;
-    padding-left: 18px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.pain-list li {
-    font-size: 0.85rem;
-    color: #bbb;
-    line-height: 1.4;
-}
-
-.metrics-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.metric-item {
-    background: rgba(255, 255, 255, 0.02);
-    border: 0.5px solid rgba(255, 255, 255, 0.06);
-    border-radius: 10px;
-    padding: 12px 16px;
-}
-
-.metric-label {
-    font-size: 0.65rem;
-    color: #555;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 4px;
-}
-
-.metric-value {
-    font-size: 0.85rem;
-    color: #e0e0e0;
-    font-weight: 500;
-}
-
-.scheme-separator {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    margin: 5px 0;
-    color: rgba(255, 255, 255, 0.2);
-    font-family: 'Unbounded', sans-serif;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    text-align: center;
-}
-
-.arrow-down-anim {
-    font-size: 1.2rem;
-    color: #E8005A;
-    animation: bounce 2s infinite;
-}
-
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-6px); }
-    60% { transform: translateY(-3px); }
-}
-
-.placeholder-wrapper {
-    background: rgba(16, 185, 129, 0.01);
-    border: 0.5px dashed rgba(16, 185, 129, 0.15);
-}
-
-.future-placeholder {
-    padding: 24px;
-    text-align: center;
-    color: rgba(255, 255, 255, 0.25);
-    font-size: 0.8rem;
-}
-
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #111; }
-::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: #444; }
-.main-container {
-    padding: 100px 40px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.vertical-bridge {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 40px 0;
-    color: #fff;
-    font-family: 'Unbounded', sans-serif;
-    font-size: 0.9rem;
-}
-
+/* Оформление проблем (отдельный блок) */
 .problems-container {
     background: rgba(255, 255, 255, 0.03);
     border: 0.5px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
     padding: 40px;
-    margin-bottom: 40px;
+    margin: 40px auto;
+    max-width: 1300px;
+    color: #bbb;
 }
-
-.to-be-bridge {
-    text-align: center;
-}
-
-.to-be-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 15px;
-    padding: 20px 40px;
-    background: #10b981;
-    color: white;
-    text-decoration: none;
-    border-radius: 12px;
-    font-weight: 700;
-    font-family: 'Unbounded', sans-serif;
-    transition: transform 0.2s;
-}
-
-.to-be-link:hover { transform: scale(1.05); }
-/* --- УВЕЛИЧЕНИЕ СХЕМЫ --- */
-
-.flowchart-wrapper {
-    max-width: 1400px !important;
-    padding: 60px 40px !important;
-}
-
-.process-grid {
-    grid-template-columns: repeat(7, minmax(170px, 1fr)) !important;
-    gap: 30px !important;
-}
-
-.node-card {
-    min-height: 180px !important;
-    padding: 30px 20px !important;
-}
-
-.node-title {
-    font-size: 16px !important;
-    line-height: 1.4 !important;
-}
-
-/* --- ОФОРМЛЕНИЕ ПРОБЛЕМ --- */
-
-.problems-container {
-    margin-top: 80px !important;
-    padding: 50px !important;
-    border: 1px solid var(--border) !important;
-    border-radius: 20px !important;
-    background: var(--dark2) !important;
-}
-
-.problems-intro h3 {
-    color: #f97316 !important;
-    margin-bottom: 20px !important;
-    font-size: 22px !important;
-}
-
-.problems-intro ul {
-    list-style: none !important;
-    color: #bbb !important;
-    font-size: 16px !important;
-}
-
-.problems-intro li {
-    margin-bottom: 15px !important;
-    padding-left: 25px !important;
-    position: relative !important;
-}
-
-.problems-intro li::before {
-    content: '•' !important;
-    position: absolute !important;
-    left: 0 !important;
-    color: var(--pink) !important;
-    font-size: 20px !important;
-}
-/* Увеличиваем общий холст, чтобы карточкам было где развернуться */
-.flowchart-wrapper {
-    width: 100% !important;
-    max-width: 1200px !important;
-    min-height: 500px !important;
-    margin: 0 auto !important;
-}
-
-/* Увеличиваем размер самих карточек */
-.node-card {
-    width: 220px !important; /* Было меньше, теперь шире */
-    min-height: 120px !important;
-    padding: 20px !important;
-}
-
-/* Если у тебя есть классы с позициями (типа .grid-pos-1), 
-   их координаты (top/left) нужно править в HTML, 
-   но давай попробуем сначала просто увеличить контейнер. */
+.problems-container h3 { color: #f97316; margin-bottom: 20px; }
