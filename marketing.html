@@ -1,85 +1,85 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Marketing Research</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketing Research</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <nav class="nav" id="nav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">← O!Bank</a>
-    <div class="nav-controls">
-      <button class="theme-btn" onclick="toggleTheme()">
-        <span class="theme-icon-dark">☀</span>
-        <span class="theme-icon-light">☾</span>
-      </button>
-      <div class="lang-toggle">
-        <button class="lang-btn active" data-lang="ru">RU</button>
-        <button class="lang-btn" data-lang="en">EN</button>
-      </div>
-    </div>
-  </div>
+<div class="nav-inner">
+<a href="index.html" class="nav-logo">← O!Bank</a>
+<div class="nav-controls">
+<button class="theme-btn" onclick="toggleTheme()">
+<span class="theme-icon-dark">☀</span>
+<span class="theme-icon-light">☾</span>
+</button>
+<div class="lang-toggle">
+<button class="lang-btn active" data-lang="ru">RU</button>
+<button class="lang-btn" data-lang="en">EN</button>
+</div>
+</div>
+</div>
 </nav>
 
 <section class="section" id="marketing">
-  <div class="container">
+<div class="container">
 
-    <div class="section-label">
-      <span class="section-num">01</span>
-      <span class="section-name" data-ru="Marketing Research" data-en="Marketing Research">Marketing Research</span>
-    </div>
+<div class="section-label">
+<span class="section-num">01</span>
+<span class="section-name" data-ru="Marketing Research" data-en="Marketing Research">Marketing Research</span>
+</div>
 
-    <div class="section-head">
-      <h2 class="section-title" data-ru="Анализ рынка банковских услуг КР" data-en="Kyrgyzstan Banking Market Analysis">
-        Анализ рынка банковских услуг КР
-      </h2>
-      <p class="section-desc" data-ru="Сравнительный анализ ведущих банков по ключевым параметрам ЗПП." data-en="Comparative analysis of leading banks by key payroll parameters.">
-        Сравнительный анализ ведущих банков по ключевым параметрам ЗПП.
-      </p>
-    </div>
+<div class="section-head">
+<h2 class="section-title" data-ru="Анализ рынка банковских услуг КР" data-en="Kyrgyzstan Banking Market Analysis">
+Анализ рынка банковских услуг КР
+</h2>
+<p class="section-desc" data-ru="Сравнительный анализ ведущих банков по ключевым параметрам ЗПП." data-en="Comparative analysis of leading banks by key payroll parameters.">
+Сравнительный анализ ведущих банков по ключевым параметрам ЗПП.
+</p>
+</div>
 
-    <div class="filter-row">
-      <button class="filter-btn active" id="btn-all" onclick="filterTable('all')" data-ru="Все параметры" data-en="All Parameters">Все параметры</button>
-      <button class="filter-btn green" id="btn-advantage" onclick="filterTable('advantage')" data-ru="✦ Преимущества" data-en="✦ Advantages">✦ Преимущества</button>
-      <button class="filter-btn orange" id="btn-growth" onclick="filterTable('growth')" data-ru="↑ Зоны роста" data-en="↑ Growth Areas">↑ Зоны роста</button>
-    </div>
+<div class="filter-row">
+<button class="filter-btn active" id="btn-all" onclick="filterTable('all')" data-ru="Все параметры" data-en="All Parameters">Все параметры</button>
+<button class="filter-btn green" id="btn-advantage" onclick="filterTable('advantage')" data-ru="✦ Преимущества" data-en="✦ Advantages">✦ Преимущества</button>
+<button class="filter-btn orange" id="btn-growth" onclick="filterTable('growth')" data-ru="↑ Зоны роста" data-en="↑ Growth Areas">↑ Зоны роста</button>
+</div>
 
-    <div class="summary-cards">
-      <div class="sum-card"><div class="sum-card-icon">✦</div><div class="sum-card-num">8</div><div class="sum-card-label">лидерств О!Банка</div></div>
-      <div class="sum-card orange"><div class="sum-card-icon">↑</div><div class="sum-card-num">8</div><div class="sum-card-label">зон роста</div></div>
-      <div class="sum-card blue"><div class="sum-card-icon">⊙</div><div class="sum-card-num">5</div><div class="sum-card-label">банков в сравнении</div></div>
-      <div class="sum-card gray"><div class="sum-card-icon">≡</div><div class="sum-card-num">16</div><div class="sum-card-label">параметров</div></div>
-    </div>
+<div class="summary-cards">
+<div class="sum-card"><div class="sum-card-icon">✦</div><div class="sum-card-num">8</div><div class="sum-card-label">лидерств О!Банка</div></div>
+<div class="sum-card orange"><div class="sum-card-icon">↑</div><div class="sum-card-num">8</div><div class="sum-card-label">зон роста</div></div>
+<div class="sum-card blue"><div class="sum-card-icon">⊙</div><div class="sum-card-num">5</div><div class="sum-card-label">банков в сравнении</div></div>
+<div class="sum-card gray"><div class="sum-card-icon">≡</div><div class="sum-card-num">16</div><div class="sum-card-label">параметров</div></div>
+</div>
 
-    <div class="table-wrap">
-      <table class="compare-table" id="compare-table">
-        <thead>
-          <tr>
-            <th>Параметр</th>
-            <th>Бакай</th>
-            <th>Демир</th>
-            <th>МБанк</th>
-            <th>Оптима</th>
-            <th>О!Банк</th>
-          </tr>
-        </thead>
-        <tbody>
-  <tr data-type="advantage">
+<div class="table-wrap">
+<table class="compare-table" id="compare-table">
+<thead>
+<tr>
+<th class="th-param">Параметр</th>
+<th>Бакай</th>
+<th>Демир</th>
+<th>МБанк</th>
+<th>Оптима</th>
+<th>О!Банк</th>
+</tr>
+</thead>
+<tbody>
+<tr data-type="advantage">
 <td>💳 Годовое обслуживание</td>
 <td>200 сом/год</td>
-<td>Бесплатно ✓</td>
+<td>Бесплатно (осн.)</td>
 <td>500 сом/год</td>
 <td>500 сом/год</td>
-<td class="td-ob cell-best">Бесплатно ∞</td>
+<td class="td-ob cell-best">Бесплатно навсегда ∞</td>
 </tr>
 
 <tr data-type="advantage">
 <td>🏧 Снятие</td>
 <td>300 000</td>
-<td>Бесплатно ✓</td>
+<td>Бесплатно</td>
 <td>100 000</td>
 <td>300 000</td>
 <td class="td-ob cell-best">Без лимита ∞</td>
@@ -119,7 +119,6 @@
 <td>15%</td>
 <td class="td-ob cell-weak">1% ↑</td>
 </tr>
-
 <tr>
 <td>💰 Кредиты</td>
 <td>17%</td>
@@ -128,6 +127,7 @@
 <td>-</td>
 <td class="td-ob cell-weak">19% ↑</td>
 </tr>
+
 <tr>
 <td>💰 Депозиты</td>
 <td class="cell-best">14% ✓</td>
@@ -136,15 +136,14 @@
 <td>13%</td>
 <td class="td-ob cell-weak">12.5% ↑</td>
 </tr>
-        </tbody>
-      </table>
-    </div>
 
-    <p class="data-note">
-      ⚠ Данные актуальны на апрель 2026 г.
-    </p>
+</tbody>
+</table>
+</div>
 
-  </div>
+<p class="data-note">⚠ Данные актуальны на апрель 2026 г.</p>
+
+</div>
 </section>
 
 <script src="main.js"></script>
