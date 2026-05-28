@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Unbounded:wght@600;700&display=swap');
 
 /* ==========================================================================
-   🌌 БАЗА И ФИРМЕННАЯ ТЕМНАЯ ПАЛИТРА O!BANK (Из image_ae48fe.png)
+   🌌 БАЗА И ФИРМЕННАЯ ТЕМНАЯ ПАЛИТРА O!BANK (Из image_ae5366.png)
    ========================================================================== */
 body {
-    background-color: #0b0813; /* Глубокий благородный темный фон O!Bank */
+    background-color: #0b0813;
     font-family: 'Plus Jakarta Sans', sans-serif;
     color: #f1f5f9;
     margin: 0;
@@ -12,7 +12,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Шапка сайта в стиле главной страницы */
 .header {
     height: 64px;
     background: rgba(11, 8, 19, 0.8);
@@ -38,7 +37,7 @@ body {
 .logo-dot {
     width: 8px;
     height: 8px;
-    background-color: #ff0055; /* Фирменный малиновый неон */
+    background-color: #ff0055;
     border-radius: 50%;
     box-shadow: 0 0 10px #ff0055;
 }
@@ -48,12 +47,6 @@ body {
     font-weight: 700;
     font-size: 1.1rem;
     letter-spacing: 0.5px;
-}
-
-.logo-sub {
-    font-size: 0.75rem;
-    color: #ff0055;
-    font-weight: 400;
 }
 
 .nav-right {
@@ -79,6 +72,7 @@ body {
     font-weight: 600;
     cursor: pointer;
     border-radius: 6px;
+    transition: all 0.2s;
 }
 
 .lang-btn.active {
@@ -98,11 +92,11 @@ body {
 }
 
 /* ==========================================================================
-   📐 СЕТКА ДВУХПАНЕЛЬНОГО ИНТЕРФЕЙСА (Интегрированное описание)
+   📐 СЕТКА СТРАНИЦЫ
    ========================================================================== */
 .scheme-container {
     display: grid;
-    grid-template-columns: 1fr 400px; /* Левая часть под схемы, правая — жестко описание */
+    grid-template-columns: 1fr 400px;
     gap: 30px;
     padding: 100px 30px 40px 30px;
     min-height: 100vh;
@@ -112,7 +106,7 @@ body {
 .graph-area {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 30px;
 }
 
 .scheme-section-title {
@@ -125,7 +119,7 @@ body {
 .scheme-section-title.future { color: #10b981; }
 
 /* ==========================================================================
-   🔮 СТЕКЛЯННЫЙ КОРПУС СХЕМЫ (Glassmorphism из референса)
+   🔮 СТЕКЛЯННЫЙ КОРПУС СХЕМЫ (Glassmorphism)
    ========================================================================== */
 .flowchart-wrapper {
     position: relative;
@@ -147,18 +141,18 @@ body {
     margin-bottom: 40px;
 }
 
-/* Кастомная сетка для точного воспроизведения кубиков из image_ae4862.png */
+/* Сетка блоков 1-в-1 по ТЗ */
 .process-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(2, 110px);
-    gap: 40px 25px;
+    gap: 40px 35px;
     position: relative;
     z-index: 5;
 }
 
 /* ==========================================================================
-   🎴 СТЕКЛЯННЫЕ СВЕТЯЩИЕСЯ КАРТОЧКИ УЗЛОВ
+   🎴 СТЕКЛЯННЫЕ КАРТОЧКИ УЗЛОВ
    ========================================================================== */
 .node-card {
     position: relative;
@@ -168,20 +162,19 @@ body {
     padding: 14px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     cursor: pointer;
     box-sizing: border-box;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Позиционирование элементов точь-в-точь по вашей схеме */
 .grid-pos-1 { grid-column: 1; grid-row: 1; }
 .grid-pos-2 { grid-column: 2; grid-row: 1; }
-.grid-pos-3 { grid-column: 2; grid-row: 2; } /* Четко под блоком 2 */
-.grid-pos-4 { grid-column: 3; grid-row: 1 / span 2; height: 100%; } /* Высокий блок */
+.grid-pos-3 { grid-column: 2; grid-row: 2; } 
+.grid-pos-4 { grid-column: 3; grid-row: 1 / span 2; height: 100%; } 
 .grid-pos-5 { grid-column: 4; grid-row: 1; }
 .grid-pos-6 { grid-column: 5; grid-row: 1; }
-.grid-pos-7 { grid-column: 5; grid-row: 2; } /* Передача карт снизу */
+.grid-pos-7 { grid-column: 5; grid-row: 2; }
 
 .node-card:hover {
     background: rgba(255, 255, 255, 0.05);
@@ -189,40 +182,33 @@ body {
     transform: translateY(-2px);
 }
 
-/* Активное состояние (Фирменный стиль O!Bank - Малиновый неон из референса) */
 .node-card.active {
     background: rgba(255, 0, 85, 0.06);
     border-color: #ff0055;
-    box-shadow: 0 0 25px rgba(255, 0, 85, 0.3), inset 0 0 10px rgba(255, 0, 85, 0.15);
+    box-shadow: 0 0 25px rgba(255, 0, 85, 0.3);
 }
 
-/* Оранжевый акцент для блока со служебной запиской */
 .node-card.node-warning {
     border-color: rgba(249, 115, 22, 0.4);
 }
 .node-card.node-warning.active {
     background: rgba(249, 115, 22, 0.08);
     border-color: #f97316;
-    box-shadow: 0 0 25px rgba(249, 115, 22, 0.3), inset 0 0 10px rgba(249, 115, 22, 0.15);
+    box-shadow: 0 0 25px rgba(249, 115, 22, 0.3);
 }
 
-/* Текстовки внутри карточек */
 .node-badge-dept {
     font-size: 0.65rem;
     font-weight: 700;
     color: #ff0055;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
     display: block;
     line-height: 1.2;
 }
-.node-warning .node-badge-dept {
-    color: #f97316;
-}
-.font-small {
-    font-size: 0.6rem;
-}
+.node-warning .node-badge-dept { color: #f97316; }
+.font-small { font-size: 0.6rem; }
 
 .node-title {
     font-size: 0.78rem;
@@ -231,7 +217,7 @@ body {
     color: #e2e8f0;
 }
 
-/* Свечения на гранях как в референсе image_ae44a0.png */
+/* Свечения на гранях */
 .glow-point {
     position: absolute;
     width: 4px;
@@ -241,11 +227,8 @@ body {
     box-shadow: 0 0 8px #ff0055;
 }
 .node-warning .glow-point { background: #f97316; box-shadow: 0 0 8px #f97316;}
-
 .p-right { right: -2px; top: 50%; transform: translateY(-50%); }
-.p-bottom { bottom: -2px; left: 50%; transform: translateX(-50%); }
 
-/* Static Lines Simulation */
 .graph-lines {
     position: absolute;
     inset: 0;
@@ -256,7 +239,7 @@ body {
 }
 
 /* ==========================================================================
-   🔮 ИНТЕГРИРОВАННАЯ БОКОВАЯ ПАНЕЛЬ ОПИСАНИЯ ПРОБЛЕМ
+   🔮 БОКОВАЯ ПАНЕЛЬ
    ========================================================================== */
 .details-panel {
     position: sticky;
@@ -302,10 +285,9 @@ body {
     line-height: 1.3;
 }
 
-/* Блок описания самой проблемы */
 .pain-box {
-    background: rgba(249, 115, 22, 0.03);
-    border: 1px solid rgba(249, 115, 22, 0.12);
+    background: rgba(249, 115, 22, 0.02);
+    border: 1px solid rgba(249, 115, 22, 0.1);
     border-radius: 12px;
     padding: 16px;
 }
@@ -313,20 +295,27 @@ body {
 .pain-box h4 {
     font-size: 0.8rem;
     color: #f97316;
-    margin: 0 0 8px 0;
+    margin: 0 0 12px 0;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
 
-.pain-box p {
-    font-size: 0.82rem;
-    color: #94a3b8;
-    line-height: 1.5;
+/* Списковое представление для проблем по ТЗ */
+.pain-list {
     margin: 0;
+    padding-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
-/* Списковые метрики */
+.pain-list li {
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    line-height: 1.4;
+}
+
 .metrics-list {
     display: flex;
     flex-direction: column;
@@ -350,22 +339,22 @@ body {
 
 .metric-value {
     font-size: 0.85rem;
-    color: #cbd5e1;
+    color: #e2e8f0;
     font-weight: 500;
 }
 
-/* Разделитель процессов */
 .scheme-separator {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    margin: 15px 0;
-    color: rgba(255, 255, 255, 0.15);
+    margin: 5px 0;
+    color: rgba(255, 255, 255, 0.2);
     font-family: 'Unbounded', sans-serif;
     font-size: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    text-align: center;
 }
 
 .arrow-down-anim {
@@ -380,14 +369,13 @@ body {
     60% { transform: translateY(-3px); }
 }
 
-/* Временный плейсхолдер для будущей схемы */
 .placeholder-wrapper {
     background: rgba(16, 185, 129, 0.01);
     border: 1px dashed rgba(16, 185, 129, 0.15);
 }
 .future-placeholder {
-    padding: 20px;
+    padding: 24px;
     text-align: center;
-    color: rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.3);
     font-size: 0.8rem;
 }
