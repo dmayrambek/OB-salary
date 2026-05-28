@@ -2,89 +2,41 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O!Bank - Процесс ЗПП в филиале</title>
+    <title>O!Bank - To Be Scheme</title>
     <link rel="stylesheet" href="scheme.css">
-    <style>
-        /* Добавочные стили для отрисовки линий, если они отсутствуют в вашем css */
-        .css-line { background: #64748b; }
-        .line-h { height: 2px; width: 40px; }
-        .process-grid { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-    </style>
 </head>
 <body>
 
-    <header class="header">
-        <div class="logo-zone"><span class="logo-dot"></span><span class="logo-text">O!BANK</span></div>
-        <div class="nav-right">
-            <div class="lang-switcher">
-                <button class="lang-btn active" id="btn-ru" onclick="changeLang('ru')">RU</button>
-                <button class="lang-btn" id="btn-en" onclick="changeLang('en')">EN</button>
-            </div>
-            <a href="index.html" class="back-btn" id="txt-to-main">← На главную</a>
-        </div>
-    </header>
-
-    <div class="scheme-container">
-        <div class="graph-area">
-            
-            <div id="current-section">
-                <div class="scheme-section-title current" id="title-as-is">🔴 Текущий процесс (As Is)</div>
-                <div class="flowchart-wrapper">
-                    <div class="process-grid">
-                        <div class="node-card active" data-node="O1"><div class="node-title">Привлечение</div></div>
-                        <div class="css-line line-h"></div>
-                        <div class="node-card" data-node="O2"><div class="node-title">Подписание</div></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="scheme-separator"><span id="txt-separator">Предлагаемая новая схема</span></div>
-
-            <div id="future-section">
-                <div class="scheme-section-title future" id="title-to-be">🟢 Целевой процесс (To Be)</div>
-                <div class="flowchart-wrapper">
-                    <div class="process-grid">
-                        <div class="node-card" data-node="TO-1"><div class="node-title">О1-О2 Привлечение</div></div>
-                        <div class="css-line line-h"></div>
-                        <div class="node-card" data-node="TO-2" style="border: 1px solid #10b981;"><div class="node-title">О3-О8 Интеграция</div></div>
-                        <div class="css-line line-h"></div>
-                        <div class="node-card" data-node="TO-3" style="border: 1px solid #eab308;"><div class="node-title">О9-О10 Изготовление</div></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="details-panel">
-            <div class="panel-glass-content">
-                <div id="node-info">
-                    <div class="meta-zone">
-                        <div class="meta-dept" id="node-dept">РОЗНИЧНЫЙ БИЗНЕС</div>
-                        <div class="meta-title" id="node-title">Выберите процесс</div>
-                    </div>
-                </div>
-                <div id="exclude-box" style="margin-top: 30px; padding-top: 20px; border-top: 2px solid #10b981;">
-                    <h4 style="color: #10b981;">🚀 Что мы исключаем</h4>
-                    <ul class="pain-list">
-                        <li>Исключены дублирующие проверки</li>
-                        <li>Сокращен Time-to-Market</li>
-                        <li>Автоматический BPM-трекинг</li>
-                        <li>Минимизация человеческого фактора</li>
-                    </ul>
-                </div>
-            </div>
+<div class="scheme-container">
+    <div class="graph-area">
+        <div class="scheme-section-title future">🟢 Целевой процесс (To Be)</div>
+        <div class="process-grid">
+            <div class="node-card">О1-О2 Привлечение</div>
+            <div class="css-arrow"></div>
+            <div class="node-card">О3-О8 Согласование</div>
+            <div class="css-arrow"></div>
+            <div class="node-card">О9-О10 Изготовление</div>
         </div>
     </div>
 
-    <script>
-        // Логика переключения кликов сохраняется
-        document.querySelectorAll('.node-card').forEach(card => {
-            card.addEventListener('click', () => {
-                document.querySelectorAll('.node-card').forEach(c => c.classList.remove('active'));
-                card.classList.add('active');
-            });
-        });
-        function changeLang(l) { /* Ваша логика смены языка */ }
-    </script>
+    <div class="details-panel">
+        <div class="panel-block">
+            <h4>🚨 Описание проблем</h4>
+            <ul class="pain-list">
+                <li>Нет централизованного отдела</li>
+                <li>Низкий уровень автоматизации</li>
+            </ul>
+        </div>
+        <div class="panel-block">
+            <h4 style="color: #10b981;">🚀 Что мы исключаем</h4>
+            <ul class="pain-list">
+                <li>Исключены дублирующие проверки</li>
+                <li>Сокращен Time-to-Market</li>
+                <li>Автоматический BPM-трекинг</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
