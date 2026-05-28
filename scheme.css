@@ -4,7 +4,7 @@
 
 .scheme-container {
     display: grid;
-    grid-template-columns: 1fr 400px; /* Левая часть — граф, правая — фиксированные 400px под инфо */
+    grid-template-columns: 1fr 400px; /* Левая часть — граф, правая — 400px под инфо */
     gap: 30px;
     padding: 100px 40px 40px 40px; /* Отступ сверху под шапку */
     min-height: calc(100vh - 64px);
@@ -38,7 +38,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 25px; /* Дистанция между функциональными дорожками */
+    gap: 25px; /* Дистанция между дорожками */
     background: rgba(255, 255, 255, 0.02);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 16px;
@@ -55,14 +55,14 @@
     background: rgba(255, 255, 255, 0.01);
     border-left: 4px solid #8c82b3;
     border-radius: 4px;
-    padding: 20px 20px 20px 220px; /* Большой отступ слева, чтобы освободить место под бейдж */
+    padding: 20px 20px 20px 220px; /* Большой отступ слева под название департамента */
     min-height: 100px;
 }
 
-/* Изменяем цвет левой границы в зависимости от департамента */
-.lane-rb { border-left-color: #e0004d; }       /* Розничный бизнес — малиновый */
-.lane-soyufl { border-left-color: #00b0ff; }   /* СОЮФЛ — голубой */
-.lane-gb { border-left-color: #00e676; }       /* Головной банк — зеленый */
+/* Цвет левой границы в зависимости от департамента */
+.lane-rb { border-left-color: #e0004d; }       /* Розничный бизнес */
+.lane-soyufl { border-left-color: #00b0ff; }   /* СОЮФЛ */
+.lane-gb { border-left-color: #00e676; }       /* Головной банк */
 
 /* Название департамента слева от дорожки */
 .lane-badge {
@@ -109,7 +109,7 @@
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
-/* Состояние активной (выбранной кликом) карточки */
+/* Состояние активной карточки */
 .node-card.active {
     background: rgba(224, 0, 77, 0.15);
     border-color: #e0004d;
@@ -158,7 +158,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* Пропускает клики сквозь себя на карточки */
+    pointer-events: none; /* Пропускает клики сквозь себя */
     z-index: 1;
 }
 
@@ -195,7 +195,7 @@
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
-/* Стили мета-зоны (Шапка панели) */
+/* Стили мета-зоны */
 .meta-zone {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     padding-bottom: 16px;
@@ -265,4 +265,37 @@
 .metric-value {
     font-size: 0.9rem;
     color: #f1f5f9;
-    font-
+    font-weight: 500;
+}
+
+/* Кнопка языков в шапке схемы */
+.lang-switcher {
+    display: flex;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 2px;
+    margin-right: 15px;
+}
+
+.lang-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.4);
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.lang-btn.active {
+    background: #e0004d;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(224, 0, 77, 0.4);
+}
+
+.line-return {
+    stroke-dasharray: 4 4;
+}
