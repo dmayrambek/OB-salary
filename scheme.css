@@ -1,248 +1,332 @@
-/* ==========================================================================
-   📐 СЕТКА И РАЗМЕТКА СТРАНИЦЫ СХЕМЫ
-   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Unbounded:wght@600;700&display=swap');
 
+/* ==========================================================================
+   🌌 БАЗА И ФИРМЕННАЯ ТЕМНАЯ ПАЛИТРА O!BANK (Из image_ae48fe.png)
+   ========================================================================== */
+body {
+    background-color: #0b0813; /* Глубокий благородный темный фон O!Bank */
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    color: #f1f5f9;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Шапка сайта в стиле главной страницы */
+.header {
+    height: 64px;
+    background: rgba(11, 8, 19, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+}
+
+.logo-zone {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #ff0055; /* Фирменный малиновый неон */
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ff0055;
+}
+
+.logo-text {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+.logo-sub {
+    font-size: 0.75rem;
+    color: #ff0055;
+    font-weight: 400;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.lang-switcher {
+    display: flex;
+    background: #161224;
+    border-radius: 8px;
+    padding: 2px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.lang-btn {
+    background: transparent;
+    border: none;
+    color: #64748b;
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.lang-btn.active {
+    background: #ff0055;
+    color: #ffffff;
+}
+
+.back-btn {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s;
+}
+
+.back-btn:hover {
+    color: #ff0055;
+}
+
+/* ==========================================================================
+   📐 СЕТКА ДВУХПАНЕЛЬНОГО ИНТЕРФЕЙСА (Интегрированное описание)
+   ========================================================================== */
 .scheme-container {
     display: grid;
-    grid-template-columns: 1fr 400px; /* Левая часть — граф, правая — 400px под инфо */
+    grid-template-columns: 1fr 400px; /* Левая часть под схемы, правая — жестко описание */
     gap: 30px;
-    padding: 100px 40px 40px 40px; /* Отступ сверху под шапку */
-    min-height: calc(100vh - 64px);
-    background: #0f0c1b;
+    padding: 100px 30px 40px 30px;
+    min-height: 100vh;
     box-sizing: border-box;
 }
 
 .graph-area {
     display: flex;
     flex-direction: column;
+    gap: 40px;
 }
 
-.page-title {
-    font-size: 2rem;
-    color: #ffffff;
-    margin-bottom: 5px;
-    font-weight: 700;
-}
-
-.page-subtitle {
+.scheme-section-title {
+    font-family: 'Unbounded', sans-serif;
     font-size: 1rem;
-    color: #8c82b3;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+.scheme-section-title.current { color: #f97316; }
+.scheme-section-title.future { color: #10b981; }
+
+/* ==========================================================================
+   🔮 СТЕКЛЯННЫЙ КОРПУС СХЕМЫ (Glassmorphism из референса)
+   ========================================================================== */
+.flowchart-wrapper {
+    position: relative;
+    background: rgba(255, 255, 255, 0.01);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), 
+                inset 0 1px 1px rgba(255, 255, 255, 0.05);
+}
+
+.process-header-title {
+    font-family: 'Unbounded', sans-serif;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #ffffff;
     margin-bottom: 40px;
 }
 
-/* ==========================================================================
-   🕹️ ИНТЕРАКТИВНЫЙ КОНТЕНЕР ГРАФА (ДОРОЖКИ)
-   ========================================================================== */
-
-.flowchart-wrapper {
+/* Кастомная сетка для точного воспроизведения кубиков из image_ae4862.png */
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 110px);
+    gap: 40px 25px;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 25px; /* Дистанция между дорожками */
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-radius: 16px;
-    padding: 30px;
-    min-height: 550px;
-}
-
-/* Стилизация дорожек (Swimlanes) */
-.swimlanelane {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 20px; /* Расстояние между карточками внутри одной дорожки */
-    background: rgba(255, 255, 255, 0.01);
-    border-left: 4px solid #8c82b3;
-    border-radius: 4px;
-    padding: 20px 20px 20px 220px; /* Большой отступ слева под название департамента */
-    min-height: 100px;
-}
-
-/* Цвет левой границы в зависимости от департамента */
-.lane-rb { border-left-color: #e0004d; }       /* Розничный бизнес */
-.lane-soyufl { border-left-color: #00b0ff; }   /* СОЮФЛ */
-.lane-gb { border-left-color: #00e676; }       /* Головной банк */
-
-/* Название департамента слева от дорожки */
-.lane-badge {
-    position: absolute;
-    left: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 180px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #ffffff;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    opacity: 0.8;
+    z-index: 5;
 }
 
 /* ==========================================================================
-   🎴 СТИЛИЗАЦИЯ КАРТОЧЕК-УЗЛОВ (NODE CARDS)
+   🎴 СТЕКЛЯННЫЕ СВЕТЯЩИЕСЯ КАРТОЧКИ УЗЛОВ
    ========================================================================== */
-
 .node-card {
     position: relative;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 14px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 140px;
-    height: 100px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
+    justify-content: space-between;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    text-align: center;
-    padding: 10px;
     box-sizing: border-box;
-    z-index: 2;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* Позиционирование элементов точь-в-точь по вашей схеме */
+.grid-pos-1 { grid-column: 1; grid-row: 1; }
+.grid-pos-2 { grid-column: 2; grid-row: 1; }
+.grid-pos-3 { grid-column: 2; grid-row: 2; } /* Четко под блоком 2 */
+.grid-pos-4 { grid-column: 3; grid-row: 1 / span 2; height: 100%; } /* Высокий блок */
+.grid-pos-5 { grid-column: 4; grid-row: 1; }
+.grid-pos-6 { grid-column: 5; grid-row: 1; }
+.grid-pos-7 { grid-column: 5; grid-row: 2; } /* Передача карт снизу */
 
 .node-card:hover {
-    background: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.3);
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
 }
 
-/* Состояние активной карточки */
+/* Активное состояние (Фирменный стиль O!Bank - Малиновый неон из референса) */
 .node-card.active {
-    background: rgba(224, 0, 77, 0.15);
-    border-color: #e0004d;
-    box-shadow: 0 0 15px rgba(224, 0, 77, 0.4);
+    background: rgba(255, 0, 85, 0.06);
+    border-color: #ff0055;
+    box-shadow: 0 0 25px rgba(255, 0, 85, 0.3), inset 0 0 10px rgba(255, 0, 85, 0.15);
 }
 
-/* Карточки с критическими проблемами (узкие места) */
+/* Оранжевый акцент для блока со служебной запиской */
 .node-card.node-warning {
-    border-color: rgba(255, 152, 0, 0.4);
+    border-color: rgba(249, 115, 22, 0.4);
 }
 .node-card.node-warning.active {
-    background: rgba(255, 152, 0, 0.15);
-    border-color: #ff9800;
-    box-shadow: 0 0 15px rgba(255, 152, 0, 0.4);
+    background: rgba(249, 115, 22, 0.08);
+    border-color: #f97316;
+    box-shadow: 0 0 25px rgba(249, 115, 22, 0.3), inset 0 0 10px rgba(249, 115, 22, 0.15);
 }
 
-/* Внутренние элементы карточки */
-.node-num {
-    position: absolute;
-    top: 6px;
-    left: 8px;
-    font-size: 0.75rem;
+/* Текстовки внутри карточек */
+.node-badge-dept {
+    font-size: 0.65rem;
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.3);
+    color: #ff0055;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+    display: block;
+    line-height: 1.2;
 }
-
-.node-icon {
-    font-size: 1.4rem;
-    margin-bottom: 4px;
+.node-warning .node-badge-dept {
+    color: #f97316;
+}
+.font-small {
+    font-size: 0.6rem;
 }
 
 .node-title {
-    font-size: 0.75rem;
+    font-size: 0.78rem;
     font-weight: 500;
-    line-height: 1.2;
+    line-height: 1.35;
     color: #e2e8f0;
 }
 
-/* ==========================================================================
-   📐 SVG СОЕДИНИТЕЛЬНЫЕ ЛИНИИ (СТРЕЛКИ)
-   ========================================================================== */
+/* Свечения на гранях как в референсе image_ae44a0.png */
+.glow-point {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #ff0055;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #ff0055;
+}
+.node-warning .glow-point { background: #f97316; box-shadow: 0 0 8px #f97316;}
 
+.p-right { right: -2px; top: 50%; transform: translateY(-50%); }
+.p-bottom { bottom: -2px; left: 50%; transform: translateX(-50%); }
+
+/* Static Lines Simulation */
 .graph-lines {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
-    pointer-events: none; /* Пропускает клики сквозь себя */
+    pointer-events: none;
     z-index: 1;
 }
 
-.graph-lines path {
-    stroke: rgba(255, 255, 255, 0.15);
-    stroke-width: 2;
-    fill: none;
-    transition: all 0.3s;
-}
-
 /* ==========================================================================
-   🔮 БОКОВАЯ СТЕКЛЯННАЯ ПАНЕЛЬ ПОДРОБНОСТЕЙ
+   🔮 ИНТЕГРИРОВАННАЯ БОКОВАЯ ПАНЕЛЬ ОПИСАНИЯ ПРОБЛЕМ
    ========================================================================== */
-
 .details-panel {
     position: sticky;
-    top: 100px;
-    height: calc(100vh - 140px);
+    top: 94px;
+    height: calc(100vh - 130px);
 }
 
 .panel-glass-content {
     height: 100%;
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.01);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 20px;
     padding: 30px;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    overflow-y: auto;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    gap: 25px;
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
 }
 
-/* Стили мета-зоны */
 .meta-zone {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding-bottom: 15px;
 }
 
 .meta-dept {
-    font-size: 0.8rem;
+    font-family: 'Unbounded', sans-serif;
+    font-size: 0.65rem;
     text-transform: uppercase;
-    color: #e0004d;
-    font-weight: 600;
+    color: #ff0055;
+    font-weight: 700;
     letter-spacing: 1px;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    transition: color 0.3s;
 }
 
 .meta-title {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: #ffffff;
     line-height: 1.3;
 }
 
-/* Блок описания болей */
+/* Блок описания самой проблемы */
 .pain-box {
-    background: rgba(255, 152, 0, 0.06);
-    border: 1px solid rgba(255, 152, 0, 0.15);
-    border-radius: 14px;
+    background: rgba(249, 115, 22, 0.03);
+    border: 1px solid rgba(249, 115, 22, 0.12);
+    border-radius: 12px;
     padding: 16px;
 }
 
 .pain-box h4 {
-    font-size: 0.9rem;
-    color: #ff9800;
+    font-size: 0.8rem;
+    color: #f97316;
     margin: 0 0 8px 0;
     font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .pain-box p {
-    font-size: 0.9rem;
-    color: #cbd5e1;
+    font-size: 0.82rem;
+    color: #94a3b8;
     line-height: 1.5;
     margin: 0;
 }
 
-/* Сводные метрики */
+/* Списковые метрики */
 .metrics-list {
     display: flex;
     flex-direction: column;
@@ -250,52 +334,60 @@
 }
 
 .metric-item {
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.01);
+    border: 1px solid rgba(255, 255, 255, 0.03);
     border-radius: 10px;
     padding: 12px 16px;
 }
 
 .metric-label {
-    font-size: 0.75rem;
-    color: #64748b;
+    font-size: 0.65rem;
+    color: #475569;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     margin-bottom: 4px;
 }
 
 .metric-value {
-    font-size: 0.9rem;
-    color: #f1f5f9;
+    font-size: 0.85rem;
+    color: #cbd5e1;
     font-weight: 500;
 }
 
-/* Кнопка языков в шапке схемы */
-.lang-switcher {
+/* Разделитель процессов */
+.scheme-separator {
     display: flex;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 8px;
-    padding: 2px;
-    margin-right: 15px;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin: 15px 0;
+    color: rgba(255, 255, 255, 0.15);
+    font-family: 'Unbounded', sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.lang-btn {
-    background: transparent;
-    border: none;
-    color: rgba(255, 255, 255, 0.4);
-    padding: 6px 12px;
+.arrow-down-anim {
+    font-size: 1.2rem;
+    color: #ff0055;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-6px); }
+    60% { transform: translateY(-3px); }
+}
+
+/* Временный плейсхолдер для будущей схемы */
+.placeholder-wrapper {
+    background: rgba(16, 185, 129, 0.01);
+    border: 1px dashed rgba(16, 185, 129, 0.15);
+}
+.future-placeholder {
+    padding: 20px;
+    text-align: center;
+    color: rgba(255,255,255,0.25);
     font-size: 0.8rem;
-    font-weight: 700;
-    cursor: pointer;
-    border-radius: 6px;
-    transition: all 0.2s ease;
-}
-
-.lang-btn.active {
-    background: #e0004d;
-    color: #fff;
-    box-shadow: 0 2px 8px rgba(224, 0, 77, 0.4);
-}
-
-.line-return {
-    stroke-dasharray: 4 4;
 }
