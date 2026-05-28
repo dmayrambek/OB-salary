@@ -1,26 +1,44 @@
+// Функция переключения языков
 function switchLang(lang) {
     document.querySelectorAll('[data-ru]').forEach(el => {
-        // Если это наш список преимуществ, обновляем innerHTML (там тэги <li>)
         if (el.id === 'benefits-list') {
             el.innerHTML = el.getAttribute('data-' + lang);
         } else {
-            // Для остальных элементов просто меняем текст
             el.innerText = el.getAttribute('data-' + lang);
         }
     });
     localStorage.setItem('userLang', lang);
 }
 
+// Отрисовка стрелок
 window.onload = () => {
-    // 1. Применяем язык
+    // Язык
     const savedLang = localStorage.getItem('userLang') || 'ru';
     switchLang(savedLang);
 
-    // 2. Рисуем стрелки
-    const lineConfig = { color: '#10b981', size: 2, path: 'grid', endPlug: 'arrow3' };
-    
-    // Подключение стрелок (связи блоков)
+    // Конфиг для "бизнес-стрелок" (прямые линии)
+    const lineConfig = { 
+        color: '#10b981', 
+        size: 2, 
+        path: 'grid',      // Делает линии строго горизонтальными/вертикальными
+        endPlug: 'arrow3', // Красивая стрелка
+        startSocket: 'right', 
+        endSocket: 'left' 
+    };
+
+    // 1. Связи из Прямых продаж и РБ в СОД
     new LeaderLine(document.getElementById('node-1'), document.getElementById('node-7'), lineConfig);
-    new LeaderLine(document.getElementById('node-5'), document.getElementById('node-8'), lineConfig);
-    new LeaderLine(document.getElementById('node-14'), document.getElementById('node-12'), lineConfig);
+    new LeaderLine(document.getElementById('node-4'), document.getElementById('node-8'), lineConfig);
+
+    // 2. Последовательность внутри СОД (вертикальные стрелки)
+    const vConfig = { ...lineConfig, startSocket: 'bottom', endSocket: 'top' };
+    new LeaderLine(document.getElementById('node-7'), document.getElementById('node-8'), vConfig);
+    new LeaderLine(document.getElementById('node-8'), document.getElementById('node-9'), vConfig);
+    new LeaderLine(document.getElementById('node-9'), document.getElementById('node-10'), vConfig);
+    new LeaderLine(document.getElementById('node-10'), document.getElementById('node-11'), vConfig);
+    new LeaderLine(document.getElementById('node-11'), document.getElementById('node-12'), vConfig);
+
+    // 3. Связь Головного банка с СОД
+    new LeaderLine(document.getElementById('node-13'), document.getElementById('node-14'), vConfig);
+    new LeaderLine(document.getElementById('node-14'), document.getElementById('node-12'), { ...lineConfig, startSocket: 'bottom', endSocket: 'right' });
 };
