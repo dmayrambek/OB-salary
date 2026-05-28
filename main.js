@@ -64,3 +64,10 @@ function toggleSwift(row) {
   expanded.style.display = isOpen ? 'none' : 'table-row';
   row.classList.toggle('open', !isOpen);
 }
+
+function goTo(id) {
+  const target = document.getElementById(id);
+  if (target) {
+    window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 64, behavior: 'smooth' });
+  }
+}
