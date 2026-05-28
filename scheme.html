@@ -1,119 +1,252 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>O!Bank — Схема процессов ЗПП / Payroll Flowchart</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="scheme.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O!Bank Operations - Процесс ЗПП в филиале</title>
+    <link rel="stylesheet" href="scheme.css">
 </head>
-<body class="dark-theme">
+<body>
 
-  <header class="header">
-    <div class="logo-zone" onclick="window.location.href='index.html'">
-      <span class="logo-o">O!</span><span class="logo-bank">Bank</span>
+    <!-- НАВИГАЦИЯ (ШАПКА) -->
+    <header class="header">
+        <div class="logo-zone">
+            <span class="logo-dot"></span>
+            <span class="logo-text">O!BANK <span class="logo-sub">Operations</span></span>
+        </div>
+        <div class="nav-right">
+            <div class="lang-switcher">
+                <button class="lang-btn active">RU</button>
+                <button class="lang-btn">EN</button>
+            </div>
+            <a href="index.html" class="back-btn">← На главную</a>
+        </div>
+    </header>
+
+    <!-- ОСНОВНОЙ КОНТЕЙНЕР INTERACTIVE GLASS-PANEL -->
+    <div class="scheme-container">
+        
+        <!-- ЛЕВАЯ ЗОНА: СХЕМЫ ПРОЦЕССОВ -->
+        <div class="graph-area">
+            
+            <div id="current-section">
+                <div class="scheme-section-title current">🔴 Текущий процесс (As Is) — Срок: 9 рабочих дней</div>
+                
+                <!-- Парящий стеклянный планшет из референса image_ae44a0.png -->
+                <div class="flowchart-wrapper" id="current-flowchart">
+                    
+                    <!-- SVG для отрисовки неоновых нитей-стрелок -->
+                    <svg class="graph-lines" id="current-svg-lines">
+                        <!-- Маркер для стрелочек -->
+                        <defs>
+                            <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                                <path d="M 0 1 L 10 5 L 0 9 z" fill="#ff0055" />
+                            </marker>
+                        </defs>
+                    </svg>
+
+                    <!-- Шапка таблицы процесса -->
+                    <div class="process-header-title">Процесс ЗПП в филиале</div>
+
+                    <!-- Сетка блоков (Полная копия структуры из image_ae4862.png) -->
+                    <div class="process-grid">
+                        
+                        <!-- Блок 1: Привлечение -->
+                        <div class="node-card grid-pos-1 active" data-node="O1">
+                            <span class="node-badge-dept">РБ, СОЮФЛ</span>
+                            <div class="node-title">Привлечение</div>
+                            <div class="glow-point p-right"></div>
+                        </div>
+
+                        <!-- Блок 2: Подписание договора -->
+                        <div class="node-card grid-pos-2" data-node="O2">
+                            <span class="node-badge-dept">РБ</span>
+                            <div class="node-title">Подписание договора</div>
+                            <div class="glow-point p-right"></div>
+                            <div class="glow-point p-bottom"></div>
+                        </div>
+
+                        <!-- Блок 3: Прием списка сотрудников (находится под Блоком 2) -->
+                        <div class="node-card grid-pos-3" data-node="O3">
+                            <span class="node-badge-dept">РБ</span>
+                            <div class="node-title">Прием списка сотрудников и их документов</div>
+                            <div class="glow-point p-right"></div>
+                        </div>
+
+                        <!-- Блок 4: Создание служебной записки (Критическая точка!) -->
+                        <div class="node-card grid-pos-4 node-warning" data-node="O4">
+                            <span class="node-badge-dept font-small">РБ, Отдел сопровождения карточных продуктов ГБ</span>
+                            <div class="node-title">Создание служебной записки на заведение ЗПП</div>
+                            <div class="glow-point p-right"></div>
+                        </div>
+
+                        <!-- Блок 5: Открытие карточных счетов -->
+                        <div class="node-card grid-pos-5" data-node="O5">
+                            <span class="node-badge-dept">СОЮФЛ</span>
+                            <div class="node-title">Открытие карточных счетов</div>
+                            <div class="glow-point p-right"></div>
+                        </div>
+
+                        <!-- Блок 6: Изготовление карт и отправка -->
+                        <div class="node-card grid-pos-6" data-node="O6">
+                            <span class="node-badge-dept font-small">Отдел сопровождения карточных продуктов ГБ</span>
+                            <div class="node-title">Изготовление именных карт и отправка в филиал</div>
+                            <div class="glow-point p-right"></div>
+                        </div>
+
+                        <!-- Блок 7: Передача карт организации -->
+                        <div class="node-card grid-pos-7" data-node="O7">
+                            <span class="node-badge-dept">РБ</span>
+                            <div class="node-title">Передача карт организации</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- ТЕХНОЛОГИЧНЫЙ РАЗДЕЛИТЕЛЬ -->
+            <div class="scheme-separator">
+                <span>⚡ Трансформация силами группы операционной автоматизации (OAU)</span>
+                <span class="arrow-down-anim">⬇️</span>
+            </div>
+
+            <!-- ЗОНА ДЛЯ БУДУЩЕГО ПРОЦЕССА (TO BE) -->
+            <div id="future-section">
+                <div class="scheme-section-title future">🟢 Целевой процесс (To Be) — Срок: 1 рабочий день</div>
+                <div class="flowchart-wrapper placeholder-wrapper">
+                    <div class="future-placeholder">
+                        🤖 Автоматизированная экосистема (Личный кабинет + Электронная валидация) готова к развертыванию...
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ПРАВАЯ ЗОНА: ИНТЕГРИРОВАННЫЙ СТЕКЛЯННЫЙ ВИДЖЕТ ОПИСАНИЯ ПРОБЛЕМ -->
+        <div class="details-panel">
+            <div class="panel-glass-content">
+                <div class="meta-zone">
+                    <div class="meta-dept" id="node-dept">РОЗНИЧНЫЙ БИЗНЕС / СОЮФЛ</div>
+                    <div class="meta-title" id="node-title">Привлечение</div>
+                </div>
+
+                <div class="pain-box" id="node-pain-container">
+                    <h4>🚨 Описание проблем и узких мест</h4>
+                    <p id="node-pain">Низкий уровень автоматизации первичного контакта. Презентация возможностей ЗПП происходит вручную специалистами выездных групп, без применения сквозных цифровых воронок.</p>
+                </div>
+
+                <div class="metrics-list">
+                    <div class="metric-item">
+                        <div class="metric-label">Ответственная роль</div>
+                        <div class="metric-value" id="node-owner">Менеджер РБ, Операционист СОЮФЛ</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">Срок выполнения шага</div>
+                        <div class="metric-value" id="node-time">1–2 рабочих дня</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">Основной операционный риск</div>
+                        <div class="metric-value" id="node-risk">Человеческий фактор при первичной оценке потенциала компании</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
-    <div class="header-right">
-      <div class="lang-switcher">
-        <button id="btn-lang-ru" class="lang-btn" data-lang="ru">RU</button>
-        <button id="btn-lang-en" class="lang-btn" data-lang="en">EN</button>
-      </div>
-      <button class="btn-back" onclick="window.location.href='index.html'" data-ru="← На главную" data-en="← Home">← На главную</button>
-    </div>
-  </header>
 
-  <main class="scheme-container">
-    
-    <section class="graph-area">
-      <h1 class="page-title" data-ru="Текущая схема процессов ЗПП" data-en="Current Payroll Process Flowchart">Текущая схема процессов ЗПП</h1>
-      <p class="page-subtitle" data-ru="Внутренний аудит взаимодействия подразделений филиала и Головного банка" data-en="Internal audit of branch departments and Head Office interaction">Внутренний аудит взаимодействия подразделений филиала и Головного банка</p>
-      
-      <div class="flowchart-wrapper">
-        <svg class="graph-lines" viewBox="0 0 800 600">
-          <defs>
-            <marker id="arrow-pink" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-              <path d="M 0 1 L 10 5 L 0 9 z" fill="#e0004d" />
-            </marker>
-          </defs>
-          
-          <path d="M 180,95 L 180,150" marker-end="url(#arrow-pink)" />
-          <path d="M 180,210 L 180,265" marker-end="url(#arrow-pink)" />
-          <path d="M 180,325 L 180,380" marker-end="url(#arrow-pink)" />
-          <path d="M 180,440 L 180,490 L 390,490 L 390,150 L 460,150" marker-end="url(#arrow-pink)" />
-          <path d="M 390,320 L 390,400 L 460,400" marker-end="url(#arrow-pink)" />
-          <path d="M 660,150 L 710,150 L 710,290 L 180,290" class="line-return" style="stroke-dasharray: 4 4;" />
-        </svg>
+    <!-- ИНТЕРАКТИВНЫЙ СКРИПТ УПРАВЛЕНИЯ ПАНЕЛЬЮ -->
+    <script>
+        // Единая база данных по проблемам процесса ЗПП
+        const nodeData = {
+            "O1": {
+                dept: "Розничный бизнес / СОЮФЛ",
+                title: "Привлечение",
+                pain: "Низкий уровень автоматизации первичного контакта. Презентация возможностей ЗПП происходит вручную специалистами выездных групп, без применения сквозных цифровых воронок.",
+                owner: "Менеджер РБ, Операционист СОЮФЛ",
+                time: "1–2 рабочих дня",
+                risk: "Человеческий фактор при первичной оценке потенциала компании"
+            },
+            "O2": {
+                dept: "Розничный бизнес (РБ)",
+                title: "Подписание договора",
+                pain: "Согласование индивидуальных тарифных планов и подписание документов происходит в бумажном виде. Долгий цикл визирования юристами и комплаенс-контролем.",
+                owner: "Менеджер РБ",
+                time: "1–2 рабочих дня",
+                risk: "Затягивание сроков подписания, риск утери бумажных оригиналов документов"
+            },
+            "O3": {
+                dept: "Розничный бизнес (РБ)",
+                title: "Прием списка сотрудников и их документов",
+                pain: "Компания присылает данные сотрудников в разноформатных Excel-файлах, а сканы документов — на почту. Менеджер РБ вручную проверяет корректность ИИН, паспортов и дат.",
+                owner: "Менеджер РБ",
+                time: "1–2 рабочих дня",
+                risk: "Высокий риск опечаток и ошибок ручного ввода, возврат списков клиенту на доработку"
+            },
+            "O4": {
+                dept: "РБ / Отдел сопровождения карточных продуктов ГБ",
+                title: "Создание служебной записки на заведение ЗПП",
+                pain: "ГЛАВНОЕ УЗКОЕ МЕСТО. Менеджер РБ вынужден вручную составлять и отправлять служебную записку в СЭД на авторизацию проекта Головным банком. Процесс полностью замирает в ожидании резолюции.",
+                owner: "Менеджер РБ / Руководство ГБ",
+                time: "До 2 рабочих дней (ожидание)",
+                risk: "Бюрократические простои, полное отсутствие сквозного цифрового контроля статуса"
+            },
+            "O5": {
+                dept: "СОЮФЛ (Филиал)",
+                title: "Открытие карточных счетов",
+                pain: "После одобрения служебной записки операционист СОЮФЛ вручную копирует данные из списков Excel и поочередно заводит счета сотрудников в АБС. При больших объемах (от 100 человек) это парализует работу отдела.",
+                owner: "Специалист СОЮФЛ",
+                time: "1–3 рабочих дня (зависит от объема)",
+                risk: "Операционные ошибки при привязке счетов, колоссальная рутинная нагрузка"
+            },
+            "O6": {
+                dept: "Отдел сопровождения карточных продуктов ГБ",
+                title: "Изготовление именных карт и отправка в филиал",
+                pain: "100% зависимость от физического пластика. Карты эмбоссируются в ГБ, упаковываются и отправляются наземной/воздушной логистикой в региональный филиал.",
+                owner: "Специалист ГБ / Курьерская служба",
+                time: "3–5 рабочих дней (логистика)",
+                risk: "Задержки рейсов/поставок, риск повреждения или утери посылок с картами при транспортировке"
+            },
+            "O7": {
+                dept: "Розничный бизнес (РБ)",
+                title: "Передача карт организации",
+                pain: "Сортировка полученных карт в филиале, ручной обзвон представителей компании, организация выезда менеджера для передачи карт под подпись.",
+                owner: "Менеджер РБ",
+                time: "1 рабочий день",
+                risk: "Несвоевременное получение карт сотрудниками, негативные отзывы клиентов"
+            }
+        };
 
-        <div class="swimlanelane lane-rb">
-          <div class="lane-badge" data-ru="Розничный бизнес (РБ)" data-en="Retail Business (RB)">Розничный бизнес (РБ)</div>
-          
-          <div class="node-card active" onclick="showDetails('node1', this)">
-            <div class="node-num">01</div>
-            <div class="node-icon">🤝</div>
-            <div class="node-title" data-ru="Привлечение клиента" data-en="Client Acquisition">Привлечение клиента</div>
-          </div>
+        // Логика кликов по шагам
+        const cards = document.querySelectorAll('.node-card');
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                // Снимаем активный класс со всех
+                cards.forEach(c => c.classList.remove('active'));
+                // Добавляем текущей
+                card.classList.add('active');
 
-          <div class="node-card" onclick="showDetails('node2', this)">
-            <div class="node-num">02</div>
-            <div class="node-icon">📝</div>
-            <div class="node-title" data-ru="Подписание договора" data-en="Contract Signing">Подписание договора</div>
-          </div>
+                // Переключаем данные в боковой панели
+                const nodeId = card.getAttribute('data-node');
+                const data = nodeData[nodeId];
 
-          <div class="node-card" onclick="showDetails('node3', this)">
-            <div class="node-num">03</div>
-            <div class="node-icon">📂</div>
-            <div class="node-title" data-ru="Прием списков и док." data-en="Receiving Lists & Docs">Прием списков и док.</div>
-          </div>
-
-          <div class="node-card node-warning" onclick="showDetails('node4', this)">
-            <div class="node-num">04</div>
-            <div class="node-icon">✉️</div>
-            <div class="node-title" data-ru="Служебная записка" data-en="Internal Memo (SBR)">Служебная записка</div>
-          </div>
-          
-          <div class="node-card" onclick="showDetails('node8', this)">
-            <div class="node-num">08</div>
-            <div class="node-icon">💳</div>
-            <div class="node-title" data-ru="Передача карт клиенту" data-en="Card Handover to Client">Передача карт клиенту</div>
-          </div>
-        </div>
-
-        <div class="swimlanelane lane-soyufl">
-          <div class="lane-badge" data-ru="СОЮФЛ (Филиал)" data-en="Branch Operations (SOYUFL)">СОЮФЛ (Филиал)</div>
-          
-          <div class="node-card node-warning" style="top: 110px;" onclick="showDetails('node5', this)">
-            <div class="node-num">05</div>
-            <div class="node-icon">🖥️</div>
-            <div class="node-title" data-ru="Открытие счетов" data-en="Account Opening">Открытие счетов</div>
-          </div>
-        </div>
-
-        <div class="swimlanelane lane-gb">
-          <div class="lane-badge" data-ru="Головной Банк (ГБ)" data-en="Head Office (HO)">Головной Банк (ГБ)</div>
-          
-          <div class="node-card" style="top: 110px;" onclick="showDetails('node6', this)">
-            <div class="node-num">06</div>
-            <div class="node-icon">🏭</div>
-            <div class="node-title" data-ru="Изготовление карт" data-en="Card Production">Изготовление карт</div>
-          </div>
-
-          <div class="node-card node-warning" style="top: 360px;" onclick="showDetails('node7', this)">
-            <div class="node-num">07</div>
-            <div class="node-icon">📦</div>
-            <div class="node-title" data-ru="Отправка в филиал" data-en="Shipping to Branch">Отправка в филиал</div>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-    <aside class="details-panel">
-      <div class="panel-glass-content" id="details-content">
-        </div>
-    </aside>
-
-  </main>
-
-  <script src="main.js"></script>
-  <script src="scheme.js"></script>
+                if (data) {
+                    document.getElementById('node-dept').innerText = data.dept.toUpperCase();
+                    document.getElementById('node-title').innerText = `${nodeId}. ${data.title}`;
+                    document.getElementById('node-pain').innerText = data.pain;
+                    document.getElementById('node-owner').innerText = data.owner;
+                    document.getElementById('node-time').innerText = data.time;
+                    document.getElementById('node-risk').innerText = data.risk;
+                    
+                    // Меняем подсветку заголовка панели в зависимости от критичности
+                    const deptLabel = document.getElementById('node-dept');
+                    if (card.classList.contains('node-warning')) {
+                        deptLabel.style.color = '#f97316';
+                    } else {
+                        deptLabel.style.color = '#ff0055';
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
