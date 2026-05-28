@@ -211,3 +211,15 @@ body.light-mode .theme-icon-light { display: inline; }
 ::-webkit-scrollbar-track { background: var(--dark2); }
 ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #444; }
+
+/* SWIFT не участвует в фильтрах */
+.mode-advantage .row-swift td,
+.mode-growth .row-swift td,
+.mode-advantage .swift-expanded td,
+.mode-growth .swift-expanded td {
+  opacity: 1 !important;
+  background: transparent !important;
+  color: #bbb !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
