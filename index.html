@@ -26,17 +26,68 @@
     </div>
   </nav>
 
-  <section class="hero">
+  <section class="hero" id="hero">
     <div class="hero-bg-grid"></div>
-    <div class="hero-inner">
+    <div class="holo-glow-bg"></div>
+
+    <div class="holo-header">
       <div class="hero-tag" data-ru="Зарплатный проект · О!Банк · 2026" data-en="Payroll Project · O!Bank · 2026">Зарплатный проект · О!Банк · 2026</div>
-      <h1 class="hero-title" data-ru="Комплексный анализ<br>и стратегия развития ЗПП" data-en="Comprehensive Analysis<br>& Payroll Strategy">Комплексный анализ<br>и стратегия развития ЗПП</h1>
-      <p class="hero-sub" data-ru="Маркетинг · Процессы · Данные · Пакеты" data-en="Research · Process · Data · Packages">Маркетинг · Процессы · Данные · Пакеты</p>
-      <div class="hero-btns">
-        <a href="#marketing" class="btn-primary" data-ru="Начать просмотр" data-en="Start Viewing">Начать просмотр</a>
-        <a href="#" class="btn-secondary" data-ru="О проекте" data-en="About">О проекте</a>
+      <h1 class="hero-title" data-ru="Выберите раздел" data-en="Select Section">Выберите раздел</h1>
+    </div>
+
+    <div class="holo-canvas">
+      <svg class="holo-svg" viewBox="0 0 820 360" preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <marker id="harr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+            <path d="M0,1 L7,4 L0,7" stroke="rgba(255,255,255,0.18)" stroke-width="1" fill="none"/>
+          </marker>
+        </defs>
+        <path d="M 165,189 C 210,160 255,85 290,69" stroke="rgba(255,255,255,0.14)" stroke-width="0.8" fill="none" marker-end="url(#harr)"/>
+        <path d="M 445,69 C 498,69 548,168 570,218" stroke="rgba(255,255,255,0.14)" stroke-width="0.8" fill="none" marker-end="url(#harr)"/>
+        <path d="M 648,263 C 648,308 450,318 395,330" stroke="rgba(255,255,255,0.14)" stroke-width="0.8" fill="none" marker-end="url(#harr)"/>
+      </svg>
+
+      <div class="hc" onclick="goTo('marketing')" style="left:10px;top:145px;">
+        <div class="hc-scan"></div>
+        <div class="hc-c hc-ctl"></div><div class="hc-c hc-ctr"></div>
+        <div class="hc-c hc-cbl"></div><div class="hc-c hc-cbr"></div>
+        <div class="hc-num">01</div>
+        <div class="hc-title" data-ru="Marketing Research" data-en="Marketing Research">Marketing Research</div>
+        <div class="hc-sub" data-ru="анализ рынка КР" data-en="market analysis">анализ рынка КР</div>
+        <div class="hc-dot"></div>
+      </div>
+
+      <div class="hc" onclick="goTo('schemes')" style="left:290px;top:25px;">
+        <div class="hc-scan"></div>
+        <div class="hc-c hc-ctl"></div><div class="hc-c hc-ctr"></div>
+        <div class="hc-c hc-cbl"></div><div class="hc-c hc-cbr"></div>
+        <div class="hc-num">02</div>
+        <div class="hc-title" data-ru="Текущая схема" data-en="Current Scheme">Текущая схема</div>
+        <div class="hc-sub" data-ru="процессы ЗПП" data-en="payroll processes">процессы ЗПП</div>
+        <div class="hc-dot" style="animation-delay:0.6s"></div>
+      </div>
+
+      <div class="hc" onclick="goTo('reports')" style="left:570px;top:175px;">
+        <div class="hc-scan"></div>
+        <div class="hc-c hc-ctl"></div><div class="hc-c hc-ctr"></div>
+        <div class="hc-c hc-cbl"></div><div class="hc-c hc-cbr"></div>
+        <div class="hc-num">03</div>
+        <div class="hc-title" data-ru="Текущие данные" data-en="Current Data">Текущие данные</div>
+        <div class="hc-sub" data-ru="отчёты · аналитика" data-en="reports · analytics">отчёты · аналитика</div>
+        <div class="hc-dot" style="animation-delay:1.2s"></div>
+      </div>
+
+      <div class="hc" onclick="goTo('sales')" style="left:240px;top:285px;">
+        <div class="hc-scan"></div>
+        <div class="hc-c hc-ctl"></div><div class="hc-c hc-ctr"></div>
+        <div class="hc-c hc-cbl"></div><div class="hc-c hc-cbr"></div>
+        <div class="hc-num">04</div>
+        <div class="hc-title" data-ru="Продажи и пакеты" data-en="Sales & Packages">Продажи и пакеты</div>
+        <div class="hc-sub" data-ru="тарифы · предложение" data-en="rates · offering">тарифы · предложение</div>
+        <div class="hc-dot" style="animation-delay:1.8s"></div>
       </div>
     </div>
+
     <div class="hero-scroll-hint">
       <span data-ru="Прокрути вниз" data-en="Scroll down">Прокрути вниз</span>
       <div class="scroll-arrow"></div>
@@ -51,7 +102,7 @@
       </div>
       <div class="section-head">
         <h2 class="section-title" data-ru="Анализ рынка банковских услуг КР" data-en="Kyrgyzstan Banking Market Analysis">Анализ рынка банковских услуг КР</h2>
-        <p class="section-desc" data-ru="Сравнительный анализ ведущих банков по ключевым параметрам ЗПП." data-en="Comparative analysis of leading banks by key payroll parameters.">Сравнительный анализ ведущих банков по ключевым параметрам ЗПП. </p>
+        <p class="section-desc" data-ru="Сравнительный анализ ведущих банков по ключевым параметрам ЗПП." data-en="Comparative analysis of leading banks by key payroll parameters.">Сравнительный анализ ведущих банков по ключевым параметрам ЗПП.</p>
       </div>
 
       <div class="filter-row">
@@ -220,7 +271,7 @@
               <td>—</td><td>—</td>
               <td class="cell-best" data-ru="Mjunior (1-й год бесплатно)" data-en="Mjunior (Year 1 free)">Mjunior (1-й год бесплатно)</td>
               <td class="cell-best" data-ru="Optima Gold для ребёнка" data-en="Optima Gold for child">Optima Gold для ребёнка</td>
-              <td class="td-ob cell-weak" data-ru="Нет ↑" data-en="None ↑">Отсутствует</td>
+              <td class="td-ob cell-weak" data-ru="Нет ↑" data-en="None ↑">Нет ↑</td>
             </tr>
 
             <tr data-type="growth">
@@ -246,7 +297,7 @@
               <td class="cell-best">✓</td>
               <td class="cell-best">✓</td>
               <td>—</td><td>—</td>
-              <td class="td-ob cell-weak" data-ru="Нет ↑" data-en="None ↑">Отсутствует</td>
+              <td class="td-ob cell-weak" data-ru="Нет ↑" data-en="None ↑">Нет ↑</td>
             </tr>
 
             <tr data-type="growth">
@@ -267,7 +318,6 @@
               <td class="td-ob cell-weak" data-ru="Ребренд сент. 2024 ↑" data-en="Rebranded Sept. 2024 ↑">Ребренд сент. 2024 ↑</td>
             </tr>
 
-            <!-- SWIFT -->
             <tr class="row-swift" data-type="neutral" onclick="toggleSwift(this)">
               <td class="td-param" data-ru="🌐 SWIFT переводы" data-en="🌐 SWIFT Transfers">
                 🌐 SWIFT переводы
