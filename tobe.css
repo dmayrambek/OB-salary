@@ -1,0 +1,485 @@
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ==========================================================================
+   BASE
+   ========================================================================== */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    background-color: #0A0A0A;
+    font-family: 'Inter', sans-serif;
+    color: #e0e0e0;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* ==========================================================================
+   HEADER (shared O!Bank style)
+   ========================================================================== */
+.header {
+    height: 56px;
+    background: rgba(10, 10, 10, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+}
+.logo-zone { display: flex; align-items: center; gap: 8px; }
+.logo-dot {
+    width: 8px; height: 8px;
+    background: #E8005A;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #E8005A;
+}
+.logo-text {
+    font-family: 'Unbounded', sans-serif;
+    font-weight: 700; font-size: 1.1rem;
+    letter-spacing: 0.5px; color: #E8005A;
+}
+.nav-right { display: flex; align-items: center; gap: 20px; }
+.lang-switcher {
+    display: flex;
+    background: rgba(255,255,255,0.04);
+    border-radius: 6px; padding: 2px;
+    border: 0.5px solid rgba(255,255,255,0.14);
+    overflow: hidden;
+}
+.lang-btn {
+    background: transparent; border: none;
+    color: #888; padding: 5px 10px;
+    font-size: 0.75rem; font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer; border-radius: 4px;
+    transition: all 0.2s ease;
+    letter-spacing: 0.05em;
+}
+.lang-btn:hover { color: #fff; }
+.lang-btn.active { background: #E8005A; color: #fff; }
+.back-btn {
+    color: #888; text-decoration: none;
+    font-size: 0.85rem; transition: color 0.2s;
+}
+.back-btn:hover { color: #E8005A; }
+
+/* ==========================================================================
+   PAGE CONTAINER
+   ========================================================================== */
+.page-container {
+    padding: 80px 30px 60px 30px;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.section-title {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 0.95rem; font-weight: 600;
+    color: #10b981; margin: 0;
+}
+
+/* ==========================================================================
+   SWIM LANE WRAPPER
+   ========================================================================== */
+.swimlane-wrapper {
+    position: relative;
+    background: rgba(255,255,255,0.01);
+    border: 0.5px solid rgba(255,255,255,0.06);
+    border-radius: 20px;
+    overflow: visible;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.5);
+}
+
+/* SVG overlay for arrows */
+.arrows-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 20;
+    overflow: visible;
+}
+
+/* ==========================================================================
+   SWIM LANE GRID
+   ========================================================================== */
+.swimlane-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.7fr 1.1fr;
+    min-height: 520px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+/* Individual lane */
+.lane {
+    display: flex;
+    flex-direction: column;
+    border-right: 0.5px solid rgba(255,255,255,0.05);
+    position: relative;
+}
+.lane:last-child { border-right: none; }
+
+/* Lane header */
+.lane-header {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    padding: 16px 16px 14px 16px;
+    border-bottom: 0.5px solid rgba(255,255,255,0.06);
+    color: #10b981;
+    background: rgba(16,185,129,0.03);
+    text-align: center;
+    line-height: 1.4;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Lane 1 — Company */
+.lane-company .lane-header { color: #10b981; background: rgba(16,185,129,0.04); }
+.lane-company { background: rgba(16,185,129,0.01); }
+
+/* Lane 2 — RB */
+.lane-rb .lane-header { color: #7dd3fc; background: rgba(125,211,252,0.03); }
+.lane-rb { background: rgba(125,211,252,0.01); }
+
+/* Lane 3 — SOD (main, automated) */
+.lane-sod .lane-header { color: #10b981; background: rgba(16,185,129,0.05); font-size: 0.65rem; }
+.lane-sod { background: rgba(16,185,129,0.02); }
+
+/* Lane 4 — HO */
+.lane-ho .lane-header { color: #fbbf24; background: rgba(251,191,36,0.04); }
+.lane-ho { background: rgba(251,191,36,0.015); }
+
+/* Lane body */
+.lane-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 14px 24px 14px;
+    gap: 0;
+    position: relative;
+}
+
+/* ==========================================================================
+   NODE CARDS
+   ========================================================================== */
+.tb-node {
+    position: relative;
+    width: 100%;
+    background: rgba(16,185,129,0.04);
+    border: 0.5px solid rgba(16,185,129,0.2);
+    border-radius: 10px;
+    padding: 12px 14px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    z-index: 10;
+}
+.tb-node:hover {
+    background: rgba(16,185,129,0.08);
+    border-color: rgba(16,185,129,0.5);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(16,185,129,0.15);
+}
+.tb-node.active {
+    background: rgba(16,185,129,0.1);
+    border-color: #10b981;
+    box-shadow: 0 0 20px rgba(16,185,129,0.2);
+}
+
+/* Node for RB lane (blue tint) */
+.lane-rb .tb-node {
+    background: rgba(125,211,252,0.04);
+    border-color: rgba(125,211,252,0.2);
+}
+.lane-rb .tb-node:hover {
+    background: rgba(125,211,252,0.08);
+    border-color: rgba(125,211,252,0.5);
+}
+.lane-rb .tb-node.active {
+    border-color: #7dd3fc;
+    box-shadow: 0 0 20px rgba(125,211,252,0.2);
+}
+
+/* Optional node (HO) */
+.tb-node-optional {
+    background: rgba(251,191,36,0.04) !important;
+    border-color: rgba(251,191,36,0.25) !important;
+    border-style: dashed !important;
+}
+.tb-node-optional:hover {
+    background: rgba(251,191,36,0.08) !important;
+    border-color: rgba(251,191,36,0.5) !important;
+}
+.tb-node-optional.active {
+    border-color: #fbbf24 !important;
+    box-shadow: 0 0 20px rgba(251,191,36,0.2) !important;
+}
+
+/* End/result node */
+.tb-node-end {
+    background: rgba(16,185,129,0.07) !important;
+    border-color: rgba(16,185,129,0.4) !important;
+}
+
+/* Node label (dept badge) */
+.tb-node-dept {
+    font-size: 0.57rem;
+    font-weight: 700;
+    color: #10b981;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 6px;
+    display: block;
+    line-height: 1.2;
+    opacity: 0.8;
+}
+.lane-rb .tb-node-dept    { color: #7dd3fc; }
+.lane-ho .tb-node-dept    { color: #fbbf24; }
+
+/* Node text */
+.tb-node-title {
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #e0e0e0;
+}
+
+/* AUTO badge */
+.badge-auto {
+    display: inline-block;
+    background: rgba(16,185,129,0.15);
+    border: 0.5px solid rgba(16,185,129,0.35);
+    color: #10b981;
+    font-size: 0.52rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-top: 6px;
+}
+
+/* ==========================================================================
+   VERTICAL ARROWS WITHIN LANE (CSS)
+   ========================================================================== */
+.v-connector {
+    width: 2px;
+    height: 22px;
+    background: linear-gradient(to bottom, rgba(16,185,129,0.5), rgba(16,185,129,0.2));
+    margin: 0 auto;
+    position: relative;
+    flex-shrink: 0;
+}
+.v-connector::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: -3px;
+    width: 0; height: 0;
+    border-top: 6px solid rgba(16,185,129,0.6);
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+}
+
+/* Blue version for RB lane */
+.lane-rb .v-connector {
+    background: linear-gradient(to bottom, rgba(125,211,252,0.5), rgba(125,211,252,0.2));
+}
+.lane-rb .v-connector::after {
+    border-top-color: rgba(125,211,252,0.6);
+}
+
+/* ==========================================================================
+   BOTTOM BANK SERVICES BAR
+   ========================================================================== */
+.bank-services-bar {
+    margin: 0 14px 14px 14px;
+    background: rgba(255,255,255,0.02);
+    border: 0.5px dashed rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.bank-services-title {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex-shrink: 0;
+}
+.bank-services-title .label {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 0.62rem;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+.bank-services-title .sublabel {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: rgba(255,255,255,0.55);
+}
+
+.bank-services-divider {
+    width: 0.5px;
+    height: 32px;
+    background: rgba(255,255,255,0.08);
+    flex-shrink: 0;
+}
+
+.bank-services-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+}
+.bank-service-item {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.4);
+    position: relative;
+    padding-left: 12px;
+}
+.bank-service-item::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: rgba(16,185,129,0.5);
+}
+
+/* ==========================================================================
+   SEPARATOR → BENEFITS
+   ========================================================================== */
+.benefits-separator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.2);
+    font-family: 'Unbounded', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 6px 0 2px 0;
+}
+.arrow-bounce {
+    font-size: 1.1rem;
+    color: #10b981;
+    animation: bounce 2s infinite;
+}
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-5px); }
+    60% { transform: translateY(-3px); }
+}
+
+/* ==========================================================================
+   BENEFITS GRID
+   ========================================================================== */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+}
+.benefit-card {
+    background: rgba(16,185,129,0.03);
+    border: 0.5px solid rgba(16,185,129,0.14);
+    border-radius: 16px;
+    padding: 22px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+.benefit-card:hover {
+    background: rgba(16,185,129,0.06);
+    border-color: rgba(16,185,129,0.3);
+    transform: translateY(-3px);
+}
+.benefit-value {
+    font-family: 'Unbounded', sans-serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    color: #10b981;
+    line-height: 1;
+    margin-bottom: 8px;
+}
+.benefit-was {
+    font-size: 0.7rem;
+    color: #555;
+    text-decoration: line-through;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+.benefit-label {
+    font-size: 0.76rem;
+    color: #888;
+    line-height: 1.4;
+}
+
+/* ==========================================================================
+   BACK ROW
+   ========================================================================== */
+.back-row {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    padding-bottom: 20px;
+}
+.cta-btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.04);
+    color: #888;
+    border: 0.5px solid rgba(255,255,255,0.1);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    padding: 13px 28px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+.cta-btn-back:hover {
+    background: rgba(255,255,255,0.07);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   TOOLTIP on arrow hover
+   ========================================================================== */
+.arrow-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.6rem;
+    fill: rgba(16,185,129,0.7);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   SCROLLBAR
+   ========================================================================== */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #111; }
+::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #3a3a3a; }
