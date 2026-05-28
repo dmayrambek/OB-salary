@@ -549,3 +549,21 @@ body {
     color: var(--pink) !important;
     font-size: 20px !important;
 }
+/* Увеличиваем общий холст, чтобы карточкам было где развернуться */
+.flowchart-wrapper {
+    width: 100% !important;
+    max-width: 1200px !important;
+    min-height: 500px !important;
+    margin: 0 auto !important;
+}
+
+/* Увеличиваем размер самих карточек */
+.node-card {
+    width: 220px !important; /* Было меньше, теперь шире */
+    min-height: 120px !important;
+    padding: 20px !important;
+}
+
+/* Если у тебя есть классы с позициями (типа .grid-pos-1), 
+   их координаты (top/left) нужно править в HTML, 
+   но давай попробуем сначала просто увеличить контейнер. */
