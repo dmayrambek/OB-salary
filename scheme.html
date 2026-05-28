@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>O!Bank — Схема процессов ЗПП / Payroll Flowchart</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="scheme.css">
+</head>
+<body class="dark-theme">
+
+  <header class="header">
+    <div class="logo-zone" onclick="window.location.href='index.html'">
+      <span class="logo-o">O!</span><span class="logo-bank">Bank</span>
+    </div>
+    <div class="header-right">
+      <div class="lang-switcher">
+        <button id="btn-lang-ru" class="lang-btn active" onclick="setLanguage('ru')">RU</button>
+        <button id="btn-lang-en" class="lang-btn" onclick="setLanguage('en')">EN</button>
+      </div>
+      <button class="btn-back" onclick="window.location.href='index.html'" data-ru="← На главную" data-en="← Home">← На главную</button>
+    </div>
+  </header>
+
+  <main class="scheme-container">
+    
+    <section class="graph-area">
+      <h1 class="page-title" data-ru="Текущая схема процессов ЗПП" data-en="Current Payroll Process Flowchart">Текущая схема процессов ЗПП</h1>
+      <p class="page-subtitle" data-ru="Внутренний аудит взаимодействия подразделений филиала и Головного банка" data-en="Internal audit of branch departments and Head Office interaction">Внутренний аудит взаимодействия подразделений филиала и Головного банка</p>
+      
+      <div class="flowchart-wrapper">
+        <svg class="graph-lines" viewBox="0 0 800 600">
+          <defs>
+            <marker id="arrow-pink" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M 0 1 L 10 5 L 0 9 z" fill="#e0004d" />
+            </marker>
+          </defs>
+          
+          <path d="M 180,95 L 180,150" marker-end="url(#arrow-pink)" />
+          <path d="M 180,210 L 180,265" marker-end="url(#arrow-pink)" />
+          <path d="M 180,325 L 180,380" marker-end="url(#arrow-pink)" />
+          <path d="M 180,440 L 180,490 L 390,490 L 390,150 L 460,150" marker-end="url(#arrow-pink)" />
+          <path d="M 390,320 L 390,400 L 460,400" marker-end="url(#arrow-pink)" />
+          <path d="M 660,150 L 710,150 L 710,290 L 180,290" class="line-return" />
+        </svg>
+
+        <div class="swimlanelane lane-rb">
+          <div class="lane-badge" data-ru="Розничный бизнес (РБ)" data-en="Retail Business (RB)">Розничный бизнес (РБ)</div>
+          
+          <div class="node-card active" onclick="showDetails('node1', this)">
+            <div class="node-num">01</div>
+            <div class="node-icon">🤝</div>
+            <div class="node-title" data-ru="Привлечение клиента" data-en="Client Acquisition">Привлечение клиента</div>
+          </div>
+
+          <div class="node-card" onclick="showDetails('node2', this)">
+            <div class="node-num">02</div>
+            <div class="node-icon">📝</div>
+            <div class="node-title" data-ru="Подписание договора" data-en="Contract Signing">Подписание договора</div>
+          </div>
+
+          <div class="node-card" onclick="showDetails('node3', this)">
+            <div class="node-num">03</div>
+            <div class="node-icon">📂</div>
+            <div class="node-title" data-ru="Прием списков и док." data-en="Receiving Lists & Docs">Прием списков и док.</div>
+          </div>
+
+          <div class="node-card node-warning" onclick="showDetails('node4', this)">
+            <div class="node-num">04</div>
+            <div class="node-icon">✉️</div>
+            <div class="node-title" data-ru="Служебная записка" data-en="Internal Memo (SBR)">Служебная записка</div>
+          </div>
+          
+          <div class="node-card" onclick="showDetails('node8', this)">
+            <div class="node-num">08</div>
+            <div class="node-icon">💳</div>
+            <div class="node-title" data-ru="Передача карт клиенту" data-en="Card Handover to Client">Передача карт клиенту</div>
+          </div>
+        </div>
+
+        <div class="swimlanelane lane-soyufl">
+          <div class="lane-badge" data-ru="СОЮФЛ (Филиал)" data-en="Branch Operations (SOYUFL)">СОЮФЛ (Филиал)</div>
+          
+          <div class="node-card node-warning" style="top: 110px;" onclick="showDetails('node5', this)">
+            <div class="node-num">05</div>
+            <div class="node-icon">🖥️</div>
+            <div class="node-title" data-ru="Открытие счетов" data-en="Account Opening">Открытие счетов</div>
+          </div>
+        </div>
+
+        <div class="swimlanelane lane-gb">
+          <div class="lane-badge" data-ru="Головной Банк (ГБ)" data-en="Head Office (HO)">Головной Банк (ГБ)</div>
+          
+          <div class="node-card" style="top: 110px;" onclick="showDetails('node6', this)">
+            <div class="node-num">06</div>
+            <div class="node-icon">🏭</div>
+            <div class="node-title" data-ru="Изготовление карт" data-en="Card Production">Изготовление карт</div>
+          </div>
+
+          <div class="node-card node-warning" style="top: 360px;" onclick="showDetails('node7', this)">
+            <div class="node-num">07</div>
+            <div class="node-icon">📦</div>
+            <div class="node-title" data-ru="Отправка в филиал" data-en="Shipping to Branch">Отправка в филиал</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <aside class="details-panel">
+      <div class="panel-glass-content" id="details-content">
+        </div>
+    </aside>
+
+  </main>
+
+  <script src="scheme.js"></script>
+</body>
+</html>
