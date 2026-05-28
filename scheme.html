@@ -14,8 +14,8 @@
     </div>
     <div class="header-right">
       <div class="lang-switcher">
-        <button id="btn-lang-ru" class="lang-btn active" onclick="setLanguage('ru')">RU</button>
-        <button id="btn-lang-en" class="lang-btn" onclick="setLanguage('en')">EN</button>
+        <button id="btn-lang-ru" class="lang-btn" data-lang="ru">RU</button>
+        <button id="btn-lang-en" class="lang-btn" data-lang="en">EN</button>
       </div>
       <button class="btn-back" onclick="window.location.href='index.html'" data-ru="← На главную" data-en="← Home">← На главную</button>
     </div>
@@ -40,7 +40,7 @@
           <path d="M 180,325 L 180,380" marker-end="url(#arrow-pink)" />
           <path d="M 180,440 L 180,490 L 390,490 L 390,150 L 460,150" marker-end="url(#arrow-pink)" />
           <path d="M 390,320 L 390,400 L 460,400" marker-end="url(#arrow-pink)" />
-          <path d="M 660,150 L 710,150 L 710,290 L 180,290" class="line-return" />
+          <path d="M 660,150 L 710,150 L 710,290 L 180,290" class="line-return" style="stroke-dasharray: 4 4;" />
         </svg>
 
         <div class="swimlanelane lane-rb">
@@ -114,5 +114,6 @@
   </main>
 
   <script src="main.js"></script>
+  <script src="scheme.js"></script>
 </body>
 </html>
