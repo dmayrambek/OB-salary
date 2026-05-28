@@ -250,3 +250,20 @@ body.light-mode .hero { background: #0A0A0A !important; }
 body.light-mode .hero-title { color: #fff !important; }
 body.light-mode .hero-tag { background: transparent !important; }
 body.light-mode .hc { background: rgba(232,0,90,0.08); }
+/* Делаем стрелочки четкими и светящимися */
+.holo-svg path {
+    stroke-width: 2.5px; /* Немного потолще */
+    filter: drop-shadow(0 0 4px rgba(232, 0, 90, 0.8)) 
+            drop-shadow(0 0 8px rgba(232, 0, 90, 0.4));
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Чтобы маркер (наконечник) тоже светился */
+.holo-svg marker {
+    overflow: visible;
+}
+
+.holo-svg marker path {
+    filter: drop-shadow(0 0 3px rgba(232, 0, 90, 0.9));
+}
