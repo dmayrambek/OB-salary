@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -47,25 +46,41 @@
 
   <div class="holo-canvas">
 
+    <!-- 🔥 ЛИНИИ -->
+    <svg class="holo-svg" viewBox="0 0 820 360" preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <marker id="harr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+          <path d="M0,1 L7,4 L0,7" stroke="rgba(255,255,255,0.18)" stroke-width="1" fill="none"/>
+        </marker>
+      </defs>
+
+      <path d="M 165,189 C 210,160 255,85 290,69"
+            stroke="rgba(255,255,255,0.14)"
+            stroke-width="0.8"
+            fill="none"
+            marker-end="url(#harr)"/>
+
+      <path d="M 445,69 C 498,69 548,168 570,218"
+            stroke="rgba(255,255,255,0.14)"
+            stroke-width="0.8"
+            fill="none"
+            marker-end="url(#harr)"/>
+
+      <path d="M 648,263 C 648,308 450,318 395,330"
+            stroke="rgba(255,255,255,0.14)"
+            stroke-width="0.8"
+            fill="none"
+            marker-end="url(#harr)"/>
+    </svg>
+
     <!-- 01 -->
     <div class="hc" onclick="location.href='marketing.html'" style="left:10px;top:145px;">
       <div class="hc-scan"></div>
       <div class="hc-c hc-ctl"></div><div class="hc-c hc-ctr"></div>
       <div class="hc-c hc-cbl"></div><div class="hc-c hc-cbr"></div>
       <div class="hc-num">01</div>
-
-      <div class="hc-title"
-        data-ru="Marketing Research"
-        data-en="Marketing Research">
-        Marketing Research
-      </div>
-
-      <div class="hc-sub"
-        data-ru="анализ рынка КР"
-        data-en="market analysis">
-        анализ рынка КР
-      </div>
-
+      <div class="hc-title" data-ru="Marketing Research" data-en="Marketing Research">Marketing Research</div>
+      <div class="hc-sub" data-ru="анализ рынка КР" data-en="market analysis">анализ рынка КР</div>
       <div class="hc-dot"></div>
     </div>
 
@@ -75,19 +90,8 @@
       <div class="hc-c hc-ctl"></div><div class="hc-c hc-ctr"></div>
       <div class="hc-c hc-cbl"></div><div class="hc-c hc-cbr"></div>
       <div class="hc-num">02</div>
-
-      <div class="hc-title"
-        data-ru="Текущая схема"
-        data-en="Current Scheme">
-        Текущая схема
-      </div>
-
-      <div class="hc-sub"
-        data-ru="процессы ЗПП"
-        data-en="Payroll processes">
-        процессы ЗПП
-      </div>
-
+      <div class="hc-title" data-ru="Текущая схема" data-en="Current Scheme">Текущая схема</div>
+      <div class="hc-sub" data-ru="процессы ЗПП" data-en="Payroll processes">процессы ЗПП</div>
       <div class="hc-dot" style="animation-delay:0.6s"></div>
     </div>
 
@@ -97,19 +101,8 @@
       <div class="hc-c hc-ctl"></div><div class="hc-c hc-ctr"></div>
       <div class="hc-c hc-cbl"></div><div class="hc-c hc-cbr"></div>
       <div class="hc-num">03</div>
-
-      <div class="hc-title"
-        data-ru="Текущие данные"
-        data-en="Current Data">
-        Текущие данные
-      </div>
-
-      <div class="hc-sub"
-        data-ru="отчёты · аналитика"
-        data-en="Reports · analytics">
-        отчёты · аналитика
-      </div>
-
+      <div class="hc-title" data-ru="Текущие данные" data-en="Current Data">Текущие данные</div>
+      <div class="hc-sub" data-ru="отчёты · аналитика" data-en="Reports · analytics">отчёты · аналитика</div>
       <div class="hc-dot" style="animation-delay:1.2s"></div>
     </div>
 
@@ -119,27 +112,14 @@
       <div class="hc-c hc-ctl"></div><div class="hc-c hc-ctr"></div>
       <div class="hc-c hc-cbl"></div><div class="hc-c hc-cbr"></div>
       <div class="hc-num">04</div>
-
-      <div class="hc-title"
-        data-ru="Продажи и пакеты"
-        data-en="Sales & Packages">
-        Продажи и пакеты
-      </div>
-
-      <div class="hc-sub"
-        data-ru="тарифы · предложение"
-        data-en="Rates · offering">
-        тарифы · предложение
-      </div>
-
+      <div class="hc-title" data-ru="Продажи и пакеты" data-en="Sales & Packages">Продажи и пакеты</div>
+      <div class="hc-sub" data-ru="тарифы · предложение" data-en="Rates · offering">тарифы · предложение</div>
       <div class="hc-dot" style="animation-delay:1.8s"></div>
     </div>
 
   </div>
-
 </section>
 
 <script src="main.js"></script>
 </body>
 </html>
-```
