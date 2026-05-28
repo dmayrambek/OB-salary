@@ -225,13 +225,12 @@ body.light-mode .theme-icon-light { display: inline; }
 }
 .hc::before { content: ''; position: absolute; inset: 0; border-radius: 16px; opacity: 0; transition: opacity 0.35s; background: radial-gradient(ellipse at 50% 0%, rgba(232,0,90,0.25) 0%, transparent 75%); }
 .hc::after { content: ''; position: absolute; left: -100%; top: 0; width: 50%; height: 100%; background: linear-gradient(90deg, transparent, rgba(232,0,90,0.12), transparent); transition: left 0.55s ease; pointer-events: none; }
-.hc:hover { border-color: rgba(232,0,90,0.8); background: rgba(232,0,90,0.12); box-shadow: 0 0 36px rgba(232,0,90,0.25), 0 0 0 1px rgba(232,0,90,0.4); transform: scale(1.06); }
-.hc:hover::before { opacity: 1; }
-.hc:hover::after { left: 150%; }
-.hc:hover .hc-title { color: #fff; }
-.hc:hover .hc-num { color: var(--pink); }
-.hc:hover .hc-c { border-color: rgba(232,0,90,0.9); }
-.hc:hover .hc-scan { animation: hcscan 1s ease forwards; }
+.hc:hover {
+    border-color: rgba(232,0,90,0.8);
+    background: rgba(232,0,90,0.12);
+    box-shadow: 0 10px 30px -10px rgba(232,0,90,0.3); /* Тень вместо масштабирования */
+    transform: translateY(-4px); /* Карточка плавно "всплывает" вверх */
+}
 .hc-scan { position: absolute; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(232,0,90,0.6), transparent); top: -2px; opacity: 0; pointer-events: none; }
 @keyframes hcscan { 0% { top: 0; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { top: 100%; opacity: 0; } }
 .hc-c { position: absolute; width: 8px; height: 8px; border-color: rgba(232,0,90,0.45); border-style: solid; transition: border-color 0.3s; }
