@@ -269,3 +269,31 @@ body.light-mode .theme-icon-light { display: inline; }
 
 /* Holo всегда тёмный даже в светлой теме */
 body.light-mode .hero { background: #0A0A0A !important; }
+/* Делаем базовые линии процесса видимыми и неоновыми */
+svg path, svg line {
+    stroke: rgba(224, 0, 77, 0.4) !important; /* Делаем фирменный розовый цвет О!Банка чуть прозрачным в покое */
+    stroke-width: 3px !important;              /* Увеличиваем толщину линии, чтобы её было видно */
+    stroke-dasharray: 8 4;                     /* Опционально: делаем линию пунктирной, это круто показывает динамику процесса */
+    animation: flowAnimation 25s linear infinite; /* Пускаем движение по стрелкам */
+    transition: all 0.3s ease;
+}
+
+/* Наконечники стрелок (marker-end) */
+svg marker path {
+    fill: rgba(224, 0, 77, 0.8) !important;    /* Делаем сам треугольник стрелки ярким */
+}
+
+/* Анимация движения процесса по линиям */
+@keyframes flowAnimation {
+    from { stroke-dashoffset: 0; }
+    to { stroke-dashoffset: -500; }
+}
+
+/* 🔥 ИНТЕРАКТИВ: Подсвечиваем связь при наведении на блок */
+/* Когда мы наводим на карточку раздела, ведущая к нему/от него линия загорается на полную мощность */
+.block-card:hover ~ svg path, 
+.block-card:hover svg path {
+    stroke: #e0004d !important;                /* Яркий сплошной неоновый цвет */
+    stroke-width: 4px !important;
+    filter: drop-shadow(0 0 8px #e0004d);     /* Эффект свечения */
+}
