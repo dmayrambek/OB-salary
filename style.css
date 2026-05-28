@@ -258,12 +258,10 @@ body.light-mode .hc { background: rgba(232,0,90,0.08); }
     stroke-linecap: round;
     stroke-linejoin: round;
 }
-
-/* Чтобы маркер (наконечник) тоже светился */
-.holo-svg marker {
-    overflow: visible;
-}
-
-.holo-svg marker path {
-    filter: drop-shadow(0 0 3px rgba(232, 0, 90, 0.9));
+/* Делаем пунктирные линии заметными и четкими */
+.holo-svg path {
+    stroke-width: 2px;           /* Стало толще */
+    stroke: rgba(232, 0, 90, 1);  /* Убрали прозрачность, цвет стал плотным */
+    stroke-dasharray: 6 4;       /* Твой пунктир */
+    animation: flowAnim 18s linear infinite;
 }
