@@ -18,58 +18,76 @@
                 <button class="lang-btn active" id="btn-ru" onclick="changeLang('ru')">RU</button>
                 <button class="lang-btn" id="btn-en" onclick="changeLang('en')">EN</button>
             </div>
-            <a href="index.html" class="back-btn" data-lang="en:Back to main, ru:← На главную">← На главную</a>
+            <a href="index.html" class="back-btn" id="txt-to-main">← На главную</a>
         </div>
     </header>
 
     <main class="main-container">
         <section class="scheme-section">
-            <div class="scheme-section-title" id="title-as-is" data-lang="en:Current process (As Is), ru:🔴 Текущий процесс (As Is)">🔴 Текущий процесс (As Is)</div>
+            <div class="scheme-section-title" id="title-as-is">🔴 Текущий процесс (As Is)</div>
             <div class="flowchart-wrapper">
-                <div class="process-header-title" id="process-main-title" data-lang="en:Payroll process in the branch, ru:Процесс ЗПП в филиале">Процесс ЗПП в филиале</div>
+                <div class="process-header-title" id="process-main-title">Процесс ЗПП в филиале</div>
                 <div class="process-grid">
-                    <div class="node-card" data-node="O1"><span class="node-badge-dept">РБ, СОЮФЛ</span><div class="node-title" data-lang="en:Attraction, ru:Привлечение">Привлечение</div></div>
-                    <div class="node-card" data-node="O2"><span class="node-badge-dept">РБ</span><div class="node-title" data-lang="en:Contract signing, ru:Подписание договора">Подписание договора</div></div>
-                    <div class="node-card" data-node="O3"><span class="node-badge-dept">РБ</span><div class="node-title" data-lang="en:List intake, ru:Прием списка сотрудников">Прием списка сотрудников</div></div>
-                    <div class="node-card" data-node="O4"><span class="node-badge-dept">РБ, ГБ</span><div class="node-title" data-lang="en:Service note creation, ru:Создание СЗ на заведение">Создание СЗ на заведение</div></div>
-                    <div class="node-card" data-node="O5"><span class="node-badge-dept">СОЮФЛ</span><div class="node-title" data-lang="en:Account opening, ru:Открытие счетов">Открытие счетов</div></div>
-                    <div class="node-card" data-node="O6"><span class="node-badge-dept">ГБ</span><div class="node-title" data-lang="en:Card issuance, ru:Изготовление карт">Изготовление карт</div></div>
-                    <div class="node-card" data-node="O7"><span class="node-badge-dept">РБ</span><div class="node-title" data-lang="en:Card delivery, ru:Передача карт организации">Передача карт организации</div></div>
+                    <div class="node-card grid-pos-1 active" data-node="O1" id="n1">
+                        <span class="node-badge-dept">РБ, СОЮФЛ</span>
+                        <div class="node-title">Привлечение</div>
+                        <div class="glow-point p-right"></div>
+                    </div>
+                    <div class="css-line line-h L1-2"></div> 
+                    <div class="node-card grid-pos-2" data-node="O2" id="n2">
+                        <span class="node-badge-dept">РБ</span>
+                        <div class="node-title">Подписание договора</div>
+                        <div class="glow-point p-right"></div>
+                    </div>
+                    <div class="css-line line-h L2-4"></div> 
+                    <div class="node-card grid-pos-3" data-node="O3" id="n3">
+                        <span class="node-badge-dept">РБ</span>
+                        <div class="node-title">Прием списка сотрудников</div>
+                        <div class="glow-point p-right"></div>
+                    </div>
+                    <div class="css-line line-h L3-4"></div> 
+                    <div class="node-card grid-pos-4 node-warning" data-node="O4" id="n4">
+                        <span class="node-badge-dept font-small">РБ, ГБ</span>
+                        <div class="node-title">Создание СЗ на заведение</div>
+                        <div class="glow-point p-right"></div>
+                    </div>
+                    <div class="css-line line-h L4-5"></div> 
+                    <div class="node-card grid-pos-5" data-node="O5" id="n5">
+                        <span class="node-badge-dept">СОЮФЛ</span>
+                        <div class="node-title">Открытие счетов</div>
+                        <div class="glow-point p-right"></div>
+                    </div>
+                    <div class="css-line line-h L5-6"></div> 
+                    <div class="node-card grid-pos-6" data-node="O6" id="n6">
+                        <span class="node-badge-dept font-small">ГБ</span>
+                        <div class="node-title">Изготовление карт</div>
+                        <div class="glow-point p-down"></div> 
+                    </div>
+                    <div class="css-line line-v L6-7"></div> 
+                    <div class="node-card grid-pos-7" data-node="O7" id="n7">
+                        <span class="node-badge-dept">РБ</span>
+                        <div class="node-title">Передача карт организации</div>
+                    </div>
                 </div>
             </div>
         </section>
 
+        <div class="vertical-bridge">
+            <span class="arrow-down-anim">⬇️</span>
+            <p id="txt-problems-link">Из текущей схемы вытекают проблемы</p>
+        </div>
+
         <section id="problems-section" class="problems-container">
-            <div class="problems-intro">
-                <h3 data-lang="en:Key system problems:, ru:Основные системные проблемы:">Основные системные проблемы:</h3>
-                <ul>
-                    <li data-lang="en:Lack of a single digital channel, ru:Отсутствие единого цифрового канала">Отсутствие единого цифрового канала.</li>
-                    <li data-lang="en:Low level of automation, ru:Низкий уровень автоматизации.">Низкий уровень автоматизации.</li>
-                </ul>
-            </div>
+            <div id="details-content">
+                </div>
         </section>
 
         <div class="to-be-bridge">
             <a href="to-be.html" class="to-be-link">
-                <span id="txt-to-be-link" data-lang="en:Go to Target process (To Be), ru:Переход к целевому процессу (To Be)">Переход к целевому процессу (To Be)</span>
+                <span id="txt-to-be-link">Целевой процесс (To Be)</span>
                 <span>➡️</span>
             </a>
         </div>
     </main>
-
-    <script>
-        function changeLang(lang) {
-            document.querySelectorAll('[data-lang]').forEach(el => {
-                const translations = el.getAttribute('data-lang').split(',').reduce((acc, part) => {
-                    const [key, val] = part.split(':');
-                    acc[key.trim()] = val.trim();
-                    return acc;
-                }, {});
-                if (translations[lang]) el.innerText = translations[lang];
-            });
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById('btn-' + lang).classList.add('active');
-        }
-    </script>
 </body>
 </html>
