@@ -36,7 +36,6 @@
       data-en="Payroll Project · O!Bank · 2026">
       Зарплатный проект · О!Банк · 2026
     </div>
-
     <h1 class="hero-title"
       data-ru="Выберите раздел"
       data-en="Select Section">
@@ -45,35 +44,25 @@
   </div>
 
   <div class="holo-canvas">
-    <!-- СВЯЗУЮЩИЕ ЛИНИИ (SVG) -->
-    <svg class="holo-svg" viewBox="0 0 820 360" preserveAspectRatio="xMidYMid meet">
+    <svg class="holo-svg" viewBox="0 0 860 430" preserveAspectRatio="xMidYMid meet">
       <defs>
         <marker id="harr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
-          <path d="M0,1 L7,4 L0,7" stroke="rgba(255,255,255,0.18)" stroke-width="1" fill="none"/>
+          <path d="M0,1 L7,4 L0,7" stroke="rgba(232,0,90,0.7)" stroke-width="1.2" fill="none"/>
         </marker>
       </defs>
-
-      <path d="M 165,189 C 210,160 255,85 290,69"
-            stroke="rgba(232,0,90,0.2)"
-            stroke-width="0.8"
-            fill="none"
-            marker-end="url(#harr)"/>
-
-      <path d="M 445,69 C 498,69 548,168 570,218"
-            stroke="rgba(232,0,90,0.2)"
-            stroke-width="0.8"
-            fill="none"
-            marker-end="url(#harr)"/>
-
-      <path d="M 648,263 C 648,308 450,318 395,330"
-            stroke="rgba(232,0,90,0.2)"
-            stroke-width="0.8"
-            fill="none"
-            marker-end="url(#harr)"/>
+      <!-- 01 → 02 -->
+      <path d="M 190,215 C 245,190 290,95 335,72"
+            stroke="rgba(232,0,90,0.3)" stroke-width="1" fill="none" marker-end="url(#harr)"/>
+      <!-- 02 → 03 -->
+      <path d="M 525,72 C 580,72 625,178 660,205"
+            stroke="rgba(232,0,90,0.3)" stroke-width="1" fill="none" marker-end="url(#harr)"/>
+      <!-- 03 → 04 -->
+      <path d="M 755,300 C 755,355 535,370 475,375"
+            stroke="rgba(232,0,90,0.3)" stroke-width="1" fill="none" marker-end="url(#harr)"/>
     </svg>
 
-    <!-- 01. Маркетинг -->
-    <div class="hc" onclick="location.href='marketing.html'" style="left:10px;top:125px;">
+    <!-- 01 Marketing Research — слева -->
+    <div class="hc" onclick="location.href='marketing.html'" style="left:5px; top:160px;">
       <div class="hc-scan"></div>
       <div class="hc-c hc-ctl"></div><div class="hc-c hc-ctr"></div>
       <div class="hc-c hc-cbl"></div><div class="hc-c hc-cbr"></div>
@@ -83,36 +72,36 @@
       <div class="hc-dot"></div>
     </div>
 
-    <!-- 02. Текущая схема -->
-    <div class="hc" onclick="location.href='scheme.html'" style="left:290px;top:15px;">
+    <!-- 02 Текущая схема — центр-верх -->
+    <div class="hc" onclick="location.href='scheme.html'" style="left:335px; top:10px;">
       <div class="hc-scan"></div>
       <div class="hc-c hc-ctl"></div><div class="hc-c hc-ctr"></div>
       <div class="hc-c hc-cbl"></div><div class="hc-c hc-cbr"></div>
       <div class="hc-num">02</div>
       <div class="hc-title" data-ru="Текущая схема" data-en="Current Scheme">Текущая схема</div>
-      <div class="hc-sub" data-ru="процессы ЗПП" data-en="Payroll processes">процессы ЗПП</div>
+      <div class="hc-sub" data-ru="процессы ЗПП" data-en="payroll processes">процессы ЗПП</div>
       <div class="hc-dot" style="animation-delay:0.6s"></div>
     </div>
 
-    <!-- 03. Текущие данные -->
-    <div class="hc" onclick="location.href='reports.html'" style="left:570px;top:155px;">
+    <!-- 03 Текущие данные — правая сторона -->
+    <div class="hc" onclick="location.href='reports.html'" style="left:660px; top:180px;">
       <div class="hc-scan"></div>
-      <div class="hc-c hc-ctl"></div><div class="hc-c fuse-ctr"></div>
+      <div class="hc-c hc-ctl"></div><div class="hc-c hc-ctr"></div>
       <div class="hc-c hc-cbl"></div><div class="hc-c hc-cbr"></div>
       <div class="hc-num">03</div>
       <div class="hc-title" data-ru="Текущие данные" data-en="Current Data">Текущие данные</div>
-      <div class="hc-sub" data-ru="отчёты · аналитика" data-en="Reports · analytics">отчёты · аналитика</div>
+      <div class="hc-sub" data-ru="отчёты · аналитика" data-en="reports · analytics">отчёты · аналитика</div>
       <div class="hc-dot" style="animation-delay:1.2s"></div>
     </div>
 
-    <!-- 04. Продажи и пакеты -->
-    <div class="hc" onclick="location.href='sales.html'" style="left:240px;top:270px;">
+    <!-- 04 Продажи и пакеты — низ-центр -->
+    <div class="hc" onclick="location.href='sales.html'" style="left:290px; top:320px;">
       <div class="hc-scan"></div>
       <div class="hc-c hc-ctl"></div><div class="hc-c hc-ctr"></div>
       <div class="hc-c hc-cbl"></div><div class="hc-c hc-cbr"></div>
       <div class="hc-num">04</div>
       <div class="hc-title" data-ru="Продажи и пакеты" data-en="Sales & Packages">Продажи и пакеты</div>
-      <div class="hc-sub" data-ru="тарифы · предложение" data-en="Rates · offering">тарифы · предложение</div>
+      <div class="hc-sub" data-ru="тарифы · предложение" data-en="rates · offering">тарифы · предложение</div>
       <div class="hc-dot" style="animation-delay:1.8s"></div>
     </div>
 
