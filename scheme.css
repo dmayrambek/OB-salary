@@ -49,7 +49,6 @@ header{display:flex;align-items:center;justify-content:space-between;padding:18p
   display:grid;
   grid-template-columns:1fr 20px 1fr 20px 1fr;
   grid-template-rows:auto 1fr;
-  transition:grid-template-columns .35s ease;
 }
 .asis-grid.problems-on{
   grid-template-columns:1fr 240px 1fr 240px 1fr;
@@ -100,24 +99,19 @@ header{display:flex;align-items:center;justify-content:space-between;padding:18p
 /* GAP BODY — пространство для проблем */
 .gap-body{
   padding:0;
-  display:flex;
+  display:none;
   flex-direction:column;
   gap:0;
   align-items:stretch;
-  overflow:hidden;
-  max-height:0;
-  transition:max-height .35s ease, padding .35s ease;
 }
 .asis-grid.problems-on .gap-body{
-  max-height:2000px;
+  display:flex;
   padding:0 8px;
 }
 
 /* PROB CARD */
 .prob-card{
   opacity:0;
-  transform:translateX(-8px);
-  transition:opacity .25s, transform .25s;
   background:var(--prob-bg);
   border:1px solid var(--prob-border);
   border-radius:3px;
@@ -136,7 +130,7 @@ header{display:flex;align-items:center;justify-content:space-between;padding:18p
 }
 .prob-card.visible{
   opacity:1;
-  transform:translateX(0);
+}
 }
 .prob-from{
   display:flex;align-items:center;gap:5px;
