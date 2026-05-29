@@ -9,7 +9,7 @@
 <body>
 
 <header>
-  <div class="logo"><span>O!</span>BANK</div>
+  <a class="logo" href="index.html"><span>O!</span>BANK</a>
   <div class="lang-switcher">
     <button class="lang-btn active" data-lang="ru">RU</button>
     <button class="lang-btn" data-lang="en">EN</button>
@@ -17,6 +17,7 @@
 </header>
 
 <div class="page">
+
   <div class="section-label">
     <div class="section-dot"></div>
     <h2 data-ru="Целевой процесс (To Be)" data-en="Target Process (To Be)">Целевой процесс (To Be)</h2>
@@ -27,185 +28,108 @@
          data-ru="Процесс ЗПП в филиале"
          data-en="Payroll Project Process in Branch">Процесс ЗПП в филиале</div>
 
-    <!--
-      GRID: 4 cols × 8 rows
-      Все стрелки — SVG overlay.
-      Блоки выровнены как на скриншоте.
+    <!-- два блока параллельно -->
+    <div class="tobe-grid">
 
-      ROW | COL1 (ПП)         | COL2 (РБ)         | COL3 (СОД)                    | COL4 (ГБ)
-      R1  | ПП Привлечение    | РБ Привлечение    | СОД Согласование              | ГБ Изготовление
-      R2  | ПП Подписание     | РБ Подписание     | СОД Подготовка                | ГБ Отправка
-      R3  | —                 | —                 | СОД Приём списка              | —
-      R4  | —                 | —                 | СОД Создание заявки           | —
-      R5  | —                 | —                 | СОЮФЛ Открытие счетов         | —
-      R6  | —                 | —                 | —                             | —
-      R7  | ПП Раздача        | РБ Раздача        | СОД Передача карт             | —
-    -->
-    <div class="sl-grid" id="swimlane">
-
-      <!-- HEADERS -->
-      <div class="sl-hdr">
-        <div class="lane-icon"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="6" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 17c0-3.314 3.134-6 7-6s7 2.686 7 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-        <span data-ru="Прямые продажи" data-en="Direct Sales">Прямые продажи</span>
-      </div>
-      <div class="sl-hdr">
-        <div class="lane-icon"><svg viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 4V3M13 4V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3 8h14" stroke="currentColor" stroke-width="1.5"/></svg></div>
-        <span data-ru="Розничный бизнес" data-en="Retail Business">Розничный бизнес</span>
-      </div>
-      <div class="sl-hdr">
-        <div class="lane-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M4 5h12M4 10h8M4 15h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-        <span data-ru="Служба операционной деятельности" data-en="Operational Services Dept.">Служба операционной деятельности</span>
-      </div>
-      <div class="sl-hdr">
-        <div class="lane-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2L3 6v4c0 4 3.1 7.7 7 8.9C16.9 17.7 17 13 17 10V6l-7-4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
-        <span data-ru="Головной банк" data-en="Head Office Bank">Головной банк</span>
-      </div>
-
-      <!-- ROW 1 -->
-      <div class="sl-cell" data-id="pp-attract">
-        <div class="step-card">
-          <div class="step-tag" data-ru="ПП" data-en="DS">ПП</div>
-          <div class="step-title" data-ru="Привлечение клиента" data-en="Client Acquisition">Привлечение клиента</div>
+      <!-- ПП/Филиал -->
+      <div class="lane-wrap">
+        <div class="lane-hdr">
+          <div class="lane-icon">
+            <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="6" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 17c0-3.314 3.134-6 7-6s7 2.686 7 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <span data-ru="ПП / Филиал" data-en="DS / Branch">ПП / Филиал</span>
         </div>
-      </div>
-      <div class="sl-cell" data-id="rb-attract">
-        <div class="step-card highlight">
-          <div class="step-tag" data-ru="РБ" data-en="RB">РБ</div>
-          <div class="step-title" data-ru="Привлечение клиента" data-en="Client Acquisition">Привлечение клиента</div>
-        </div>
-      </div>
-      <div class="sl-cell" data-id="sod-agree">
-        <div class="step-card">
-          <div class="step-tag" data-ru="СОД" data-en="OSD">СОД</div>
-          <div class="step-title" data-ru="Согласование условий ЗПП с руководством" data-en="Approval of payroll terms with management">Согласование условий ЗПП с руководством</div>
-        </div>
-      </div>
-      <div class="sl-cell" data-id="gb-instant">
-        <div class="step-card">
-          <div class="step-tag" data-ru="ГБ" data-en="HO">ГБ</div>
-          <div class="step-title" data-ru="Изготовление Instant карт (по запросу — именная карта)" data-en="Production of Instant cards (named on request)">Изготовление Instant карт (по запросу — именная карта)</div>
+        <div class="lane-body">
+          <div class="lane-item">
+            <span data-ru="Привлечение клиента" data-en="Client acquisition">Привлечение клиента</span>
+          </div>
+          <div class="lane-item">
+            <span data-ru="Раздача карт" data-en="Card distribution">Раздача карт</span>
+          </div>
         </div>
       </div>
 
-      <!-- ROW 2 -->
-      <div class="sl-cell" data-id="pp-sign">
-        <div class="step-card">
-          <div class="step-tag" data-ru="ПП" data-en="DS">ПП</div>
-          <div class="step-title" data-ru="Подписание договора ЗПП" data-en="Signing the Payroll Agreement">Подписание договора ЗПП</div>
+      <!-- Управление ЗПП -->
+      <div class="lane-wrap">
+        <div class="lane-hdr">
+          <div class="lane-icon">
+            <svg viewBox="0 0 20 20" fill="none"><rect x="3" y="3" width="14" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 10h6M7 7h6M7 13h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          </div>
+          <span data-ru="Управление ЗПП" data-en="Payroll Project Management">Управление ЗПП</span>
         </div>
-      </div>
-      <div class="sl-cell" data-id="rb-sign">
-        <div class="step-card">
-          <div class="step-tag" data-ru="РБ" data-en="RB">РБ</div>
-          <div class="step-title" data-ru="Подписание договора ЗПП" data-en="Signing the Payroll Agreement">Подписание договора ЗПП</div>
-        </div>
-      </div>
-      <div class="sl-cell" data-id="sod-prep">
-        <div class="step-card">
-          <div class="step-tag" data-ru="СОД" data-en="OSD">СОД</div>
-          <div class="step-title" data-ru="Подготовка договора ЗПП" data-en="Preparation of Payroll Agreement">Подготовка договора ЗПП</div>
-        </div>
-      </div>
-      <div class="sl-cell" data-id="gb-send">
-        <div class="step-card">
-          <div class="step-tag" data-ru="ГБ" data-en="HO">ГБ</div>
-          <div class="step-title" data-ru="Отправка карт в СОД" data-en="Sending cards to Operational Services">Отправка карт в СОД</div>
+        <div class="lane-body">
+          <div class="lane-item">
+            <span data-ru="Согласование условий ЗПП с руководством" data-en="Approval of payroll terms with management">Согласование условий ЗПП с руководством</span>
+          </div>
+          <div class="lane-item">
+            <span data-ru="Подготовка договора ЗПП" data-en="Preparation of payroll agreement">Подготовка договора ЗПП</span>
+          </div>
+          <div class="lane-item">
+            <span data-ru="Приём списка сотрудников (клиентов) и документов" data-en="Receiving employee (client) list and documents">Приём списка сотрудников (клиентов) и документов</span>
+          </div>
+          <div class="lane-item">
+            <span data-ru="Создание служебной записки на ЗПП в BPM" data-en="Creating internal memo for payroll project in BPM">Создание служебной записки на ЗПП в BPM</span>
+          </div>
+          <div class="lane-item">
+            <span data-ru="Открытие карточных счетов сотрудников (клиентов)" data-en="Opening employee (client) card accounts">Открытие карточных счетов сотрудников (клиентов)</span>
+          </div>
+          <div class="lane-item">
+            <span data-ru="Передача Instant карт сотрудникам ПП/Филиал" data-en="Handing Instant cards to DS/Branch employees">Передача Instant карт сотрудникам ПП/Филиал</span>
+          </div>
+          <div class="lane-item">
+            <span data-ru="Ведение отчётности" data-en="Reporting and record-keeping">Ведение отчётности</span>
+          </div>
+          <div class="lane-item">
+            <span data-ru="Работа с возражениями и проблемами" data-en="Handling objections and issues">Работа с возражениями и проблемами</span>
+          </div>
+          <div class="lane-item">
+            <span data-ru="Согласование спец. тарифов" data-en="Special tariff approval">Согласование спец. тарифов</span>
+          </div>
+          <div class="lane-item">
+            <span data-ru="Контроль за актуализацией информации на сайте" data-en="Monitoring website information updates">Контроль за актуализацией информации на сайте</span>
+          </div>
         </div>
       </div>
 
-      <!-- ROW 3 -->
-      <div class="sl-cell sl-cell--empty"></div>
-      <div class="sl-cell sl-cell--empty"></div>
-      <div class="sl-cell" data-id="sod-list">
-        <div class="step-card">
-          <div class="step-tag" data-ru="СОД, CRM" data-en="OSD, CRM">СОД, CRM</div>
-          <div class="step-title" data-ru="Приём списка сотрудников и документов" data-en="Receiving employee list and documents">Приём списка сотрудников и документов</div>
-        </div>
-      </div>
-      <div class="sl-cell sl-cell--empty"></div>
+    </div><!-- /tobe-grid -->
 
-      <!-- ROW 4 -->
-      <div class="sl-cell sl-cell--empty"></div>
-      <div class="sl-cell sl-cell--empty"></div>
-      <div class="sl-cell" data-id="sod-crm">
-        <div class="step-card">
-          <div class="step-tag" data-ru="СОД, CRM / АБС" data-en="OSD, CRM / CBS">СОД, CRM / АБС</div>
-          <div class="step-title" data-ru="Создание служебной записки на ЗПП в BPM" data-en="Creating a memo on the RFP in BPM">Создание служебной записки на ЗПП в BPM</div>
-        </div>
-      </div>
-      <div class="sl-cell sl-cell--empty"></div>
-
-      <!-- ROW 5 -->
-      <div class="sl-cell sl-cell--empty"></div>
-      <div class="sl-cell sl-cell--empty"></div>
-      <div class="sl-cell" data-id="sod-open">
-        <div class="step-card">
-          <div class="step-tag" data-ru="СОЮФЛ" data-en="SOYUFL">СОЮФЛ</div>
-          <div class="step-title" data-ru="Открытие карточных счетов сотрудников" data-en="Opening employee card accounts">Открытие карточных счетов сотрудников</div>
-        </div>
-      </div>
-      <div class="sl-cell sl-cell--empty"></div>
-
-      <!-- ROW 6 (gap) -->
-      <div class="sl-cell sl-cell--empty sl-cell--gap"></div>
-      <div class="sl-cell sl-cell--empty sl-cell--gap"></div>
-      <div class="sl-cell sl-cell--empty sl-cell--gap"></div>
-      <div class="sl-cell sl-cell--empty sl-cell--gap"></div>
-
-      <!-- ROW 7 -->
-      <div class="sl-cell" data-id="pp-dist">
-        <div class="step-card step-card--final">
-          <div class="step-tag" data-ru="ПП" data-en="DS">ПП</div>
-          <div class="step-title" data-ru="Раздача карт" data-en="Card Distribution">Раздача карт</div>
-        </div>
-      </div>
-      <div class="sl-cell" data-id="rb-dist">
-        <div class="step-card step-card--final">
-          <div class="step-tag" data-ru="РБ" data-en="RB">РБ</div>
-          <div class="step-title" data-ru="Раздача карт" data-en="Card Distribution">Раздача карт</div>
-        </div>
-      </div>
-      <div class="sl-cell" data-id="sod-hand">
-        <div class="step-card step-card--final">
-          <div class="step-tag" data-ru="СОД" data-en="OSD">СОД</div>
-          <div class="step-title" data-ru="Передача Instant карт сотрудникам РБ/ПП" data-en="Handing Instant cards to RB/DS employees">Передача Instant карт сотрудникам РБ/ПП</div>
-        </div>
-      </div>
-      <div class="sl-cell sl-cell--empty"></div>
-
-      <!-- SVG overlay — все стрелки здесь -->
-      <svg class="arrows-svg" id="svgArrows" xmlns="http://www.w3.org/2000/svg"></svg>
+    <!-- DIVIDER -->
+    <div class="analysis-divider">
+      <div class="adiv-line"></div>
+      <div class="adiv-label" data-ru="Что получаем с этой схемой?" data-en="What do we gain from this scheme?">Что получаем с этой схемой?</div>
     </div>
-  </div>
 
-  <div class="analysis-divider">
-    <div class="arrow-down-lg"></div>
-    <div class="analysis-label"
-         data-ru="Что получаем с этой схемой?"
-         data-en="What do we gain from this scheme?">Что получаем с этой схемой?</div>
-  </div>
+    <!-- RESULTS -->
+    <div class="results-block">
+      <div class="result-item">
+        <div class="result-dot"></div>
+        <span data-ru="Единый канал для взаимодействия с клиентом" data-en="A single channel for client interaction">Единый канал для взаимодействия с клиентом</span>
+      </div>
+      <div class="result-item">
+        <div class="result-dot"></div>
+        <span data-ru="Автоматизированный процесс" data-en="Automated process">Автоматизированный процесс</span>
+      </div>
+    </div>
 
-  <div class="results-block">
-    <ul>
-      <li data-ru="Единый канал для взаимодействия с клиентом"
-          data-en="A single channel for client interaction">Единый канал для взаимодействия с клиентом</li>
-      <li data-ru="Автоматизированный процесс"
-          data-en="Automated process">Автоматизированный процесс</li>
-    </ul>
-  </div>
+  </div><!-- /scheme-container -->
 
+  <!-- CTA buttons -->
   <div class="cta-wrap">
-    <button class="cta-btn" onclick="window.location.href='scheme.html'">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
-           stroke-linecap="round" stroke-linejoin="round">
-        <line x1="19" y1="12" x2="5" y2="12"/>
-        <polyline points="12 5 5 12 12 19"/>
+    <button class="cta-btn cta-btn--back" onclick="window.location.href='scheme.html'">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 5 5 12 12 19"/>
       </svg>
-      <span data-ru="Вернуться к текущему процессу (As Is)"
-            data-en="Back to current process (As Is)">Вернуться к текущему процессу (As Is)</span>
+      <span data-ru="Вернуться к текущему процессу (As Is)" data-en="Back to current process (As Is)">Вернуться к текущему процессу (As Is)</span>
+    </button>
+    <button class="cta-btn cta-btn--home" onclick="window.location.href='index.html'">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/>
+      </svg>
+      <span data-ru="На главную" data-en="Home">На главную</span>
     </button>
   </div>
-</div>
+
+</div><!-- /page -->
 
 <script src="to-be.js"></script>
 </body>
