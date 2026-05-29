@@ -1,10 +1,8 @@
-/* ─── to-be.js ─ O!Bank ЗПП To-Be ─────────────────────── */
 'use strict';
 
 let currentLang = 'ru';
 
 document.addEventListener('DOMContentLoaded', () => {
-  /* lang switcher */
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const lang = btn.dataset.lang;
@@ -18,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* entrance */
   document.querySelectorAll('.step-card').forEach((c, i) => {
     c.style.opacity = '0';
     c.style.transform = 'translateY(8px)';
@@ -28,180 +25,182 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
   });
 
-  requestAnimationFrame(() => requestAnimationFrame(drawArrows));
-  window.addEventListener('resize', drawArrows);
+  // дать layout завершиться перед отрисовкой
+  setTimeout(drawArrows, 120);
+  window.addEventListener('resize', () => { setTimeout(drawArrows, 80); });
 });
 
-/* ── HELPERS ──────────────────────────────────────────── */
-const SVG_NS = 'http://www.w3.org/2000/svg';
-const ACCENT  = '#e8174a';
-const BLUE    = '#5b8cff';
-const SW      = 1.8;   // stroke-width
-const AH      = 6;     // arrowhead half-base
-const GAP     = 18;    // routing clearance outside lanes
+/* ── SVG helpers ─────────────────────────────────────── */
+const NS   = 'http://www.w3.org/2000/svg';
+const RED  = '#e8174a';
+const BLUE = '#5b8cff';
+const SW   = 2;
+const AH   = 7; // arrowhead size
 
-function cel(tag, attrs) {
-  const el = document.createElementNS(SVG_NS, tag);
-  Object.entries(attrs).forEach(([k,v]) => el.setAttribute(k, v));
+function svgEl(tag, attrs) {
+  const el = document.createElementNS(NS, tag);
+  Object.entries(attrs).forEach(([k, v]) => el.setAttribute(k, v));
   return el;
 }
 
-/* draw an arrowhead pointing toward (x2,y2) from (x1,y1) */
-function arrowhead(svg, x1,y1,x2,y2, fill) {
-  const dx=x2-x1, dy=y2-y1, len=Math.hypot(dx,dy)||1;
-  const ux=dx/len, uy=dy/len, nx=-uy, ny=ux;
-  const ax=x2-ux*AH, ay=y2-uy*AH;
-  svg.appendChild(cel('polygon',{
-    points:`${x2},${y2} ${ax+nx*(AH/2)},${ay+ny*(AH/2)} ${ax-nx*(AH/2)},${ay-ny*(AH/2)}`,
+function arrowHead(svg, x1, y1, x2, y2, fill) {
+  const dx = x2-x1, dy = y2-y1, len = Math.hypot(dx, dy) || 1;
+  const ux = dx/len, uy = dy/len, nx = -uy, ny = ux;
+  const bx = x2 - ux*AH, by = y2 - uy*AH;
+  svg.appendChild(svgEl('polygon', {
+    points: `${x2},${y2} ${bx+nx*AH*0.45},${by+ny*AH*0.45} ${bx-nx*AH*0.45},${by-ny*AH*0.45}`,
     fill
   }));
 }
 
-/* polyline + arrowhead at last segment end */
-function polyArrow(svg, pts, stroke, dashed=false) {
-  const d = pts.map((p,i)=>`${i?'L':'M'}${p[0]},${p[1]}`).join(' ');
-  const path = cel('path',{d, stroke, 'stroke-width':SW, fill:'none', 'stroke-linejoin':'round'});
-  if (dashed) path.setAttribute('stroke-dasharray','5,3');
-  svg.appendChild(path);
-  const n=pts.length;
-  arrowhead(svg, pts[n-2][0],pts[n-2][1], pts[n-1][0],pts[n-1][1], stroke);
+/* нарисовать ломаную линию со стрелкой в конце */
+function polyLine(svg, pts, color) {
+  const d = pts.map((p, i) => `${i ? 'L' : 'M'}${p[0].toFixed(1)},${p[1].toFixed(1)}`).join(' ');
+  svg.appendChild(svgEl('path', {
+    d, stroke: color, 'stroke-width': SW, fill: 'none',
+    'stroke-linejoin': 'round', 'stroke-linecap': 'round'
+  }));
+  const n = pts.length;
+  arrowHead(svg, pts[n-2][0], pts[n-2][1], pts[n-1][0], pts[n-1][1], color);
 }
 
-/* ── DRAW ─────────────────────────────────────────────── */
+/* ── MAIN ────────────────────────────────────────────── */
 function drawArrows() {
   const svg = document.getElementById('arrowsSvg');
-  if (!svg) return;
+  const sl  = document.getElementById('swimlane');
+  if (!svg || !sl) return;
   svg.innerHTML = '';
 
-  const sl = document.getElementById('swimlane');
   const base = sl.getBoundingClientRect();
 
-  /* collect cell rects */
-  const C = {};
-  sl.querySelectorAll('[data-id]').forEach(el => {
+  /* получить координаты ячейки относительно swimlane */
+  function rect(id) {
+    const el = sl.querySelector(`[data-id="${id}"]`);
+    if (!el) return null;
     const r = el.getBoundingClientRect();
     const x = r.left - base.left, y = r.top - base.top;
-    C[el.dataset.id] = {
+    return {
       x, y, w: r.width, h: r.height,
-      cx: x + r.width/2,  cy: y + r.height/2,
-      top: y,              bottom: y + r.height,
-      left: x,             right: x + r.width,
+      cx: x + r.width / 2,
+      cy: y + r.height / 2,
+      T:  [x + r.width / 2, y],
+      B:  [x + r.width / 2, y + r.height],
+      L:  [x,               y + r.height / 2],
+      R:  [x + r.width,     y + r.height / 2],
     };
-  });
-
-  /* shorthand */
-  const A = ACCENT, B = BLUE;
-
-  /*
-    Legend of entry/exit points on a cell rect:
-      T = top center
-      B = bottom center
-      L = left center
-      R = right center
-  */
-  const T = id => [C[id].cx, C[id].top];
-  const Bo= id => [C[id].cx, C[id].bottom];
-  const L = id => [C[id].left,  C[id].cy];
-  const R = id => [C[id].right, C[id].cy];
-
-  if (!C['pp-attract']) return; // layout not ready
-
-  /* ── 1. ПП Привлечение ──→ СОД Согласование
-          Exit right of pp-attract, enter left of sod-agree
-          Both on row-1, so straight horizontal with small elbow to clear rb-attract ── */
-  polyArrow(svg, [
-    R('pp-attract'),
-    // pass through / over rb-attract (same row) by going slightly above
-    [C['rb-attract'].cx, C['pp-attract'].cy],
-    R('rb-attract'),
-    L('sod-agree'),
-  ], A);
-
-  /* ── 2. РБ Привлечение ──→ СОД Согласование (direct right) ── */
-  polyArrow(svg, [ R('rb-attract'), L('sod-agree') ], A);
-
-  /* ── 3. СОД Согласование ──↓── СОД Подготовка договора ── */
-  polyArrow(svg, [ Bo('sod-agree'), T('sod-prep') ], A);
-
-  /* ── 4 & 5. СОД Подготовка ──← ПП Подписание + РБ Подписание
-          Exit left of sod-prep, route left then down then right to each card ── */
-
-  // to ПП-sign (col1, row3) — exit left sod-prep, go hard left, then down to row3, then right into pp-sign
-  {
-    const fx = C['sod-prep'].left, fy = C['sod-prep'].cy;
-    const tx = C['pp-sign'].right, ty = C['pp-sign'].cy;
-    const midX = C['pp-sign'].left - GAP;  // route left of lane-1
-    polyArrow(svg, [
-      [fx, fy],
-      [midX, fy],
-      [midX, ty],
-      [tx, ty],
-    ], B);
   }
 
-  // to РБ-sign (col2, row3)
+  const c = {};
+  ['pp-attract','rb-attract','sod-agree','gb-instant',
+   'sod-prep','gb-send',
+   'pp-sign','rb-sign',
+   'sod-list','sod-crm','sod-open',
+   'pp-dist','rb-dist','sod-hand'].forEach(id => { c[id] = rect(id); });
+
+  /* отступы для маршрутизации вне lanes */
+  const RIGHT_MARGIN = base.width - 4; // правый край схемы
+  const LEFT_MARGIN  = 4;              // левый край схемы
+  const GAP = 14; // зазор между карточкой и линией
+
+  /* ── 1. ПП Привлечение → СОД Согласование
+         выходим из правого края pp-attract, идём вправо через rb-attract к sod-agree ── */
+  polyLine(svg, [
+    c['pp-attract'].R,
+    [c['sod-agree'].L[0], c['pp-attract'].cy],
+    c['sod-agree'].L,
+  ], RED);
+
+  /* ── 2. РБ Привлечение → СОД Согласование ── */
+  polyLine(svg, [
+    c['rb-attract'].R,
+    c['sod-agree'].L,
+  ], RED);
+
+  /* ── 3. СОД Согласование → СОД Подготовка (вниз) ── */
+  polyLine(svg, [ c['sod-agree'].B, c['sod-prep'].T ], RED);
+
+  /* ── 4. СОД Подготовка → ПП Подписание (←)
+         идём влево от sod-prep, маршрут по левому краю lane-1 ── */
   {
-    const fx = C['sod-prep'].left, fy = C['sod-prep'].cy;
-    const tx = C['rb-sign'].right,  ty = C['rb-sign'].cy;
-    const midX = C['rb-sign'].left - GAP*0.5;
-    polyArrow(svg, [
-      [fx, fy],
-      [midX, fy],
-      [midX, ty],
-      [tx, ty],
-    ], B);
-  }
-
-  /* ── 6. СОД Подготовка ──↓── Приём списка ── */
-  polyArrow(svg, [ Bo('sod-prep'), T('sod-list') ], A);
-
-  /* ── 7. Приём списка ──↓── Создание заявки ── */
-  polyArrow(svg, [ Bo('sod-list'), T('sod-crm') ], A);
-
-  /* ── 8. Создание заявки ──↓── Открытие счетов ── */
-  polyArrow(svg, [ Bo('sod-crm'), T('sod-open') ], A);
-
-  /* ── 9. Открытие счетов ──→ ГБ Изготовление карт
-          sod-open is row-6, gb-instant is row-1
-          Route: exit right of sod-open → go right outside lane-4 → go up to row-1 → enter right of gb-instant ── */
-  {
-    const fx = C['sod-open'].right, fy = C['sod-open'].cy;
-    const tx = C['gb-instant'].right, ty = C['gb-instant'].cy;
-    const routeX = tx + GAP;
-    polyArrow(svg, [
-      [fx, fy],
+    const fy = c['sod-prep'].cy;
+    const ty = c['pp-sign'].cy;
+    // промежуточный X — левее колонки ПП
+    const routeX = c['pp-sign'].x - GAP;
+    polyLine(svg, [
+      c['sod-prep'].L,
       [routeX, fy],
       [routeX, ty],
-      [tx, ty],
-    ], A);
+      c['pp-sign'].R,
+    ], BLUE);
   }
 
-  /* ── 10. ГБ Изготовление ──↓── ГБ Отправка в СОД ── */
-  polyArrow(svg, [ Bo('gb-instant'), T('gb-send') ], A);
-
-  /* ── 11. ГБ Отправка ──→ СОД Передача Instant карт
-           gb-send is row-2, sod-hand is row-7
-           Route: exit right of gb-send → go right → go down to row-7 → enter right of sod-hand ── */
+  /* ── 5. СОД Подготовка → РБ Подписание (←) ── */
   {
-    const fx = C['gb-send'].right, fy = C['gb-send'].cy;
-    const tx = C['sod-hand'].right, ty = C['sod-hand'].cy;
-    const routeX = fx + GAP;
-    polyArrow(svg, [
-      [fx, fy],
+    const fy = c['sod-prep'].cy;
+    const ty = c['rb-sign'].cy;
+    const routeX = c['rb-sign'].x - GAP * 0.6;
+    polyLine(svg, [
+      c['sod-prep'].L,
       [routeX, fy],
       [routeX, ty],
-      [tx, ty],
-    ], A);
+      c['rb-sign'].R,
+    ], BLUE);
   }
 
-  /* ── 12 & 13. СОД Передача ──← ПП Раздача + РБ Раздача
-         sod-hand → pp-dist and rb-dist (same row-7) — exit left of sod-hand ── */
-  polyArrow(svg, [ L('sod-hand'), R('rb-dist') ], B);
+  /* ── 6. СОД Подготовка → Приём списка (вниз) ── */
+  polyLine(svg, [ c['sod-prep'].B, c['sod-list'].T ], RED);
 
-  polyArrow(svg, [
-    L('sod-hand'),
-    [C['rb-dist'].left - GAP*0.5, C['sod-hand'].cy],
-    [C['rb-dist'].left - GAP*0.5, C['pp-dist'].cy],
-    R('pp-dist'),
-  ], B);
+  /* ── 7. Приём списка → Создание заявки (вниз) ── */
+  polyLine(svg, [ c['sod-list'].B, c['sod-crm'].T ], RED);
+
+  /* ── 8. Создание заявки → Открытие счетов (вниз) ── */
+  polyLine(svg, [ c['sod-crm'].B, c['sod-open'].T ], RED);
+
+  /* ── 9. Открытие счетов → ГБ Изготовление карт
+         sod-open (col3 row6) → gb-instant (col4 row1)
+         выходим вправо → идём по правому краю схемы вверх → входим справа в gb-instant ── */
+  {
+    const routeX = RIGHT_MARGIN - GAP;
+    polyLine(svg, [
+      c['sod-open'].R,
+      [routeX, c['sod-open'].cy],
+      [routeX, c['gb-instant'].cy],
+      c['gb-instant'].R,
+    ], RED);
+  }
+
+  /* ── 10. ГБ Изготовление → ГБ Отправка (вниз) ── */
+  polyLine(svg, [ c['gb-instant'].B, c['gb-send'].T ], RED);
+
+  /* ── 11. ГБ Отправка → СОД Передача Instant карт
+          gb-send (col4 row2) → sod-hand (col3 row7)
+          выходим вправо → идём вниз по правому краю → входим справа в sod-hand ── */
+  {
+    const routeX = RIGHT_MARGIN - GAP * 0.6;
+    polyLine(svg, [
+      c['gb-send'].R,
+      [routeX, c['gb-send'].cy],
+      [routeX, c['sod-hand'].cy],
+      c['sod-hand'].R,
+    ], RED);
+  }
+
+  /* ── 12. СОД Передача → РБ Раздача (←, та же строка) ── */
+  polyLine(svg, [
+    c['sod-hand'].L,
+    c['rb-dist'].R,
+  ], BLUE);
+
+  /* ── 13. СОД Передача → ПП Раздача (←, та же строка, через rb-dist) ── */
+  {
+    const fy = c['sod-hand'].cy;
+    const ty = c['pp-dist'].cy;
+    const routeX = c['pp-dist'].x - GAP * 0.6;
+    polyLine(svg, [
+      c['sod-hand'].L,
+      [routeX, fy],
+      [routeX, ty],
+      c['pp-dist'].R,
+    ], BLUE);
+  }
 }
