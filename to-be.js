@@ -1,88 +1,88 @@
-// 1. Функция языка
-function switchLang(lang) {
-    document.querySelectorAll('[data-ru]').forEach(el => {
-        if (el.id === 'benefits-list') {
-            el.innerHTML = el.getAttribute('data-' + lang);
-        } else {
-            el.innerText = el.getAttribute('data-' + lang);
-        }
+// to-be.js — O!Bank ЗПП To-Be scheme interactions
+
+let currentLang = 'ru';
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  /* ── Lang switcher ── */
+  const langBtns = document.querySelectorAll('.lang-btn');
+  langBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lang = btn.dataset.lang;
+      if (lang === currentLang) return;
+      currentLang = lang;
+      langBtns.forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+      switchLang(lang);
     });
-    localStorage.setItem('userLang', lang);
+  });
+
+  /* ── Draw SVG elbow arrows ── */
+  drawElbowArrows();
+
+  /* ── Staggered entrance animation ── */
+  animateEntrance();
+
+});
+
+/**
+ * Switch all [data-ru] / [data-en] elements to the selected language.
+ * Works on any element with both attributes.
+ */
+function switchLang(lang) {
+  document.querySelectorAll('[data-ru][data-en]').forEach(el => {
+    el.textContent = el.dataset[lang];
+  });
+  document.documentElement.lang = lang;
 }
 
-// 2. ВСЯ логика стрелок ТОЛЬКО ЗДЕСЬ
-window.onload = () => {
+/**
+ * Draws a vertical SVG down-arrow inside each [data-elbow] slot.
+ */
+function drawElbowArrows() {
+  document.querySelectorAll('[data-elbow]').forEach(el => {
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('width', '20');
+    svg.setAttribute('height', '40');
+    svg.setAttribute('viewBox', '0 0 20 40');
+    svg.style.cssText = 'display:block;margin:0 auto;';
 
-    // язык
-    const savedLang = localStorage.getItem('userLang') || 'ru';
-    switchLang(savedLang);
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('x1', '10'); line.setAttribute('y1', '0');
+    line.setAttribute('x2', '10'); line.setAttribute('y2', '32');
+    line.setAttribute('stroke', '#e8174a');
+    line.setAttribute('stroke-width', '2');
 
-    const base = {
-        color: '#10b981',
-        size: 2,
-        path: 'grid',
-        endPlug: 'arrow3',
-        startPlug: 'behind',
-        dash: false
-    };
+    const arrow = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+    arrow.setAttribute('points', '5,30 15,30 10,40');
+    arrow.setAttribute('fill', '#e8174a');
 
-    // 🔥 ВАЖНО: сначала получаем элементы
-    const n1 = document.getElementById('node-1');
-    const n4 = document.getElementById('node-4');
-    const n7 = document.getElementById('node-7');
-    const n8 = document.getElementById('node-8');
-    const n9 = document.getElementById('node-9');
-    const n10 = document.getElementById('node-10');
-    const n11 = document.getElementById('node-11');
-    const n12 = document.getElementById('node-12');
-    const n13 = document.getElementById('node-13');
-    const n14 = document.getElementById('node-14');
-    const n6 = document.getElementById('node-6');
-    const n3 = document.getElementById('node-3');
+    svg.appendChild(line);
+    svg.appendChild(arrow);
+    el.appendChild(svg);
+  });
+}
 
-    // 1. Прямые → СОД
-    new LeaderLine(n1, n7, {
-        ...base,
-        startSocket: 'right',
-        endSocket: 'left'
-    });
+/**
+ * Staggered fade-in for step cards and result list items.
+ */
+function animateEntrance() {
+  document.querySelectorAll('.step-card').forEach((card, i) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(10px)';
+    card.style.transition = `opacity 0.4s ease ${i * 0.08}s, transform 0.4s ease ${i * 0.08}s`;
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      card.style.opacity = '1';
+      card.style.transform = 'translateY(0)';
+    }));
+  });
 
-    // 2. РБ → СОД
-    new LeaderLine(n4, n8, {
-        ...base,
-        startSocket: 'right',
-        endSocket: 'left'
-    });
-
-    // 3. Вертикаль СОД
-    const v = { ...base, startSocket: 'bottom', endSocket: 'top' };
-
-    new LeaderLine(n7, n8, v);
-    new LeaderLine(n8, n9, v);
-    new LeaderLine(n9, n10, v);
-    new LeaderLine(n10, n11, v);
-    new LeaderLine(n11, n12, v);
-
-    // 4. Головной банк
-    new LeaderLine(n13, n14, v);
-
-    // 5. Возврат в СОД
-    new LeaderLine(n14, n12, {
-        ...base,
-        startSocket: 'bottom',
-        endSocket: 'right'
-    });
-
-    // 6. Нижний возврат
-    new LeaderLine(n12, n6, {
-        ...base,
-        startSocket: 'bottom',
-        endSocket: 'right'
-    });
-
-    new LeaderLine(n6, n3, {
-        ...base,
-        startSocket: 'left',
-        endSocket: 'bottom'
-    });
-};
+  document.querySelectorAll('.results-block li').forEach((item, i) => {
+    item.style.opacity = '0';
+    item.style.transform = 'translateX(-8px)';
+    item.style.transition = `opacity 0.4s ease ${0.5 + i * 0.12}s, transform 0.4s ease ${0.5 + i * 0.12}s`;
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      item.style.opacity = '1';
+      item.style.transform = 'translateX(0)';
+    }));
+  });
+}
