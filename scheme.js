@@ -37,9 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function syncHeights() {
-  /* РБ: lane-items → gap1 prob-cards */
   alignGap('rbLane', 'gap1');
-  /* СОЮФЛ: lane-items → gap2 prob-cards */
   alignGap('sodLane', 'gap2');
 }
 
@@ -53,9 +51,15 @@ function alignGap(laneId, gapId) {
 
   items.forEach((item, i) => {
     if (cards[i]) {
-      const h = item.getBoundingClientRect().height;
-      cards[i].style.minHeight = h + 'px';
-      cards[i].style.height    = h + 'px';
+      /* убираем старое ограничение высоты */
+      cards[i].style.height    = '';
+      cards[i].style.minHeight = '';
+
+      /* карточка должна быть не меньше высоты строки,
+         но может быть больше если текст не влезает */
+      const rowH   = item.getBoundingClientRect().height;
+      const cardH  = cards[i].scrollHeight;
+      cards[i].style.minHeight = Math.max(rowH, cardH) + 'px';
     }
   });
 }
