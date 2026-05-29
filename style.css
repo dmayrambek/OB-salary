@@ -260,3 +260,39 @@ body.light-mode .hc { background: rgba(232,0,90,0.08); }
     /* Убираем лишние фильтры и тени, чтобы было строго */
     filter: none;
 }
+/* ===== MAGENTA FILTER BUTTON (Преимущества) ===== */
+.filter-btn.magenta {
+  border-color: rgba(232,0,90,0.5);
+  color: #ff6090;
+}
+.filter-btn.magenta:hover,
+.filter-btn.magenta.active {
+  background: rgba(232,0,90,0.15);
+  border-color: var(--pink);
+  color: #ff9ab8;
+}
+
+/* ===== MODE ADVANTAGE — маджентовый, остальные читабельны ===== */
+.mode-advantage td:not(.td-param):not(.td-divider) {
+  opacity: 0.45 !important;
+  color: #666 !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+.mode-advantage td.td-param {
+  opacity: 0.55 !important;
+  color: #888 !important;
+}
+.mode-advantage td.cell-best:not(.x) {
+  opacity: 1 !important;
+  background: rgba(232,0,90,0.1) !important;
+  color: #ff9ab8 !important;
+  font-weight: 600 !important;
+  position: relative;
+  z-index: 4;
+  box-shadow: 0 0 0 1px rgba(232,0,90,0.45), 0 4px 20px -4px rgba(232,0,90,0.2), inset 0 1px 0 rgba(232,0,90,0.1) !important;
+  text-shadow: 0 0 18px rgba(232,0,90,0.2);
+}
+
+/* summary card — убираем оранжевую (зоны роста) */
+.sum-card.orange { display: none; }
