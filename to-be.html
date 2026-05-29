@@ -23,38 +23,23 @@
   </div>
 
   <div class="scheme-container">
-    <div class="scheme-title" data-ru="Процесс ЗПП в филиале" data-en="Payroll Project Process in Branch">Процесс ЗПП в филиале</div>
+    <div class="scheme-title"
+         data-ru="Процесс ЗПП в филиале"
+         data-en="Payroll Project Process in Branch">Процесс ЗПП в филиале</div>
 
     <!--
-      ══════════════════════════════════════════════════
-      GRID: 4 cols × 8 rows (row1=headers, rows2-8=content)
+      GRID: 4 cols × 8 rows
+      Все стрелки — SVG overlay.
+      Блоки выровнены как на скриншоте.
 
-      ВАЖНО: ПП/РБ Подписание и СОД Подготовка — одна строка (row3)
-      Раздача карт и СОД Передача — одна строка (row8)
-
-      ROW  | COL1 (ПП)          | COL2 (РБ)          | COL3 (СОД)                        | COL4 (ГБ)
-      ─────┼────────────────────┼────────────────────┼───────────────────────────────────┼──────────────────────────────
-      HDR  | Прямые продажи     | Розничный бизнес   | Служба операционной деятельности  | Головной банк
-      R2   | ПП: Привлечение    | РБ: Привлечение    | СОД: Согласование условий         | ГБ: Изготовление Instant карт
-      R3   | ПП: Подписание     | РБ: Подписание     | СОД: Подготовка договора          | ГБ: Отправка карт в СОД
-      R4   | —                  | —                  | СОД: Приём списка сотрудников     | —
-      R5   | —                  | —                  | СОД: Создание заявки CRM          | —
-      R6   | —                  | —                  | СОД: Открытие карточных счетов    | —
-      R7   | —                  | —                  | —  (пустая, для вертикального gap) | —
-      R8   | ПП: Раздача карт   | РБ: Раздача карт   | СОД: Передача Instant карт        | —
-      ══════════════════════════════════════════════════
-
-      СТРЕЛКИ:
-      → RED:  ПП/РБ Привлечение → СОД Согласование (row2, горизонтально)
-      ↓ RED:  СОД Согласование → Подготовка (col3, вниз)
-      ← BLU:  СОД Подготовка → ПП/РБ Подписание (row3, горизонтально влево)
-      ↓ RED:  СОД Подготовка → Приём списка (col3, вниз через пустые)
-      ↓ RED:  Приём → Создание заявки (col3)
-      ↓ RED:  Создание → Открытие счетов (col3)
-      → RED:  Открытие счетов → ГБ Изготовление (огибает правый край вверх, row6→row2)
-      ↓ RED:  ГБ Изготовление → ГБ Отправка (col4, row2→row3)
-      → RED:  ГБ Отправка → СОД Передача карт (огибает правый край вниз, row3→row8)
-      ← BLU:  СОД Передача → ПП/РБ Раздача (row8, горизонтально влево)
+      ROW | COL1 (ПП)         | COL2 (РБ)         | COL3 (СОД)                    | COL4 (ГБ)
+      R1  | ПП Привлечение    | РБ Привлечение    | СОД Согласование              | ГБ Изготовление
+      R2  | ПП Подписание     | РБ Подписание     | СОД Подготовка                | ГБ Отправка
+      R3  | —                 | —                 | СОД Приём списка              | —
+      R4  | —                 | —                 | СОД Создание заявки           | —
+      R5  | —                 | —                 | СОЮФЛ Открытие счетов         | —
+      R6  | —                 | —                 | —                             | —
+      R7  | ПП Раздача        | РБ Раздача        | СОД Передача карт             | —
     -->
     <div class="sl-grid" id="swimlane">
 
@@ -76,7 +61,7 @@
         <span data-ru="Головной банк" data-en="Head Office Bank">Головной банк</span>
       </div>
 
-      <!-- ROW 2: Привлечение -->
+      <!-- ROW 1 -->
       <div class="sl-cell" data-id="pp-attract">
         <div class="step-card">
           <div class="step-tag" data-ru="ПП" data-en="DS">ПП</div>
@@ -102,7 +87,7 @@
         </div>
       </div>
 
-      <!-- ROW 3: Подписание = Подготовка = Отправка карт -->
+      <!-- ROW 2 -->
       <div class="sl-cell" data-id="pp-sign">
         <div class="step-card">
           <div class="step-tag" data-ru="ПП" data-en="DS">ПП</div>
@@ -128,7 +113,7 @@
         </div>
       </div>
 
-      <!-- ROW 4: Приём списка -->
+      <!-- ROW 3 -->
       <div class="sl-cell sl-cell--empty"></div>
       <div class="sl-cell sl-cell--empty"></div>
       <div class="sl-cell" data-id="sod-list">
@@ -139,7 +124,7 @@
       </div>
       <div class="sl-cell sl-cell--empty"></div>
 
-      <!-- ROW 5: Создание заявки -->
+      <!-- ROW 4 -->
       <div class="sl-cell sl-cell--empty"></div>
       <div class="sl-cell sl-cell--empty"></div>
       <div class="sl-cell" data-id="sod-crm">
@@ -150,7 +135,7 @@
       </div>
       <div class="sl-cell sl-cell--empty"></div>
 
-      <!-- ROW 6: Открытие счетов -->
+      <!-- ROW 5 -->
       <div class="sl-cell sl-cell--empty"></div>
       <div class="sl-cell sl-cell--empty"></div>
       <div class="sl-cell" data-id="sod-open">
@@ -161,13 +146,13 @@
       </div>
       <div class="sl-cell sl-cell--empty"></div>
 
-      <!-- ROW 7: пустая (gap для маршрутизации стрелок) -->
+      <!-- ROW 6 (gap) -->
       <div class="sl-cell sl-cell--empty sl-cell--gap"></div>
       <div class="sl-cell sl-cell--empty sl-cell--gap"></div>
       <div class="sl-cell sl-cell--empty sl-cell--gap"></div>
       <div class="sl-cell sl-cell--empty sl-cell--gap"></div>
 
-      <!-- ROW 8: Раздача = Передача карт -->
+      <!-- ROW 7 -->
       <div class="sl-cell" data-id="pp-dist">
         <div class="step-card step-card--final">
           <div class="step-tag" data-ru="ПП" data-en="DS">ПП</div>
@@ -188,29 +173,36 @@
       </div>
       <div class="sl-cell sl-cell--empty"></div>
 
-      <!-- SVG overlay -->
-      <svg class="arrows-svg" id="arrowsSvg" xmlns="http://www.w3.org/2000/svg"></svg>
+      <!-- SVG overlay — все стрелки здесь -->
+      <svg class="arrows-svg" id="svgArrows" xmlns="http://www.w3.org/2000/svg"></svg>
     </div>
   </div>
 
   <div class="analysis-divider">
     <div class="arrow-down-lg"></div>
-    <div class="analysis-label" data-ru="Что получаем с этой схемой?" data-en="What do we gain from this scheme?">Что получаем с этой схемой?</div>
+    <div class="analysis-label"
+         data-ru="Что получаем с этой схемой?"
+         data-en="What do we gain from this scheme?">Что получаем с этой схемой?</div>
   </div>
 
   <div class="results-block">
     <ul>
-      <li data-ru="Единый канал для взаимодействия с клиентом" data-en="A single channel for client interaction">Единый канал для взаимодействия с клиентом</li>
-      <li data-ru="Автоматизированный процесс" data-en="Automated process">Автоматизированный процесс</li>
+      <li data-ru="Единый канал для взаимодействия с клиентом"
+          data-en="A single channel for client interaction">Единый канал для взаимодействия с клиентом</li>
+      <li data-ru="Автоматизированный процесс"
+          data-en="Automated process">Автоматизированный процесс</li>
     </ul>
   </div>
 
   <div class="cta-wrap">
-    <button class="cta-btn">
-      <span data-ru="Вернуться к текущему процессу (As Is)" data-en="Back to current process (As Is)">Вернуться к текущему процессу (As Is)</span>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+    <button class="cta-btn" onclick="window.location.href='scheme.html'">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+           stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"/>
+        <polyline points="12 5 5 12 12 19"/>
       </svg>
+      <span data-ru="Вернуться к текущему процессу (As Is)"
+            data-en="Back to current process (As Is)">Вернуться к текущему процессу (As Is)</span>
     </button>
   </div>
 </div>
