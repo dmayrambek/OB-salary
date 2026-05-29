@@ -2,7 +2,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
 :root{
-  --bg:#0d0d0d;--surface:#1a1a1a;--s2:#1e1e1e;--s3:#141414;
+  --bg:#0d0d0d;--surface:#1a1a1a;--s2:#1e1e1e;
   --border:#252525;--b2:#2e2e2e;
   --red:#e8174a;--adim:rgba(232,23,74,.14);
   --green:#00d68f;
@@ -38,20 +38,35 @@ header{display:flex;align-items:center;justify-content:space-between;padding:18p
 .btn-problems{background:rgba(232,23,74,.15);border:1px solid var(--red);color:var(--red);font-family:var(--font);font-size:13px;font-weight:700;padding:9px 20px;cursor:pointer;border-radius:3px;display:flex;align-items:center;gap:8px;transition:all .2s;letter-spacing:.02em}
 .btn-problems svg{width:16px;height:16px;flex-shrink:0}
 .btn-problems:hover{background:rgba(232,23,74,.25)}
-.btn-problems.active{background:var(--red);color:#fff;border-color:var(--red)}
+.btn-problems.active{background:var(--red);color:#fff}
 
-/* ═══ AS-IS GRID ══════════════════════════════════════
-   5 колонок: [РБ] [gap1] [СОЮФЛ] [gap2] [Карточный]
-   В обычном состоянии gap = 20px
-   При активных проблемах gap расширяется до 200px
+/* ═══ GRID ═══════════════════════════════════════════════
+   По умолчанию: 3 колонки без gap
+   С проблемами: 5 колонок — [блок][240px gap][блок][240px gap][блок]
+   gap-hdr и gap-body скрыты по умолчанию через display:none
 ═══════════════════════════════════════════════════════ */
 .asis-grid{
   display:grid;
-  grid-template-columns:1fr 20px 1fr 20px 1fr;
-  grid-template-rows:auto 1fr;
+  grid-template-columns:1fr 1fr 1fr;
 }
 .asis-grid.problems-on{
   grid-template-columns:1fr 240px 1fr 240px 1fr;
+}
+
+/* gap элементы — скрыты по умолчанию */
+.gap-hdr{ display:none; }
+.gap-body{ display:none; }
+
+/* gap элементы — видны при активных проблемах */
+.asis-grid.problems-on .gap-hdr{
+  display:block;
+  min-height:46px;
+}
+.asis-grid.problems-on .gap-body{
+  display:flex;
+  flex-direction:column;
+  align-items:stretch;
+  padding:0 8px;
 }
 
 /* LANE HEADER */
@@ -63,7 +78,6 @@ header{display:flex;align-items:center;justify-content:space-between;padding:18p
   border-bottom:2px solid var(--b2);
   border-radius:3px 3px 0 0;
 }
-.gap-hdr{min-height:46px}
 .lane-icon{width:26px;height:26px;border-radius:50%;background:var(--adim);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--red)}
 .lane-icon svg{width:13px;height:13px}
 .lane-hdr span{font-size:10.5px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.07em;line-height:1.3}
@@ -75,16 +89,13 @@ header{display:flex;align-items:center;justify-content:space-between;padding:18p
 .lane-item{
   padding:10px 14px;
   border-bottom:1px solid var(--border);
-  font-size:12px;
-  color:var(--tp);
-  line-height:1.4;
+  font-size:12px;color:var(--tp);line-height:1.4;
   transition:all .22s;
-  position:relative;
 }
 .lane-item:last-child{border-bottom:none}
 .lane-item.dash{color:var(--ts)}
 
-/* проблемный айтем при активации */
+/* проблемные айтемы при активации */
 .problems-on .lane-body .lane-item.bad{
   background:rgba(232,23,74,.08);
   border-left:2px solid var(--red);
@@ -96,19 +107,6 @@ header{display:flex;align-items:center;justify-content:space-between;padding:18p
   opacity:.28;
 }
 
-/* GAP BODY — пространство для проблем */
-.gap-body{
-  padding:0;
-  display:none;
-  flex-direction:column;
-  gap:0;
-  align-items:stretch;
-}
-.asis-grid.problems-on .gap-body{
-  display:flex;
-  padding:0 8px;
-}
-
 /* PROB CARD */
 .prob-card{
   opacity:0;
@@ -117,7 +115,6 @@ header{display:flex;align-items:center;justify-content:space-between;padding:18p
   border-radius:3px;
   padding:9px 12px;
   margin-bottom:1px;
-  flex-shrink:0;
   word-break:break-word;
   display:flex;
   flex-direction:column;
@@ -128,10 +125,8 @@ header{display:flex;align-items:center;justify-content:space-between;padding:18p
   border-color:transparent;
   pointer-events:none;
 }
-.prob-card.visible{
-  opacity:1;
-}
-}
+.prob-card.visible{opacity:1}
+
 .prob-from{
   display:flex;align-items:center;gap:5px;
   font-size:9.5px;font-weight:700;
@@ -149,20 +144,14 @@ header{display:flex;align-items:center;justify-content:space-between;padding:18p
 
 /* SUMMARY BLOCK */
 .summary-block{
-  border:1px solid var(--border);
-  border-radius:3px;
-  padding:20px 24px;
-  display:flex;flex-direction:column;gap:12px;
+  border:1px solid var(--border);border-radius:3px;
+  padding:20px 24px;display:flex;flex-direction:column;gap:12px;
   transition:border-color .3s;
 }
 .summary-block.highlight{border-color:var(--red)}
 .summary-item{display:flex;align-items:flex-start;gap:12px;font-size:13.5px;color:var(--ts);line-height:1.5;transition:color .3s}
 .summary-item.highlight{color:#ff8080}
-.summary-dot{
-  width:8px;height:8px;border-radius:50%;
-  background:var(--red);flex-shrink:0;margin-top:5px;
-  transition:box-shadow .3s;
-}
+.summary-dot{width:8px;height:8px;border-radius:50%;background:var(--red);flex-shrink:0;margin-top:5px;transition:box-shadow .3s}
 .summary-item.highlight .summary-dot{box-shadow:0 0 6px var(--red)}
 
 /* CTA */
