@@ -8,7 +8,6 @@
 </head>
 <body>
 
-  <!-- ─── HEADER ──────────────────────────────────────── -->
   <header>
     <div class="logo"><span>O!</span>BANK</div>
     <div class="lang-switcher">
@@ -17,111 +16,205 @@
     </div>
   </header>
 
-  <!-- ─── PAGE ────────────────────────────────────────── -->
   <div class="page">
 
-    <!-- Section label -->
     <div class="section-label">
       <div class="section-dot"></div>
       <h2 data-ru="Целевой процесс (To Be)" data-en="Target Process (To Be)">Целевой процесс (To Be)</h2>
     </div>
 
-    <!-- ─── SCHEME ─────────────────────────────────────── -->
+    <!-- ─── SCHEME ─────────────────────────────────── -->
     <div class="scheme-container">
       <div class="scheme-title" data-ru="Процесс ЗПП в филиале" data-en="Payroll Project Process in Branch">Процесс ЗПП в филиале</div>
 
-      <div class="flow">
+      <!-- SWIMLANE TABLE -->
+      <div class="swimlane">
 
-        <!-- ── COL 1 ROW 1 ── -->
-        <div class="step" style="position:relative;">
-          <div class="step-card highlight">
-            <div class="step-tag" data-ru="РБ, СОЮФЛ" data-en="RB, SOYUFL">РБ, СОЮФЛ</div>
-            <div class="step-title" data-ru="Привлечение" data-en="Acquisition">Привлечение</div>
+        <!-- ── LANE HEADERS ── -->
+        <div class="lane-headers">
+          <div class="lane-header">
+            <div class="lane-icon">
+              <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="6" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 17c0-3.314 3.134-6 7-6s7 2.686 7 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <span data-ru="Прямые продажи" data-en="Direct Sales">Прямые продажи</span>
           </div>
-          <div class="arrow-right"></div>
-        </div>
-
-        <!-- ── COL 2 ROW 1 ── -->
-        <div class="step" style="position:relative;">
-          <div class="step-card">
-            <div class="step-tag" data-ru="РБ" data-en="RB">РБ</div>
-            <div class="step-title" data-ru="Подписание договора" data-en="Contract Signing">Подписание договора</div>
+          <div class="lane-header">
+            <div class="lane-icon">
+              <svg viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 4V3M13 4V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3 8h14" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <span data-ru="Розничный бизнес" data-en="Retail Business">Розничный бизнес</span>
           </div>
-          <div class="arrow-right"></div>
-        </div>
-
-        <!-- ── COL 3 ROW 1 ── -->
-        <div class="step" style="position:relative;">
-          <div class="step-card">
-            <div class="step-tag" data-ru="РБ, CRM" data-en="RB, CRM">РБ, CRM</div>
-            <div class="step-title" data-ru="Создание заявки в CRM и автоформирование служебной записки" data-en="Creating a CRM request and auto-generating the internal memo">Создание заявки в CRM и автоформирование служебной записки</div>
+          <div class="lane-header">
+            <div class="lane-icon">
+              <svg viewBox="0 0 20 20" fill="none"><path d="M4 5h12M4 10h8M4 15h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <span data-ru="Служба операционной деятельности" data-en="Operational Services Dept.">Служба операционной деятельности</span>
           </div>
-          <div class="arrow-right"></div>
-        </div>
-
-        <!-- ── COL 4 ROW 1 ── -->
-        <div class="step" style="position:relative;">
-          <div class="step-card">
-            <div class="step-tag" data-ru="СОЮФЛ" data-en="SOYUFL">СОЮФЛ</div>
-            <div class="step-title" data-ru="Открытие карточных счетов" data-en="Opening Card Accounts">Открытие карточных счетов</div>
-          </div>
-          <div class="arrow-right"></div>
-        </div>
-
-        <!-- ── COL 5 ROW 1 ── -->
-        <div class="step" style="position:relative;">
-          <div class="step-card">
-            <div class="step-tag" data-ru="ОТДЕЛ СОПРОВОЖДЕНИЯ КАРТОЧНЫХ ПРОДУКТОВ ГБ" data-en="CARD PRODUCTS SUPPORT DEPT. HO">ОТДЕЛ СОПРОВОЖДЕНИЯ КАРТОЧНЫХ ПРОДУКТОВ ГБ</div>
-            <div class="step-title" data-ru="Изготовление именных карт и отправка в филиал" data-en="Production of named cards and dispatch to branch">Изготовление именных карт и отправка в филиал</div>
+          <div class="lane-header">
+            <div class="lane-icon">
+              <svg viewBox="0 0 20 20" fill="none"><path d="M10 2L3 6v4c0 4 3.1 7.7 7 8.9C16.9 17.7 17 13 17 10V6l-7-4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            </div>
+            <span data-ru="Головной банк" data-en="Head Office Bank">Головной банк</span>
           </div>
         </div>
 
-        <!-- ── SPACER ROW ── -->
-        <div class="step"></div>
+        <!-- ── LANE BODIES ── -->
+        <div class="lane-bodies">
 
-        <div class="step" style="display:flex;justify-content:center;">
-          <div class="arrow-down"></div>
-        </div>
-
-        <div class="step" style="display:flex;justify-content:center;">
-          <div class="arrow-down"></div>
-        </div>
-
-        <div class="step"></div>
-
-        <div class="step" style="display:flex;justify-content:center;" data-elbow></div>
-
-        <!-- ── ROW 2 ── -->
-        <div class="step"></div>
-
-        <!-- ── COL 2 ROW 2 ── -->
-        <div class="step" style="position:relative;">
-          <div class="step-card">
-            <div class="step-tag" data-ru="РБ" data-en="RB">РБ</div>
-            <div class="step-title" data-ru="Приём списка сотрудников и их документов" data-en="Receiving the employee list and their documents">Приём списка сотрудников и их документов</div>
+          <!-- LANE 1: Прямые продажи -->
+          <div class="lane">
+            <div class="lane-step">
+              <div class="step-card">
+                <div class="step-tag" data-ru="ПП" data-en="DS">ПП</div>
+                <div class="step-title" data-ru="Привлечение клиента" data-en="Client Acquisition">Привлечение клиента</div>
+              </div>
+              <div class="step-check">
+                <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--accent)" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="step-vline"></div>
+            </div>
+            <div class="lane-step">
+              <div class="step-card">
+                <div class="step-tag" data-ru="ПП" data-en="DS">ПП</div>
+                <div class="step-title" data-ru="Подписание договора ЗПП" data-en="Signing the Payroll Agreement">Подписание договора ЗПП</div>
+              </div>
+              <div class="step-check">
+                <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--accent)" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="step-vline"></div>
+            </div>
+            <div class="lane-step lane-step--last">
+              <div class="step-card">
+                <div class="step-tag" data-ru="ПП" data-en="DS">ПП</div>
+                <div class="step-title" data-ru="Раздача карт" data-en="Card Distribution">Раздача карт</div>
+              </div>
+              <div class="step-check">
+                <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--green)" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="var(--green)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
           </div>
-          <div class="arrow-right"></div>
-        </div>
 
-        <!-- ── COL 3 ROW 2 ── -->
-        <div class="step">
-          <div class="step-card">
-            <div class="step-tag" data-ru="CRM / АБС" data-en="CRM / CBS">CRM / АБС</div>
-            <div class="step-title" data-ru="Автоматическая передача данных сотрудников в АБС" data-en="Automatic transfer of employee data to Core Banking System">Автоматическая передача данных сотрудников в АБС</div>
+          <!-- LANE 2: Розничный бизнес -->
+          <div class="lane">
+            <div class="lane-step">
+              <div class="step-card highlight">
+                <div class="step-tag" data-ru="РБ" data-en="RB">РБ</div>
+                <div class="step-title" data-ru="Привлечение клиента" data-en="Client Acquisition">Привлечение клиента</div>
+              </div>
+              <div class="step-check">
+                <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--accent)" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="step-vline"></div>
+            </div>
+            <div class="lane-step">
+              <div class="step-card">
+                <div class="step-tag" data-ru="РБ" data-en="RB">РБ</div>
+                <div class="step-title" data-ru="Подписание договора ЗПП" data-en="Signing the Payroll Agreement">Подписание договора ЗПП</div>
+              </div>
+              <div class="step-check">
+                <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--accent)" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="step-vline"></div>
+            </div>
+            <div class="lane-step lane-step--last">
+              <div class="step-card">
+                <div class="step-tag" data-ru="РБ" data-en="RB">РБ</div>
+                <div class="step-title" data-ru="Раздача карт" data-en="Card Distribution">Раздача карт</div>
+              </div>
+              <div class="step-check">
+                <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--green)" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="var(--green)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div class="step"></div>
-
-        <!-- ── COL 5 ROW 2 ── -->
-        <div class="step">
-          <div class="step-card">
-            <div class="step-tag" data-ru="РБ" data-en="RB">РБ</div>
-            <div class="step-title" data-ru="Передача карт организации" data-en="Card Delivery to Organisation">Передача карт организации</div>
+          <!-- LANE 3: Служба операционной деятельности -->
+          <div class="lane">
+            <div class="lane-step">
+              <div class="step-card">
+                <div class="step-tag" data-ru="СОД" data-en="OSD">СОД</div>
+                <div class="step-title" data-ru="Согласование условий ЗПП с руководством" data-en="Approval of payroll terms with management">Согласование условий ЗПП с руководством</div>
+              </div>
+              <div class="step-check">
+                <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--accent)" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="step-vline"></div>
+            </div>
+            <div class="lane-step">
+              <div class="step-card">
+                <div class="step-tag" data-ru="СОД" data-en="OSD">СОД</div>
+                <div class="step-title" data-ru="Подготовка договора ЗПП" data-en="Preparation of Payroll Agreement">Подготовка договора ЗПП</div>
+              </div>
+              <div class="step-check">
+                <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--accent)" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="step-vline"></div>
+            </div>
+            <div class="lane-step">
+              <div class="step-card">
+                <div class="step-tag" data-ru="СОД, CRM" data-en="OSD, CRM">СОД, CRM</div>
+                <div class="step-title" data-ru="Приём списка сотрудников и документов" data-en="Receiving employee list and documents">Приём списка сотрудников и документов</div>
+              </div>
+              <div class="step-check">
+                <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--accent)" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="step-vline"></div>
+            </div>
+            <div class="lane-step">
+              <div class="step-card">
+                <div class="step-tag" data-ru="СОД, CRM / АБС" data-en="OSD, CRM / CBS">СОД, CRM / АБС</div>
+                <div class="step-title" data-ru="Создание заявки в CRM и автоформирование служебной записки" data-en="Creating CRM request and auto-generating internal memo">Создание заявки в CRM и автоформирование служебной записки</div>
+              </div>
+              <div class="step-check">
+                <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--accent)" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="step-vline"></div>
+            </div>
+            <div class="lane-step">
+              <div class="step-card">
+                <div class="step-tag" data-ru="СОЮФЛ" data-en="SOYUFL">СОЮФЛ</div>
+                <div class="step-title" data-ru="Открытие карточных счетов сотрудников" data-en="Opening employee card accounts">Открытие карточных счетов сотрудников</div>
+              </div>
+              <div class="step-check">
+                <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--accent)" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="step-vline"></div>
+            </div>
+            <div class="lane-step lane-step--last">
+              <div class="step-card">
+                <div class="step-tag" data-ru="СОД" data-en="OSD">СОД</div>
+                <div class="step-title" data-ru="Передача Instant карт сотрудникам РБ/ПП" data-en="Handing Instant cards to RB/DS employees">Передача Instant карт сотрудникам РБ/ПП</div>
+              </div>
+              <div class="step-check">
+                <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--green)" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="var(--green)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
           </div>
-        </div>
 
-      </div><!-- /flow -->
+          <!-- LANE 4: Головной банк -->
+          <div class="lane">
+            <div class="lane-step">
+              <div class="step-card">
+                <div class="step-tag" data-ru="ГБ" data-en="HO">ГБ</div>
+                <div class="step-title" data-ru="Изготовление Instant карт (по запросу — именная карта)" data-en="Production of Instant cards (named card on request)">Изготовление Instant карт (по запросу — именная карта)</div>
+              </div>
+              <div class="step-check">
+                <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--accent)" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="step-vline"></div>
+            </div>
+            <div class="lane-step lane-step--last">
+              <div class="step-card">
+                <div class="step-tag" data-ru="ГБ" data-en="HO">ГБ</div>
+                <div class="step-title" data-ru="Отправка карт в СОД" data-en="Sending cards to Operational Services">Отправка карт в СОД</div>
+              </div>
+              <div class="step-check">
+                <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="var(--green)" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="var(--green)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /lane-bodies -->
+      </div><!-- /swimlane -->
     </div><!-- /scheme-container -->
 
     <!-- ─── ANALYSIS DIVIDER ──────────────────────────── -->
