@@ -92,14 +92,10 @@ function toggleProblems() {
 
   /* показываем/скрываем prob-cards с задержкой */
   const cards = document.querySelectorAll('.prob-card:not(.prob-card--spacer)');
-  cards.forEach((card, i) => {
+  cards.forEach((card) => {
     if (problemsOn) {
-      card.style.transition = `opacity .25s ease ${i * 70}ms, transform .25s ease ${i * 70}ms`;
-      requestAnimationFrame(() => requestAnimationFrame(() => {
-        card.classList.add('visible');
-      }));
+      card.classList.add('visible');
     } else {
-      card.style.transition = 'opacity .15s ease, transform .15s ease';
       card.classList.remove('visible');
     }
   });
