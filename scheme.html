@@ -1,351 +1,223 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O!Bank — Текущий процесс ЗПП</title>
-    <link rel="stylesheet" href="scheme.css">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>O!Bank — ЗПП As Is</title>
+  <link rel="stylesheet" href="scheme.css"/>
 </head>
 <body>
 
-    <header class="header">
-        <div class="logo-zone">
-            <span class="logo-dot"></span>
-            <span class="logo-text">O!BANK</span>
-        </div>
-        <div class="nav-right">
-            <div class="lang-switcher">
-                <button class="lang-btn active" id="btn-ru" onclick="changeLang('ru')">RU</button>
-                <button class="lang-btn" id="btn-en" onclick="changeLang('en')">EN</button>
-            </div>
-            <a href="index.html" class="back-btn" id="txt-to-main">← На главную</a>
-        </div>
-    </header>
+<header>
+  <a class="logo" href="index.html"><span>O!</span>BANK</a>
+  <div class="lang-switcher">
+    <button class="lang-btn active" data-lang="ru">RU</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+  </div>
+</header>
 
-    <div class="page-container">
+<div class="page">
 
-        <!-- ========== SECTION TITLE ========== -->
-        <div class="scheme-section-title current" id="title-as-is">🔴 Текущий процесс (As Is)</div>
+  <div class="section-label">
+    <div class="section-dot"></div>
+    <h2 data-ru="Текущий процесс (As Is)" data-en="Current Process (As Is)">Текущий процесс (As Is)</h2>
+  </div>
 
-        <!-- ========== FLOWCHART ========== -->
-        <div class="flowchart-wrapper">
-            <div class="process-header-title" id="process-main-title">Процесс ЗПП в филиале</div>
+  <div class="scheme-container">
+    <div class="scheme-title"
+         data-ru="Процесс ЗПП в филиале"
+         data-en="Payroll Project Process in Branch">Процесс ЗПП в филиале</div>
 
-            <div class="process-grid">
-
-                <!-- Node 1 -->
-                <div class="node-card grid-pos-1 active" data-node="node1" onclick="onNodeClick(this)">
-                    <span class="node-badge-dept" id="nd-1-dept">РБ, СОЮФЛ</span>
-                    <div class="node-title" id="nd-1-title">Привлечение</div>
-                    <div class="glow-point p-right"></div>
-                </div>
-
-                <!-- Arrow 1→2 -->
-                <div class="css-line line-h L1-2"></div>
-
-                <!-- Node 2 -->
-                <div class="node-card grid-pos-2" data-node="node2" onclick="onNodeClick(this)">
-                    <span class="node-badge-dept" id="nd-2-dept">РБ</span>
-                    <div class="node-title" id="nd-2-title">Подписание договора</div>
-                    <div class="glow-point p-right"></div>
-                </div>
-
-                <!-- Arrow 2→4 -->
-                <div class="css-line line-h L2-4"></div>
-
-                <!-- Node 3 (row 2) -->
-                <div class="node-card grid-pos-3" data-node="node3" onclick="onNodeClick(this)">
-                    <span class="node-badge-dept" id="nd-3-dept">РБ</span>
-                    <div class="node-title" id="nd-3-title">Прием списка сотрудников и их документов</div>
-                    <div class="glow-point p-right"></div>
-                </div>
-
-                <!-- Arrow 3→4 -->
-                <div class="css-line line-h L3-4"></div>
-
-                <!-- Node 4 — warning, spans 2 rows -->
-                <div class="node-card grid-pos-4 node-warning" data-node="node4" onclick="onNodeClick(this)">
-                    <span class="node-badge-dept font-small" id="nd-4-dept">РБ, Отдел сопровождения карточных продуктов ГБ</span>
-                    <div class="node-title" id="nd-4-title">Создание служебной записки на заведение ЗПП</div>
-                    <div class="glow-point p-right"></div>
-                </div>
-
-                <!-- Arrow 4→5 (warning/orange) -->
-                <div class="css-line line-h L4-5"></div>
-
-                <!-- Node 5 -->
-                <div class="node-card grid-pos-5" data-node="node5" onclick="onNodeClick(this)">
-                    <span class="node-badge-dept" id="nd-5-dept">СОЮФЛ</span>
-                    <div class="node-title" id="nd-5-title">Открытие карточных счетов</div>
-                    <div class="glow-point p-right"></div>
-                </div>
-
-                <!-- Arrow 5→6 -->
-                <div class="css-line line-h L5-6"></div>
-
-                <!-- Node 6 -->
-                <div class="node-card grid-pos-6" data-node="node6" onclick="onNodeClick(this)">
-                    <span class="node-badge-dept font-small" id="nd-6-dept">Отдел сопровождения карточных продуктов ГБ</span>
-                    <div class="node-title" id="nd-6-title">Изготовление именных карт и отправка в филиал</div>
-                    <div class="glow-point p-down"></div>
-                </div>
-
-                <!-- Arrow 6→7 (vertical) -->
-                <div class="css-line line-v L6-7"></div>
-
-                <!-- Node 7 -->
-                <div class="node-card grid-pos-7" data-node="node7" onclick="onNodeClick(this)">
-                    <span class="node-badge-dept" id="nd-7-dept">РБ</span>
-                    <div class="node-title" id="nd-7-title">Передача карт организации</div>
-                </div>
-
-            </div>
-        </div>
-
-        <!-- ========== ANALYSIS SEPARATOR ========== -->
-        <div class="analysis-separator">
-            <span class="arrow-down-anim">⬇️</span>
-            <span id="txt-analysis-label">Анализ текущего процесса</span>
-        </div>
-
-        <!-- ========== ANALYSIS BOX ========== -->
-        <div class="analysis-box" id="analysis-box">
-
-            <!-- Placeholder — until a node is clicked -->
-            <div class="analysis-placeholder" id="analysis-placeholder">
-                <span id="txt-click-hint">← Нажмите на любой блок, чтобы увидеть детальный анализ</span>
-            </div>
-
-            <!-- Content — shown after click -->
-            <div class="analysis-content" id="analysis-content" style="display:none;">
-                <ul class="pain-list" id="a-pain-list"></ul>
-            </div>
-
-        </div>
-
-        <!-- ========== CTA BUTTON ========== -->
-        <div class="cta-container">
-            <a href="to-be.html" class="cta-btn" id="cta-link">
-                <span id="txt-cta">Переход к целевому процессу (To Be)</span>
-                <span>→</span>
-            </a>
-        </div>
-
+    <!-- кнопка проблем -->
+    <div class="problems-bar">
+      <button class="btn-problems" id="btnProblems" onclick="toggleProblems()">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M10 2a8 8 0 100 16A8 8 0 0010 2zm0 4v4m0 3v1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span data-ru="Показать проблемы" data-en="Show issues">Показать проблемы</span>
+      </button>
     </div>
 
-    <script>
-    // =====================================================================
-    // DATA
-    // =====================================================================
-    const nodeData = {
-        node1: {
-            ru: { warning: false, painPoints: [
-                "Низкий уровень автоматизации первичного контакта",
-                "Отсутствие единого канала для взаимодействия с клиентом",
-                "Презентация ЗПП происходит вручную без CRM-контроля"
-            ]},
-            en: { warning: false, painPoints: [
-                "Low level of automation for initial client contact",
-                "No unified channel for client interaction",
-                "WPP presentations are delivered manually without CRM tracking"
-            ]}
-        },
-        node2: {
-            ru: { warning: false, painPoints: [
-                "Полностью бумажный документооборот — 0% автоматизации",
-                "Требует физического присутствия руководства компании",
-                "Сбор живых подписей и печатей на бумажных бланках"
-            ]},
-            en: { warning: false, painPoints: [
-                "Fully paper-based workflow — 0% automation",
-                "Requires physical presence of company management",
-                "Collection of wet signatures and stamps on paper forms"
-            ]}
-        },
-        node3: {
-            ru: { warning: false, painPoints: [
-                "Документы поступают в разнородных форматах: сканы, Excel, бумага",
-                "Отсутствие автоматической верификации данных на входе",
-                "Высокий риск опечаток в ФИО и номерах паспортов"
-            ]},
-            en: { warning: false, painPoints: [
-                "Documents arrive in fragmented formats: scans, Excel, paper",
-                "No automated data validation at the entry point",
-                "High risk of typos in employee names and passport numbers"
-            ]}
-        },
-        node4: {
-            ru: { warning: true, painPoints: [
-                "Критическая точка бюрократии — процесс блокируется до подписи СЗ",
-                "Ожидание согласования занимает от 5 до 24 часов",
-                "Отсутствие прямой передачи данных в карточный отдел"
-            ]},
-            en: { warning: true, painPoints: [
-                "Critical bureaucracy node — process blocked until memo is signed",
-                "Approval waiting time: 5 to 24 hours",
-                "No direct data transfer to the card processing department"
-            ]}
-        },
-        node5: {
-            ru: { warning: true, painPoints: [
-                "Ручной массовый ввод данных в АБС — до 20 минут на сотрудника",
-                "При 100+ сотрудниках операционное окно парализовано на часы",
-                "Отвлекает ресурсы от обслуживания текущего потока клиентов"
-            ]},
-            en: { warning: true, painPoints: [
-                "Manual bulk data entry into CBS — up to 20 minutes per employee",
-                "With 100+ employees, the branch counter is paralyzed for hours",
-                "Diverts resources away from walk-in customer service"
-            ]}
-        },
-        node6: {
-            ru: { warning: false, painPoints: [
-                "Производство привязано к мощностям Головного банка",
-                "Технологическая очередь при массовых заявках от нескольких филиалов",
-                "Только физические именные карты — нет виртуального выпуска"
-            ]},
-            en: { warning: false, painPoints: [
-                "Production tied to Head Office hardware capacity",
-                "Processing queue forms when multiple branches submit bulk requests",
-                "Only physical personalized cards — no virtual card issuance"
-            ]}
-        },
-        node7: {
-            ru: { warning: true, painPoints: [
-                "Физическая доставка пластика занимает 2–4 рабочих дня",
-                "Логистические риски: задержки рейсов, погодные условия, утеря",
-                "Общий цикл от привлечения до активации карты: 5–9 дней"
-            ]},
-            en: { warning: true, painPoints: [
-                "Physical card delivery takes 2–4 business days",
-                "Logistics risks: flight delays, weather conditions, loss in transit",
-                "Total cycle from acquisition to card activation: 5–9 days"
-            ]}
-        }
-    };
+    <!--
+      GRID: 5 колонок
+      col1: РБ блок
+      col2: пространство для проблем РБ
+      col3: СОЮФЛ блок
+      col4: пространство для проблем СОЮФЛ
+      col5: Карточный отдел
+    -->
+    <div class="asis-grid" id="asisGrid">
 
-    // =====================================================================
-    // UI TEXT
-    // =====================================================================
-    const uiText = {
-        ru: {
-            toMain: "← На главную",
-            asIs: "🔴 Текущий процесс (As Is)",
-            mainTitle: "Процесс ЗПП в филиале",
-            analysisLabel: "Анализ текущего процесса",
-            clickHint: "← Нажмите на любой блок, чтобы увидеть детальный анализ",
-            cta: "Переход к целевому процессу (To Be)",
-            nodes: {
-                node1: { dept: "РБ, СОЮФЛ",   title: "Привлечение" },
-                node2: { dept: "РБ",           title: "Подписание договора" },
-                node3: { dept: "РБ",           title: "Прием списка сотрудников и их документов" },
-                node4: { dept: "РБ, Отдел сопровождения карточных продуктов ГБ", title: "Создание служебной записки на заведение ЗПП" },
-                node5: { dept: "СОЮФЛ",        title: "Открытие карточных счетов" },
-                node6: { dept: "Отдел сопровождения карточных продуктов ГБ", title: "Изготовление именных карт и отправка в филиал" },
-                node7: { dept: "РБ",           title: "Передача карт организации" }
-            }
-        },
-        en: {
-            toMain: "← Back to main",
-            asIs: "🔴 Current Process (As Is)",
-            mainTitle: "WPP Process in the Branch",
-            analysisLabel: "Analysis of the Current Process",
-            clickHint: "← Click any block to see a detailed analysis",
-            cta: "Proceed to Target Process (To Be)",
-            nodes: {
-                node1: { dept: "RB, SOYFL",    title: "Acquisition" },
-                node2: { dept: "RB",            title: "Contract Signing" },
-                node3: { dept: "RB",            title: "Receiving Employee Lists & Documents" },
-                node4: { dept: "RB, Card Products Support Dept HQ", title: "Creating Internal Memo for WPP Setup" },
-                node5: { dept: "SOYFL",         title: "Opening Card Accounts" },
-                node6: { dept: "Card Products Support Dept HQ", title: "Card Production & Shipment to Branch" },
-                node7: { dept: "RB",            title: "Delivering Cards to Organization" }
-            }
-        }
-    };
+      <!-- ── ЗАГОЛОВКИ ── -->
+      <div class="lane-hdr">
+        <div class="lane-icon">
+          <svg viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 4V3M13 4V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3 8h14" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <span data-ru="Розничный бизнес (РБ)" data-en="Retail Business (RB)">Розничный бизнес (РБ)</span>
+      </div>
 
-    // =====================================================================
-    // STATE
-    // =====================================================================
-    let currentLang = 'ru';
-    let activeNode = 'node1';
+      <div class="gap-hdr"></div>
 
-    // =====================================================================
-    // LANGUAGE SWITCH
-    // =====================================================================
-    function changeLang(lang) {
-        currentLang = lang;
-        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-        document.getElementById('btn-' + lang).classList.add('active');
+      <div class="lane-hdr">
+        <div class="lane-icon">
+          <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="M4 17c0-3 2.686-5 6-5s6 2 6 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </div>
+        <span data-ru="СОЮФЛ" data-en="SOYUFL">СОЮФЛ</span>
+      </div>
 
-        const t = uiText[lang];
-        document.getElementById('txt-to-main').textContent       = t.toMain;
-        document.getElementById('title-as-is').textContent       = t.asIs;
-        document.getElementById('process-main-title').textContent = t.mainTitle;
-        document.getElementById('txt-analysis-label').textContent = t.analysisLabel;
-        document.getElementById('txt-click-hint').textContent    = t.clickHint;
-        document.getElementById('txt-cta').textContent           = t.cta;
+      <div class="gap-hdr"></div>
 
-        // Update node cards
-        Object.keys(t.nodes).forEach(key => {
-            const idx = key.replace('node', '');
-            const deptEl  = document.getElementById('nd-' + idx + '-dept');
-            const titleEl = document.getElementById('nd-' + idx + '-title');
-            if (deptEl)  deptEl.textContent  = t.nodes[key].dept;
-            if (titleEl) titleEl.textContent = t.nodes[key].title;
-        });
+      <div class="lane-hdr">
+        <div class="lane-icon">
+          <svg viewBox="0 0 20 20" fill="none"><rect x="2" y="5" width="16" height="11" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M6 5V4a2 2 0 014 0v1" stroke="currentColor" stroke-width="1.5"/></svg>
+        </div>
+        <span data-ru="Карточный отдел" data-en="Card Department">Карточный отдел</span>
+      </div>
 
-        // Re-render analysis panel
-        renderAnalysis(activeNode);
-    }
+      <!-- ── ТЕЛО ── -->
 
-    // =====================================================================
-    // NODE CLICK
-    // =====================================================================
-    function onNodeClick(el) {
-        document.querySelectorAll('.node-card').forEach(c => c.classList.remove('active'));
-        el.classList.add('active');
-        activeNode = el.getAttribute('data-node');
-        renderAnalysis(activeNode);
-    }
+      <!-- РБ — список -->
+      <div class="lane-body" id="rbLane">
+        <div class="lane-item bad" data-prob="rb0">
+          <span data-ru="Привлечение клиента" data-en="Client acquisition">Привлечение клиента</span>
+        </div>
+        <div class="lane-item bad" data-prob="rb1">
+          <span data-ru="Приём списка сотрудников и документов" data-en="Receiving employee list and documents">Приём списка сотрудников и документов</span>
+        </div>
+        <div class="lane-item bad" data-prob="rb2">
+          <span data-ru="Согласование условий ЗПП" data-en="Approval of payroll terms">Согласование условий ЗПП</span>
+        </div>
+        <div class="lane-item bad" data-prob="rb3">
+          <span data-ru="Служебная записка на ЗПП" data-en="Internal memo for payroll project">Служебная записка на ЗПП</span>
+        </div>
+        <div class="lane-item">
+          <span data-ru="Подготовка договоров" data-en="Preparation of contracts">Подготовка договоров</span>
+        </div>
+        <div class="lane-item">
+          <span data-ru="Передача карт организации" data-en="Card delivery to organisation">Передача карт организации</span>
+        </div>
+      </div>
 
-    // =====================================================================
-    // RENDER ANALYSIS
-    // =====================================================================
-    function renderAnalysis(nodeKey) {
-        const data = nodeData[nodeKey][currentLang];
-        const box  = document.getElementById('analysis-box');
+      <!-- ПРОСТРАНСТВО 1: проблемы РБ -->
+      <div class="gap-body" id="gap1">
+        <div class="prob-card" data-for="rb0">
+          <div class="prob-from">
+            <svg viewBox="0 0 14 14" fill="none"><path d="M9 7H2m0 0l3-3M2 7l3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span data-ru="Привлечение" data-en="Acquisition">Привлечение</span>
+          </div>
+          <div class="prob-text" data-ru="Нет единого канала, процесс не зафиксирован" data-en="No single channel, process not documented">Нет единого канала, процесс не зафиксирован</div>
+        </div>
+        <div class="prob-card" data-for="rb1">
+          <div class="prob-from">
+            <svg viewBox="0 0 14 14" fill="none"><path d="M9 7H2m0 0l3-3M2 7l3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span data-ru="Приём списка" data-en="Employee list">Приём списка</span>
+          </div>
+          <div class="prob-text" data-ru="Дублируется с СОЮФЛ — двойной ввод данных" data-en="Duplicated with SOYUFL — double data entry">Дублируется с СОЮФЛ — двойной ввод данных</div>
+        </div>
+        <div class="prob-card" data-for="rb2">
+          <div class="prob-from">
+            <svg viewBox="0 0 14 14" fill="none"><path d="M9 7H2m0 0l3-3M2 7l3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span data-ru="Согласование" data-en="Approval">Согласование</span>
+          </div>
+          <div class="prob-text" data-ru="Дублируется с СОЮФЛ — нет ответственного" data-en="Duplicated with SOYUFL — no owner">Дублируется с СОЮФЛ — нет ответственного</div>
+        </div>
+        <div class="prob-card" data-for="rb3">
+          <div class="prob-from">
+            <svg viewBox="0 0 14 14" fill="none"><path d="M9 7H2m0 0l3-3M2 7l3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span data-ru="Служебная записка" data-en="Internal memo">Служебная записка</span>
+          </div>
+          <div class="prob-text" data-ru="Создаётся вручную, нет автоматизации" data-en="Created manually, no automation">Создаётся вручную, нет автоматизации</div>
+        </div>
+      </div>
 
-        // Placeholder → hide
-        document.getElementById('analysis-placeholder').style.display = 'none';
+      <!-- СОЮФЛ — список -->
+      <div class="lane-body" id="sodLane">
+        <div class="lane-item bad" data-prob="s0">
+          <span data-ru="Согласование условий ЗПП" data-en="Approval of payroll terms">Согласование условий ЗПП</span>
+        </div>
+        <div class="lane-item">
+          <span data-ru="Подготовка договоров" data-en="Preparation of contracts">Подготовка договоров</span>
+        </div>
+        <div class="lane-item">
+          <span data-ru="Открытие карточных счетов сотрудников" data-en="Opening employee card accounts">Открытие карточных счетов сотрудников</span>
+        </div>
+        <div class="lane-item bad dash" data-prob="s1">
+          <span>—</span>
+        </div>
+        <div class="lane-item bad dash" data-prob="s1">
+          <span>—</span>
+        </div>
+        <div class="lane-item bad dash" data-prob="s1">
+          <span>—</span>
+        </div>
+      </div>
 
-        // Content → show
-        const content = document.getElementById('analysis-content');
-        content.style.display = 'block';
+      <!-- ПРОСТРАНСТВО 2: проблемы СОЮФЛ -->
+      <div class="gap-body" id="gap2">
+        <div class="prob-card" data-for="s0">
+          <div class="prob-from">
+            <svg viewBox="0 0 14 14" fill="none"><path d="M9 7H2m0 0l3-3M2 7l3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span data-ru="Согласование" data-en="Approval">Согласование</span>
+          </div>
+          <div class="prob-text" data-ru="Дублируется с РБ — нет единого ответственного" data-en="Duplicated with RB — no single owner">Дублируется с РБ — нет единого ответственного</div>
+        </div>
+        <div class="prob-card prob-card--spacer"></div>
+        <div class="prob-card prob-card--spacer"></div>
+        <div class="prob-card" data-for="s1">
+          <div class="prob-from">
+            <svg viewBox="0 0 14 14" fill="none"><path d="M9 7H2m0 0l3-3M2 7l3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span data-ru="Позиции 4–6" data-en="Positions 4–6">Позиции 4–6</span>
+          </div>
+          <div class="prob-text" data-ru="Роли не определены — функции отсутствуют" data-en="Roles undefined — functions missing">Роли не определены — функции отсутствуют</div>
+        </div>
+      </div>
 
-        // Render bullet list
-        const listEl = document.getElementById('a-pain-list');
-        listEl.innerHTML = data.painPoints.map(p => `<li>${p}</li>`).join('');
+      <!-- КАРТОЧНЫЙ ОТДЕЛ -->
+      <div class="lane-body" id="kartLane">
+        <div class="lane-item">
+          <span data-ru="Изготовление именных карт" data-en="Production of named cards">Изготовление именных карт</span>
+        </div>
+        <div class="lane-item">
+          <span data-ru="Отправка карт в филиал" data-en="Card dispatch to branch">Отправка карт в филиал</span>
+        </div>
+      </div>
 
-        // Box border accent
-        box.className = 'analysis-box ' + (data.warning ? 'active-orange' : 'active-red');
+    </div><!-- /asis-grid -->
 
-        // Re-trigger animation
-        content.style.animation = 'none';
-        content.offsetHeight;
-        content.style.animation = '';
-    }
+    <!-- АНАЛИЗ -->
+    <div class="analysis-divider">
+      <div class="adiv-line"></div>
+      <div class="adiv-label" data-ru="Анализ текущего процесса" data-en="Current process analysis">Анализ текущего процесса</div>
+    </div>
 
-    // =====================================================================
-    // INIT
-    // =====================================================================
-    window.addEventListener('load', () => {
-        changeLang('ru');
-        // Auto-show first node
-        const firstCard = document.querySelector('[data-node="node1"]');
-        if (firstCard) renderAnalysis('node1');
-    });
-    </script>
+    <!-- КЛЮЧЕВЫЕ ПРОБЛЕМЫ -->
+    <div class="summary-block" id="summaryBlock">
+      <div class="summary-item">
+        <div class="summary-dot"></div>
+        <span data-ru="Отсутствует ведение полной отчётности" data-en="No full reporting in place">Отсутствует ведение полной отчётности</span>
+      </div>
+      <div class="summary-item">
+        <div class="summary-dot"></div>
+        <span data-ru="Нет единого управления для согласования спец. тарифов" data-en="No unified management for special tariff approvals">Нет единого управления для согласования спец. тарифов</span>
+      </div>
+      <div class="summary-item">
+        <div class="summary-dot"></div>
+        <span data-ru="Нет контроля за обновлением актуальной информации на сайте" data-en="No control over keeping website information up to date">Нет контроля за обновлением актуальной информации на сайте</span>
+      </div>
+    </div>
 
+  </div><!-- /scheme-container -->
+
+  <!-- CTA -->
+  <div class="cta-wrap">
+    <button class="cta-btn" onclick="window.location.href='to-be.html'">
+      <span data-ru="Переход к целевому процессу (To Be)" data-en="Go to target process (To Be)">Переход к целевому процессу (To Be)</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+      </svg>
+    </button>
+  </div>
+
+</div><!-- /page -->
+
+<script src="scheme.js"></script>
 </body>
 </html>
