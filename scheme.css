@@ -103,7 +103,7 @@ header{display:flex;align-items:center;justify-content:space-between;padding:18p
   display:flex;
   flex-direction:column;
   gap:0;
-  overflow:hidden;
+  align-items:stretch;
 }
 
 /* PROB CARD */
@@ -117,8 +117,10 @@ header{display:flex;align-items:center;justify-content:space-between;padding:18p
   padding:9px 12px;
   margin-bottom:1px;
   flex-shrink:0;
-  overflow:hidden;
   word-break:break-word;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
 }
 .prob-card.prob-card--spacer{
   background:transparent;
