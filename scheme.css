@@ -99,11 +99,18 @@ header{display:flex;align-items:center;justify-content:space-between;padding:18p
 
 /* GAP BODY — пространство для проблем */
 .gap-body{
-  padding:0 8px;
+  padding:0;
   display:flex;
   flex-direction:column;
   gap:0;
   align-items:stretch;
+  overflow:hidden;
+  max-height:0;
+  transition:max-height .35s ease, padding .35s ease;
+}
+.asis-grid.problems-on .gap-body{
+  max-height:2000px;
+  padding:0 8px;
 }
 
 /* PROB CARD */
