@@ -63,7 +63,7 @@ header{display:flex;align-items:center;justify-content:space-between;padding:18p
   border-bottom:2px solid var(--b2);
   border-radius:3px 3px 0 0;
 }
-.gap-hdr{border-bottom:2px solid transparent;margin:0 4px}
+.gap-hdr{min-height:46px}
 .lane-icon{width:26px;height:26px;border-radius:50%;background:var(--adim);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--red)}
 .lane-icon svg{width:13px;height:13px}
 .lane-hdr span{font-size:10.5px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.07em;line-height:1.3}
