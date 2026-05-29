@@ -1,67 +1,156 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Target Process (To Be)</title>
-    <link rel="stylesheet" href="to-be.css">
-    <script src="https://cdn.jsdelivr.net/npm/leader-line-new@1.1.9/leader-line.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>O!Bank — ЗПП To Be</title>
+  <link rel="stylesheet" href="to-be.css" />
 </head>
 <body>
 
-<div class="lang-switcher">
-    <button onclick="switchLang('ru')" class="lang-btn">RU</button>
-    <button onclick="switchLang('en')" class="lang-btn">EN</button>
-</div>
-
-<div class="scheme-container">
-    <div class="flowchart">
-        <div class="col blue">
-            <h3 data-ru="Прямые продажи" data-en="Direct Sales">Прямые продажи</h3>
-            <div class="node" id="node-1" data-ru="Привлечение клиента" data-en="Customer Acquisition">Привлечение клиента</div>
-            <div class="node" id="node-2" data-ru="Подписание договора ЗПП" data-en="Contract Signing">Подписание договора ЗПП</div>
-            <div class="node mt-40" id="node-3" data-ru="Раздача карт" data-en="Card Distribution">Раздача карт</div>
-        </div>
-        <div class="col blue">
-            <h3 data-ru="Розничный бизнес" data-en="Retail Business">Розничный бизнес</h3>
-            <div class="node" id="node-4" data-ru="Привлечение клиента" data-en="Customer Acquisition">Привлечение клиента</div>
-            <div class="node" id="node-5" data-ru="Подписание договора ЗПП" data-en="Contract Signing">Подписание договора ЗПП</div>
-            <div class="node mt-40" id="node-6" data-ru="Раздача карт" data-en="Card Distribution">Раздача карт</div>
-        </div>
-        <div class="col green">
-            <h3 data-ru="Служба операционной деятельности" data-en="Operations Dept">Служба операционной деятельности</h3>
-            <div class="node" id="node-7" data-ru="Согласование условий ЗПП" data-en="Terms Approval">Согласование условий ЗПП</div>
-            <div class="node" id="node-8" data-ru="Подготовка договора ЗПП" data-en="Contract Prep">Подготовка договора ЗПП</div>
-            <div class="node" id="node-9" data-ru="Прием списка сотрудников" data-en="Staff List Processing">Прием списка сотрудников</div>
-            <div class="node" id="node-10" data-ru="Создание служебной записки" data-en="Memo Creation">Создание служебной записки</div>
-            <div class="node" id="node-11" data-ru="Открытие счетов" data-en="Account Opening">Открытие счетов</div>
-            <div class="node" id="node-12" data-ru="Передача Instant карт" data-en="Card Handover">Передача Instant карт</div>
-        </div>
-        <div class="col yellow">
-            <h3 data-ru="Головной банк" data-en="Head Office">Головной банк</h3>
-            <div class="node" id="node-13" data-ru="Изготовление Instant карт" data-en="Card Manufacturing">Изготовление Instant карт</div>
-            <div class="node" id="node-14" data-ru="Отправка карт в СОД" data-en="Shipping to Ops">Отправка карт в СОД</div>
-        </div>
+  <!-- ─── HEADER ──────────────────────────────────────── -->
+  <header>
+    <div class="logo"><span>O!</span>BANK</div>
+    <div class="lang-switcher">
+      <button class="lang-btn active" data-lang="ru">RU</button>
+      <button class="lang-btn" data-lang="en">EN</button>
     </div>
-</div>
+  </header>
 
-<div class="benefits-section">
-    <h2 data-ru="Что получаем?" data-en="Benefits">Что получаем?</h2>
-    <div class="vertical-line"></div>
-    <div class="single-benefit-block">
-        <ul id="benefits-list" 
-            data-ru="<li>Единый канал для взаимодействия</li><li>Автоматизированный процесс</li>" 
-            data-en="<li>Unified communication channel</li><li>Automated process</li>">
-            <li>Единый канал для взаимодействия</li>
-            <li>Автоматизированный процесс</li>
-        </ul>
+  <!-- ─── PAGE ────────────────────────────────────────── -->
+  <div class="page">
+
+    <!-- Section label -->
+    <div class="section-label">
+      <div class="section-dot"></div>
+      <h2 data-ru="Целевой процесс (To Be)" data-en="Target Process (To Be)">Целевой процесс (To Be)</h2>
     </div>
-</div>
 
-<div class="nav-footer">
-    <a href="scheme.html" data-ru="← Текущий процесс (As Is)" data-en="← Current Process (As Is)">← Текущий процесс (As Is)</a>
-    <a href="index.html" data-ru="← На главную" data-en="← Home">← На главную</a>
-</div>
+    <!-- ─── SCHEME ─────────────────────────────────────── -->
+    <div class="scheme-container">
+      <div class="scheme-title" data-ru="Процесс ЗПП в филиале" data-en="Payroll Project Process in Branch">Процесс ЗПП в филиале</div>
 
-<script src="to-be.js"></script>
+      <div class="flow">
+
+        <!-- ── COL 1 ROW 1 ── -->
+        <div class="step" style="position:relative;">
+          <div class="step-card highlight">
+            <div class="step-tag" data-ru="РБ, СОЮФЛ" data-en="RB, SOYUFL">РБ, СОЮФЛ</div>
+            <div class="step-title" data-ru="Привлечение" data-en="Acquisition">Привлечение</div>
+          </div>
+          <div class="arrow-right"></div>
+        </div>
+
+        <!-- ── COL 2 ROW 1 ── -->
+        <div class="step" style="position:relative;">
+          <div class="step-card">
+            <div class="step-tag" data-ru="РБ" data-en="RB">РБ</div>
+            <div class="step-title" data-ru="Подписание договора" data-en="Contract Signing">Подписание договора</div>
+          </div>
+          <div class="arrow-right"></div>
+        </div>
+
+        <!-- ── COL 3 ROW 1 ── -->
+        <div class="step" style="position:relative;">
+          <div class="step-card">
+            <div class="step-tag" data-ru="РБ, CRM" data-en="RB, CRM">РБ, CRM</div>
+            <div class="step-title" data-ru="Создание заявки в CRM и автоформирование служебной записки" data-en="Creating a CRM request and auto-generating the internal memo">Создание заявки в CRM и автоформирование служебной записки</div>
+          </div>
+          <div class="arrow-right"></div>
+        </div>
+
+        <!-- ── COL 4 ROW 1 ── -->
+        <div class="step" style="position:relative;">
+          <div class="step-card">
+            <div class="step-tag" data-ru="СОЮФЛ" data-en="SOYUFL">СОЮФЛ</div>
+            <div class="step-title" data-ru="Открытие карточных счетов" data-en="Opening Card Accounts">Открытие карточных счетов</div>
+          </div>
+          <div class="arrow-right"></div>
+        </div>
+
+        <!-- ── COL 5 ROW 1 ── -->
+        <div class="step" style="position:relative;">
+          <div class="step-card">
+            <div class="step-tag" data-ru="ОТДЕЛ СОПРОВОЖДЕНИЯ КАРТОЧНЫХ ПРОДУКТОВ ГБ" data-en="CARD PRODUCTS SUPPORT DEPT. HO">ОТДЕЛ СОПРОВОЖДЕНИЯ КАРТОЧНЫХ ПРОДУКТОВ ГБ</div>
+            <div class="step-title" data-ru="Изготовление именных карт и отправка в филиал" data-en="Production of named cards and dispatch to branch">Изготовление именных карт и отправка в филиал</div>
+          </div>
+        </div>
+
+        <!-- ── SPACER ROW ── -->
+        <div class="step"></div>
+
+        <div class="step" style="display:flex;justify-content:center;">
+          <div class="arrow-down"></div>
+        </div>
+
+        <div class="step" style="display:flex;justify-content:center;">
+          <div class="arrow-down"></div>
+        </div>
+
+        <div class="step"></div>
+
+        <div class="step" style="display:flex;justify-content:center;" data-elbow></div>
+
+        <!-- ── ROW 2 ── -->
+        <div class="step"></div>
+
+        <!-- ── COL 2 ROW 2 ── -->
+        <div class="step" style="position:relative;">
+          <div class="step-card">
+            <div class="step-tag" data-ru="РБ" data-en="RB">РБ</div>
+            <div class="step-title" data-ru="Приём списка сотрудников и их документов" data-en="Receiving the employee list and their documents">Приём списка сотрудников и их документов</div>
+          </div>
+          <div class="arrow-right"></div>
+        </div>
+
+        <!-- ── COL 3 ROW 2 ── -->
+        <div class="step">
+          <div class="step-card">
+            <div class="step-tag" data-ru="CRM / АБС" data-en="CRM / CBS">CRM / АБС</div>
+            <div class="step-title" data-ru="Автоматическая передача данных сотрудников в АБС" data-en="Automatic transfer of employee data to Core Banking System">Автоматическая передача данных сотрудников в АБС</div>
+          </div>
+        </div>
+
+        <div class="step"></div>
+
+        <!-- ── COL 5 ROW 2 ── -->
+        <div class="step">
+          <div class="step-card">
+            <div class="step-tag" data-ru="РБ" data-en="RB">РБ</div>
+            <div class="step-title" data-ru="Передача карт организации" data-en="Card Delivery to Organisation">Передача карт организации</div>
+          </div>
+        </div>
+
+      </div><!-- /flow -->
+    </div><!-- /scheme-container -->
+
+    <!-- ─── ANALYSIS DIVIDER ──────────────────────────── -->
+    <div class="analysis-divider">
+      <div class="arrow-down-lg"></div>
+      <div class="analysis-label" data-ru="Что получаем с этой схемой?" data-en="What do we gain from this scheme?">Что получаем с этой схемой?</div>
+    </div>
+
+    <!-- ─── RESULTS BLOCK ─────────────────────────────── -->
+    <div class="results-block">
+      <ul>
+        <li data-ru="Единый канал для взаимодействия с клиентом" data-en="A single channel for client interaction">Единый канал для взаимодействия с клиентом</li>
+        <li data-ru="Автоматизированный процесс" data-en="Automated process">Автоматизированный процесс</li>
+      </ul>
+    </div>
+
+    <!-- ─── CTA ───────────────────────────────────────── -->
+    <div class="cta-wrap">
+      <button class="cta-btn">
+        <span data-ru="Вернуться к текущему процессу (As Is)" data-en="Back to current process (As Is)">Вернуться к текущему процессу (As Is)</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"/>
+          <polyline points="12 5 19 12 12 19"/>
+        </svg>
+      </button>
+    </div>
+
+  </div><!-- /page -->
+
+  <script src="to-be.js"></script>
 </body>
 </html>
