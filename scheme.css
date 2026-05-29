@@ -1,684 +1,167 @@
-@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&family=Inter:wght@300;400;500;600&display=swap');
-
-/* ==========================================================================
-   🌌 БАЗА И ТЁМНАЯ ПАЛИТРА O!BANK
-   ========================================================================== */
-*, *::before, *::after { box-sizing: border-box; }
-
-body {
-    background-color: #0A0A0A;
-    font-family: 'Inter', sans-serif;
-    color: #e0e0e0;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-}
-
-/* ==========================================================================
-   🔝 ШАПКА
-   ========================================================================== */
-.header {
-    height: 56px;
-    background: rgba(10, 10, 10, 0.88);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 40px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-}
-
-.logo-zone {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.logo-dot {
-    width: 8px;
-    height: 8px;
-    background-color: #E8005A;
-    border-radius: 50%;
-    box-shadow: 0 0 10px #E8005A;
-}
-
-.logo-text {
-    font-family: 'Unbounded', sans-serif;
-    font-weight: 700;
-    font-size: 1.1rem;
-    letter-spacing: 0.5px;
-    color: #E8005A;
-}
-
-.nav-right {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.lang-switcher {
-    display: flex;
-    background: rgba(255, 255, 255, 0.04);
-    border-radius: 6px;
-    padding: 2px;
-    border: 0.5px solid rgba(255, 255, 255, 0.14);
-    overflow: hidden;
-}
-
-.lang-btn {
-    background: transparent;
-    border: none;
-    color: #888;
-    padding: 5px 10px;
-    font-size: 0.75rem;
-    font-weight: 600;
-    font-family: 'Inter', sans-serif;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: all 0.2s ease;
-    letter-spacing: 0.05em;
-}
-
-.lang-btn:hover { color: #fff; }
-
-.lang-btn.active {
-    background: #E8005A;
-    color: #ffffff;
-}
-
-.back-btn {
-    color: #888;
-    text-decoration: none;
-    font-size: 0.85rem;
-    transition: color 0.2s ease;
-}
-.back-btn:hover { color: #E8005A; }
-
-/* ==========================================================================
-   📐 КОНТЕЙНЕР СТРАНИЦЫ (одноколоночный, без сайдбара)
-   ========================================================================== */
-.page-container {
-    padding: 80px 40px 60px 40px;
-    max-width: 1320px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
-}
-
-/* ==========================================================================
-   🏷️ ЗАГОЛОВКИ СЕКЦИЙ
-   ========================================================================== */
-.scheme-section-title {
-    font-family: 'Unbounded', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 600;
-    margin: 0;
-}
-.scheme-section-title.current { color: #f97316; }
-.scheme-section-title.future  { color: #10b981; }
-
-/* ==========================================================================
-   🔮 СТЕКЛЯННЫЙ КОРПУС СХЕМЫ
-   ========================================================================== */
-.flowchart-wrapper {
-    position: relative;
-    background: rgba(255, 255, 255, 0.01);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border: 0.5px solid rgba(255, 255, 255, 0.06);
-    border-radius: 20px;
-    padding: 36px 40px;
-    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5);
-}
-
-.process-header-title {
-    font-family: 'Unbounded', sans-serif;
-    text-align: center;
-    font-size: 1.1rem;
-    color: #ffffff;
-    margin-bottom: 36px;
-    letter-spacing: 0.5px;
-}
-
-/* ==========================================================================
-   📊 СЕТКА ПРОЦЕССА (As Is — 7 узлов, 2 строки)
-   ========================================================================== */
-.process-grid {
-    display: grid;
-    grid-template-columns: 1fr 38px 1fr 38px 1fr 38px 1fr 38px 1fr;
-    grid-template-rows: repeat(2, 108px);
-    row-gap: 46px;
-    position: relative;
-    align-items: center;
-    z-index: 5;
-}
-
-/* ==========================================================================
-   📊 СЕТКА ПРОЦЕССА (To Be — 6 узлов, 1 строка)
-   ========================================================================== */
-.process-grid-tobe {
-    display: grid;
-    grid-template-columns: 1fr 38px 1fr 38px 1fr 38px 1fr 38px 1fr 38px 1fr;
-    grid-template-rows: 120px;
-    position: relative;
-    align-items: center;
-    z-index: 5;
-}
-
-/* ==========================================================================
-   🎴 КАРТОЧКИ УЗЛОВ — As Is
-   ========================================================================== */
-.node-card {
-    position: relative;
-    background: rgba(255, 255, 255, 0.02);
-    border: 0.5px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    padding: 14px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    height: 100%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 10;
-}
-
-.node-card:hover {
-    background: rgba(255, 255, 255, 0.04);
-    border-color: rgba(232, 0, 90, 0.35);
-    transform: translateY(-2px);
-}
-
-.node-card.active {
-    background: rgba(232, 0, 90, 0.06);
-    border-color: #E8005A;
-    box-shadow: 0 0 25px rgba(232, 0, 90, 0.22);
-}
-
-.node-card.node-warning {
-    border-color: rgba(249, 115, 22, 0.3);
-}
-.node-card.node-warning:hover {
-    border-color: rgba(249, 115, 22, 0.55);
-}
-.node-card.node-warning.active {
-    background: rgba(249, 115, 22, 0.07);
-    border-color: #f97316;
-    box-shadow: 0 0 25px rgba(249, 115, 22, 0.22);
-}
-
-/* As Is grid positions */
-.grid-pos-1 { grid-column: 1; grid-row: 1; }
-.grid-pos-2 { grid-column: 3; grid-row: 1; }
-.grid-pos-3 { grid-column: 3; grid-row: 2; }
-.grid-pos-4 { grid-column: 5; grid-row: 1 / span 2; height: 100%; }
-.grid-pos-5 { grid-column: 7; grid-row: 1; }
-.grid-pos-6 { grid-column: 9; grid-row: 1; }
-.grid-pos-7 { grid-column: 9; grid-row: 2; }
-
-/* To Be grid positions */
-.tb-pos-1 { grid-column: 1; }
-.tb-pos-2 { grid-column: 3; }
-.tb-pos-3 { grid-column: 5; }
-.tb-pos-4 { grid-column: 7; }
-.tb-pos-5 { grid-column: 9; }
-.tb-pos-6 { grid-column: 11; }
-
-/* To Be cards — green accent */
-.node-card-tobe {
-    position: relative;
-    background: rgba(16, 185, 129, 0.02);
-    border: 0.5px solid rgba(16, 185, 129, 0.12);
-    border-radius: 12px;
-    padding: 14px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    height: 100%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 10;
-}
-
-.node-card-tobe:hover {
-    background: rgba(16, 185, 129, 0.05);
-    border-color: rgba(16, 185, 129, 0.4);
-    transform: translateY(-2px);
-}
-
-.node-card-tobe.active {
-    background: rgba(16, 185, 129, 0.08);
-    border-color: #10b981;
-    box-shadow: 0 0 25px rgba(16, 185, 129, 0.22);
-}
-
-/* ==========================================================================
-   🏷️ КОНТЕНТ УЗЛОВ
-   ========================================================================== */
-.node-badge-dept {
-    font-size: 0.63rem;
-    font-weight: 700;
-    color: #E8005A;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 8px;
-    display: block;
-    line-height: 1.2;
-}
-.node-badge-dept.green { color: #10b981; }
-.node-warning .node-badge-dept { color: #f97316; }
-.font-small { font-size: 0.58rem; }
-
-.node-title {
-    font-size: 0.76rem;
-    font-weight: 500;
-    line-height: 1.35;
-    color: #e0e0e0;
-}
-
-/* ==========================================================================
-   ✦ СВЕТЯЩИЕСЯ ТОЧКИ (концы стрелок)
-   ========================================================================== */
-.glow-point {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    background: #E8005A;
-    border-radius: 50%;
-    box-shadow: 0 0 8px #E8005A;
-    z-index: 15;
-}
-.glow-point.green { background: #10b981; box-shadow: 0 0 8px #10b981; }
-.node-warning .glow-point { background: #f97316; box-shadow: 0 0 8px #f97316; }
-.p-right { right: -2px; top: 50%; transform: translateY(-50%); }
-.p-down  { bottom: -2px; left: 50%; transform: translateX(-50%); }
-
-/* ==========================================================================
-   ⛓️ CSS СТРЕЛКИ — As Is
-   ========================================================================== */
-.css-line {
-    position: relative;
-    pointer-events: none;
-    z-index: 1;
-}
-
-/* Горизонтальные линии (красные) */
-.line-h {
-    height: 2px;
-    background: #E8005A;
-    box-shadow: 0 0 8px rgba(232, 0, 90, 0.35);
-    width: 100%;
-    align-self: center;
-}
-.line-h::after {
-    content: '';
-    position: absolute;
-    right: 0; top: -4px;
-    border-left: 7px solid #E8005A;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-}
-
-/* Вертикальная линия (красная) */
-.line-v {
-    width: 2px;
-    background: #E8005A;
-    box-shadow: 0 0 8px rgba(232, 0, 90, 0.35);
-    height: 46px;
-    justify-self: center;
-    align-self: center;
-}
-.line-v::after {
-    content: '';
-    position: absolute;
-    bottom: 0; left: -4px;
-    border-top: 7px solid #E8005A;
-    border-left: 5px solid transparent;
-    border-right: 5px solid transparent;
-}
-
-/* Позиции линий — As Is */
-.L1-2 { grid-column: 2; grid-row: 1; }
-.L2-4 { grid-column: 4; grid-row: 1; }
-.L3-4 { grid-column: 4; grid-row: 2; }
-
-.L4-5 {
-    grid-column: 6; grid-row: 1;
-    background: #f97316;
-    box-shadow: 0 0 8px rgba(249, 115, 22, 0.4);
-}
-.L4-5::after { border-left-color: #f97316; }
-
-.L5-6 { grid-column: 8; grid-row: 1; }
-
-.L6-7 {
-    grid-column: 9;
-    grid-row: 1 / 3;
-    height: 46px;
-    align-self: center;
-    justify-self: center;
-    position: relative;
-}
-
-/* Горизонтальные линии — To Be (зелёные) */
-.line-h-green {
-    height: 2px;
-    background: #10b981;
-    box-shadow: 0 0 8px rgba(16, 185, 129, 0.35);
-    width: 100%;
-    align-self: center;
-}
-.line-h-green::after {
-    content: '';
-    position: absolute;
-    right: 0; top: -4px;
-    border-left: 7px solid #10b981;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-}
-
-/* Позиции линий — To Be */
-.TL-1 { grid-column: 2; }
-.TL-2 { grid-column: 4; }
-.TL-3 { grid-column: 6; }
-.TL-4 { grid-column: 8; }
-.TL-5 { grid-column: 10; }
-
-/* ==========================================================================
-   🔍 БЛОК АНАЛИЗА
-   ========================================================================== */
-.analysis-separator {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    color: rgba(255, 255, 255, 0.18);
-    font-family: 'Unbounded', sans-serif;
-    font-size: 0.68rem;
-    text-transform: uppercase;
-    letter-spacing: 0.8px;
-    text-align: center;
-    padding: 4px 0;
-}
-
-.arrow-down-anim {
-    font-size: 1.1rem;
-    color: #E8005A;
-    animation: bounce 2s infinite;
-    display: block;
-}
-.arrow-down-green { color: #10b981; }
-
-@keyframes bounce {
-    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-    40% { transform: translateY(-6px); }
-    60% { transform: translateY(-3px); }
-}
-
-.analysis-box {
-    background: rgba(255, 255, 255, 0.01);
-    backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border: 0.5px solid rgba(255, 255, 255, 0.06);
-    border-radius: 20px;
-    padding: 28px 32px;
-    min-height: 120px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-    transition: border-color 0.3s ease;
-}
-
-.analysis-box.active-red {
-    border-color: rgba(232, 0, 90, 0.2);
-}
-.analysis-box.active-orange {
-    border-color: rgba(249, 115, 22, 0.2);
-}
-.analysis-box.active-green {
-    border-color: rgba(16, 185, 129, 0.2);
-}
-
-.analysis-placeholder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 68px;
-    color: rgba(255, 255, 255, 0.18);
-    font-size: 0.82rem;
-    font-style: italic;
-    text-align: center;
-}
-
-.analysis-content {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    animation: fadeUp 0.35s ease;
-}
-
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-
-.analysis-header {
-    border-bottom: 0.5px solid rgba(255, 255, 255, 0.06);
-    padding-bottom: 14px;
-}
-
-.analysis-dept {
-    font-family: 'Unbounded', sans-serif;
-    font-size: 0.62rem;
-    text-transform: uppercase;
-    color: #E8005A;
-    font-weight: 700;
-    letter-spacing: 1px;
-    margin-bottom: 6px;
-}
-.analysis-dept.orange { color: #f97316; }
-.analysis-dept.green  { color: #10b981; }
-
-.analysis-title-text {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #ffffff;
-    line-height: 1.3;
-}
-
-.analysis-pain {
-    background: rgba(249, 115, 22, 0.03);
-    border: 0.5px solid rgba(249, 115, 22, 0.1);
-    border-radius: 12px;
-    padding: 16px 18px;
-    font-size: 0.86rem;
-    color: #c0c0c0;
-    line-height: 1.65;
-}
-
-.analysis-pain.pain-green {
-    background: rgba(16, 185, 129, 0.03);
-    border-color: rgba(16, 185, 129, 0.1);
-}
-
-.analysis-metrics {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-}
-
-.metric-item {
-    background: rgba(255, 255, 255, 0.02);
-    border: 0.5px solid rgba(255, 255, 255, 0.06);
-    border-radius: 10px;
-    padding: 12px 14px;
-}
-
-.metric-label {
-    font-size: 0.62rem;
-    color: #555;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 5px;
-}
-
-.metric-value {
-    font-size: 0.82rem;
-    color: #e0e0e0;
-    font-weight: 500;
-    line-height: 1.4;
-}
-
-/* ==========================================================================
-   🟢 CTA КНОПКА
-   ========================================================================== */
-.cta-container {
-    display: flex;
-    justify-content: center;
-    padding: 8px 0 20px 0;
-}
-
-.cta-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    background: #10b981;
-    color: #fff;
-    font-family: 'Inter', sans-serif;
-    font-size: 0.97rem;
-    font-weight: 600;
-    padding: 17px 44px;
-    border-radius: 14px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 28px rgba(16, 185, 129, 0.28);
-    letter-spacing: 0.2px;
-}
-
-.cta-btn:hover {
-    background: #059669;
-    transform: translateY(-3px);
-    box-shadow: 0 14px 40px rgba(16, 185, 129, 0.42);
-}
-
-/* To Be — кнопка назад */
-.cta-btn-back {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background: rgba(255, 255, 255, 0.04);
-    color: #aaa;
-    border: 0.5px solid rgba(255, 255, 255, 0.1);
-    font-family: 'Inter', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 500;
-    padding: 14px 32px;
-    border-radius: 12px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-.cta-btn-back:hover {
-    background: rgba(255, 255, 255, 0.07);
-    color: #fff;
-    transform: translateY(-2px);
-}
-
-/* ==========================================================================
-   📊 КАРТОЧКИ ПРЕИМУЩЕСТВ (To Be)
-   ========================================================================== */
-.benefits-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 14px;
-}
-
-.benefit-card {
-    background: rgba(16, 185, 129, 0.03);
-    border: 0.5px solid rgba(16, 185, 129, 0.14);
-    border-radius: 16px;
-    padding: 22px 20px;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-
-.benefit-card:hover {
-    background: rgba(16, 185, 129, 0.06);
-    border-color: rgba(16, 185, 129, 0.3);
-    transform: translateY(-3px);
-}
-
-.benefit-value {
-    font-family: 'Unbounded', sans-serif;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #10b981;
-    line-height: 1;
-    margin-bottom: 8px;
-}
-
-.benefit-was {
-    font-size: 0.72rem;
-    color: #555;
-    text-decoration: line-through;
-    margin-bottom: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-}
-
-.benefit-label {
-    font-size: 0.78rem;
-    color: #888;
-    line-height: 1.35;
-}
-
-/* ==========================================================================
-   🔗 РАЗДЕЛИТЕЛЬ СЕКЦИЙ
-   ========================================================================== */
-.section-divider {
-    height: 0.5px;
-    background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent);
-    margin: 6px 0;
-}
-
-/* Pain bullet list in analysis box */
-.pain-list {
-    margin: 0;
-    padding: 0 0 0 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    list-style: none;
-}
-
-.pain-list li {
-    font-size: 0.88rem;
-    color: #c8c8c8;
-    line-height: 1.5;
-    position: relative;
-    padding-left: 18px;
-}
-
-.pain-list li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 8px;
-    width: 5px;
-    height: 5px;
-    background: #E8005A;
-    border-radius: 50%;
-    box-shadow: 0 0 6px rgba(232, 0, 90, 0.5);
-}
-
-/* ==========================================================================
-   📱 СКРОЛЛБАР
-   ========================================================================== */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #111; }
-::-webkit-scrollbar-thumb { background: #2a2a2a; border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: #3a3a3a; }
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#0d0d0d;--surface:#1a1a1a;--s2:#1e1e1e;--s3:#141414;
+  --border:#252525;--b2:#2e2e2e;
+  --red:#e8174a;--adim:rgba(232,23,74,.14);
+  --green:#00d68f;
+  --tp:#efefef;--ts:#777;--tm:#3a3a3a;
+  --prob-bg:#1a0a0d;--prob-border:#5a1525;--prob-text:#ff8080;--prob-from:#e8174a;
+  --font:'Manrope',sans-serif;
+}
+body{background:var(--bg);color:var(--tp);font-family:var(--font);min-height:100vh;overflow-x:hidden}
+
+/* HEADER */
+header{display:flex;align-items:center;justify-content:space-between;padding:18px 40px;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;background:var(--bg)}
+.logo{font-size:20px;font-weight:800;text-decoration:none;color:var(--tp);transition:opacity .2s}
+.logo:hover{opacity:.75}
+.logo span{color:var(--red)}
+.lang-switcher{display:flex;gap:4px}
+.lang-btn{background:none;border:1px solid var(--b2);color:var(--ts);font-family:var(--font);font-size:13px;font-weight:600;padding:5px 12px;cursor:pointer;transition:all .2s;letter-spacing:.05em}
+.lang-btn.active{background:var(--red);border-color:var(--red);color:#fff}
+
+/* PAGE */
+.page{max-width:1280px;margin:0 auto;padding:44px 32px 80px}
+
+/* SECTION LABEL */
+.section-label{display:flex;align-items:center;gap:10px;margin-bottom:28px}
+.section-dot{width:10px;height:10px;border-radius:50%;background:var(--red);box-shadow:0 0 8px var(--red);flex-shrink:0}
+.section-label h2{font-size:13px;font-weight:700;color:var(--red);letter-spacing:.1em;text-transform:uppercase}
+
+/* SCHEME CONTAINER */
+.scheme-container{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:28px 24px 32px;margin-bottom:36px}
+.scheme-title{text-align:center;font-size:18px;font-weight:700;margin-bottom:16px}
+
+/* PROBLEMS BAR */
+.problems-bar{display:flex;justify-content:flex-end;margin-bottom:20px}
+.btn-problems{background:none;border:1px solid var(--b2);color:var(--ts);font-family:var(--font);font-size:13px;font-weight:600;padding:7px 16px;cursor:pointer;border-radius:3px;display:flex;align-items:center;gap:8px;transition:all .2s}
+.btn-problems svg{width:16px;height:16px;flex-shrink:0}
+.btn-problems:hover{border-color:var(--red);color:var(--red)}
+.btn-problems.active{background:rgba(232,23,74,.12);border-color:var(--red);color:var(--red)}
+
+/* ═══ AS-IS GRID ══════════════════════════════════════
+   5 колонок: [РБ] [gap1] [СОЮФЛ] [gap2] [Карточный]
+   В обычном состоянии gap = 20px
+   При активных проблемах gap расширяется до 200px
+═══════════════════════════════════════════════════════ */
+.asis-grid{
+  display:grid;
+  grid-template-columns:1fr 20px 1fr 20px 1fr;
+  grid-template-rows:auto 1fr;
+  transition:grid-template-columns .35s ease;
+}
+.asis-grid.problems-on{
+  grid-template-columns:1fr 200px 1fr 200px 1fr;
+}
+
+/* LANE HEADER */
+.lane-hdr{
+  display:flex;align-items:center;gap:10px;
+  padding:11px 14px;
+  background:#101010;
+  border:1px solid var(--b2);
+  border-bottom:2px solid var(--b2);
+  border-radius:3px 3px 0 0;
+}
+.gap-hdr{border-bottom:2px solid transparent;margin:0 4px}
+.lane-icon{width:26px;height:26px;border-radius:50%;background:var(--adim);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--red)}
+.lane-icon svg{width:13px;height:13px}
+.lane-hdr span{font-size:10.5px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.07em;line-height:1.3}
+
+/* LANE BODY */
+.lane-body{border:1px solid var(--b2);border-top:none;border-radius:0 0 3px 3px;overflow:hidden}
+
+/* LANE ITEM */
+.lane-item{
+  padding:10px 14px;
+  border-bottom:1px solid var(--border);
+  font-size:12px;
+  color:var(--tp);
+  line-height:1.4;
+  transition:all .22s;
+  position:relative;
+}
+.lane-item:last-child{border-bottom:none}
+.lane-item.dash{color:var(--ts)}
+
+/* проблемный айтем при активации */
+.problems-on .lane-body .lane-item.bad{
+  background:rgba(232,23,74,.08);
+  border-left:2px solid var(--red);
+  padding-left:12px;
+  color:#ffb0b0;
+  font-weight:600;
+}
+.problems-on .lane-body .lane-item:not(.bad){
+  opacity:.28;
+}
+
+/* GAP BODY — пространство для проблем */
+.gap-body{
+  padding:0 8px;
+  display:flex;
+  flex-direction:column;
+  gap:0;
+  overflow:hidden;
+}
+
+/* PROB CARD */
+.prob-card{
+  opacity:0;
+  transform:translateX(-8px);
+  transition:opacity .25s, transform .25s;
+  background:var(--prob-bg);
+  border:1px solid var(--prob-border);
+  border-radius:3px;
+  padding:7px 10px;
+  margin-bottom:1px;
+  flex-shrink:0;
+}
+.prob-card.prob-card--spacer{
+  background:transparent;
+  border-color:transparent;
+  pointer-events:none;
+}
+.prob-card.visible{
+  opacity:1;
+  transform:translateX(0);
+}
+.prob-from{
+  display:flex;align-items:center;gap:5px;
+  font-size:9.5px;font-weight:700;
+  color:var(--prob-from);
+  text-transform:uppercase;letter-spacing:.05em;
+  margin-bottom:4px;
+}
+.prob-from svg{width:12px;height:12px;flex-shrink:0}
+.prob-text{font-size:11px;color:var(--prob-text);line-height:1.4}
+
+/* ANALYSIS DIVIDER */
+.analysis-divider{display:flex;flex-direction:column;align-items:center;margin:28px 0 20px;gap:8px}
+.adiv-line{width:2px;height:36px;background:var(--b2)}
+.adiv-label{font-size:10px;font-weight:700;letter-spacing:.18em;color:var(--tm);text-transform:uppercase}
+
+/* SUMMARY BLOCK */
+.summary-block{
+  border:1px solid var(--border);
+  border-radius:3px;
+  padding:20px 24px;
+  display:flex;flex-direction:column;gap:12px;
+  transition:border-color .3s;
+}
+.summary-block.highlight{border-color:var(--red)}
+.summary-item{display:flex;align-items:flex-start;gap:12px;font-size:13.5px;color:var(--ts);line-height:1.5;transition:color .3s}
+.summary-item.highlight{color:#ff8080}
+.summary-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--red);flex-shrink:0;margin-top:5px;
+  transition:box-shadow .3s;
+}
+.summary-item.highlight .summary-dot{box-shadow:0 0 6px var(--red)}
+
+/* CTA */
+.cta-wrap{display:flex;justify-content:center}
+.cta-btn{background:var(--green);color:#0a0a0a;border:none;font-family:var(--font);font-size:14px;font-weight:700;padding:16px 36px;border-radius:40px;cursor:pointer;display:flex;align-items:center;gap:10px;letter-spacing:.02em;transition:background .2s,transform .15s}
+.cta-btn:hover{background:#00f0a0;transform:translateY(-1px)}
+.cta-btn svg{width:18px;height:18px}
