@@ -17,7 +17,6 @@
 </header>
 
 <div class="page">
-
   <div class="section-label">
     <div class="section-dot"></div>
     <h2 data-ru="Целевой процесс (To Be)" data-en="Target Process (To Be)">Целевой процесс (To Be)</h2>
@@ -26,173 +25,157 @@
   <div class="scheme-container">
     <div class="scheme-title" data-ru="Процесс ЗПП в филиале" data-en="Payroll Project Process in Branch">Процесс ЗПП в филиале</div>
 
-    <!-- SWIMLANE: одна таблица, строки = этапы, колонки = lanes -->
-    <div class="swimlane" id="swimlane">
+    <!--
+      GRID: 4 колонки × 7 строк
+      Все ячейки одинаковой высоты → стрелки идут горизонтально на одном уровне
 
-      <!-- HEADERS -->
-      <div class="sl-headers">
-        <div class="sl-header">
-          <div class="lane-icon"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="6" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 17c0-3.314 3.134-6 7-6s7 2.686 7 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-          <span data-ru="Прямые продажи" data-en="Direct Sales">Прямые продажи</span>
+      Строки:
+        R1: ПП Привлечение | РБ Привлечение | СОД Согласование  | ГБ Изготовление
+        R2: empty          | empty          | СОД Подготовка     | ГБ Отправка в СОД
+        R3: ПП Подписание  | РБ Подписание  | empty              | empty
+        R4: empty          | empty          | СОД Приём списка   | empty
+        R5: empty          | empty          | СОД Создание заявки| empty
+        R6: empty          | empty          | СОД Открытие счетов| empty
+        R7: ПП Раздача     | РБ Раздача     | СОД Передача карт  | empty
+    -->
+    <div class="sl-grid" id="swimlane">
+
+      <!-- ── HEADERS (row 0) ── -->
+      <div class="sl-hdr" style="grid-area:1/1">
+        <div class="lane-icon"><svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="6" r="3.5" stroke="currentColor" stroke-width="1.5"/><path d="M3 17c0-3.314 3.134-6 7-6s7 2.686 7 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <span data-ru="Прямые продажи" data-en="Direct Sales">Прямые продажи</span>
+      </div>
+      <div class="sl-hdr" style="grid-area:1/2">
+        <div class="lane-icon"><svg viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 4V3M13 4V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3 8h14" stroke="currentColor" stroke-width="1.5"/></svg></div>
+        <span data-ru="Розничный бизнес" data-en="Retail Business">Розничный бизнес</span>
+      </div>
+      <div class="sl-hdr" style="grid-area:1/3">
+        <div class="lane-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M4 5h12M4 10h8M4 15h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <span data-ru="Служба операционной деятельности" data-en="Operational Services Dept.">Служба операционной деятельности</span>
+      </div>
+      <div class="sl-hdr" style="grid-area:1/4">
+        <div class="lane-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2L3 6v4c0 4 3.1 7.7 7 8.9C16.9 17.7 17 13 17 10V6l-7-4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+        <span data-ru="Головной банк" data-en="Head Office Bank">Головной банк</span>
+      </div>
+
+      <!-- ── ROW 1: Привлечение + Согласование + ГБ Изготовление ── -->
+      <div class="sl-cell" style="grid-area:2/1" data-id="pp-attract">
+        <div class="step-card">
+          <div class="step-tag" data-ru="ПП" data-en="DS">ПП</div>
+          <div class="step-title" data-ru="Привлечение клиента" data-en="Client Acquisition">Привлечение клиента</div>
         </div>
-        <div class="sl-header">
-          <div class="lane-icon"><svg viewBox="0 0 20 20" fill="none"><rect x="3" y="4" width="14" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 4V3M13 4V3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M3 8h14" stroke="currentColor" stroke-width="1.5"/></svg></div>
-          <span data-ru="Розничный бизнес" data-en="Retail Business">Розничный бизнес</span>
+      </div>
+      <div class="sl-cell" style="grid-area:2/2" data-id="rb-attract">
+        <div class="step-card highlight">
+          <div class="step-tag" data-ru="РБ" data-en="RB">РБ</div>
+          <div class="step-title" data-ru="Привлечение клиента" data-en="Client Acquisition">Привлечение клиента</div>
         </div>
-        <div class="sl-header">
-          <div class="lane-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M4 5h12M4 10h8M4 15h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-          <span data-ru="Служба операционной деятельности" data-en="Operational Services Dept.">Служба операционной деятельности</span>
+      </div>
+      <div class="sl-cell" style="grid-area:2/3" data-id="sod-agree">
+        <div class="step-card">
+          <div class="step-tag" data-ru="СОД" data-en="OSD">СОД</div>
+          <div class="step-title" data-ru="Согласование условий ЗПП с руководством" data-en="Approval of payroll terms with management">Согласование условий ЗПП с руководством</div>
         </div>
-        <div class="sl-header">
-          <div class="lane-icon"><svg viewBox="0 0 20 20" fill="none"><path d="M10 2L3 6v4c0 4 3.1 7.7 7 8.9C16.9 17.7 17 13 17 10V6l-7-4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
-          <span data-ru="Головной банк" data-en="Head Office Bank">Головной банк</span>
+      </div>
+      <div class="sl-cell" style="grid-area:2/4" data-id="gb-instant">
+        <div class="step-card">
+          <div class="step-tag" data-ru="ГБ" data-en="HO">ГБ</div>
+          <div class="step-title" data-ru="Изготовление Instant карт (по запросу — именная карта)" data-en="Production of Instant cards (named on request)">Изготовление Instant карт (по запросу — именная карта)</div>
         </div>
-      </div><!-- /sl-headers -->
+      </div>
 
-      <!-- BODY: строки процесса -->
-      <div class="sl-body">
-
-        <!--
-          ROW LAYOUT — каждая строка = один уровень по вертикали
-          data-row используется JS для отрисовки стрелок
-          Пустые ячейки — просто пробелы в сетке
-        -->
-
-        <!-- ROW 1: Привлечение → СОД Согласование -->
-        <div class="sl-row" data-row="1">
-          <div class="sl-cell" data-col="1" data-id="pp-attract">
-            <div class="step-card">
-              <div class="step-tag" data-ru="ПП" data-en="DS">ПП</div>
-              <div class="step-title" data-ru="Привлечение клиента" data-en="Client Acquisition">Привлечение клиента</div>
-            </div>
-          </div>
-          <div class="sl-cell" data-col="2" data-id="rb-attract">
-            <div class="step-card highlight">
-              <div class="step-tag" data-ru="РБ" data-en="RB">РБ</div>
-              <div class="step-title" data-ru="Привлечение клиента" data-en="Client Acquisition">Привлечение клиента</div>
-            </div>
-          </div>
-          <div class="sl-cell" data-col="3" data-id="sod-agree">
-            <div class="step-card">
-              <div class="step-tag" data-ru="СОД" data-en="OSD">СОД</div>
-              <div class="step-title" data-ru="Согласование условий ЗПП с руководством" data-en="Approval of payroll terms with management">Согласование условий ЗПП с руководством</div>
-            </div>
-          </div>
-          <div class="sl-cell" data-col="4" data-id="gb-instant">
-            <div class="step-card">
-              <div class="step-tag" data-ru="ГБ" data-en="HO">ГБ</div>
-              <div class="step-title" data-ru="Изготовление Instant карт (по запросу — именная карта)" data-en="Production of Instant cards (named on request)">Изготовление Instant карт (по запросу — именная карта)</div>
-            </div>
-          </div>
+      <!-- ── ROW 2: СОД Подготовка + ГБ Отправка ── -->
+      <div class="sl-cell sl-cell--empty" style="grid-area:3/1"></div>
+      <div class="sl-cell sl-cell--empty" style="grid-area:3/2"></div>
+      <div class="sl-cell" style="grid-area:3/3" data-id="sod-prep">
+        <div class="step-card">
+          <div class="step-tag" data-ru="СОД" data-en="OSD">СОД</div>
+          <div class="step-title" data-ru="Подготовка договора ЗПП" data-en="Preparation of Payroll Agreement">Подготовка договора ЗПП</div>
         </div>
-
-        <!-- ROW 2: Подготовка договора ЗПП + Отправка карт в СОД -->
-        <div class="sl-row" data-row="2">
-          <div class="sl-cell sl-cell--empty" data-col="1"></div>
-          <div class="sl-cell sl-cell--empty" data-col="2"></div>
-          <div class="sl-cell" data-col="3" data-id="sod-prep">
-            <div class="step-card">
-              <div class="step-tag" data-ru="СОД" data-en="OSD">СОД</div>
-              <div class="step-title" data-ru="Подготовка договора ЗПП" data-en="Preparation of Payroll Agreement">Подготовка договора ЗПП</div>
-            </div>
-          </div>
-          <div class="sl-cell" data-col="4" data-id="gb-send">
-            <div class="step-card">
-              <div class="step-tag" data-ru="ГБ" data-en="HO">ГБ</div>
-              <div class="step-title" data-ru="Отправка карт в СОД" data-en="Sending cards to Operational Services">Отправка карт в СОД</div>
-            </div>
-          </div>
+      </div>
+      <div class="sl-cell" style="grid-area:3/4" data-id="gb-send">
+        <div class="step-card">
+          <div class="step-tag" data-ru="ГБ" data-en="HO">ГБ</div>
+          <div class="step-title" data-ru="Отправка карт в СОД" data-en="Sending cards to Operational Services">Отправка карт в СОД</div>
         </div>
+      </div>
 
-        <!-- ROW 3: Подписание договора ЗПП (ПП + РБ) ← от СОД -->
-        <div class="sl-row" data-row="3">
-          <div class="sl-cell" data-col="1" data-id="pp-sign">
-            <div class="step-card">
-              <div class="step-tag" data-ru="ПП" data-en="DS">ПП</div>
-              <div class="step-title" data-ru="Подписание договора ЗПП" data-en="Signing the Payroll Agreement">Подписание договора ЗПП</div>
-            </div>
-          </div>
-          <div class="sl-cell" data-col="2" data-id="rb-sign">
-            <div class="step-card">
-              <div class="step-tag" data-ru="РБ" data-en="RB">РБ</div>
-              <div class="step-title" data-ru="Подписание договора ЗПП" data-en="Signing the Payroll Agreement">Подписание договора ЗПП</div>
-            </div>
-          </div>
-          <div class="sl-cell sl-cell--empty" data-col="3"></div>
-          <div class="sl-cell sl-cell--empty" data-col="4"></div>
+      <!-- ── ROW 3: Подписание договора ── -->
+      <div class="sl-cell" style="grid-area:4/1" data-id="pp-sign">
+        <div class="step-card">
+          <div class="step-tag" data-ru="ПП" data-en="DS">ПП</div>
+          <div class="step-title" data-ru="Подписание договора ЗПП" data-en="Signing the Payroll Agreement">Подписание договора ЗПП</div>
         </div>
-
-        <!-- ROW 4: Приём списка сотрудников -->
-        <div class="sl-row" data-row="4">
-          <div class="sl-cell sl-cell--empty" data-col="1"></div>
-          <div class="sl-cell sl-cell--empty" data-col="2"></div>
-          <div class="sl-cell" data-col="3" data-id="sod-list">
-            <div class="step-card">
-              <div class="step-tag" data-ru="СОД, CRM" data-en="OSD, CRM">СОД, CRM</div>
-              <div class="step-title" data-ru="Приём списка сотрудников и документов" data-en="Receiving employee list and documents">Приём списка сотрудников и документов</div>
-            </div>
-          </div>
-          <div class="sl-cell sl-cell--empty" data-col="4"></div>
+      </div>
+      <div class="sl-cell" style="grid-area:4/2" data-id="rb-sign">
+        <div class="step-card">
+          <div class="step-tag" data-ru="РБ" data-en="RB">РБ</div>
+          <div class="step-title" data-ru="Подписание договора ЗПП" data-en="Signing the Payroll Agreement">Подписание договора ЗПП</div>
         </div>
+      </div>
+      <div class="sl-cell sl-cell--empty" style="grid-area:4/3"></div>
+      <div class="sl-cell sl-cell--empty" style="grid-area:4/4"></div>
 
-        <!-- ROW 5: Создание заявки в CRM -->
-        <div class="sl-row" data-row="5">
-          <div class="sl-cell sl-cell--empty" data-col="1"></div>
-          <div class="sl-cell sl-cell--empty" data-col="2"></div>
-          <div class="sl-cell" data-col="3" data-id="sod-crm">
-            <div class="step-card">
-              <div class="step-tag" data-ru="СОД, CRM / АБС" data-en="OSD, CRM / CBS">СОД, CRM / АБС</div>
-              <div class="step-title" data-ru="Создание заявки в CRM и автоформирование служебной записки" data-en="Creating CRM request and auto-generating internal memo">Создание заявки в CRM и автоформирование служебной записки</div>
-            </div>
-          </div>
-          <div class="sl-cell sl-cell--empty" data-col="4"></div>
+      <!-- ── ROW 4: Приём списка ── -->
+      <div class="sl-cell sl-cell--empty" style="grid-area:5/1"></div>
+      <div class="sl-cell sl-cell--empty" style="grid-area:5/2"></div>
+      <div class="sl-cell" style="grid-area:5/3" data-id="sod-list">
+        <div class="step-card">
+          <div class="step-tag" data-ru="СОД, CRM" data-en="OSD, CRM">СОД, CRM</div>
+          <div class="step-title" data-ru="Приём списка сотрудников и документов" data-en="Receiving employee list and documents">Приём списка сотрудников и документов</div>
         </div>
+      </div>
+      <div class="sl-cell sl-cell--empty" style="grid-area:5/4"></div>
 
-        <!-- ROW 6: Открытие карточных счетов → ГБ -->
-        <div class="sl-row" data-row="6">
-          <div class="sl-cell sl-cell--empty" data-col="1"></div>
-          <div class="sl-cell sl-cell--empty" data-col="2"></div>
-          <div class="sl-cell" data-col="3" data-id="sod-open">
-            <div class="step-card">
-              <div class="step-tag" data-ru="СОЮФЛ" data-en="SOYUFL">СОЮФЛ</div>
-              <div class="step-title" data-ru="Открытие карточных счетов сотрудников" data-en="Opening employee card accounts">Открытие карточных счетов сотрудников</div>
-            </div>
-          </div>
-          <div class="sl-cell sl-cell--empty" data-col="4"></div>
+      <!-- ── ROW 5: Создание заявки ── -->
+      <div class="sl-cell sl-cell--empty" style="grid-area:6/1"></div>
+      <div class="sl-cell sl-cell--empty" style="grid-area:6/2"></div>
+      <div class="sl-cell" style="grid-area:6/3" data-id="sod-crm">
+        <div class="step-card">
+          <div class="step-tag" data-ru="СОД, CRM / АБС" data-en="OSD, CRM / CBS">СОД, CRM / АБС</div>
+          <div class="step-title" data-ru="Создание заявки в CRM и автоформирование служебной записки" data-en="Creating CRM request and auto-generating internal memo">Создание заявки в CRM и автоформирование служебной записки</div>
         </div>
+      </div>
+      <div class="sl-cell sl-cell--empty" style="grid-area:6/4"></div>
 
-        <!-- ROW 7: Передача Instant карт → Раздача карт -->
-        <div class="sl-row" data-row="7">
-          <div class="sl-cell" data-col="1" data-id="pp-dist">
-            <div class="step-card step-card--final">
-              <div class="step-tag" data-ru="ПП" data-en="DS">ПП</div>
-              <div class="step-title" data-ru="Раздача карт" data-en="Card Distribution">Раздача карт</div>
-            </div>
-          </div>
-          <div class="sl-cell" data-col="2" data-id="rb-dist">
-            <div class="step-card step-card--final">
-              <div class="step-tag" data-ru="РБ" data-en="RB">РБ</div>
-              <div class="step-title" data-ru="Раздача карт" data-en="Card Distribution">Раздача карт</div>
-            </div>
-          </div>
-          <div class="sl-cell" data-col="3" data-id="sod-hand">
-            <div class="step-card step-card--final">
-              <div class="step-tag" data-ru="СОД" data-en="OSD">СОД</div>
-              <div class="step-title" data-ru="Передача Instant карт сотрудникам РБ/ПП" data-en="Handing Instant cards to RB/DS employees">Передача Instant карт сотрудникам РБ/ПП</div>
-            </div>
-          </div>
-          <div class="sl-cell sl-cell--empty" data-col="4"></div>
+      <!-- ── ROW 6: Открытие счетов → ГБ (та же строка!) ── -->
+      <div class="sl-cell sl-cell--empty" style="grid-area:7/1"></div>
+      <div class="sl-cell sl-cell--empty" style="grid-area:7/2"></div>
+      <div class="sl-cell" style="grid-area:7/3" data-id="sod-open">
+        <div class="step-card">
+          <div class="step-tag" data-ru="СОЮФЛ" data-en="SOYUFL">СОЮФЛ</div>
+          <div class="step-title" data-ru="Открытие карточных счетов сотрудников" data-en="Opening employee card accounts">Открытие карточных счетов сотрудников</div>
         </div>
+      </div>
+      <!-- ГБ Изготовление уже на row1, связь стрелкой через SVG -->
+      <div class="sl-cell sl-cell--empty" style="grid-area:7/4"></div>
 
-      </div><!-- /sl-body -->
+      <!-- ── ROW 7: Раздача карт + Передача Instant карт ── -->
+      <div class="sl-cell" style="grid-area:8/1" data-id="pp-dist">
+        <div class="step-card step-card--final">
+          <div class="step-tag" data-ru="ПП" data-en="DS">ПП</div>
+          <div class="step-title" data-ru="Раздача карт" data-en="Card Distribution">Раздача карт</div>
+        </div>
+      </div>
+      <div class="sl-cell" style="grid-area:8/2" data-id="rb-dist">
+        <div class="step-card step-card--final">
+          <div class="step-tag" data-ru="РБ" data-en="RB">РБ</div>
+          <div class="step-title" data-ru="Раздача карт" data-en="Card Distribution">Раздача карт</div>
+        </div>
+      </div>
+      <div class="sl-cell" style="grid-area:8/3" data-id="sod-hand">
+        <div class="step-card step-card--final">
+          <div class="step-tag" data-ru="СОД" data-en="OSD">СОД</div>
+          <div class="step-title" data-ru="Передача Instant карт сотрудникам РБ/ПП" data-en="Handing Instant cards to RB/DS employees">Передача Instant карт сотрудникам РБ/ПП</div>
+        </div>
+      </div>
+      <div class="sl-cell sl-cell--empty" style="grid-area:8/4"></div>
 
-      <!-- SVG overlay для cross-lane стрелок -->
+      <!-- SVG overlay -->
       <svg class="arrows-svg" id="arrowsSvg" xmlns="http://www.w3.org/2000/svg"></svg>
-
-    </div><!-- /swimlane -->
+    </div><!-- /sl-grid -->
   </div><!-- /scheme-container -->
 
-  <!-- ANALYSIS -->
   <div class="analysis-divider">
     <div class="arrow-down-lg"></div>
     <div class="analysis-label" data-ru="Что получаем с этой схемой?" data-en="What do we gain from this scheme?">Что получаем с этой схемой?</div>
@@ -213,8 +196,7 @@
       </svg>
     </button>
   </div>
-
-</div><!-- /page -->
+</div>
 
 <script src="to-be.js"></script>
 </body>
