@@ -40,12 +40,12 @@
                     <div>
                         <div id="once-num" class="tz-card-num">Отчёт 01</div>
                         <div id="once-title" class="tz-card-title">Разовая выгрузка</div>
-                        <div id="once-desc" class="tz-card-desc">Детальный срез по всем компаниям и сотрудникам на выбранную дату. Позволяет получить полную картину по каждому ЗП проекту — от счёта компании до карточных операций каждого сотрудника.</div>
                     </div>
                 </div>
 
                 <div class="tz-card-body">
 
+                    <!-- Что получаем -->
                     <div>
                         <div id="benefits-label-once" class="benefits-label">Что получаем</div>
                         <div class="benefits-list">
@@ -88,29 +88,22 @@
                         </div>
                     </div>
 
-                    <div class="file-actions">
-                        <button id="btn-view-once" class="btn-view" onclick="toggleViewer('viewer-once')">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                            Просмотреть
-                        </button>
-                        <a href="ТЗ_для_разовой_выгрузки_отчета_по_ЗП_проекту.xlsx" download class="btn-download" id="btn-xlsx-once">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                            Скачать xlsx
-                        </a>
-                        <a href="ТЗ_для_разовой_выгрузки_отчета_по_ЗП_проекту.pdf" download class="btn-download" id="btn-pdf-once">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                            Скачать PDF
-                        </a>
+                    <!-- Что нам это даст -->
+                    <div class="gives-block">
+                        <div id="gives-label-once" class="benefits-label">Что нам это даст</div>
+                        <p id="once-desc" class="gives-text">Детальный срез по всем компаниям и сотрудникам на выбранную дату. Позволяет получить полную картину по каждому ЗП проекту — от счёта компании до карточных операций каждого сотрудника.</p>
                     </div>
 
-                    <div class="table-viewer" id="viewer-once">
-                        <div class="table-viewer-header">
-                            <span id="tbl-once-title" class="table-viewer-title">Разовая выгрузка — поля отчёта</span>
-                            <button class="btn-close-viewer" onclick="closeViewer('viewer-once')">✕</button>
-                        </div>
-                        <div class="table-scroll">
-                            <div id="tbl-once-body"></div>
-                        </div>
+                    <!-- Кнопки скачать -->
+                    <div class="file-actions">
+                        <a href="ТЗ для разовой выгрузки отчета по ЗП проекту.xlsx" download class="btn-excel" id="btn-xlsx-once">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Скачать в Excel
+                        </a>
+                        <a href="ТЗ для разовой выгрузки отчета по ЗП проекту.pdf" download class="btn-pdf" id="btn-pdf-once">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Скачать в PDF
+                        </a>
                     </div>
 
                 </div>
@@ -127,12 +120,12 @@
                     <div>
                         <div id="monthly-num" class="tz-card-num">Отчёт 02</div>
                         <div id="monthly-title" class="tz-card-title">Ежемесячная выгрузка</div>
-                        <div id="monthly-desc" class="tz-card-desc">Накапливаемый отчёт который формируется каждый месяц автоматически. Даёт возможность отслеживать динамику по каждой компании — рост ФОТ, прирост карт, активность сотрудников.</div>
                     </div>
                 </div>
 
                 <div class="tz-card-body">
 
+                    <!-- Что получаем -->
                     <div>
                         <div id="benefits-label-monthly" class="benefits-label">Что получаем</div>
                         <div class="benefits-list">
@@ -175,36 +168,28 @@
                         </div>
                     </div>
 
-                    <div class="file-actions">
-                        <button id="btn-view-monthly" class="btn-view" onclick="toggleViewer('viewer-monthly')">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                            Просмотреть
-                        </button>
-                        <a href="ТЗ_для_ежемесячного_отчета_по_ЗП_проекту.xlsx" download class="btn-download" id="btn-xlsx-monthly">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                            Скачать xlsx
-                        </a>
-                        <a href="ТЗ_для_ежемесячного_отчета_по_ЗП_проекту.pdf" download class="btn-download" id="btn-pdf-monthly">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                            Скачать PDF
-                        </a>
+                    <!-- Что нам это даст -->
+                    <div class="gives-block">
+                        <div id="gives-label-monthly" class="benefits-label">Что нам это даст</div>
+                        <p id="monthly-desc" class="gives-text">Накапливаемый отчёт который формируется каждый месяц автоматически. Даёт возможность отслеживать динамику по каждой компании — рост ФОТ, прирост карт, активность сотрудников.</p>
                     </div>
 
-                    <div class="table-viewer" id="viewer-monthly">
-                        <div class="table-viewer-header">
-                            <span id="tbl-monthly-title" class="table-viewer-title">Ежемесячная выгрузка — поля отчёта</span>
-                            <button class="btn-close-viewer" onclick="closeViewer('viewer-monthly')">✕</button>
-                        </div>
-                        <div class="table-scroll">
-                            <div id="tbl-monthly-body"></div>
-                        </div>
+                    <!-- Кнопки скачать -->
+                    <div class="file-actions">
+                        <a href="ТЗ для ежемесячного отчета по ЗП проекту.xlsx" download class="btn-excel" id="btn-xlsx-monthly">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Скачать в Excel
+                        </a>
+                        <a href="ТЗ для ежемесячного отчета по ЗП проекту.pdf" download class="btn-pdf" id="btn-pdf-monthly">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            Скачать в PDF
+                        </a>
                     </div>
 
                 </div>
             </div>
 
         </div>
-        <!-- end tz-grid -->
 
         <!-- BOTTOM NAV -->
         <div class="bottom-nav">
