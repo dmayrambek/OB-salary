@@ -14,9 +14,8 @@ body{background:var(--bg);color:var(--tp);font-family:var(--font);min-height:100
 
 /* HEADER */
 header{display:flex;align-items:center;justify-content:space-between;padding:18px 40px;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;background:var(--bg)}
-.logo{font-size:20px;font-weight:800;text-decoration:none;color:var(--tp);transition:opacity .2s}
+.logo{font-size:20px;font-weight:800;text-decoration:none;color:var(--red);transition:opacity .2s}
 .logo:hover{opacity:.75}
-.logo span{color:var(--red)}
 .lang-switcher{display:flex;gap:4px}
 .lang-btn{background:none;border:1px solid var(--b2);color:var(--ts);font-family:var(--font);font-size:13px;font-weight:600;padding:5px 12px;cursor:pointer;transition:all .2s;letter-spacing:.05em}
 .lang-btn.active{background:var(--red);border-color:var(--red);color:#fff}
