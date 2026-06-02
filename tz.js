@@ -86,7 +86,6 @@ const T = {
 
         gives_label:  'What this gives us',
         btn_xlsx:     'Download Excel',
-        btn_pdf:      'Download PDF',
         btn_close:    '✕',
 
         tbl_once_title:    'One-time Export — report fields',
@@ -186,8 +185,6 @@ function toggleViewer(id) {
     const viewer = document.getElementById(id);
     if (!viewer) return;
     viewer.classList.toggle('open');
-    const btn = viewer.previousElementSibling
-        ? viewer.closest('.tz-card-body').querySelector('.btn-view') : null;
 }
 
 function closeViewer(id) {
@@ -233,9 +230,7 @@ function applyLang(lang) {
         'gives-label-once':       t.gives_label,
         'gives-label-monthly':    t.gives_label,
         'btn-xlsx-once':          t.btn_xlsx,
-        'btn-pdf-once':           t.btn_pdf,
         'btn-xlsx-monthly':       t.btn_xlsx,
-        'btn-pdf-monthly':        t.btn_pdf,
         'tbl-once-title':     t.tbl_once_title,
         'tbl-monthly-title':  t.tbl_monthly_title,
         'btn-home':           t.btn_home,
