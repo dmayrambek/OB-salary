@@ -250,5 +250,5 @@ body.light-mode .hc { background: rgba(232,0,90,0.08); }
 
 
 /* force th to not override child span colors */
-.compare-table thead tr th:not(.th-param):not(.th-ob) { color: transparent; }
+.compare-table thead tr th:not(.th-param):not(.th-ob) { color: transparent; text-transform: none; }
 .compare-table thead tr th:not(.th-param):not(.th-ob) span { opacity: 1; }
