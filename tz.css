@@ -340,3 +340,20 @@ body {
     .section-title { font-size: 1.5rem; }
     .bottom-nav { flex-direction: column; align-items: stretch; }
 }
+.btn-back-data {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.2s;
+}
+.btn-back-data:hover {
+    border-color: var(--accent);
+    color: var(--text-primary);
+}
+.btn-back-data svg { width: 16px; height: 16px; }
