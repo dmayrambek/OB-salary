@@ -19,8 +19,8 @@ const T = {
         once_b2_text:  'Обороты Дт/Кт и остаток на конец периода',
         once_b3_title: 'Данные по сотрудникам',
         once_b3_text:  'Карта, зачисления, обороты, остаток по каждому',
-        once_b4_title: 'База для аудита',
-        once_b4_text:  'Сверка реестра ОСКП с реальностью системы',
+        once_b4_title: 'Целостность данных',
+        once_b4_text:  'Все данные, необходимые для анализа',
 
         monthly_num:     'Отчёт 02',
         monthly_title:   'Ежемесячная выгрузка',
@@ -66,8 +66,8 @@ const T = {
         once_b2_text:  'Debit/credit turnover and end-of-period balance',
         once_b3_title: 'Employee data',
         once_b3_text:  'Card, credits, turnover, balance per employee',
-        once_b4_title: 'Audit base',
-        once_b4_text:  'Cross-check OSKP registry against system data',
+        once_b4_title: 'Data integrity',
+        once_b4_text:  'All the data needed for analysis',
 
         monthly_num:     'Report 02',
         monthly_title:   'Monthly Export',
