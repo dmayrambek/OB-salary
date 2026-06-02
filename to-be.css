@@ -6,6 +6,7 @@
   --border:#252525;--b2:#2e2e2e;
   --red:#e8174a;--adim:rgba(232,23,74,.14);
   --green:#00d68f;
+  --pink:#E8005A;--pink-dim:#b8004a;
   --tp:#efefef;--ts:#777;--tm:#3a3a3a;
   --font:'Manrope',sans-serif;
 }
@@ -32,39 +33,17 @@ header{display:flex;align-items:center;justify-content:space-between;padding:18p
 .scheme-container{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:28px 24px 32px;margin-bottom:36px}
 .scheme-title{text-align:center;font-size:18px;font-weight:700;margin-bottom:24px}
 
-/* ═══ GRID: два блока ══════════════════════════════════ */
-.tobe-grid{
-  display:grid;
-  grid-template-columns:1fr 2fr;
-  gap:16px;
-  margin-bottom:0;
-}
+/* GRID */
+.tobe-grid{display:grid;grid-template-columns:1fr 2fr;gap:16px;margin-bottom:0}
 
-/* LANE WRAP */
+/* LANE */
 .lane-wrap{display:flex;flex-direction:column}
-
-/* LANE HEADER */
-.lane-hdr{
-  display:flex;align-items:center;gap:10px;
-  padding:11px 14px;
-  background:#101010;
-  border:1px solid var(--b2);
-  border-bottom:2px solid var(--b2);
-  border-radius:3px 3px 0 0;
-}
+.lane-hdr{display:flex;align-items:center;gap:10px;padding:11px 14px;background:#101010;border:1px solid var(--b2);border-bottom:2px solid var(--b2);border-radius:3px 3px 0 0}
 .lane-icon{width:26px;height:26px;border-radius:50%;background:var(--adim);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--red)}
 .lane-icon svg{width:13px;height:13px}
 .lane-hdr span{font-size:10.5px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.07em;line-height:1.3}
-
-/* LANE BODY */
 .lane-body{border:1px solid var(--b2);border-top:none;border-radius:0 0 3px 3px;overflow:hidden}
-
-/* LANE ITEM */
-.lane-item{
-  padding:11px 14px;
-  border-bottom:1px solid var(--border);
-  font-size:12.5px;color:var(--tp);line-height:1.4;
-}
+.lane-item{padding:11px 14px;border-bottom:1px solid var(--border);font-size:12.5px;color:var(--tp);line-height:1.4}
 .lane-item:last-child{border-bottom:none}
 
 /* ANALYSIS DIVIDER */
@@ -73,21 +52,29 @@ header{display:flex;align-items:center;justify-content:space-between;padding:18p
 .adiv-label{font-size:10px;font-weight:700;letter-spacing:.18em;color:var(--tm);text-transform:uppercase}
 
 /* RESULTS */
-.results-block{
-  border:1px solid var(--border);border-radius:3px;
-  padding:20px 24px;display:flex;flex-direction:column;gap:12px;
-}
+.results-block{border:1px solid var(--border);border-radius:3px;padding:20px 24px;display:flex;flex-direction:column;gap:12px}
 .result-item{display:flex;align-items:flex-start;gap:12px;font-size:13.5px;color:var(--ts);line-height:1.5}
 .result-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);flex-shrink:0;margin-top:5px}
 
-/* CTA */
-.cta-wrap{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
-.cta-btn{border:none;font-family:var(--font);font-size:14px;font-weight:700;padding:16px 32px;border-radius:40px;cursor:pointer;display:flex;align-items:center;gap:10px;letter-spacing:.02em;transition:background .2s,transform .15s}
-.cta-btn:hover{transform:translateY(-1px)}
-.cta-btn svg{width:18px;height:18px;flex-shrink:0}
-
-.cta-btn--back{background:var(--s2);color:var(--tp);border:1px solid var(--b2)}
-.cta-btn--back:hover{background:var(--b2)}
-
-.cta-btn--home{background:var(--green);color:#0a0a0a}
-.cta-btn--home:hover{background:#00f0a0}
+/* ===== CTA BUTTONS — маджентовые, ровно ===== */
+.cta-wrap{
+  display:flex;
+  justify-content:center;
+  align-items:stretch;
+  gap:16px;
+  flex-wrap:wrap;
+  padding-top:40px;
+  border-top:1px solid var(--border);
+}
+.cta-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  background:var(--pink);color:#fff;
+  font-family:var(--font);font-size:14px;font-weight:700;
+  padding:13px 28px;border-radius:8px;
+  text-decoration:none;white-space:nowrap;
+  border:none;cursor:pointer;
+  transition:background .2s,transform .15s;
+  letter-spacing:.02em;
+  flex:1;max-width:340px;text-align:center;
+}
+.cta-btn:hover{background:var(--pink-dim);transform:translateY(-1px)}
