@@ -234,3 +234,14 @@ body.light-mode .hc { background: rgba(232,0,90,0.08); }
 .bottom-nav { display: flex; align-items: center; justify-content: center; gap: 16px; margin-top: 48px; padding-top: 40px; border-top: 0.5px solid var(--border); }
 .btn-nav { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--pink); color: #fff; font-size: 0.88rem; font-weight: 600; padding: 13px 28px; border-radius: var(--radius-sm); text-decoration: none; white-space: nowrap; transition: background var(--trans), transform var(--trans); letter-spacing: 0.02em; flex: 1; max-width: 300px; text-align: center; font-family: var(--font-body); }
 .btn-nav:hover { background: var(--pink-dim); transform: translateY(-1px); }
+
+/* ===== BANK NAME COLORS IN HEADER ===== */
+.compare-table thead th .bank-name { text-transform: none; }
+.compare-table thead th span.bank-color { color: inherit; }
+.th-bakai-1  { color: #2c2b48 !important; text-transform: none; }
+.th-bakai-2  { color: #88254f !important; text-transform: none; }
+.th-demir    { color: #ce1e2c !important; text-transform: none; }
+.th-mbank-1  { color: #fabf00 !important; text-transform: none; }
+.th-mbank-2  { color: #009778 !important; text-transform: none; }
+.th-optima   { color: #ec1c24 !important; text-transform: none; }
+.th-obank    { color: #f0047f !important; text-transform: none; }
