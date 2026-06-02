@@ -49,11 +49,8 @@ const T = {
         sec2: 'Раздел 2 — По сотрудникам',
 
         btn_home:  '← Домой',
+        btn_back_data: '← Текущие данные',
         btn_sales: 'Продажи и пакеты →',
-
-        benefits_label: 'Что получаем',
-    },
-    en: {
         eyebrow:      'Specification',
         title:        'Payroll Project Reports',
         subtitle:     'Two reports that will provide a complete and up-to-date picture of all payroll projects in the bank',
@@ -98,6 +95,7 @@ const T = {
         sec2: 'Section 2 — Employees',
 
         btn_home:  '← Home',
+        btn_back_data: '← Current Data',
         btn_sales: 'Sales & Packages →',
 
         benefits_label: 'What we get',
@@ -234,6 +232,7 @@ function applyLang(lang) {
         'tbl-once-title':     t.tbl_once_title,
         'tbl-monthly-title':  t.tbl_monthly_title,
         'btn-home':           t.btn_home,
+        'btn-back-data':      t.btn_back_data,
         'btn-sales':          t.btn_sales,
         'benefits-label-once':    t.benefits_label,
         'benefits-label-monthly': t.benefits_label,
