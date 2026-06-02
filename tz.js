@@ -37,7 +37,6 @@ const T = {
 
         gives_label:  'Что нам это даст',
         btn_xlsx:     'Скачать в Excel',
-        btn_pdf:      'Скачать в PDF',
         btn_close:    '✕',
 
         tbl_once_title:    'Разовая выгрузка — поля отчёта',
