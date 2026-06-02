@@ -236,10 +236,13 @@ body.light-mode .hc { background: rgba(232,0,90,0.08); }
 .btn-nav:hover { background: var(--pink-dim); transform: translateY(-1px); }
 
 /* ===== BANK NAME COLORS IN HEADER ===== */
-.compare-table thead tr th span.th-bakai-1  { color: #2c2b48 !important; }
-.compare-table thead tr th span.th-bakai-2  { color: #88254f !important; }
-.compare-table thead tr th span.th-demir    { color: #ce1e2c !important; }
-.compare-table thead tr th span.th-mbank-1  { color: #fabf00 !important; }
-.compare-table thead tr th span.th-mbank-2  { color: #009778 !important; }
-.compare-table thead tr th span.th-optima   { color: #ec1c24 !important; }
-.compare-table thead tr th span.th-obank    { color: #f0047f !important; }
+.compare-table thead tr th span.th-bakai-1  { color: #2c2b48 !important; text-transform: none; display: inline !important; }
+.compare-table thead tr th span.th-bakai-2  { color: #88254f !important; text-transform: none; display: inline !important; }
+.compare-table thead tr th span.th-demir    { color: #ce1e2c !important; text-transform: none; display: inline !important; }
+.compare-table thead tr th span.th-mbank-1  { color: #fabf00 !important; text-transform: none; display: inline !important; }
+.compare-table thead tr th span.th-mbank-2  { color: #009778 !important; text-transform: none; display: inline !important; }
+.compare-table thead tr th span.th-optima   { color: #ec1c24 !important; text-transform: none; display: inline !important; }
+.compare-table thead tr th span.th-obank    { color: #f0047f !important; text-transform: none; display: inline !important; }
+/* force th to not override child span colors */
+.compare-table thead tr th:not(.th-param):not(.th-ob) { color: transparent; }
+.compare-table thead tr th:not(.th-param):not(.th-ob) span { opacity: 1; }
