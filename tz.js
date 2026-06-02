@@ -45,12 +45,13 @@ const T = {
         col_field:   'Поле',
         col_content: 'Содержание',
 
-        sec1: 'Раздел 1 — По счёту компании',
-        sec2: 'Раздел 2 — По сотрудникам',
+        btn_home:      'Домой',
+        btn_back_data: 'Текущие данные',
+        btn_sales:     'Продажи и пакеты',
 
-        btn_home:  '← Домой',
-        btn_back_data: '← Текущие данные',
-        btn_sales: 'Продажи и пакеты →',
+        benefits_label: 'Что получаем',
+    },
+    en: {
         eyebrow:      'Specification',
         title:        'Payroll Project Reports',
         subtitle:     'Two reports that will provide a complete and up-to-date picture of all payroll projects in the bank',
@@ -91,12 +92,9 @@ const T = {
         col_field:   'Field',
         col_content: 'Description',
 
-        sec1: 'Section 1 — Company Account',
-        sec2: 'Section 2 — Employees',
-
-        btn_home:  '← Home',
-        btn_back_data: '← Current Data',
-        btn_sales: 'Sales & Packages →',
+        btn_home:      'Home',
+        btn_back_data: 'Current Data',
+        btn_sales:     'Sales & Packages',
 
         benefits_label: 'What we get',
     }
@@ -177,20 +175,6 @@ function renderTable(rows, lang) {
 }
 
 /* ==========================================================================
-   TOGGLE TABLE VIEWER
-   ========================================================================== */
-function toggleViewer(id) {
-    const viewer = document.getElementById(id);
-    if (!viewer) return;
-    viewer.classList.toggle('open');
-}
-
-function closeViewer(id) {
-    const viewer = document.getElementById(id);
-    if (viewer) viewer.classList.remove('open');
-}
-
-/* ==========================================================================
    APPLY LANGUAGE
    ========================================================================== */
 let currentLang = 'ru';
@@ -199,48 +183,58 @@ function applyLang(lang) {
     currentLang = lang;
     const t = T[lang];
 
-    const ids = {
-        'section-eyebrow':    t.eyebrow,
-        'section-title':      t.title,
-        'section-subtitle':   t.subtitle,
-        'once-num':           t.once_num,
-        'once-title':         t.once_title,
-        'once-desc':          t.once_desc,
-        'once-b1-title':      t.once_b1_title,
-        'once-b1-text':       t.once_b1_text,
-        'once-b2-title':      t.once_b2_title,
-        'once-b2-text':       t.once_b2_text,
-        'once-b3-title':      t.once_b3_title,
-        'once-b3-text':       t.once_b3_text,
-        'once-b4-title':      t.once_b4_title,
-        'once-b4-text':       t.once_b4_text,
-        'monthly-num':        t.monthly_num,
-        'monthly-title':      t.monthly_title,
-        'monthly-desc':       t.monthly_desc,
-        'monthly-b1-title':   t.monthly_b1_title,
-        'monthly-b1-text':    t.monthly_b1_text,
-        'monthly-b2-title':   t.monthly_b2_title,
-        'monthly-b2-text':    t.monthly_b2_text,
-        'monthly-b3-title':   t.monthly_b3_title,
-        'monthly-b3-text':    t.monthly_b3_text,
-        'monthly-b4-title':   t.monthly_b4_title,
-        'monthly-b4-text':    t.monthly_b4_text,
+    /* Plain text elements (no child SVG) */
+    const textIds = {
+        'section-eyebrow':        t.eyebrow,
+        'section-title':          t.title,
+        'section-subtitle':       t.subtitle,
+        'once-num':               t.once_num,
+        'once-title':             t.once_title,
+        'once-desc':              t.once_desc,
+        'once-b1-title':          t.once_b1_title,
+        'once-b1-text':           t.once_b1_text,
+        'once-b2-title':          t.once_b2_title,
+        'once-b2-text':           t.once_b2_text,
+        'once-b3-title':          t.once_b3_title,
+        'once-b3-text':           t.once_b3_text,
+        'once-b4-title':          t.once_b4_title,
+        'once-b4-text':           t.once_b4_text,
+        'monthly-num':            t.monthly_num,
+        'monthly-title':          t.monthly_title,
+        'monthly-desc':           t.monthly_desc,
+        'monthly-b1-title':       t.monthly_b1_title,
+        'monthly-b1-text':        t.monthly_b1_text,
+        'monthly-b2-title':       t.monthly_b2_title,
+        'monthly-b2-text':        t.monthly_b2_text,
+        'monthly-b3-title':       t.monthly_b3_title,
+        'monthly-b3-text':        t.monthly_b3_text,
+        'monthly-b4-title':       t.monthly_b4_title,
+        'monthly-b4-text':        t.monthly_b4_text,
         'gives-label-once':       t.gives_label,
         'gives-label-monthly':    t.gives_label,
-        'btn-xlsx-once':          t.btn_xlsx,
-        'btn-xlsx-monthly':       t.btn_xlsx,
-        'tbl-once-title':     t.tbl_once_title,
-        'tbl-monthly-title':  t.tbl_monthly_title,
-        'btn-home':           t.btn_home,
-        'btn-back-data':      t.btn_back_data,
-        'btn-sales':          t.btn_sales,
         'benefits-label-once':    t.benefits_label,
         'benefits-label-monthly': t.benefits_label,
     };
 
-    Object.entries(ids).forEach(([id, val]) => {
+    Object.entries(textIds).forEach(([id, val]) => {
         const el = document.getElementById(id);
         if (el) el.textContent = val;
+    });
+
+    /* Buttons with SVG icons — update only the <span class="btn-label"> */
+    const btnIds = {
+        'btn-xlsx-once':    t.btn_xlsx,
+        'btn-xlsx-monthly': t.btn_xlsx,
+        'btn-home':         t.btn_home,
+        'btn-back-data':    t.btn_back_data,
+        'btn-sales':        t.btn_sales,
+    };
+
+    Object.entries(btnIds).forEach(([id, val]) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const span = el.querySelector('.btn-label');
+        if (span) span.textContent = val;
     });
 
     /* Re-render tables */
