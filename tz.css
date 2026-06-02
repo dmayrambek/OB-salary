@@ -8,6 +8,7 @@
     --accent:        #E8005A;
     --accent-light:  rgba(232, 0, 90, 0.08);
     --accent-border: rgba(232, 0, 90, 0.25);
+    --accent-hover:  #C4004C;
     --dark:          #0A0A0A;
     --dark-2:        #131313;
     --dark-3:        #1C1C1C;
@@ -88,7 +89,7 @@ body {
     letter-spacing: 0.06em;
 }
 .lang-btn:hover { color: var(--text-primary); }
-.lang-btn.active { background: var(--orange); color: #fff; }
+.lang-btn.active { background: var(--accent); color: #fff; }
 
 /* PAGE */
 .page-wrapper { min-height: 100vh; padding-top: 58px; }
@@ -134,7 +135,7 @@ body {
     display: flex;
     flex-direction: column;
 }
-.tz-card.once  { border-top: 2px solid var(--blue); }
+.tz-card.once    { border-top: 2px solid var(--blue); }
 .tz-card.monthly { border-top: 2px solid var(--purple); }
 
 /* Card Header */
@@ -159,14 +160,11 @@ body {
     font-size: 1.05rem; font-weight: 600;
     color: var(--text-primary); margin-bottom: 4px; line-height: 1.3;
 }
-.tz-card-desc {
-    font-size: 0.85rem; color: var(--text-secondary); line-height: 1.55;
-}
 
 /* Card Body */
 .tz-card-body { padding: 22px 28px; flex: 1; display: flex; flex-direction: column; gap: 20px; }
 
-/* What we get — icon pills */
+/* Benefits */
 .benefits-label {
     font-size: 0.72rem; font-weight: 600;
     color: var(--text-muted); letter-spacing: 0.08em;
@@ -190,7 +188,7 @@ body {
 .benefit-icon.blue   { background: var(--blue-light);   color: var(--blue); }
 .benefit-icon.purple { background: var(--purple-light); color: var(--purple); }
 .benefit-icon.green  { background: var(--green-light);  color: var(--green); }
-.benefit-icon.orange { background: var(--orange-light); color: var(--orange); }
+.benefit-icon.orange { background: var(--accent-light); color: var(--accent); }
 .benefit-text {
     font-size: 0.86rem; color: var(--text-secondary); line-height: 1.45;
     padding-top: 4px;
@@ -204,31 +202,20 @@ body {
     border-top: 0.5px solid var(--dark-border);
     margin-top: auto;
 }
+
+/* ── DOWNLOAD EXCEL — full width, orange ── */
 .btn-excel {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--orange); color: #fff;
-    font-size: 0.85rem; font-weight: 600;
-    padding: 12px 20px; border-radius: var(--radius);
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    background: var(--accent); color: #fff;
+    font-size: 0.88rem; font-weight: 600;
+    padding: 13px 24px; border-radius: var(--radius);
     text-decoration: none; white-space: nowrap;
     transition: background 0.2s, transform 0.15s;
-    letter-spacing: 0.02em; flex: 1;
-    justify-content: center;
+    letter-spacing: 0.02em;
+    width: 100%;
 }
-.btn-excel:hover { background: var(--orange-hover); transform: translateY(-1px); }
+.btn-excel:hover { background: var(--accent-hover); transform: translateY(-1px); }
 .btn-excel svg { width: 15px; height: 15px; flex-shrink: 0; }
-
-.btn-pdf {
-    display: inline-flex; align-items: center; gap: 8px;
-    background: var(--purple-light); color: var(--purple);
-    border: 0.5px solid var(--purple-border);
-    font-size: 0.85rem; font-weight: 600;
-    padding: 12px 20px; border-radius: var(--radius);
-    text-decoration: none; white-space: nowrap;
-    transition: all 0.2s; letter-spacing: 0.02em; flex: 1;
-    justify-content: center;
-}
-.btn-pdf:hover { background: rgba(124,92,191,0.18); border-color: var(--purple); transform: translateY(-1px); }
-.btn-pdf svg { width: 15px; height: 15px; flex-shrink: 0; }
 
 /* Gives block */
 .gives-block {
@@ -242,66 +229,30 @@ body {
     line-height: 1.65; margin-top: 8px;
 }
 
-/* INLINE TABLE VIEWER */
-.table-viewer {
-    display: none;
-    margin-top: 16px;
-    background: var(--dark-3);
-    border: 0.5px solid var(--dark-border-2);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-}
+/* TABLE */
+.table-viewer { display: none; margin-top: 16px; background: var(--dark-3); border: 0.5px solid var(--dark-border-2); border-radius: var(--radius-lg); overflow: hidden; }
 .table-viewer.open { display: block; }
-.table-viewer-header {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 14px 20px;
-    border-bottom: 0.5px solid var(--dark-border);
-}
-.table-viewer-title {
-    font-size: 0.82rem; font-weight: 600;
-    color: var(--text-secondary); letter-spacing: 0.04em;
-}
-.btn-close-viewer {
-    background: none; border: none; cursor: pointer;
-    color: var(--text-muted); font-size: 18px; line-height: 1;
-    transition: color 0.2s; padding: 0 4px;
-}
+.table-viewer-header { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; border-bottom: 0.5px solid var(--dark-border); }
+.table-viewer-title { font-size: 0.82rem; font-weight: 600; color: var(--text-secondary); letter-spacing: 0.04em; }
+.btn-close-viewer { background: none; border: none; cursor: pointer; color: var(--text-muted); font-size: 18px; line-height: 1; transition: color 0.2s; padding: 0 4px; }
 .btn-close-viewer:hover { color: var(--text-primary); }
 .table-scroll { overflow-x: auto; }
-.tz-table {
-    width: 100%; border-collapse: collapse;
-    min-width: 600px; font-size: 0.82rem;
-}
-.tz-table th {
-    padding: 10px 16px; text-align: left;
-    font-size: 0.70rem; font-weight: 600;
-    color: var(--text-muted); letter-spacing: 0.07em;
-    text-transform: uppercase; background: var(--dark-4);
-    border-bottom: 0.5px solid var(--dark-border-2);
-    white-space: nowrap;
-}
-.tz-table td {
-    padding: 10px 16px; color: var(--text-secondary);
-    border-bottom: 0.5px solid var(--dark-border);
-    vertical-align: top; line-height: 1.45;
-}
+.tz-table { width: 100%; border-collapse: collapse; min-width: 600px; font-size: 0.82rem; }
+.tz-table th { padding: 10px 16px; text-align: left; font-size: 0.70rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0.07em; text-transform: uppercase; background: var(--dark-4); border-bottom: 0.5px solid var(--dark-border-2); white-space: nowrap; }
+.tz-table td { padding: 10px 16px; color: var(--text-secondary); border-bottom: 0.5px solid var(--dark-border); vertical-align: top; line-height: 1.45; }
 .tz-table tr:last-child td { border-bottom: none; }
 .tz-table td:first-child { color: var(--text-primary); font-weight: 500; }
-.tz-table .section-row td {
-    background: var(--dark-4);
-    color: var(--orange);
-    font-size: 0.72rem; font-weight: 600;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    padding: 8px 16px;
-}
+.tz-table .section-row td { background: var(--dark-4); color: var(--orange); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 8px 16px; }
 
-/* BOTTOM NAV */
+/* ── BOTTOM NAV ── */
 .bottom-nav {
     display: flex; align-items: center;
     justify-content: space-between; gap: 16px;
     padding-top: 40px;
     border-top: 0.5px solid var(--dark-border);
 }
+
+/* Домой — ghost */
 .btn-home {
     display: inline-flex; align-items: center; gap: 8px;
     background: transparent; color: var(--text-secondary);
@@ -314,16 +265,30 @@ body {
 .btn-home:hover { color: var(--text-primary); border-color: rgba(255,255,255,0.25); }
 .btn-home svg { width: 16px; height: 16px; }
 
+/* Текущие данные — ghost orange */
+.btn-back-data {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--accent-light); color: var(--accent);
+    font-size: 0.88rem; font-weight: 600;
+    padding: 12px 22px; border-radius: var(--radius);
+    border: 0.5px solid var(--accent-border);
+    text-decoration: none; white-space: nowrap;
+    transition: all 0.2s;
+}
+.btn-back-data:hover { background: rgba(232,0,90,0.18); border-color: var(--accent); color: #fff; }
+.btn-back-data svg { width: 16px; height: 16px; }
+
+/* Продажи и пакеты — filled orange */
 .btn-sales {
     display: inline-flex; align-items: center; gap: 8px;
-    background: var(--orange); color: #fff;
+    background: var(--accent); color: #fff;
     font-size: 0.88rem; font-weight: 600;
     padding: 12px 24px; border-radius: var(--radius);
     text-decoration: none; white-space: nowrap;
     transition: background 0.2s, transform 0.15s;
     letter-spacing: 0.02em;
 }
-.btn-sales:hover { background: var(--orange-hover); transform: translateX(3px); }
+.btn-sales:hover { background: var(--accent-hover); transform: translateX(3px); }
 .btn-sales svg { width: 16px; height: 16px; transition: transform 0.2s; }
 .btn-sales:hover svg { transform: translateX(3px); }
 
@@ -340,20 +305,3 @@ body {
     .section-title { font-size: 1.5rem; }
     .bottom-nav { flex-direction: column; align-items: stretch; }
 }
-.btn-back-data {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 12px 20px;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: var(--text-secondary);
-    text-decoration: none;
-    font-size: 14px;
-    transition: all 0.2s;
-}
-.btn-back-data:hover {
-    border-color: var(--accent);
-    color: var(--text-primary);
-}
-.btn-back-data svg { width: 16px; height: 16px; }
