@@ -2,6 +2,11 @@
 let currentLang = localStorage.getItem('siteLang') || 'ru';
 let advVisible = false;
 
+function toggleTheme() {
+  const isLight = document.body.classList.toggle('light-mode');
+  localStorage.setItem('siteTheme', isLight ? 'light' : 'dark');
+}
+
 function toggleAdvantages() {
   advVisible = !advVisible;
   const btn = document.getElementById('adv-btn');
@@ -18,13 +23,24 @@ function toggleAdvantages() {
   document.querySelectorAll('.lane-row').forEach(row => {
     row.classList.toggle('adv-active', advVisible);
     const advCol = row.querySelector('.lane-col-adv');
-    if (advCol) {
-      advCol.classList.toggle('open', advVisible);
-    }
+    if (advCol) advCol.classList.toggle('open', advVisible);
   });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  /* ── Восстанавливаем тему ── */
+  if (localStorage.getItem('siteTheme') === 'light') {
+    document.body.classList.add('light-mode');
+  }
+
+  /* ── Применяем язык ── */
+  document.querySelectorAll('.lang-btn').forEach(b =>
+    b.classList.toggle('active', b.dataset.lang === currentLang));
+  document.querySelectorAll('[data-ru][data-en]').forEach(el =>
+    el.textContent = el.dataset[currentLang]);
+  document.documentElement.lang = currentLang;
+
+  /* ── Переключение языка ── */
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const lang = btn.dataset.lang;
@@ -39,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* entrance animation */
+  /* ── Entrance animation ── */
   document.querySelectorAll('.lane-item').forEach((el, i) => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(5px)';
