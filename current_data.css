@@ -291,3 +291,7 @@ body {
     .section-title { font-size: 1.5rem; }
     .cta-transition { flex-direction: column; align-items: flex-start; }
 }
+/* отмечаем красным нет данных */
+.no-data {
+  color: #ff4444;
+}
