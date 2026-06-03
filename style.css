@@ -219,9 +219,9 @@ body.light-mode .theme-icon-light { display: inline; }
 .hc-ctr { top: 5px; right: 5px; border-width: 1px 1px 0 0; }
 .hc-cbl { bottom: 5px; left: 5px; border-width: 0 0 1px 1px; }
 .hc-cbr { bottom: 5px; right: 5px; border-width: 0 1px 1px 0; }
-.hc-num { font-size: 10px; color: rgba(232,0,90,0.7); letter-spacing: 0.16em; margin-bottom: 8px; transition: color 0.3s; }
-.hc-title { font-size: 14px; font-weight: 700; color: rgba(230,230,250,1); line-height: 1.3; margin-bottom: 6px; transition: color 0.3s; }
-.hc-sub { font-size: 11px; color: rgba(255,255,255,0.5); }
+.hc-num { font-size: 12px; color: rgba(232,0,90,0.7); letter-spacing: 0.16em; margin-bottom: 10px; transition: color 0.3s; }
+.hc-title { font-size: 18px; font-weight: 700; color: rgba(230,230,250,1); line-height: 1.3; margin-bottom: 8px; transition: color 0.3s; }
+.hc-sub { font-size: 13px; color: rgba(255,255,255,0.5); }
 .hc-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(232,0,90,0.6); margin: 8px auto 0; animation: hcdot 2s ease-in-out infinite; }
 @keyframes hcdot { 0%, 100% { opacity: 0.35; } 50% { opacity: 1; box-shadow: 0 0 8px rgba(232,0,90,0.8); } }
 
