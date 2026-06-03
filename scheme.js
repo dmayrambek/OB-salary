@@ -1,8 +1,12 @@
 'use strict';
-let currentLang = 'ru';
+let currentLang = localStorage.getItem('siteLang') || 'ru';
 let problemsOn = false;
 
 document.addEventListener('DOMContentLoaded', () => {
+  /* ── Восстанавливаем тему ── */
+  if (localStorage.getItem('siteTheme') === 'light') {
+    document.body.classList.add('light-mode');
+  }
 
   /* ── Язык ── */
   document.querySelectorAll('.lang-btn').forEach(btn => {
@@ -10,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const lang = btn.dataset.lang;
       if (lang === currentLang) return;
       currentLang = lang;
+      localStorage.setItem('siteLang', lang);
       document.querySelectorAll('.lang-btn').forEach(b =>
         b.classList.toggle('active', b.dataset.lang === lang));
       document.querySelectorAll('[data-ru][data-en]').forEach(el =>
@@ -17,6 +22,13 @@ document.addEventListener('DOMContentLoaded', () => {
       document.documentElement.lang = lang;
     });
   });
+
+  /* ── Применяем сохранённый язык ── */
+  document.querySelectorAll('.lang-btn').forEach(b =>
+    b.classList.toggle('active', b.dataset.lang === currentLang));
+  document.querySelectorAll('[data-ru][data-en]').forEach(el =>
+    el.textContent = el.dataset[currentLang]);
+  document.documentElement.lang = currentLang;
 
   /* ── Entrance animation ── */
   document.querySelectorAll('.lane-item').forEach((el, i) => {
@@ -29,9 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }));
   });
 
-  /* ── Синхронизация высот gap-body со lane-body ──
-     Каждая prob-card должна иметь ту же высоту что соответствующий lane-item
-     чтобы проблемы были точно напротив своих строк ── */
   syncHeights();
   window.addEventListener('resize', syncHeights);
 });
@@ -45,38 +54,28 @@ function alignGap(laneId, gapId) {
   const lane = document.getElementById(laneId);
   const gap  = document.getElementById(gapId);
   if (!lane || !gap) return;
-
   const items = lane.querySelectorAll('.lane-item');
   const cards = gap.querySelectorAll('.prob-card');
-
   items.forEach((item, i) => {
     if (cards[i]) {
-      /* убираем старое ограничение высоты */
       cards[i].style.height    = '';
       cards[i].style.minHeight = '';
-
-      /* карточка должна быть не меньше высоты строки,
-         но может быть больше если текст не влезает */
-      const rowH   = item.getBoundingClientRect().height;
-      const cardH  = cards[i].scrollHeight;
+      const rowH  = item.getBoundingClientRect().height;
+      const cardH = cards[i].scrollHeight;
       cards[i].style.minHeight = Math.max(rowH, cardH) + 'px';
     }
   });
 }
 
-/* ── Показать / скрыть проблемы ── */
 function toggleProblems() {
   problemsOn = !problemsOn;
-
   const grid    = document.getElementById('asisGrid');
   const btn     = document.getElementById('btnProblems');
   const summary = document.getElementById('summaryBlock');
-
   grid.classList.toggle('problems-on', problemsOn);
   btn.classList.toggle('active', problemsOn);
   summary.classList.toggle('highlight', problemsOn);
 
-  /* текст кнопки */
   const btnSpan = btn.querySelector('span');
   if (btnSpan) {
     btnSpan.dataset.ru = problemsOn ? 'Скрыть проблемы' : 'Показать проблемы';
@@ -86,20 +85,20 @@ function toggleProblems() {
       : (currentLang === 'ru' ? 'Показать проблемы' : 'Show issues');
   }
 
-  /* подсветка summary items */
   document.querySelectorAll('.summary-item').forEach(el =>
     el.classList.toggle('highlight', problemsOn));
 
-  /* показываем/скрываем prob-cards с задержкой */
   const cards = document.querySelectorAll('.prob-card:not(.prob-card--spacer)');
-  cards.forEach((card) => {
-    if (problemsOn) {
-      card.classList.add('visible');
-    } else {
-      card.classList.remove('visible');
-    }
+  cards.forEach(card => {
+    if (problemsOn) card.classList.add('visible');
+    else card.classList.remove('visible');
   });
 
-  /* пересинхронизировать высоты после анимации grid */
   setTimeout(syncHeights, 380);
+}
+
+/* ── Переключение темы (доступно на этой странице тоже) ── */
+function toggleTheme() {
+  const isLight = document.body.classList.toggle('light-mode');
+  localStorage.setItem('siteTheme', isLight ? 'light' : 'dark');
 }
