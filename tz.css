@@ -285,3 +285,21 @@ body {
     .section-title { font-size: 1.5rem; }
     .bottom-nav { flex-direction: column; align-items: stretch; }
 }
+
+/* ===== LIGHT MODE ===== */
+body.light-mode { background: #f0f0f2; color: #1a1a1a; }
+body.light-mode .header { background: rgba(255,255,255,0.95); border-bottom-color: rgba(0,0,0,0.1); }
+body.light-mode .nav-back { color: #DA532C; }
+body.light-mode .lang-btn { color: #666; }
+body.light-mode .lang-btn.active { background: #DA532C; color: #fff; }
+body.light-mode .section-eyebrow { color: #DA532C; }
+body.light-mode .section-title { color: #1a1a1a; }
+body.light-mode .section-subtitle { color: #555; }
+body.light-mode .tz-card { background: #ffffff; border-color: rgba(0,0,0,0.1); }
+body.light-mode .tz-card-title { color: #1a1a1a; }
+body.light-mode .tz-card-num { color: #888; }
+body.light-mode .benefits-label { color: #999; }
+body.light-mode .benefit-text strong { color: #1a1a1a; }
+body.light-mode .benefit-text span { color: #555; }
+body.light-mode .gives-text { color: #444; }
+body.light-mode .btn-nav { background: #DA532C; color: #fff; }
