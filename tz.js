@@ -255,11 +255,13 @@ function applyLang(lang) {
 function toggleTheme() {
   const isLight = document.body.classList.toggle('light-mode');
   localStorage.setItem('siteTheme', isLight ? 'light' : 'dark');
+  document.querySelectorAll('.theme-icon-dark').forEach(el => el.style.display = isLight ? 'none' : '');
+  document.querySelectorAll('.theme-icon-light').forEach(el => el.style.display = isLight ? '' : 'none');
 }
 
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', () => applyLang(btn.getAttribute('data-lang')));
     });
-    applyLang('ru');
+    applyLang(currentLang);
 });
