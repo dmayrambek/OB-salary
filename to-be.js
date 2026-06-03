@@ -19,22 +19,18 @@ function toggleAdvantages() {
     row.classList.toggle('adv-active', advVisible);
     const advCol = row.querySelector('.lane-col-adv');
     if (advCol) {
-      advCol.classList.toggle('open', advVisible);
-      advCol.style.display = advVisible ? '' : 'none';
       if (advVisible) {
-        // небольшая задержка чтобы display:none сначала убрался
+        advCol.style.display = 'flex';
         requestAnimationFrame(() => advCol.classList.add('open'));
+      } else {
+        advCol.classList.remove('open');
+        advCol.style.display = 'none';
       }
     }
   });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // скрываем adv-block изначально
-  document.querySelectorAll('.adv-block').forEach(el => {
-    el.style.display = 'none';
-  });
-
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const lang = btn.dataset.lang;
