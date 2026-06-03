@@ -260,6 +260,12 @@ function toggleTheme() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Восстанавливаем тему
+    const _isLight = localStorage.getItem('siteTheme') === 'light';
+    if (_isLight) document.body.classList.add('light-mode');
+    document.querySelectorAll('.theme-icon-dark').forEach(el => el.style.display = _isLight ? 'none' : '');
+    document.querySelectorAll('.theme-icon-light').forEach(el => el.style.display = _isLight ? '' : 'none');
+
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', () => applyLang(btn.getAttribute('data-lang')));
     });
