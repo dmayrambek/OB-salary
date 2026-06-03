@@ -207,8 +207,8 @@ body {
 }
 .metric-value.large { font-size: 1.85rem; }
 .metric-value.medium { font-size: 1.30rem; }
-.metric-value.small { font-size: 1.05rem; color: #ff4444; font-weight: 500; }
-.metric-value.no-data { font-size: 0.85rem; color: var(--text-muted); font-weight: 400; font-style: italic; }
+.metric-value.small { font-size: 1.05rem; color: var(--text-secondary); font-weight: 500; }
+.metric-value.no-data { font-size: 0.85rem; color: #ff4444; font-weight: 400; font-style: italic; }
 .metric-note {
     font-size: 0.74rem; color: var(--text-muted);
     margin-top: 5px; line-height: 1.4; font-style: italic;
