@@ -38,6 +38,8 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
 function toggleTheme() {
   const isLight = document.body.classList.toggle('light-mode');
   localStorage.setItem('siteTheme', isLight ? 'light' : 'dark');
+  document.querySelectorAll('.theme-icon-dark').forEach(el => el.style.display = isLight ? 'none' : '');
+  document.querySelectorAll('.theme-icon-light').forEach(el => el.style.display = isLight ? '' : 'none');
 }
 
 
@@ -117,9 +119,10 @@ function toggleSwift(row) {
 // ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
   // Восстанавливаем тему
-  if (localStorage.getItem('siteTheme') === 'light') {
-    document.body.classList.add('light-mode');
-  }
+  const _isLight = localStorage.getItem('siteTheme') === 'light';
+  if (_isLight) document.body.classList.add('light-mode');
+  document.querySelectorAll('.theme-icon-dark').forEach(el => el.style.display = _isLight ? 'none' : '');
+  document.querySelectorAll('.theme-icon-light').forEach(el => el.style.display = _isLight ? '' : 'none');
   // Восстанавливаем язык
   setLang(currentLang);
 });
