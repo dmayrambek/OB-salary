@@ -291,3 +291,29 @@ body {
     .section-title { font-size: 1.5rem; }
     .cta-transition { flex-direction: column; align-items: flex-start; }
 }
+
+/* ===== LIGHT MODE ===== */
+body.light-mode { background: #f0f0f2; color: #1a1a1a; }
+body.light-mode .header { background: rgba(255,255,255,0.95); border-bottom-color: rgba(0,0,0,0.1); }
+body.light-mode .nav-back { color: #DA532C; }
+body.light-mode .lang-btn { color: #666; }
+body.light-mode .lang-btn.active { background: #DA532C; color: #fff; }
+body.light-mode .section-eyebrow { color: #DA532C; }
+body.light-mode .section-title { color: #1a1a1a; }
+body.light-mode .section-subtitle { color: #555; }
+body.light-mode .date-badge { background: #fff; border-color: rgba(0,0,0,0.12); color: #666; }
+body.light-mode .report-card { background: #ffffff; border-color: rgba(0,0,0,0.1); }
+body.light-mode .card-title { color: #1a1a1a; }
+body.light-mode .card-source { color: #888; }
+body.light-mode .metric-label { color: #555; }
+body.light-mode .metric-value { color: #1a1a1a; }
+body.light-mode .metric-value.no-data { color: #ff4444; }
+body.light-mode .metric-group { border-bottom-color: rgba(0,0,0,0.06); }
+body.light-mode .metric-group-label { color: #999; }
+body.light-mode .bottom-problems { background: #ffffff; border-color: rgba(0,0,0,0.1); }
+body.light-mode .bottom-problems-title { color: #999; }
+body.light-mode .problem-item { background: rgba(232,0,90,0.04); border-color: rgba(232,0,90,0.2); }
+body.light-mode .problem-item-text { color: #c0103a; }
+body.light-mode .problem-item-text strong { color: #a00030; }
+body.light-mode .cta-text { color: #444; }
+body.light-mode .cta-text strong { color: #1a1a1a; }
