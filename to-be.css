@@ -63,8 +63,8 @@ header{display:flex;align-items:center;justify-content:space-between;padding:18p
 .lane-row:last-child{border-bottom:none}
 
 .lane-col-items{flex:1;display:flex;flex-direction:column}
-.lane-col-adv{width:0;overflow:hidden;transition:width .25s ease}
-.lane-col-adv.open{width:240px}
+.lane-col-adv{width:0;overflow:hidden;transition:width .3s ease;display:none}
+.lane-col-adv.open{width:260px}
 
 .lane-item{
   padding:11px 14px;border-bottom:1px solid var(--border);
