@@ -21,6 +21,8 @@ const T = {
         once_b3_text:  'Карта, зачисления, обороты, остаток по каждому',
         once_b4_title: 'Целостность данных',
         once_b4_text:  'Все данные, необходимые для анализа',
+        once_b5_title: 'Банковские продукты',
+        once_b5_text:  'Перечень банковских продуктов, которыми пользуется клиент (кредиты, депозиты и т.д.)',
 
         monthly_num:     'Отчёт 02',
         monthly_title:   'Ежемесячная выгрузка',
@@ -34,6 +36,8 @@ const T = {
         monthly_b3_text:  'Активность сотрудников — транзакции за месяц',
         monthly_b4_title: 'Сигналы риска',
         monthly_b4_text:  'Компании где ФОТ или активность резко упала',
+        monthly_b5_title: 'Банковские продукты',
+        monthly_b5_text:  'Перечень банковских продуктов, которыми пользуется клиент (кредиты, депозиты и т.д.)',
 
         gives_label:  'Что нам это даст',
         btn_xlsx:     'Скачать в Excel',
@@ -68,6 +72,8 @@ const T = {
         once_b3_text:  'Card, credits, turnover, balance per employee',
         once_b4_title: 'Data integrity',
         once_b4_text:  'All the data needed for analysis',
+        once_b5_title: 'Banking Products',
+        once_b5_text:  'List of banking products used by the client (loans, deposits, etc.)',
 
         monthly_num:     'Report 02',
         monthly_title:   'Monthly Export',
@@ -81,6 +87,8 @@ const T = {
         monthly_b3_text:  'Employee activity — transactions per month',
         monthly_b4_title: 'Risk signals',
         monthly_b4_text:  'Companies where payroll or activity dropped sharply',
+        monthly_b5_title: 'Banking Products',
+        monthly_b5_text:  'List of banking products used by the client (loans, deposits, etc.)',
 
         gives_label:  'What this gives us',
         btn_xlsx:     'Download Excel',
@@ -199,6 +207,8 @@ function applyLang(lang) {
         'once-b3-text':           t.once_b3_text,
         'once-b4-title':          t.once_b4_title,
         'once-b4-text':           t.once_b4_text,
+        'once-b5-title':          t.once_b5_title,
+        'once-b5-text':           t.once_b5_text,
         'monthly-num':            t.monthly_num,
         'monthly-title':          t.monthly_title,
         'monthly-desc':           t.monthly_desc,
@@ -210,6 +220,8 @@ function applyLang(lang) {
         'monthly-b3-text':        t.monthly_b3_text,
         'monthly-b4-title':       t.monthly_b4_title,
         'monthly-b4-text':        t.monthly_b4_text,
+        'monthly-b5-title':       t.monthly_b5_title,
+        'monthly-b5-text':        t.monthly_b5_text,
         'gives-label-once':       t.gives_label,
         'gives-label-monthly':    t.gives_label,
         'benefits-label-once':    t.benefits_label,
