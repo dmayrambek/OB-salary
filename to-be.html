@@ -24,9 +24,18 @@
   </div>
 
   <div class="scheme-container">
-    <div class="scheme-title"
-         data-ru="Процесс ЗПП в филиале"
-         data-en="Payroll Project Process in Branch">Процесс ЗПП в филиале</div>
+    <div class="scheme-title-row">
+      <div class="scheme-title"
+           data-ru="Процесс ЗПП в филиале"
+           data-en="Payroll Project Process in Branch">Процесс ЗПП в филиале</div>
+      <button class="adv-toggle-btn" id="adv-btn" onclick="toggleAdvantages()">
+        <svg viewBox="0 0 20 20" fill="none" width="15" height="15">
+          <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.6"/>
+          <path d="M10 6v4l2.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        <span id="adv-btn-text" data-ru="Показать преимущества" data-en="Show advantages">Показать преимущества</span>
+      </button>
+    </div>
 
     <div class="tobe-grid">
 
@@ -39,8 +48,16 @@
           <span data-ru="ПП / Филиал" data-en="DS / Branch">ПП / Филиал</span>
         </div>
         <div class="lane-body">
-          <div class="lane-item"><span data-ru="Привлечение клиента" data-en="Client acquisition">Привлечение клиента</span></div>
-          <div class="lane-item"><span data-ru="Раздача карт" data-en="Card distribution">Раздача карт</span></div>
+          <div class="lane-item adv-item" data-adv-group="pp"
+               data-adv-ru="ПП/Филиал сосредотачивается только на привлечении и раздаче карт — операционная нагрузка на филиал сокращается"
+               data-adv-en="DS/Branch focuses only on client acquisition and card distribution — operational load on the branch is reduced">
+            <span data-ru="Привлечение клиента" data-en="Client acquisition">Привлечение клиента</span>
+          </div>
+          <div class="lane-item adv-item" data-adv-group="pp"
+               data-adv-ru="ПП/Филиал сосредотачивается только на привлечении и раздаче карт — операционная нагрузка на филиал сокращается"
+               data-adv-en="DS/Branch focuses only on client acquisition and card distribution — operational load on the branch is reduced">
+            <span data-ru="Раздача карт" data-en="Card distribution">Раздача карт</span>
+          </div>
         </div>
       </div>
 
@@ -53,35 +70,59 @@
           <span data-ru="Управление ЗПП" data-en="Payroll Project Management">Управление ЗПП</span>
         </div>
         <div class="lane-body">
-          <div class="lane-item"><span data-ru="Согласование условий ЗПП с руководством" data-en="Approval of payroll terms with management">Согласование условий ЗПП с руководством</span></div>
-          <div class="lane-item"><span data-ru="Подготовка договора ЗПП" data-en="Preparation of payroll agreement">Подготовка договора ЗПП</span></div>
-          <div class="lane-item"><span data-ru="Приём списка сотрудников (клиентов) и документов" data-en="Receiving employee (client) list and documents">Приём списка сотрудников (клиентов) и документов</span></div>
-          <div class="lane-item"><span data-ru="Создание служебной записки на ЗПП в BPM" data-en="Creating internal memo for payroll project in BPM">Создание служебной записки на ЗПП в BPM</span></div>
-          <div class="lane-item"><span data-ru="Открытие карточных счетов сотрудников (клиентов)" data-en="Opening employee (client) card accounts">Открытие карточных счетов сотрудников (клиентов)</span></div>
-          <div class="lane-item"><span data-ru="Передача Instant карт сотрудникам ПП/Филиал" data-en="Handing Instant cards to DS/Branch employees">Передача Instant карт сотрудникам ПП/Филиал</span></div>
-          <div class="lane-item"><span data-ru="Ведение отчётности" data-en="Reporting and record-keeping">Ведение отчётности</span></div>
-          <div class="lane-item"><span data-ru="Работа с возражениями и проблемами" data-en="Handling objections and issues">Работа с возражениями и проблемами</span></div>
-          <div class="lane-item"><span data-ru="Согласование спец. тарифов" data-en="Special tariff approval">Согласование спец. тарифов</span></div>
-          <div class="lane-item"><span data-ru="Контроль за актуализацией информации на сайте" data-en="Monitoring website information updates">Контроль за актуализацией информации на сайте</span></div>
+          <div class="lane-item adv-item" data-adv-group="mgmt"
+               data-adv-ru="Все операционные действия — от согласования до передачи карт — переходят в единое Управление ЗПП. Три разрозненных участника заменяются одним центром ответственности"
+               data-adv-en="All operational steps — from approval to card handover — are handled by a single Payroll Management unit. Three separate participants replaced by one centre of responsibility">
+            <span data-ru="Согласование условий ЗПП с руководством" data-en="Approval of payroll terms with management">Согласование условий ЗПП с руководством</span>
+          </div>
+          <div class="lane-item adv-item" data-adv-group="mgmt"
+               data-adv-ru="Все операционные действия — от согласования до передачи карт — переходят в единое Управление ЗПП. Три разрозненных участника заменяются одним центром ответственности"
+               data-adv-en="All operational steps — from approval to card handover — are handled by a single Payroll Management unit. Three separate participants replaced by one centre of responsibility">
+            <span data-ru="Подготовка договора ЗПП" data-en="Preparation of payroll agreement">Подготовка договора ЗПП</span>
+          </div>
+          <div class="lane-item adv-item" data-adv-group="mgmt"
+               data-adv-ru="Все операционные действия — от согласования до передачи карт — переходят в единое Управление ЗПП. Три разрозненных участника заменяются одним центром ответственности"
+               data-adv-en="All operational steps — from approval to card handover — are handled by a single Payroll Management unit. Three separate participants replaced by one centre of responsibility">
+            <span data-ru="Приём списка сотрудников (клиентов) и документов" data-en="Receiving employee (client) list and documents">Приём списка сотрудников (клиентов) и документов</span>
+          </div>
+          <div class="lane-item adv-item" data-adv-group="bpm"
+               data-adv-ru="Служебная записка создаётся автоматически через BPM — исключается ручное оформление и риск ошибок"
+               data-adv-en="Internal memo is created automatically via BPM — manual processing and error risks are eliminated">
+            <span data-ru="Создание служебной записки на ЗПП в BPM" data-en="Creating internal memo for payroll project in BPM">Создание служебной записки на ЗПП в BPM</span>
+          </div>
+          <div class="lane-item adv-item" data-adv-group="mgmt"
+               data-adv-ru="Все операционные действия — от согласования до передачи карт — переходят в единое Управление ЗПП. Три разрозненных участника заменяются одним центром ответственности"
+               data-adv-en="All operational steps — from approval to card handover — are handled by a single Payroll Management unit. Three separate participants replaced by one centre of responsibility">
+            <span data-ru="Открытие карточных счетов сотрудников (клиентов)" data-en="Opening employee (client) card accounts">Открытие карточных счетов сотрудников (клиентов)</span>
+          </div>
+          <div class="lane-item adv-item" data-adv-group="mgmt"
+               data-adv-ru="Все операционные действия — от согласования до передачи карт — переходят в единое Управление ЗПП. Три разрозненных участника заменяются одним центром ответственности"
+               data-adv-en="All operational steps — from approval to card handover — are handled by a single Payroll Management unit. Three separate participants replaced by one centre of responsibility">
+            <span data-ru="Передача Instant карт сотрудникам ПП/Филиал" data-en="Handing Instant cards to DS/Branch employees">Передача Instant карт сотрудникам ПП/Филиал</span>
+          </div>
+          <div class="lane-item adv-item" data-adv-group="report"
+               data-adv-ru="Полное ведение отчётности и аналитики по ЗП проектам сосредоточено в одном месте"
+               data-adv-en="Full reporting and analytics on payroll projects are consolidated in one place">
+            <span data-ru="Ведение отчётности" data-en="Reporting and record-keeping">Ведение отчётности</span>
+          </div>
+          <div class="lane-item adv-item" data-adv-group="objections"
+               data-adv-ru="Выделен отдельный процесс обработки обращений и проблем — закреплён ответственный и чёткий порядок действий"
+               data-adv-en="A dedicated process for handling objections and issues is established — with a clear owner and defined workflow">
+            <span data-ru="Работа с возражениями и проблемами" data-en="Handling objections and issues">Работа с возражениями и проблемами</span>
+          </div>
+          <div class="lane-item adv-item" data-adv-group="tariff"
+               data-adv-ru="Тарифная сетка контролируется централизованно одним управлением — единый подход и прозрачность условий"
+               data-adv-en="The tariff structure is managed centrally by one unit — consistent approach and transparent terms">
+            <span data-ru="Согласование спец. тарифов" data-en="Special tariff approval">Согласование спец. тарифов</span>
+          </div>
+          <div class="lane-item adv-item" data-adv-group="site"
+               data-adv-ru="Своевременное обновление информации на сайте закреплено за ответственным — клиенты всегда видят актуальные условия"
+               data-adv-en="Timely website updates are assigned to a responsible owner — clients always see current terms">
+            <span data-ru="Контроль за актуализацией информации на сайте" data-en="Monitoring website information updates">Контроль за актуализацией информации на сайте</span>
+          </div>
         </div>
       </div>
 
-    </div>
-
-    <div class="analysis-divider">
-      <div class="adiv-line"></div>
-      <div class="adiv-label" data-ru="Что получаем с этой схемой?" data-en="What do we gain from this scheme?">Что получаем с этой схемой?</div>
-    </div>
-
-    <div class="results-block">
-      <div class="result-item">
-        <div class="result-dot"></div>
-        <span data-ru="Единый канал управления" data-en="Single control channel">Единый канал управления</span>
-      </div>
-      <div class="result-item">
-        <div class="result-dot"></div>
-        <span data-ru="Автоматизированный процесс" data-en="Automated process">Автоматизированный процесс</span>
-      </div>
     </div>
 
   </div>
