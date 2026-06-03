@@ -1,5 +1,5 @@
 'use strict';
-let currentLang = 'ru';
+let currentLang = localStorage.getItem('siteLang') || 'ru';
 let advVisible = false;
 
 function toggleAdvantages() {
@@ -19,13 +19,7 @@ function toggleAdvantages() {
     row.classList.toggle('adv-active', advVisible);
     const advCol = row.querySelector('.lane-col-adv');
     if (advCol) {
-      if (advVisible) {
-        advCol.style.display = 'flex';
-        requestAnimationFrame(() => advCol.classList.add('open'));
-      } else {
-        advCol.classList.remove('open');
-        advCol.style.display = 'none';
-      }
+      advCol.classList.toggle('open', advVisible);
     }
   });
 }
@@ -36,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const lang = btn.dataset.lang;
       if (lang === currentLang) return;
       currentLang = lang;
+      localStorage.setItem('siteLang', lang);
       document.querySelectorAll('.lang-btn').forEach(b =>
         b.classList.toggle('active', b.dataset.lang === lang));
       document.querySelectorAll('[data-ru][data-en]').forEach(el =>
