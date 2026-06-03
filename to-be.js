@@ -9,43 +9,32 @@ function toggleAdvantages() {
 
   btn.classList.toggle('active', advVisible);
 
-  // Обновляем текст кнопки
   const textRu = advVisible ? 'Скрыть преимущества' : 'Показать преимущества';
   const textEn = advVisible ? 'Hide advantages' : 'Show advantages';
   btnText.dataset.ru = textRu;
   btnText.dataset.en = textEn;
   btnText.textContent = currentLang === 'ru' ? textRu : textEn;
 
-  // Для каждой группы шагов — показываем подсказку только на первом в группе
-  const groups = {};
-  document.querySelectorAll('.adv-item').forEach(item => {
-    const group = item.dataset.advGroup;
-    if (!groups[group]) groups[group] = [];
-    groups[group].push(item);
+  document.querySelectorAll('.lane-row').forEach(row => {
+    row.classList.toggle('adv-active', advVisible);
+    const advCol = row.querySelector('.lane-col-adv');
+    if (advCol) {
+      advCol.classList.toggle('open', advVisible);
+      advCol.style.display = advVisible ? '' : 'none';
+      if (advVisible) {
+        // небольшая задержка чтобы display:none сначала убрался
+        requestAnimationFrame(() => advCol.classList.add('open'));
+      }
+    }
   });
-
-  document.querySelectorAll('.adv-item').forEach(item => {
-    item.classList.toggle('adv-active', advVisible);
-    // Удаляем старые подсказки
-    const old = item.querySelector('.adv-hint');
-    if (old) old.remove();
-  });
-
-  if (advVisible) {
-    // Добавляем подсказку только к первому элементу каждой группы
-    Object.values(groups).forEach(items => {
-      const first = items[0];
-      const hint = document.createElement('div');
-      hint.className = 'adv-hint';
-      hint.textContent = currentLang === 'ru'
-        ? first.dataset.advRu
-        : first.dataset.advEn;
-      first.appendChild(hint);
-    });
-  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  // скрываем adv-block изначально
+  document.querySelectorAll('.adv-block').forEach(el => {
+    el.style.display = 'none';
+  });
+
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const lang = btn.dataset.lang;
@@ -56,14 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('[data-ru][data-en]').forEach(el =>
         el.textContent = el.dataset[lang]);
       document.documentElement.lang = lang;
-
-      // Обновляем подсказки если открыты
-      if (advVisible) {
-        document.querySelectorAll('.adv-hint').forEach(hint => {
-          const parent = hint.closest('.adv-item');
-          hint.textContent = lang === 'ru' ? parent.dataset.advRu : parent.dataset.advEn;
-        });
-      }
     });
   });
 
