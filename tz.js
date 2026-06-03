@@ -177,7 +177,7 @@ function renderTable(rows, lang) {
 /* ==========================================================================
    APPLY LANGUAGE
    ========================================================================== */
-let currentLang = 'ru';
+let currentLang = localStorage.getItem('siteLang') || 'ru';
 
 function applyLang(lang) {
     currentLang = lang;
@@ -252,6 +252,11 @@ function applyLang(lang) {
 /* ==========================================================================
    INIT
    ========================================================================== */
+function toggleTheme() {
+  const isLight = document.body.classList.toggle('light-mode');
+  localStorage.setItem('siteTheme', isLight ? 'light' : 'dark');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', () => applyLang(btn.getAttribute('data-lang')));
