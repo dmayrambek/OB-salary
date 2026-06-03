@@ -1,6 +1,6 @@
 const TRANSLATIONS = {
     ru: {
-        navMarketing:'Маркетинг', navScheme:'Текущая схема', navData:'Текущие данные', navTz:'ТЗ для отчётов', navSales:'Продажи',
+        navMarketing:'Маркетинг', navScheme:'Текущая схема', navData:'Текущие данные', navTz:'ТЗ для отчётов',
         eyebrow:'Текущие данные', title:'Что мы имеем сейчас',
         subtitle:'По одному запросу мы получаем разные данные из разных источников — сравнить их невозможно без ручной работы',
         dateBadge:'Март 2026',
@@ -26,7 +26,7 @@ const TRANSLATIONS = {
         cta_btn:'Смотреть ТЗ',
     },
     en: {
-        navMarketing:'Marketing', navScheme:'Current Scheme', navData:'Current Data', navTz:'Report Specs', navSales:'Sales',
+        navMarketing:'Marketing', navScheme:'Current Scheme', navData:'Current Data', navTz:'Report Specs',
         eyebrow:'Current Data', title:'What We Have Today',
         subtitle:'A single inquiry yields different data from different sources — impossible to reconcile without manual effort',
         dateBadge:'March 2026',
@@ -53,14 +53,13 @@ const TRANSLATIONS = {
     }
 };
 
-let currentLang = 'ru';
+let currentLang = localStorage.getItem('siteLang') || 'ru';
 
 function applyLang(lang) {
     currentLang = lang;
+    localStorage.setItem('siteLang', lang);
     const t = TRANSLATIONS[lang];
     const map = {
-        'nav-marketing': t.navMarketing, 'nav-scheme': t.navScheme,
-        'nav-data': t.navData, 'nav-tz': t.navTz, 'nav-sales': t.navSales,
         'section-eyebrow': t.eyebrow, 'section-title': t.title,
         'section-subtitle': t.subtitle, 'date-badge-text': t.dateBadge,
         'sys-card-title': t.sys_title, 'sys-card-source': t.sys_source, 'sys-card-badge': t.sys_badge,
@@ -105,10 +104,17 @@ function runCounters() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Восстанавливаем тему
+    if (localStorage.getItem('siteTheme') === 'light') {
+        document.body.classList.add('light-mode');
+    }
+
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', () => applyLang(btn.getAttribute('data-lang')));
     });
-    applyLang('ru');
+
+    applyLang(currentLang);
+
     const grid = document.getElementById('reports-grid');
     if (grid) {
         const observer = new IntersectionObserver(entries => {
