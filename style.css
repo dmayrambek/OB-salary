@@ -225,9 +225,9 @@ body.light-mode .theme-icon-light { display: inline; }
 .hc-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(232,0,90,0.6); margin: 8px auto 0; animation: hcdot 2s ease-in-out infinite; }
 @keyframes hcdot { 0%, 100% { opacity: 0.35; } 50% { opacity: 1; box-shadow: 0 0 8px rgba(232,0,90,0.8); } }
 
-body.light-mode .hero { background: #0A0A0A !important; }
-body.light-mode .hero-title { color: #fff !important; }
-body.light-mode .hero-tag { background: transparent !important; }
+/* body.light-mode .hero dark override removed */
+/* body.light-mode .hero-title override removed */
+/* body.light-mode .hero-tag override removed */
 body.light-mode .hc { background: rgba(232,0,90,0.08); }
 
 /* ===== BOTTOM NAV BUTTONS ===== */
