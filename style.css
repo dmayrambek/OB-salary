@@ -225,9 +225,9 @@ body.light-mode .theme-icon-light { display: inline; }
 .hc-dot { width: 5px; height: 5px; border-radius: 50%; background: rgba(232,0,90,0.6); margin: 8px auto 0; animation: hcdot 2s ease-in-out infinite; }
 @keyframes hcdot { 0%, 100% { opacity: 0.35; } 50% { opacity: 1; box-shadow: 0 0 8px rgba(232,0,90,0.8); } }
 
-/* body.light-mode .hero dark override removed */
-/* body.light-mode .hero-title override removed */
-/* body.light-mode .hero-tag override removed */
+body.light-mode .hero { background: #f0f0f2; }
+body.light-mode .hero-title { color: #1a1a1a; }
+body.light-mode .hero-tag { background: transparent; }
 body.light-mode .hc { background: rgba(232,0,90,0.08); }
 
 /* ===== BOTTOM NAV BUTTONS ===== */
@@ -252,3 +252,8 @@ body.light-mode .hc { background: rgba(232,0,90,0.08); }
 /* force th to not override child span colors */
 .compare-table thead tr th:not(.th-param):not(.th-ob) { color: transparent; text-transform: none; }
 .compare-table thead tr th:not(.th-param):not(.th-ob) span { opacity: 1; }
+
+body.light-mode .hc { background: rgba(232,0,90,0.06); border-color: rgba(232,0,90,0.3); }
+body.light-mode .hc-title { color: #1a1a1a; }
+body.light-mode .hc-sub { color: rgba(0,0,0,0.5); }
+body.light-mode .hero-bg-grid { opacity: 0.4; }
