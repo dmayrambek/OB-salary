@@ -38,26 +38,23 @@
     </h1>
   </div>
 
-  <div class="holo-canvas" style="width:1000px;max-width:calc(100vw - 48px);height:500px;">
-    <svg class="holo-svg" viewBox="0 0 1000 500" preserveAspectRatio="xMidYMid meet">
+  <div class="holo-canvas" style="width:860px;max-width:calc(100vw - 48px);height:340px;">
+    <svg class="holo-svg" viewBox="0 0 860 340" preserveAspectRatio="xMidYMid meet">
       <defs>
         <marker id="harr" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
           <path d="M0,1 L7,4 L0,7" stroke="rgba(232,0,90,0.7)" stroke-width="1.2" fill="none"/>
         </marker>
       </defs>
-      <!-- 01 правый край (225,240) → 02 левый край (390,65) -->
-      <path d="M 225,240 C 290,240 330,110 390,75"
+      <!-- 01 → 02 -->
+      <path d="M 215,155 C 280,155 310,80 370,75"
             stroke="rgba(232,0,90,0.3)" stroke-width="1" fill="none" marker-end="url(#harr)"/>
-      <!-- 02 правый край (605,65) → 03 левый край (760,260) -->
-      <path d="M 605,75 C 670,75 720,210 760,255"
-            stroke="rgba(232,0,90,0.3)" stroke-width="1" fill="none" marker-end="url(#harr)"/>
-      <!-- 03 нижний край (867,370) → 04 правый край (570,430) -->
-      <path d="M 867,325 C 867,390 650,440 572,435"
+      <!-- 02 → 03 -->
+      <path d="M 585,75 C 650,75 680,140 645,160"
             stroke="rgba(232,0,90,0.3)" stroke-width="1" fill="none" marker-end="url(#harr)"/>
     </svg>
 
     <!-- 01 Marketing Research -->
-    <div class="hc" onclick="location.href='marketing.html'" style="left:10px;top:185px;width:215px;">
+    <div class="hc" onclick="location.href='marketing.html'" style="left:0px;top:100px;width:215px;">
       <div class="hc-scan"></div>
       <div class="hc-c hc-ctl"></div><div class="hc-c hc-ctr"></div>
       <div class="hc-c hc-cbl"></div><div class="hc-c hc-cbr"></div>
@@ -68,7 +65,7 @@
     </div>
 
     <!-- 02 Текущая схема -->
-    <div class="hc" onclick="location.href='scheme.html'" style="left:390px;top:10px;width:215px;">
+    <div class="hc" onclick="location.href='scheme.html'" style="left:322px;top:10px;width:215px;">
       <div class="hc-scan"></div>
       <div class="hc-c hc-ctl"></div><div class="hc-c hc-ctr"></div>
       <div class="hc-c hc-cbl"></div><div class="hc-c hc-cbr"></div>
@@ -79,7 +76,7 @@
     </div>
 
     <!-- 03 Текущие данные -->
-    <div class="hc" onclick="location.href='current_data.html'" style="left:760px;top:205px;width:215px;">
+    <div class="hc" onclick="location.href='current_data.html'" style="left:644px;top:100px;width:215px;">
       <div class="hc-scan"></div>
       <div class="hc-c hc-ctl"></div><div class="hc-c hc-ctr"></div>
       <div class="hc-c hc-cbl"></div><div class="hc-c hc-cbr"></div>
@@ -87,17 +84,6 @@
       <div class="hc-title" data-ru="Текущие данные" data-en="Current Data">Текущие данные</div>
       <div class="hc-sub" data-ru="отчёты · аналитика" data-en="reports · analytics">отчёты · аналитика</div>
       <div class="hc-dot" style="animation-delay:1.2s"></div>
-    </div>
-
-    <!-- 04 Продажи и пакеты -->
-    <div class="hc" onclick="location.href='sales.html'" style="left:355px;top:375px;width:215px;">
-      <div class="hc-scan"></div>
-      <div class="hc-c hc-ctl"></div><div class="hc-c hc-ctr"></div>
-      <div class="hc-c hc-cbl"></div><div class="hc-c hc-cbr"></div>
-      <div class="hc-num">04</div>
-      <div class="hc-title" data-ru="Продажи и пакеты" data-en="Sales & Packages">Продажи и пакеты</div>
-      <div class="hc-sub" data-ru="тарифы · предложение" data-en="rates · offering">тарифы · предложение</div>
-      <div class="hc-dot" style="animation-delay:1.8s"></div>
     </div>
 
   </div>
