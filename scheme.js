@@ -44,6 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   syncHeights();
   window.addEventListener('resize', syncHeights);
+  // Показываем проблемы сразу при загрузке
+  setTimeout(() => showProblems(), 100);
 });
 
 function syncHeights() {
@@ -66,6 +68,26 @@ function alignGap(laneId, gapId) {
       cards[i].style.minHeight = Math.max(rowH, cardH) + 'px';
     }
   });
+}
+
+
+function showProblems() {
+  problemsOn = true;
+  const grid    = document.getElementById('asisGrid');
+  const btn     = document.getElementById('btnProblems');
+  const summary = document.getElementById('summaryBlock');
+  grid.classList.add('problems-on');
+  btn.classList.add('active');
+  summary.classList.add('highlight');
+  const btnSpan = btn.querySelector('span');
+  if (btnSpan) {
+    btnSpan.dataset.ru = 'Скрыть проблемы';
+    btnSpan.dataset.en = 'Hide issues';
+    btnSpan.textContent = currentLang === 'ru' ? 'Скрыть проблемы' : 'Hide issues';
+  }
+  document.querySelectorAll('.summary-item').forEach(el => el.classList.add('highlight'));
+  document.querySelectorAll('.prob-card:not(.prob-card--spacer)').forEach(card => card.classList.add('visible'));
+  setTimeout(syncHeights, 380);
 }
 
 function toggleProblems() {
