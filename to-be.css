@@ -2,10 +2,10 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
 :root{
-  --bg:#0d0d0d;--surface:#1a1a1a;--s2:#1e1e1e;
+  --bg:#0d0d0d;--surface:#1a1a1a;
   --border:#252525;--b2:#2e2e2e;
   --red:#e8174a;--adim:rgba(232,23,74,.14);
-  --green:#00d68f;--gdim:rgba(0,214,143,.14);--gborder:rgba(0,214,143,.35);
+  --green:#00d68f;--gdim:rgba(0,214,143,.12);--gborder:rgba(0,214,143,.3);
   --pink:#E8005A;--pink-dim:#b8004a;
   --tp:#efefef;--ts:#777;--tm:#3a3a3a;
   --font:'Manrope',sans-serif;
@@ -33,7 +33,7 @@ header{display:flex;align-items:center;justify-content:space-between;padding:18p
 .scheme-container{background:var(--surface);border:1px solid var(--border);border-radius:4px;padding:28px 24px 32px;margin-bottom:36px}
 
 .scheme-title-row{display:flex;align-items:center;justify-content:center;position:relative;margin-bottom:24px}
-.scheme-title{text-align:center;font-size:18px;font-weight:700;}
+.scheme-title{text-align:center;font-size:18px;font-weight:700}
 
 /* ADVANTAGE TOGGLE BUTTON */
 .adv-toggle-btn{
@@ -44,10 +44,10 @@ header{display:flex;align-items:center;justify-content:space-between;padding:18p
   padding:7px 14px;border-radius:4px;cursor:pointer;
   transition:all .2s;letter-spacing:.03em;
 }
-.adv-toggle-btn:hover{background:rgba(0,214,143,.22);}
-.adv-toggle-btn.active{background:var(--green);color:#0d0d0d;}
+.adv-toggle-btn:hover{background:rgba(0,214,143,.22)}
+.adv-toggle-btn.active{background:var(--green);color:#0d0d0d}
 
-/* GRID */
+/* MAIN GRID — lanes side by side */
 .tobe-grid{display:grid;grid-template-columns:1fr 2fr;gap:16px}
 
 /* LANE */
@@ -58,28 +58,35 @@ header{display:flex;align-items:center;justify-content:space-between;padding:18p
 .lane-hdr span{font-size:10.5px;font-weight:700;color:var(--red);text-transform:uppercase;letter-spacing:.07em;line-height:1.3}
 .lane-body{border:1px solid var(--b2);border-top:none;border-radius:0 0 3px 3px;overflow:hidden}
 
-/* LANE ITEM */
+/* LANE ROW — шаги + карточка преимущества рядом */
+.lane-row{display:flex;gap:0;border-bottom:1px solid var(--border)}
+.lane-row:last-child{border-bottom:none}
+
+.lane-col-items{flex:1;display:flex;flex-direction:column}
+.lane-col-adv{width:0;overflow:hidden;transition:width .25s ease}
+.lane-col-adv.open{width:240px}
+
 .lane-item{
   padding:11px 14px;border-bottom:1px solid var(--border);
   font-size:12.5px;color:var(--tp);line-height:1.4;
-  transition:background .2s, border-color .2s;
-  display:flex;flex-direction:column;gap:0;
+  transition:background .2s,color .2s;
 }
 .lane-item:last-child{border-bottom:none}
+.lane-row.adv-active .lane-item{background:var(--gdim);color:var(--green)}
 
-/* ADVANTAGE STATE */
-.lane-item.adv-active{
-  background:var(--gdim);
-  border-bottom-color:var(--gborder);
+/* ADVANTAGE CARD */
+.adv-card{
+  background:rgba(0,214,143,.1);
+  border-left:2px solid var(--green);
+  padding:10px 13px;
+  height:100%;
+  display:flex;flex-direction:column;gap:6px;
 }
-.lane-item.adv-active span{color:var(--green);}
-
-.adv-hint{
-  display:none;
-  font-size:11.5px;color:var(--green);
-  margin-top:6px;line-height:1.45;opacity:.85;
+.adv-card-label{
+  font-size:9.5px;font-weight:800;
+  color:var(--green);letter-spacing:.1em;text-transform:uppercase;
 }
-.lane-item.adv-active .adv-hint{display:block;}
+.adv-card-text{font-size:11.5px;color:var(--green);line-height:1.5;opacity:.85}
 
 /* CTA BUTTONS */
 .cta-wrap{
