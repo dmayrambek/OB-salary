@@ -32,7 +32,15 @@ function toggleAdvantages() {
   document.querySelectorAll('.lane-row').forEach(row => {
     row.classList.toggle('adv-active', advVisible);
     const advCol = row.querySelector('.lane-col-adv');
-    if (advCol) advCol.classList.toggle('open', advVisible);
+    if (advCol) {
+      if (advVisible) {
+        advCol.style.display = 'flex';
+        requestAnimationFrame(() => advCol.classList.add('open'));
+      } else {
+        advCol.classList.remove('open');
+        setTimeout(() => { advCol.style.display = 'none'; }, 300);
+      }
+    }
   });
 }
 
