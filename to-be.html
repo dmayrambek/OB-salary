@@ -5,14 +5,15 @@
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>O!Bank — ЗПП To Be</title>
   <link rel="stylesheet" href="to-be.css"/>
+<style>.theme-icon-light{display:none;}.light-mode .theme-icon-dark{display:none;}.light-mode .theme-icon-light{display:inline;}</style>
 </head>
 <body>
 
 <header>
   <a class="logo" href="index.html"><span>O!</span>BANK</a>
-  <div class="lang-switcher">
-    <button class="lang-btn active" data-lang="ru">RU</button>
-    <button class="lang-btn" data-lang="en">EN</button>
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button onclick="toggleTheme()" style="background:none;border:1px solid #2e2e2e;color:#777;font-size:14px;width:32px;height:32px;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;"><span class="theme-icon-dark">☀</span><span class="theme-icon-light" style="display:none;">☾</span></button>
+    <div class="lang-switcher"><button class="lang-btn active" data-lang="ru">RU</button><button class="lang-btn" data-lang="en">EN</button></div>
   </div>
 </header>
 
