@@ -63,7 +63,7 @@ const TRANSLATIONS = {
         p3_title:'Reports are compiled manually', p3_text:'Reports are generated manually in Excel, which poses a high risk of errors, discrepancies, and delays in data updates.',
         cta_heading:'A single automated report is needed',
         cta_sub:'We have prepared a specification that resolves all these discrepancies and delivers a complete view of SP projects.',
-        cta_btn:'View Specification',
+        cta_btn:'New technical task',
     }
 };
 
