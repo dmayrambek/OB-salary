@@ -21,8 +21,14 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ── Применяем язык ── */
   document.querySelectorAll('.lang-btn').forEach(b =>
     b.classList.toggle('active', b.dataset.lang === currentLang));
-  document.querySelectorAll('[data-ru][data-en]').forEach(el =>
-    el.textContent = el.dataset[currentLang]);
+  document.querySelectorAll('[data-ru][data-en]').forEach(el => {
+    const val = el.dataset[currentLang];
+    if (el.classList.contains('adv-card-text')) {
+      el.innerHTML = val;
+    } else {
+      el.textContent = val;
+    }
+  });
   document.documentElement.lang = currentLang;
 
   /* ── Переключение языка ── */
