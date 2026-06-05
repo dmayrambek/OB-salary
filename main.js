@@ -125,4 +125,5 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.theme-icon-light').forEach(el => el.style.display = _isLight ? '' : 'none');
   // Восстанавливаем язык
   setLang(currentLang);
+  filterTable('advantage');
 });
