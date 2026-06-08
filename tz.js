@@ -61,7 +61,7 @@ const T = {
         subtitle:     'Two reports that will provide a complete and up-to-date picture of all SP projects in the bank',
 
         once_num:     'Report 01',
-        once_title:   'One-time Export',
+        once_title:   'One-time Report',
         once_desc:    'A detailed snapshot of all companies and employees at a selected date. Provides a complete view of each SP project — from the company account to each employee\'s card transactions.',
 
         once_b1_title: 'Full list of agreements',
@@ -76,7 +76,7 @@ const T = {
         once_b5_text:  'List of banking products used by the client (loans, deposits, etc.)',
 
         monthly_num:     'Report 02',
-        monthly_title:   'Monthly Export',
+        monthly_title:   'Monthly Report',
         monthly_desc:    'An accumulating report generated automatically each month. Enables tracking of dynamics per company — SP growth, card additions, employee activity.',
 
         monthly_b1_title: 'SP dynamics',
@@ -94,8 +94,8 @@ const T = {
         btn_xlsx:     'Download Excel',
         btn_close:    '✕',
 
-        tbl_once_title:    'One-time Export — report fields',
-        tbl_monthly_title: 'Monthly Export — report fields',
+        tbl_once_title:    'One-time Report — report fields',
+        tbl_monthly_title: 'Monthly Report — report fields',
 
         col_field:   'Field',
         col_content: 'Description',
